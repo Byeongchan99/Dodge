@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-    [System.Serializable]
-    public class TurretUpgradeEvent : UnityEvent<TurretUpgradeInfo> { }
+[System.Serializable]
+public class TurretUpgradeEvent : UnityEvent<TurretUpgradeInfo> { }
 
 /// <summary> 이벤트 버스 패턴으로 구현한 이벤트 매니저 </summary>
 public class EventManager : MonoBehaviour

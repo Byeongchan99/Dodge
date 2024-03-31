@@ -22,8 +22,6 @@ public class TurretSpawner : MonoBehaviour
     /// <summary> 터렛 종류별 소환 쿨타임 </summary>
     [SerializeField] List<float> turretSpawnCooltimes;
 
-    /// <summary> 터렛들을 담을 부모 오브젝트 </summary>
-    [SerializeField] GameObject turretsParent;
     /// <summary> 스크립터블 오브젝트에서 로드한 터렛 소환 데이터 </summary>
     [SerializeField] TurretData currentEventData;
     [SerializeField] List<int> eventSpawnLevels = new List<int>();
@@ -329,8 +327,6 @@ public class TurretSpawner : MonoBehaviour
                 currentScale.x *= -1;
                 turret.transform.localScale = currentScale;
             }
-
-            turret.transform.SetParent(turretsParent.transform);
 
             // spawnPoint 설정
             turret.spawnPointIndex = spawnPositionIndex;

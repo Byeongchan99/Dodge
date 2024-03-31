@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class SpawnerDataEntry
+public class TurretDataEntry
 {
     public string eventName;
     public TurretData spawnerData;
@@ -14,9 +14,9 @@ public class TurretDataManager : MonoBehaviour
     /// <summary> 싱글톤 인스턴스 </summary>
     public static TurretDataManager Instance { get; private set; }
     /// <summary> 이벤트 이름에 따른 스크립터블 오브젝트 데이터 매핑 </summary>
-    [SerializeField] private List<SpawnerDataEntry> spawnerDataList = new List<SpawnerDataEntry>();
+    [SerializeField] private List<TurretDataEntry> turretDataList = new List<TurretDataEntry>();
     /// <summary> 딕셔너리로 변환한 스크립터블 오브젝트 데이터 </summary>
-    private Dictionary<string, TurretData> spawnerDataByEvent = new Dictionary<string, TurretData>();
+    private Dictionary<string, TurretData> turretDataByEvent = new Dictionary<string, TurretData>();
 
     private void Awake()
     {
@@ -35,19 +35,19 @@ public class TurretDataManager : MonoBehaviour
     /// <summary> 리스트를 딕셔너리로 변환 </summary>
     private void PopulateDictionary()
     {
-        spawnerDataByEvent.Clear();
-        foreach (var entry in spawnerDataList)
+        turretDataByEvent.Clear();
+        foreach (var entry in turretDataList)
         {
-            spawnerDataByEvent[entry.eventName] = entry.spawnerData;
+            turretDataByEvent[entry.eventName] = entry.spawnerData;
         }
     }
 
     /// <summary> 이벤트 이름에 따라 적절한 스크립터블 오브젝트 데이터 반환 </summary>
     public TurretData GetSpawnerDataForEvent(string eventName)
     {
-        if (spawnerDataByEvent.ContainsKey(eventName))
+        if (turretDataByEvent.ContainsKey(eventName))
         {
-            return spawnerDataByEvent[eventName];
+            return turretDataByEvent[eventName];
         }
         else
         {
