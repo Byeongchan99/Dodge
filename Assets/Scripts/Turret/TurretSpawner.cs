@@ -25,7 +25,7 @@ public class TurretSpawner : MonoBehaviour
     /// <summary> 터렛들을 담을 부모 오브젝트 </summary>
     [SerializeField] GameObject turretsParent;
     /// <summary> 스크립터블 오브젝트에서 로드한 터렛 소환 데이터 </summary>
-    [SerializeField] TurretSpawnerData currentEventData;
+    [SerializeField] TurretData currentEventData;
     [SerializeField] List<int> eventSpawnLevels = new List<int>();
     [SerializeField] List<float> eventSpawnCooltimePercents = new List<float>();
 
@@ -71,7 +71,7 @@ public class TurretSpawner : MonoBehaviour
         }
 
         // 이벤트 이름에 따른 스크립터블 오브젝트 데이터 로드
-        currentEventData = TurretSpawnerDataFactory.Instance.GetSpawnerDataForEvent("Init");
+        currentEventData = TurretDataManager.Instance.GetSpawnerDataForEvent("Init");
 
         // 터렛 종류별 초기 소환 쿨타임 적용
         for (int i = 0; i < turretInitialSpawnCooltimes.Count; i++)
@@ -84,76 +84,76 @@ public class TurretSpawner : MonoBehaviour
     }
 
     /// <summary> 이벤트 적용 </summary>
-    private void HandleTurretUpgradeEvent(TurretUpgrade enhancement)
+    private void HandleTurretUpgradeEvent(TurretUpgradeInfo enhancement)
     {
         switch (enhancement.turretType)
         {
-            case TurretUpgrade.TurretType.Bullet:
+            case TurretUpgradeInfo.TurretType.Bullet:
                 // Bullet Turret의 업그레이드 처리를 위한 내부 switch 문
                 switch (enhancement.enhancementType)
                 {
-                    case TurretUpgrade.EnhancementType.ProjectileSplit:
+                    case TurretUpgradeInfo.EnhancementType.ProjectileSplit:
                         // Bullet Turret 분열 총알 업그레이드 처리
                         _isBulletSplitActive = true;
                         break;
-                    case TurretUpgrade.EnhancementType.CountIncrease:
+                    case TurretUpgradeInfo.EnhancementType.CountIncrease:
                         // 개수 증가 처리
                         break;
-                    case TurretUpgrade.EnhancementType.SpeedIncrease:
+                    case TurretUpgradeInfo.EnhancementType.SpeedIncrease:
                         // 속도 증가 처리
                         break;
-                    case TurretUpgrade.EnhancementType.RemoveSplit:
+                    case TurretUpgradeInfo.EnhancementType.RemoveSplit:
                         _isBulletSplitActive = false;
                         break;
                         // 기타 필요한 경우 추가
                 }
                 break;
-            case TurretUpgrade.TurretType.Laser:
+            case TurretUpgradeInfo.TurretType.Laser:
                 // Laser Turret의 업그레이드 처리
                 switch (enhancement.enhancementType)
                 {
-                    case TurretUpgrade.EnhancementType.RemainTimeIncrease:
+                    case TurretUpgradeInfo.EnhancementType.RemainTimeIncrease:
                         // Bullet Turret 분열 총알 업그레이드 처리
                         _isBulletSplitActive = true;
                         break;
-                    case TurretUpgrade.EnhancementType.CountIncrease:
+                    case TurretUpgradeInfo.EnhancementType.CountIncrease:
                         // 개수 증가 처리
                         break;
-                    case TurretUpgrade.EnhancementType.SpeedIncrease:
+                    case TurretUpgradeInfo.EnhancementType.SpeedIncrease:
                         // 속도 증가 처리
                         break;
                         // 기타 필요한 경우 추가
                 }
                 break;
-            case TurretUpgrade.TurretType.Rocket:
+            case TurretUpgradeInfo.TurretType.Rocket:
                 // Rocket Turret의 업그레이드 처리
                 switch (enhancement.enhancementType)
                 {
-                    case TurretUpgrade.EnhancementType.InductionUpgrade:
+                    case TurretUpgradeInfo.EnhancementType.InductionUpgrade:
                         // Bullet Turret 분열 총알 업그레이드 처리
                         _isBulletSplitActive = true;
                         break;
-                    case TurretUpgrade.EnhancementType.CountIncrease:
+                    case TurretUpgradeInfo.EnhancementType.CountIncrease:
                         // 개수 증가 처리
                         break;
-                    case TurretUpgrade.EnhancementType.SpeedIncrease:
+                    case TurretUpgradeInfo.EnhancementType.SpeedIncrease:
                         // 속도 증가 처리
                         break;
                         // 기타 필요한 경우 추가
                 }
                 break;
-            case TurretUpgrade.TurretType.Mortar:
+            case TurretUpgradeInfo.TurretType.Mortar:
                 // Mortar Turret의 업그레이드 처리
                 switch (enhancement.enhancementType)
                 {
-                    case TurretUpgrade.EnhancementType.ProjectileSplit:
+                    case TurretUpgradeInfo.EnhancementType.ProjectileSplit:
                         // Bullet Turret 분열 총알 업그레이드 처리
                         _isBulletSplitActive = true;
                         break;
-                    case TurretUpgrade.EnhancementType.CountIncrease:
+                    case TurretUpgradeInfo.EnhancementType.CountIncrease:
                         // 개수 증가 처리
                         break;
-                    case TurretUpgrade.EnhancementType.SpeedIncrease:
+                    case TurretUpgradeInfo.EnhancementType.SpeedIncrease:
                         // 속도 증가 처리
                         break;
                         // 기타 필요한 경우 추가
@@ -168,12 +168,12 @@ public class TurretSpawner : MonoBehaviour
     void AdjustEvent(string eventName)
     {
         // 이벤트 이름에 따른 스크립터블 오브젝트 데이터 로드
-        currentEventData = TurretSpawnerDataFactory.Instance.GetSpawnerDataForEvent(eventName);
+        currentEventData = TurretDataManager.Instance.GetSpawnerDataForEvent(eventName);
         SettingTurretSpawnerDatas(currentEventData);
     }
 
     /// <summary> 스크립터블 오브젝트에서 터렛 소환 데이터 적용 </summary>
-    void SettingTurretSpawnerDatas(TurretSpawnerData turretSpawnerData)
+    void SettingTurretSpawnerDatas(TurretData turretSpawnerData)
     {
         eventSpawnLevels.Clear();
         eventSpawnCooltimePercents.Clear();

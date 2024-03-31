@@ -23,10 +23,10 @@ public class PlayerStat : MonoBehaviour
     /// <summary> 터렛 분열 총알 활성화 이벤트 </summary>
     public void TurretSplitEvent()
     {
-        TurretUpgrade bulletTurretSplit = new TurretUpgrade
+        TurretUpgradeInfo bulletTurretSplit = new TurretUpgradeInfo
         {
-            turretType = TurretUpgrade.TurretType.Bullet,
-            enhancementType = TurretUpgrade.EnhancementType.ProjectileSplit,
+            turretType = TurretUpgradeInfo.TurretType.Bullet,
+            enhancementType = TurretUpgradeInfo.EnhancementType.ProjectileSplit,
         };
 
         EventManager.TriggerEnhancementEvent("TurretUpgrade", bulletTurretSplit);
@@ -35,10 +35,10 @@ public class PlayerStat : MonoBehaviour
     /// <summary> 터렛 분열 총알 활성화 이벤트 </summary>
     public void TurretRemoveSplitEvent()
     {
-        TurretUpgrade bulletTurretRemoveSplit = new TurretUpgrade
+        TurretUpgradeInfo bulletTurretRemoveSplit = new TurretUpgradeInfo
         {
-            turretType = TurretUpgrade.TurretType.Bullet,
-            enhancementType = TurretUpgrade.EnhancementType.RemoveSplit,
+            turretType = TurretUpgradeInfo.TurretType.Bullet,
+            enhancementType = TurretUpgradeInfo.EnhancementType.RemoveSplit,
         };
 
         EventManager.TriggerEnhancementEvent("TurretUpgrade", bulletTurretRemoveSplit);

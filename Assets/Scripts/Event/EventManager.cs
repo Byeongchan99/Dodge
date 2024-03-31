@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
     [System.Serializable]
-    public class TurretUpgradeEvent : UnityEvent<TurretUpgrade> { }
+    public class TurretUpgradeEvent : UnityEvent<TurretUpgradeInfo> { }
 
 /// <summary> 이벤트 버스 패턴으로 구현한 이벤트 매니저 </summary>
 public class EventManager : MonoBehaviour
@@ -31,7 +31,7 @@ public class EventManager : MonoBehaviour
     }
 
     /// <summary> 이벤트 리스너 추가 </summary>
-    public static void StartListening(string eventName, UnityAction<TurretUpgrade> listener)
+    public static void StartListening(string eventName, UnityAction<TurretUpgradeInfo> listener)
     {
         TurretUpgradeEvent thisEvent = null;
         if (Instance.enhancementEventDictionary.TryGetValue(eventName, out thisEvent))
@@ -47,7 +47,7 @@ public class EventManager : MonoBehaviour
     }
 
     /// <summary> 이벤트 리스너 제거 </summary>
-    public static void StopListening(string eventName, UnityAction<TurretUpgrade> listener)
+    public static void StopListening(string eventName, UnityAction<TurretUpgradeInfo> listener)
     {
         if (Instance == null) return;
         TurretUpgradeEvent thisEvent = null;
@@ -58,7 +58,7 @@ public class EventManager : MonoBehaviour
     }
 
     /// <summary> 이벤트 트리거 </summary>
-    public static void TriggerEnhancementEvent(string eventName, TurretUpgrade enhancementData)
+    public static void TriggerEnhancementEvent(string eventName, TurretUpgradeInfo enhancementData)
     {
         TurretUpgradeEvent thisEvent = null;
         if (Instance.enhancementEventDictionary.TryGetValue(eventName, out thisEvent))

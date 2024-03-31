@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "TurretData", menuName = "ScriptableObjects/TurretData", order = 1)]
-public class TurretData : MonoBehaviour
+public class TurretData : ScriptableObject
 {
     [System.Serializable]
     public struct TurretDataInfo
