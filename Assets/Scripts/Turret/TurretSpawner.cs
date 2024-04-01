@@ -23,7 +23,7 @@ public class TurretSpawner : MonoBehaviour
     [SerializeField] List<float> turretSpawnCooltimes;
 
     /// <summary> 스크립터블 오브젝트에서 로드한 터렛 소환 데이터 </summary>
-    [SerializeField] TurretData currentEventData;
+    [SerializeField] StatData currentEventData;
     [SerializeField] List<int> eventSpawnLevels = new List<int>();
     [SerializeField] List<float> eventSpawnCooltimePercents = new List<float>();
 
@@ -69,7 +69,7 @@ public class TurretSpawner : MonoBehaviour
         }
 
         // 이벤트 이름에 따른 스크립터블 오브젝트 데이터 로드
-        currentEventData = TurretDataManager.Instance.GetSpawnerDataForEvent("Init");
+        currentEventData = StatDataManager.Instance.GetSpawnerDataForEvent("Init");
 
         // 터렛 종류별 초기 소환 쿨타임 적용
         for (int i = 0; i < turretInitialSpawnCooltimes.Count; i++)
@@ -101,6 +101,10 @@ public class TurretSpawner : MonoBehaviour
                         // 속도 증가 처리
                         break;
                     case TurretUpgradeInfo.EnhancementType.RemoveSplit:
+                        _isBulletSplitActive = false;
+                        break;
+                    case TurretUpgradeInfo.EnhancementType.Init:
+                        // 초기화 로직
                         _isBulletSplitActive = false;
                         break;
                         // 기타 필요한 경우 추가
@@ -166,21 +170,21 @@ public class TurretSpawner : MonoBehaviour
     void AdjustEvent(string eventName)
     {
         // 이벤트 이름에 따른 스크립터블 오브젝트 데이터 로드
-        currentEventData = TurretDataManager.Instance.GetSpawnerDataForEvent(eventName);
+        currentEventData = StatDataManager.Instance.GetSpawnerDataForEvent(eventName);
         SettingTurretSpawnerDatas(currentEventData);
     }
 
     /// <summary> 스크립터블 오브젝트에서 터렛 소환 데이터 적용 </summary>
-    void SettingTurretSpawnerDatas(TurretData turretSpawnerData)
+    void SettingTurretSpawnerDatas(StatData turretSpawnerData)
     {
         eventSpawnLevels.Clear();
         eventSpawnCooltimePercents.Clear();
 
         // 터렛 종류별 데이터를 리스트에 추가
-        for (int i = 0; i < turretSpawnerData.turretDatas.Count; i++)
+        for (int i = 0; i < turretSpawnerData.turretSpawnerDatas.Count; i++)
         {
-            eventSpawnLevels.Add(turretSpawnerData.turretDatas[i].spawnLevel);
-            eventSpawnCooltimePercents.Add(turretSpawnerData.turretDatas[i].spawnCooldownPercent);
+            eventSpawnLevels.Add(turretSpawnerData.turretSpawnerDatas[i].spawnLevel);
+            eventSpawnCooltimePercents.Add(turretSpawnerData.turretSpawnerDatas[i].spawnCooldownPercent);
         }
 
         // 터렛 종류별 데이터 적용
@@ -332,11 +336,12 @@ public class TurretSpawner : MonoBehaviour
             turret.spawnPointIndex = spawnPositionIndex;
             turret.spawner = this;
 
+            // 터렛이 BulletTurret인 경우
             if (turret is BulletTurret bulletTurret)
             {
+                // 분열 총알 이벤트가 활성화된 경우(임시)
                 if (_isBulletSplitActive)
                 {
-                    // 분열 총알 이벤트가 활성화된 경우(임시)
                     Debug.Log("분열 총알 적용");
                     bulletTurret.ChangeProjectile(1); // 분열 총알 프리팹 적용
                 }

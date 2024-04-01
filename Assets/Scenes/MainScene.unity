@@ -967,7 +967,7 @@ GameObject:
   - component: {fileID: 951026693}
   - component: {fileID: 951026694}
   m_Layer: 0
-  m_Name: TurretDataManager
+  m_Name: StatDataManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1002,7 +1002,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turretDataList:
   - eventName: Init
-    spawnerData: {fileID: 11400000, guid: 18e6d8498bca9494aaf89c9ce472787c, type: 2}
+    statData: {fileID: 11400000, guid: 18e6d8498bca9494aaf89c9ce472787c, type: 2}
 --- !u!1 &1038371769
 GameObject:
   m_ObjectHideFlags: 0

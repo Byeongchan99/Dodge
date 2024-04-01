@@ -17,7 +17,8 @@ public class TurretUpgradeInfo
         ProjectileSplit, // 발사체 분열
         RemainTimeIncrease, // 발사체 지속시간 증가(레이저 터렛 전용)
         InductionUpgrade, // 유도 성능 증가(박격포 터렛 전용)
-        RemoveSplit // 분열 제거
+        RemoveSplit, // 분열 제거
+        Init, // 초기화  
     }
     public EnhancementType enhancementType;
 }

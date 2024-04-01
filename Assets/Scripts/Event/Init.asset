@@ -12,12 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 026653c8ea812fa4692aa20d3a35007d, type: 3}
   m_Name: Init
   m_EditorClassIdentifier: 
-  turretDatas:
+  turretSpawnerDatas:
   - spawnLevel: 1
+    spawnChance: 0
     spawnCooldownPercent: 0
   - spawnLevel: 1
+    spawnChance: 0
     spawnCooldownPercent: 0
   - spawnLevel: 1
+    spawnChance: 0
     spawnCooldownPercent: 0
   - spawnLevel: 1
+    spawnChance: 0
     spawnCooldownPercent: 0
+  turretDatas: []
+  projectileDatas: []

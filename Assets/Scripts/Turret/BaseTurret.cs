@@ -109,7 +109,7 @@ public abstract class BaseTurret : MonoBehaviour
     /// <summary> 발사할 투사체 변경 </summary>
     public virtual void ChangeProjectile(int projectileIndex)
     {
-        Debug.Log("ChangeProjectile");
+        //Debug.Log("ChangeProjectile");
         currentProjectilePrefabs = projectilePrefabs[projectileIndex];
     }
 }
