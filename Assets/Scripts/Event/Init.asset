@@ -30,8 +30,8 @@ MonoBehaviour:
     spawnCooldown: 4
     spawnCooldownPercent: 0
   turretDatas:
-  - projectileCount: 0
-    projectileIndex: 1
+  - projectileCount: 5
+    projectileIndex: 0
     turretLifeTime: 0
   - projectileCount: 0
     projectileIndex: 0

@@ -46,6 +46,19 @@ public class PlayerStat : MonoBehaviour
         EventManager.TriggerEnhancementEvent("TurretUpgrade", bulletTurretRemoveSplit);
     }
 
+    /// <summary> 총알 터렛 개수 증가 이벤트 </summary>
+    public void BulletTurretCountIncreaseEvent()
+    {
+        Debug.Log("Count Increase");
+        TurretUpgradeInfo bulletTurretCountIncrease = new TurretUpgradeInfo
+        {
+            turretType = TurretUpgradeInfo.TurretType.Bullet,
+            enhancementType = TurretUpgradeInfo.EnhancementType.CountIncrease,
+        };
+
+        EventManager.TriggerEnhancementEvent("TurretUpgrade", bulletTurretCountIncrease);
+    }
+
     /// <summary> 총알 터렛 초기화 이벤트 </summary>
     public void InitBulletTurretEvent()
     {

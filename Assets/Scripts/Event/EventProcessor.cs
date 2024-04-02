@@ -40,6 +40,7 @@ public class EventProcessor : MonoBehaviour
                         break;
                     case TurretUpgradeInfo.EnhancementType.CountIncrease:
                         // 개수 증가 처리
+                        StatDataManager.Instance.currentStatData.turretDatas[0].projectileCount++;
                         break;
                     case TurretUpgradeInfo.EnhancementType.SpeedIncrease:
                         // 속도 증가 처리

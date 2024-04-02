@@ -75,6 +75,8 @@ public abstract class BaseTurret : MonoBehaviour
     /// <summary> ≈Õ∑ø √ ±‚»≠ </summary>
     protected virtual void InitTurret()
     {
+        _lifeTime = StatDataManager.Instance.currentStatData.turretDatas
+
         currentLifeTime = _lifeTime;
         _attackSpeed = _lifeTime / projectileCount;
         //currentProjectilePrefabs = projectilePrefabs[0];

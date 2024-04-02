@@ -249,6 +249,7 @@ public class TurretSpawner : MonoBehaviour
             turret.gameObject.SetActive(true);
             turret.transform.position = spawnPosition.position;
             turret.transform.rotation = Quaternion.identity;
+            turret.projectileCount = cachedStatData.turretDatas[turretPrefabs.IndexOf(turretToSpawn)].projectileCount;
 
             // spawnIndex가 0일 때 시계 방향으로 90도 회전
             if (spawnPositionIndex == 0)
