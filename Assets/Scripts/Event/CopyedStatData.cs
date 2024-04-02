@@ -12,12 +12,10 @@ public class CopyedStatData
     public CopyedStatData(StatData data)
     {
         // TurretSpawnerData 리스트 복사
-        turretSpawnerDatas = new List<StatData.TurretSpawnerData>(data.turretSpawnerDatas);
-
+        turretSpawnerDatas = data.turretSpawnerDatas.ConvertAll(item => new StatData.TurretSpawnerData(item));
         // TurretData 리스트 복사
-        turretDatas = new List<StatData.TurretData>(data.turretDatas);
-
+        turretDatas = data.turretDatas.ConvertAll(item => new StatData.TurretData(item));
         // ProjectileData 리스트 복사
-        projectileDatas = new List<StatData.ProjectileData>(data.projectileDatas);
+        projectileDatas = data.projectileDatas.ConvertAll(item => new StatData.ProjectileData(item));
     }
 }

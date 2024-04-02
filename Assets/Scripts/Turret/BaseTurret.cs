@@ -30,6 +30,8 @@ public abstract class BaseTurret : MonoBehaviour
     ****************************************************************************/
     /// <summary> TurretSpawner 참조 </summary>
     public TurretSpawner spawner;
+    /// <summary> 터렛 종류 인덱스 </summary>
+    public int turretIndex;
     /// <summary> 현재 터렛 유지 시간 </summary>
     public float currentLifeTime;
     /// <summary> 투사체 발사 개수 </summary>
@@ -75,9 +77,9 @@ public abstract class BaseTurret : MonoBehaviour
     /// <summary> 터렛 초기화 </summary>
     protected virtual void InitTurret()
     {
-        _lifeTime = StatDataManager.Instance.currentStatData.turretDatas
-
+        _lifeTime = StatDataManager.Instance.currentStatData.turretDatas[turretIndex].turretLifeTime;
         currentLifeTime = _lifeTime;
+        projectileCount = StatDataManager.Instance.currentStatData.turretDatas[turretIndex].projectileCount;
         _attackSpeed = _lifeTime / projectileCount;
         //currentProjectilePrefabs = projectilePrefabs[0];
         targetPosition = PlayerStat.Instance.transform;

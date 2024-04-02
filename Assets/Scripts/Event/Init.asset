@@ -32,7 +32,7 @@ MonoBehaviour:
   turretDatas:
   - projectileCount: 5
     projectileIndex: 0
-    turretLifeTime: 0
+    turretLifeTime: 4
   - projectileCount: 0
     projectileIndex: 0
     turretLifeTime: 0

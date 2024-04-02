@@ -246,10 +246,10 @@ public class TurretSpawner : MonoBehaviour
 
         if (turret != null)
         {
+            // 터렛 활성화 및 위치 설정
             turret.gameObject.SetActive(true);
             turret.transform.position = spawnPosition.position;
             turret.transform.rotation = Quaternion.identity;
-            turret.projectileCount = cachedStatData.turretDatas[turretPrefabs.IndexOf(turretToSpawn)].projectileCount;
 
             // spawnIndex가 0일 때 시계 방향으로 90도 회전
             if (spawnPositionIndex == 0)
@@ -269,6 +269,10 @@ public class TurretSpawner : MonoBehaviour
             // spawnPoint 설정
             turret.spawnPointIndex = spawnPositionIndex;
             turret.spawner = this;
+
+            // 터렛 초기화
+            turret.turretIndex = turretPrefabs.IndexOf(turretToSpawn);
+            turret.projectileCount = cachedStatData.turretDatas[turretPrefabs.IndexOf(turretToSpawn)].projectileCount;
 
             _nextSpawnTime = ChooseCooldown(turretToSpawn); // 다음 소환까지의 시간 설정
         }
