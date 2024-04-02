@@ -10,7 +10,8 @@ public class StatData : ScriptableObject
     {
         public int spawnLevel; // 소환 레벨
         public float spawnChance; // 소환 확률
-        public float spawnCooldownPercent; // 소환 쿨타임 퍼센트
+        public float spawnCooldown; // 소환 쿨타임
+        public float spawnCooldownPercent; // 감소시킬 소환 쿨타임 퍼센트
     }
 
     [System.Serializable]

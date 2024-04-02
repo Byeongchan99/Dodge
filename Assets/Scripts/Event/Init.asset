@@ -14,16 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turretSpawnerDatas:
   - spawnLevel: 1
-    spawnChance: 0
+    spawnChance: 1
+    spawnCooldown: 5
     spawnCooldownPercent: 0
-  - spawnLevel: 1
+  - spawnLevel: 0
     spawnChance: 0
+    spawnCooldown: 5
     spawnCooldownPercent: 0
-  - spawnLevel: 1
+  - spawnLevel: 0
     spawnChance: 0
+    spawnCooldown: 5
     spawnCooldownPercent: 0
-  - spawnLevel: 1
+  - spawnLevel: 0
     spawnChance: 0
+    spawnCooldown: 5
     spawnCooldownPercent: 0
   turretDatas: []
   projectileDatas: []

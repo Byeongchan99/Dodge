@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,6 +19,26 @@ public class StatDataManager : MonoBehaviour
     /// <summary> 딕셔너리로 변환한 스크립터블 오브젝트 데이터 </summary>
     private Dictionary<string, StatData> turretDataByEvent = new Dictionary<string, StatData>();
 
+    /// <summary> 옵저버 패턴으로 구현한 현재 스탯 데이터 </summary>
+    public event EventHandler<StatDataChangedEventArgs> StatDataChanged;
+
+    private void OnStatDataChanged(StatDataChangedEventArgs e)
+    {
+        StatDataChanged?.Invoke(this, e);
+    }
+
+    private StatData _currentStatData;
+    public StatData currentStatData
+    {
+        get { return _currentStatData; }
+        set
+        {
+            _currentStatData = value;
+            // setter에서 값이 변경될 때마다 OnStatDataChanged 발생
+            OnStatDataChanged(new StatDataChangedEventArgs(_currentStatData));
+        }
+    }
+
     private void Awake()
     {
         // 싱글톤 인스턴스 설정
@@ -30,6 +51,9 @@ public class StatDataManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        // 현재 스탯 데이터 설정
+        currentStatData = GetDataForEvent("Init");
     }
 
     /// <summary> 리스트를 딕셔너리로 변환 </summary>
@@ -43,7 +67,7 @@ public class StatDataManager : MonoBehaviour
     }
 
     /// <summary> 이벤트 이름에 따라 적절한 스크립터블 오브젝트 데이터 반환 </summary>
-    public StatData GetSpawnerDataForEvent(string eventName)
+    public StatData GetDataForEvent(string eventName)
     {
         if (turretDataByEvent.ContainsKey(eventName))
         {
@@ -54,5 +78,16 @@ public class StatDataManager : MonoBehaviour
             Debug.LogWarning("잘못된 이벤트 이름: " + eventName);
             return null;
         }
+    }
+}
+
+/// <summary> 변경된 데이터를 이벤트 인자로 전달하기 위한 클래스 </summary>
+public class StatDataChangedEventArgs : EventArgs
+{
+    public StatData NewStatData { get; }
+
+    public StatDataChangedEventArgs(StatData newStatData)
+    {
+        NewStatData = newStatData;
     }
 }

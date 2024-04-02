@@ -831,9 +831,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1609651027}
-        m_TargetAssemblyTypeName: PlayerStat, Assembly-CSharp
-        m_MethodName: TurretRemoveSplitEvent
+      - m_Target: {fileID: 1081800019}
+        m_TargetAssemblyTypeName: EventProcessor, Assembly-CSharp
+        m_MethodName: BulletTurretRemoveSplitEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -937,25 +937,6 @@ MonoBehaviour:
   isAvailableSpawnPosition: 
   turretPrefabs:
   - {fileID: 7142985893305235348, guid: 6598a472629392647ac7d0f0395deee6, type: 3}
-  turretSpawnLevels: 00000000000000000000000000000000
-  turretSpawnChances:
-  - 0
-  - 0
-  - 0
-  - 0
-  turretInitialSpawnCooltimes:
-  - 3
-  - 3
-  - 3
-  - 3
-  turretSpawnCooltimes:
-  - 3
-  - 3
-  - 3
-  - 3
-  currentEventData: {fileID: 0}
-  eventSpawnLevels: 
-  eventSpawnCooltimePercents: []
 --- !u!1 &951026692
 GameObject:
   m_ObjectHideFlags: 0
@@ -1152,6 +1133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1081800017}
   - component: {fileID: 1081800018}
+  - component: {fileID: 1081800019}
   m_Layer: 0
   m_Name: Event Manager
   m_TagString: Untagged
@@ -1184,6 +1166,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c54f35a55c010d34f90967c54f7d4c67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1081800019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1081800016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32cf9197c2633f42a8fa96c32bf7bb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1237358503
@@ -1362,9 +1356,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1609651027}
-        m_TargetAssemblyTypeName: PlayerStat, Assembly-CSharp
-        m_MethodName: TurretSplitEvent
+      - m_Target: {fileID: 1081800019}
+        m_TargetAssemblyTypeName: EventProcessor, Assembly-CSharp
+        m_MethodName: BulletTurretSplitEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
