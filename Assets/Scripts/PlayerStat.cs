@@ -17,5 +17,44 @@ public class PlayerStat : MonoBehaviour
         {
             Destroy(gameObject); // 중복 인스턴스 제거
         }
-    }    
+    }
+
+    // 임시
+    /// <summary> 총알 터렛 분열 총알 활성화 이벤트 </summary>
+    public void BulletTurretSplitEvent()
+    {
+        Debug.Log("분열 총알 적용 이벤트 시작");
+        TurretUpgradeInfo bulletTurretSplit = new TurretUpgradeInfo
+        {
+            turretType = TurretUpgradeInfo.TurretType.Bullet,
+            enhancementType = TurretUpgradeInfo.EnhancementType.ProjectileSplit,
+        };
+
+        EventManager.TriggerEnhancementEvent("TurretUpgrade", bulletTurretSplit);
+    }
+
+    /// <summary> 총알 터렛 분열 총알 비활성화 이벤트 </summary>
+    public void BulletTurretRemoveSplitEvent()
+    {
+        Debug.Log("Remove Split");
+        TurretUpgradeInfo bulletTurretRemoveSplit = new TurretUpgradeInfo
+        {
+            turretType = TurretUpgradeInfo.TurretType.Bullet,
+            enhancementType = TurretUpgradeInfo.EnhancementType.RemoveSplit,
+        };
+
+        EventManager.TriggerEnhancementEvent("TurretUpgrade", bulletTurretRemoveSplit);
+    }
+
+    /// <summary> 총알 터렛 초기화 이벤트 </summary>
+    public void InitBulletTurretEvent()
+    {
+        TurretUpgradeInfo bulletTurretInit = new TurretUpgradeInfo
+        {
+            turretType = TurretUpgradeInfo.TurretType.Bullet,
+            enhancementType = TurretUpgradeInfo.EnhancementType.Init,
+        };
+
+        EventManager.TriggerEnhancementEvent("TurretUpgrade", bulletTurretInit);
+    }
 }

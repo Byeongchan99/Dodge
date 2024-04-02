@@ -27,8 +27,8 @@ public class StatDataManager : MonoBehaviour
         StatDataChanged?.Invoke(this, e);
     }
 
-    private StatData _currentStatData;
-    public StatData currentStatData
+    private CopyedStatData _currentStatData;
+    public CopyedStatData currentStatData
     {
         get { return _currentStatData; }
         set
@@ -53,7 +53,9 @@ public class StatDataManager : MonoBehaviour
         }
 
         // 현재 스탯 데이터 설정
-        currentStatData = GetDataForEvent("Init");
+        Debug.Log("스탯 매니저 초기화");
+        StatData originalStatData = GetDataForEvent("Init");
+        currentStatData = new CopyedStatData(originalStatData);
     }
 
     /// <summary> 리스트를 딕셔너리로 변환 </summary>
@@ -84,9 +86,9 @@ public class StatDataManager : MonoBehaviour
 /// <summary> 변경된 데이터를 이벤트 인자로 전달하기 위한 클래스 </summary>
 public class StatDataChangedEventArgs : EventArgs
 {
-    public StatData NewStatData { get; }
+    public CopyedStatData NewStatData { get; }
 
-    public StatDataChangedEventArgs(StatData newStatData)
+    public StatDataChangedEventArgs(CopyedStatData newStatData)
     {
         NewStatData = newStatData;
     }

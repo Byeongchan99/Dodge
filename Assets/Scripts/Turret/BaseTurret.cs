@@ -23,7 +23,7 @@ public abstract class BaseTurret : MonoBehaviour
     /// <summary> 발사할 투사체 프리팹 리스트 </summary>
     [SerializeField] protected GameObject[] projectilePrefabs;
     /// <summary> 현재 발사할 투사체 프리팹 </summary>
-    [SerializeField] protected GameObject currentProjectilePrefabs;
+    //[SerializeField] protected GameObject currentProjectilePrefabs;
 
     /****************************************************************************
                                    public Fields
@@ -77,7 +77,7 @@ public abstract class BaseTurret : MonoBehaviour
     {
         currentLifeTime = _lifeTime;
         _attackSpeed = _lifeTime / projectileCount;
-        currentProjectilePrefabs = projectilePrefabs[0];
+        //currentProjectilePrefabs = projectilePrefabs[0];
         targetPosition = PlayerStat.Instance.transform;
     }
 
@@ -85,7 +85,7 @@ public abstract class BaseTurret : MonoBehaviour
     protected abstract void Shoot();
 
     /// <summary> 터렛 비활성화 </summary>
-    protected void DisableTurret()
+    protected virtual void DisableTurret()
     {
         // 이름에서 (Clone)을 제거
         string poolName = gameObject.name.Replace("(Clone)", "");
@@ -106,10 +106,12 @@ public abstract class BaseTurret : MonoBehaviour
     /****************************************************************************
                                  public Methods
     ****************************************************************************/
+    /*
     /// <summary> 발사할 투사체 변경 </summary>
     public virtual void ChangeProjectile(int projectileIndex)
     {
         //Debug.Log("ChangeProjectile");
         currentProjectilePrefabs = projectilePrefabs[projectileIndex];
     }
+    */
 }

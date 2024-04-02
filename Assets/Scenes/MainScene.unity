@@ -831,8 +831,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1081800019}
-        m_TargetAssemblyTypeName: EventProcessor, Assembly-CSharp
+      - m_Target: {fileID: 1609651027}
+        m_TargetAssemblyTypeName: PlayerStat, Assembly-CSharp
         m_MethodName: BulletTurretRemoveSplitEvent
         m_Mode: 1
         m_Arguments:
@@ -1356,8 +1356,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1081800019}
-        m_TargetAssemblyTypeName: EventProcessor, Assembly-CSharp
+      - m_Target: {fileID: 1609651027}
+        m_TargetAssemblyTypeName: PlayerStat, Assembly-CSharp
         m_MethodName: BulletTurretSplitEvent
         m_Mode: 1
         m_Arguments:

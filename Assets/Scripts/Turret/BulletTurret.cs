@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using static UnityEngine.GraphicsBuffer;
 
 
 public class BulletTurret : BaseTurret
@@ -26,11 +27,29 @@ public class BulletTurret : BaseTurret
             _direction = targetPosition.position - rotatePoint.position;
             // atan2를 사용하여 라디안으로 방향 각도를 계산한 다음, 도(degree)로 변환
             _angle = Mathf.Atan2(_direction.y, _direction.x) * Mathf.Rad2Deg;
+
+            /*
             // 스프라이트가 뒤집혀 있으면 각도 조정
             if (transform.localScale.x < 0)
             {
                 _angle = 180f - _angle; // 뒤집힌 스프라이트에 대해 각도를 조정
             }
+            */
+
+            if (spawnPointIndex == 0)
+            {
+                _angle += 90;
+            }
+            // 1번부터 3번 스폰 포인트에서는 터렛 스프라이트를 반대로 설정
+            else if (spawnPointIndex >= 1 && spawnPointIndex <= 3)
+            {
+                _angle += 180;
+            }
+            else if (spawnPointIndex == 4)
+            {
+                _angle -= 90;
+            }
+
             // Z축 회전
             Vector3 rotation = new Vector3(0, 0, _angle);
             // 회전 애니메이션이 완료된 후 ShootProjectile 메서드 호출
@@ -41,7 +60,7 @@ public class BulletTurret : BaseTurret
     /// <summary> 발사체 생성 </summary>
     private void ShootProjectile()
     {
-        if (currentProjectilePrefabs == null || firePoint == null)
+        if (firePoint == null)
         {
             Debug.LogError("Projectile prefab or fire point is not set.");
             return;
@@ -53,7 +72,8 @@ public class BulletTurret : BaseTurret
         Quaternion rotation = Quaternion.LookRotation(Vector3.forward, _direction);
 
         // 오브젝트 풀에서 총알 가져오기
-        BaseProjectile projectile = ProjectilePoolManager.Instance.Get(currentProjectilePrefabs.name);
+        int currentProjectileIndex= StatDataManager.Instance.currentStatData.turretDatas[0].projectileIndex;
+        BaseProjectile projectile = ProjectilePoolManager.Instance.Get(projectilePrefabs[currentProjectileIndex].name);
 
         if (projectile != null)
         {
@@ -67,5 +87,11 @@ public class BulletTurret : BaseTurret
         {
             Debug.LogWarning("Failed to get projectile from pool.");
         }
+    }
+
+    protected override void DisableTurret()
+    {
+        rotatePoint.localRotation = Quaternion.identity;
+        base.DisableTurret();
     }
 }

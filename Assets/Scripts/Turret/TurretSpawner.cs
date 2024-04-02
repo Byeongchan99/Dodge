@@ -29,13 +29,10 @@ public class TurretSpawner : MonoBehaviour
     [SerializeField] List<float> eventSpawnCooltimePercents = new List<float>();
     */
     /// <summary> 옵저버 패턴으로 가져온 스탯 데이터 </summary>
-    private StatData cachedStatData;
+    private CopyedStatData cachedStatData;
 
     private float _nextSpawnTime = 0f;
     private bool _isSpawning = false; // 현재 소환 중인지 여부를 나타내는 플래그
-
-    private bool _isBulletSplitActive = false; // 분열 총알 활성화 여부
-
     /****************************************************************************
                                    Unity Callbacks
     ****************************************************************************/
@@ -44,23 +41,12 @@ public class TurretSpawner : MonoBehaviour
         Init();
     }
 
-    void OnEnable()
-    {
-        EventManager.StartListening("TurretUpgrade", HandleTurretUpgradeEvent);
-    }
-
     void Start()
     {
         StatDataManager.Instance.StatDataChanged += OnStatDataChanged;
         cachedStatData = StatDataManager.Instance.currentStatData;
         StartCoroutine(SpawnTurretRoutine());
     }
-
-    void OnDisable()
-    {
-        EventManager.StopListening("TurretUpgrade", HandleTurretUpgradeEvent);
-    }
-
     /****************************************************************************
                                     private Methods
     ****************************************************************************/
@@ -93,90 +79,6 @@ public class TurretSpawner : MonoBehaviour
     private void OnStatDataChanged(object sender, StatDataChangedEventArgs e)
     {
         cachedStatData = e.NewStatData;
-    }
-
-    /// <summary> 이벤트 적용 </summary>
-    private void HandleTurretUpgradeEvent(TurretUpgradeInfo enhancement)
-    {
-        switch (enhancement.turretType)
-        {
-            case TurretUpgradeInfo.TurretType.Bullet:
-                // Bullet Turret의 업그레이드 처리를 위한 내부 switch 문
-                switch (enhancement.enhancementType)
-                {
-                    case TurretUpgradeInfo.EnhancementType.ProjectileSplit:
-                        // Bullet Turret 분열 총알 업그레이드 처리
-                        _isBulletSplitActive = true;
-                        break;
-                    case TurretUpgradeInfo.EnhancementType.CountIncrease:
-                        // 개수 증가 처리
-                        break;
-                    case TurretUpgradeInfo.EnhancementType.SpeedIncrease:
-                        // 속도 증가 처리
-                        break;
-                    case TurretUpgradeInfo.EnhancementType.RemoveSplit:
-                        _isBulletSplitActive = false;
-                        break;
-                    case TurretUpgradeInfo.EnhancementType.Init:
-                        // 초기화 로직
-                        _isBulletSplitActive = false;
-                        break;
-                        // 기타 필요한 경우 추가
-                }
-                break;
-            case TurretUpgradeInfo.TurretType.Laser:
-                // Laser Turret의 업그레이드 처리
-                switch (enhancement.enhancementType)
-                {
-                    case TurretUpgradeInfo.EnhancementType.RemainTimeIncrease:
-                        // Bullet Turret 분열 총알 업그레이드 처리
-                        _isBulletSplitActive = true;
-                        break;
-                    case TurretUpgradeInfo.EnhancementType.CountIncrease:
-                        // 개수 증가 처리
-                        break;
-                    case TurretUpgradeInfo.EnhancementType.SpeedIncrease:
-                        // 속도 증가 처리
-                        break;
-                        // 기타 필요한 경우 추가
-                }
-                break;
-            case TurretUpgradeInfo.TurretType.Rocket:
-                // Rocket Turret의 업그레이드 처리
-                switch (enhancement.enhancementType)
-                {
-                    case TurretUpgradeInfo.EnhancementType.InductionUpgrade:
-                        // Bullet Turret 분열 총알 업그레이드 처리
-                        _isBulletSplitActive = true;
-                        break;
-                    case TurretUpgradeInfo.EnhancementType.CountIncrease:
-                        // 개수 증가 처리
-                        break;
-                    case TurretUpgradeInfo.EnhancementType.SpeedIncrease:
-                        // 속도 증가 처리
-                        break;
-                        // 기타 필요한 경우 추가
-                }
-                break;
-            case TurretUpgradeInfo.TurretType.Mortar:
-                // Mortar Turret의 업그레이드 처리
-                switch (enhancement.enhancementType)
-                {
-                    case TurretUpgradeInfo.EnhancementType.ProjectileSplit:
-                        // Bullet Turret 분열 총알 업그레이드 처리
-                        _isBulletSplitActive = true;
-                        break;
-                    case TurretUpgradeInfo.EnhancementType.CountIncrease:
-                        // 개수 증가 처리
-                        break;
-                    case TurretUpgradeInfo.EnhancementType.SpeedIncrease:
-                        // 속도 증가 처리
-                        break;
-                        // 기타 필요한 경우 추가
-                }
-                break;
-                // 기타 터렛 유형에 대한 처리
-        }
     }
 
     /*
@@ -348,32 +250,24 @@ public class TurretSpawner : MonoBehaviour
             turret.transform.position = spawnPosition.position;
             turret.transform.rotation = Quaternion.identity;
 
-            // 1번부터 4번 스폰 포인트에서는 터렛 스프라이트를 반대로 설정
-            if (spawnPositionIndex >= 1 && spawnPositionIndex <= 3)
+            // spawnIndex가 0일 때 시계 방향으로 90도 회전
+            if (spawnPositionIndex == 0)
             {
-                Vector3 currentScale = turret.transform.localScale;
-                currentScale.x *= -1;
-                turret.transform.localScale = currentScale;
+                turret.transform.rotation = Quaternion.Euler(0, 0, -90);
+            }
+            // 1번부터 3번 스폰 포인트에서는 터렛 스프라이트를 반대로 설정
+            else if (spawnPositionIndex >= 1 && spawnPositionIndex <= 3)
+            {
+                turret.transform.rotation = Quaternion.Euler(0, 0, 180);
+            }
+            else if (spawnPositionIndex == 4)
+            {
+                turret.transform.rotation = Quaternion.Euler(0, 0, 90);
             }
 
             // spawnPoint 설정
             turret.spawnPointIndex = spawnPositionIndex;
             turret.spawner = this;
-
-            // 터렛이 BulletTurret인 경우
-            if (turret is BulletTurret bulletTurret)
-            {
-                // 분열 총알 이벤트가 활성화된 경우(임시)
-                if (_isBulletSplitActive)
-                {
-                    Debug.Log("분열 총알 적용");
-                    bulletTurret.ChangeProjectile(1); // 분열 총알 프리팹 적용
-                }
-                else
-                {
-                    bulletTurret.ChangeProjectile(0); // 기본 총알 프리팹 적용
-                }
-            }
 
             _nextSpawnTime = ChooseCooldown(turretToSpawn); // 다음 소환까지의 시간 설정
         }

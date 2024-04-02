@@ -4,50 +4,105 @@ using UnityEngine;
 
 public class EventProcessor : MonoBehaviour
 {
+    void OnEnable()
+    {
+        EventManager.StartListening("TurretUpgrade", HandleTurretUpgradeEvent);
+    }
+
+    void OnDisable()
+    {
+        EventManager.StopListening("TurretUpgrade", HandleTurretUpgradeEvent);
+    }
+
     public void HandleEvent(string eventName)
     {
         // 이벤트에 따른 로직 처리
 
         // currentStatData 변경 예시
-        StatData updatedStatData = StatDataManager.Instance.GetDataForEvent(eventName);
+        /*
+        CopyedStatData updatedStatData = StatDataManager.Instance.GetDataForEvent(eventName);
         StatDataManager.Instance.currentStatData = updatedStatData;
+        */
     }
 
-    /// <summary> 총알 터렛 분열 총알 활성화 이벤트 </summary>
-    public void BulletTurretSplitEvent()
+    /// <summary> 이벤트 적용 </summary>
+    private void HandleTurretUpgradeEvent(TurretUpgradeInfo enhancement)
     {
-        Debug.Log("분열 총알 적용 이벤트 시작");
-        TurretUpgradeInfo bulletTurretSplit = new TurretUpgradeInfo
+        switch (enhancement.turretType)
         {
-            turretType = TurretUpgradeInfo.TurretType.Bullet,
-            enhancementType = TurretUpgradeInfo.EnhancementType.ProjectileSplit,
-        };
+            case TurretUpgradeInfo.TurretType.Bullet:
+                // Bullet Turret의 업그레이드 처리를 위한 내부 switch 문
+                switch (enhancement.enhancementType)
+                {
+                    case TurretUpgradeInfo.EnhancementType.ProjectileSplit:
+                        // Bullet Turret 분열 총알 업그레이드 처리
+                        StatDataManager.Instance.currentStatData.turretDatas[0].projectileIndex = 1;
+                        break;
+                    case TurretUpgradeInfo.EnhancementType.CountIncrease:
+                        // 개수 증가 처리
+                        break;
+                    case TurretUpgradeInfo.EnhancementType.SpeedIncrease:
+                        // 속도 증가 처리
+                        break;
+                    case TurretUpgradeInfo.EnhancementType.RemoveSplit:
+                        StatDataManager.Instance.currentStatData.turretDatas[0].projectileIndex = 0;
+                        break;
+                    case TurretUpgradeInfo.EnhancementType.Init:
+                        // 초기화 로직
 
-        EventManager.TriggerEnhancementEvent("TurretUpgrade", bulletTurretSplit);
-    }
+                        break;
+                        // 기타 필요한 경우 추가
+                }
+                break;
+            case TurretUpgradeInfo.TurretType.Laser:
+                // Laser Turret의 업그레이드 처리
+                switch (enhancement.enhancementType)
+                {
+                    case TurretUpgradeInfo.EnhancementType.RemainTimeIncrease:
 
-    /// <summary> 총알 터렛 분열 총알 비활성화 이벤트 </summary>
-    public void BulletTurretRemoveSplitEvent()
-    {
-        Debug.Log("Remove Split");
-        TurretUpgradeInfo bulletTurretRemoveSplit = new TurretUpgradeInfo
-        {
-            turretType = TurretUpgradeInfo.TurretType.Bullet,
-            enhancementType = TurretUpgradeInfo.EnhancementType.RemoveSplit,
-        };
+                        break;
+                    case TurretUpgradeInfo.EnhancementType.CountIncrease:
+                        // 개수 증가 처리
+                        break;
+                    case TurretUpgradeInfo.EnhancementType.SpeedIncrease:
+                        // 속도 증가 처리
+                        break;
+                        // 기타 필요한 경우 추가
+                }
+                break;
+            case TurretUpgradeInfo.TurretType.Rocket:
+                // Rocket Turret의 업그레이드 처리
+                switch (enhancement.enhancementType)
+                {
+                    case TurretUpgradeInfo.EnhancementType.InductionUpgrade:
 
-        EventManager.TriggerEnhancementEvent("TurretUpgrade", bulletTurretRemoveSplit);
-    }
+                        break;
+                    case TurretUpgradeInfo.EnhancementType.CountIncrease:
+                        // 개수 증가 처리
+                        break;
+                    case TurretUpgradeInfo.EnhancementType.SpeedIncrease:
+                        // 속도 증가 처리
+                        break;
+                        // 기타 필요한 경우 추가
+                }
+                break;
+            case TurretUpgradeInfo.TurretType.Mortar:
+                // Mortar Turret의 업그레이드 처리
+                switch (enhancement.enhancementType)
+                {
+                    case TurretUpgradeInfo.EnhancementType.ProjectileSplit:
 
-    /// <summary> 총알 터렛 초기화 이벤트 </summary>
-    public void InitBulletTurretEvent()
-    {
-        TurretUpgradeInfo bulletTurretInit = new TurretUpgradeInfo
-        {
-            turretType = TurretUpgradeInfo.TurretType.Bullet,
-            enhancementType = TurretUpgradeInfo.EnhancementType.Init,
-        };
-
-        EventManager.TriggerEnhancementEvent("TurretUpgrade", bulletTurretInit);
+                        break;
+                    case TurretUpgradeInfo.EnhancementType.CountIncrease:
+                        // 개수 증가 처리
+                        break;
+                    case TurretUpgradeInfo.EnhancementType.SpeedIncrease:
+                        // 속도 증가 처리
+                        break;
+                        // 기타 필요한 경우 추가
+                }
+                break;
+                // 기타 터렛 유형에 대한 처리
+        }
     }
 }
