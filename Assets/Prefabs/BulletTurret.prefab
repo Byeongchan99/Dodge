@@ -169,8 +169,8 @@ MonoBehaviour:
   projectilePrefabs:
   - {fileID: 2849789079709403121, guid: d841075615611104287c35b8cbec0b24, type: 3}
   - {fileID: 2165887944137837541, guid: 4244a559614907e4996fc011d0a93ede, type: 3}
-  currentProjectilePrefabs: {fileID: 0}
   spawner: {fileID: 0}
+  turretIndex: 0
   currentLifeTime: 0
   projectileCount: 5
   spawnPointIndex: 0
