@@ -6,6 +6,8 @@ public class PlayerStat : MonoBehaviour
 {
     public static PlayerStat Instance { get; private set; } // 싱글톤 인스턴스
 
+    public Transform currentPoisition; // 플레이어 현재 위치
+
     public int maxHealth = 3; // 플레이어 최대 체력
     public int currentHealth; // 플레이어 현재 체력
     public float initialMoveSpeed = 150f; // 플레이어 초기 이동 속도
