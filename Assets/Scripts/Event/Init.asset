@@ -43,11 +43,11 @@ MonoBehaviour:
     projectileIndex: 0
     turretLifeTime: 0
   projectileDatas:
-  - projectileSpeed: 0
+  - projectileSpeed: 5
     projectileLifeTime: 0
-  - projectileSpeed: 0
+  - projectileSpeed: 5
     projectileLifeTime: 0
-  - projectileSpeed: 0
+  - projectileSpeed: 5
     projectileLifeTime: 0
-  - projectileSpeed: 0
+  - projectileSpeed: 5
     projectileLifeTime: 0

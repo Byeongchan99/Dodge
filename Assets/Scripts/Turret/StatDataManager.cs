@@ -18,6 +18,8 @@ public class StatDataManager : MonoBehaviour
     [SerializeField] private List<StatDataEntry> turretDataList = new List<StatDataEntry>();
     /// <summary> 딕셔너리로 변환한 스크립터블 오브젝트 데이터 </summary>
     private Dictionary<string, StatData> turretDataByEvent = new Dictionary<string, StatData>();
+    /// <summary> 원본 스탯 데이터 </summary>
+    public StatData originalStatData;
 
     /// <summary> 옵저버 패턴으로 구현한 현재 스탯 데이터 </summary>
     public event EventHandler<StatDataChangedEventArgs> StatDataChanged;
@@ -54,7 +56,7 @@ public class StatDataManager : MonoBehaviour
 
         // 현재 스탯 데이터 설정
         Debug.Log("스탯 매니저 초기화");
-        StatData originalStatData = GetDataForEvent("Init");
+        originalStatData = GetDataForEvent("Init");
         currentStatData = new CopyedStatData(originalStatData);
     }
 

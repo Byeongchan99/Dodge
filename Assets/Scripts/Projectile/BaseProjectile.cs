@@ -17,7 +17,7 @@ public class BaseProjectile : MonoBehaviour
 
     protected virtual void OnEnable()
     {
-
+        speed = StatDataManager.Instance.currentStatData.projectileDatas[0].projectileSpeed;
     }
 
     protected void Update()
@@ -30,12 +30,6 @@ public class BaseProjectile : MonoBehaviour
     {
         moveDirection = dir;
         Move();
-    }
-
-    /// <summary> 속도 변경 </summary>
-    public void ChangeSpeed(float newSpeed)
-    {
-        speed = newSpeed;
     }
 
     /// <summary> 이동 </summary>

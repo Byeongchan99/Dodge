@@ -44,13 +44,14 @@ public class EventProcessor : MonoBehaviour
                         break;
                     case TurretUpgradeInfo.EnhancementType.SpeedIncrease:
                         // 속도 증가 처리
+                        StatDataManager.Instance.currentStatData.projectileDatas[0].projectileSpeed += 3.0f;
                         break;
                     case TurretUpgradeInfo.EnhancementType.RemoveSplit:
                         StatDataManager.Instance.currentStatData.turretDatas[0].projectileIndex = 0;
                         break;
                     case TurretUpgradeInfo.EnhancementType.Init:
                         // 초기화 로직
-
+                        StatDataManager.Instance.currentStatData = new CopyedStatData(StatDataManager.Instance.originalStatData);
                         break;
                         // 기타 필요한 경우 추가
                 }

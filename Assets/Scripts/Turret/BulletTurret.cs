@@ -73,15 +73,15 @@ public class BulletTurret : BaseTurret
 
         // 오브젝트 풀에서 총알 가져오기
         int currentProjectileIndex= StatDataManager.Instance.currentStatData.turretDatas[0].projectileIndex;
-        BaseProjectile projectile = ProjectilePoolManager.Instance.Get(projectilePrefabs[currentProjectileIndex].name);
+        Bullet bullet = ProjectilePoolManager.Instance.Get(projectilePrefabs[currentProjectileIndex].name) as Bullet;
 
-        if (projectile != null)
+        if (bullet != null)
         {
             // 총알 위치와 회전 설정
-            projectile.transform.position = firePoint.position;
-            projectile.transform.rotation = rotation;
-            projectile.SetDirection(_direction);
-            projectile.gameObject.SetActive(true);
+            bullet.transform.position = firePoint.position;
+            bullet.transform.rotation = rotation;
+            bullet.SetDirection(_direction);
+            bullet.gameObject.SetActive(true);
         }
         else
         {
