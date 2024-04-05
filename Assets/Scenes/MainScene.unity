@@ -1977,9 +1977,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentPosition: {fileID: 0}
-  maxHealth: 3
+  _maxHealth: 3
   currentHealth: 0
-  initialMoveSpeed: 150
+  _initialMoveSpeed: 150
   currentMoveSpeed: 0
   blink: {fileID: 1609651033}
 --- !u!212 &1609651028
@@ -2109,6 +2109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStat: {fileID: 1609651027}
+  rb: {fileID: 0}
 --- !u!114 &1609651032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2137,6 +2138,7 @@ MonoBehaviour:
   playerClonePrefab: {fileID: 6257033378614808034, guid: 909206baf4d392f448a7fdbeeae579fe, type: 3}
   blinkDistance: 5
   slowDownFactor: 0.05
+  blinkDuration: 0.5
 --- !u!1 &1654747174
 GameObject:
   m_ObjectHideFlags: 0

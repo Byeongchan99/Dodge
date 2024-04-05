@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public PlayerStat playerStat;
     public Rigidbody2D rb;
     private Vector2 InputVec;
 
@@ -31,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Move()
     {
-        // Rigidbody를 사용하여 플레이어 이동
-        rb.velocity = InputVec.normalized * playerStat.currentMoveSpeed * Time.fixedDeltaTime;
+        // velocity를 이용한 이동
+        rb.velocity = InputVec.normalized * PlayerStat.Instance.currentMoveSpeed * Time.fixedDeltaTime;
     }
 }

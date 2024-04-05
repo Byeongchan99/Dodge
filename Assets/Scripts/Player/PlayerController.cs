@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public PlayerStat playerStat;
-
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -18,7 +16,7 @@ public class PlayerController : MonoBehaviour
 
     void UseAbility()
     {
-        playerStat.playerAbility.Execute(playerStat);
+        PlayerStat.Instance.playerAbility.Execute();
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -32,7 +30,7 @@ public class PlayerController : MonoBehaviour
         // 투사체 충돌 감지
         if (collision.gameObject.CompareTag("Projectile"))
         {
-            playerStat.TakeDamage();
+            PlayerStat.Instance.TakeDamage();
         }
     }
 }

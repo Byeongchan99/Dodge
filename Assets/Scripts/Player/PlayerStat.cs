@@ -8,9 +8,9 @@ public class PlayerStat : MonoBehaviour
 
     public Transform currentPosition; // 플레이어 현재 위치
 
-    public int maxHealth = 3; // 플레이어 최대 체력
+    [SerializeField] private int _maxHealth; // 플레이어 최대 체력
     public int currentHealth; // 플레이어 현재 체력
-    public float initialMoveSpeed = 150f; // 플레이어 초기 이동 속도
+    [SerializeField] private float _initialMoveSpeed; // 플레이어 초기 이동 속도
     public float currentMoveSpeed; // 플레이어 현재 이동 속도
 
     public IPlayerAbility playerAbility; // 플레이어 특수 능력
@@ -38,8 +38,8 @@ public class PlayerStat : MonoBehaviour
 
     void Init()
     {
-        currentHealth = maxHealth;
-        currentMoveSpeed = initialMoveSpeed;
+        currentHealth = _maxHealth;
+        currentMoveSpeed = _initialMoveSpeed;
         currentPosition = transform;
         this.SetAbility(blink);
     }
