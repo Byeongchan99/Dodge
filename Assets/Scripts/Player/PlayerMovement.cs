@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public PlayerStat playerStat;
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
     private Vector2 InputVec;
 
     void Start()

@@ -6,7 +6,7 @@ public class PlayerStat : MonoBehaviour
 {
     public static PlayerStat Instance { get; private set; } // 싱글톤 인스턴스
 
-    public Transform currentPoisition; // 플레이어 현재 위치
+    public Transform currentPosition; // 플레이어 현재 위치
 
     public int maxHealth = 3; // 플레이어 최대 체력
     public int currentHealth; // 플레이어 현재 체력
@@ -14,6 +14,7 @@ public class PlayerStat : MonoBehaviour
     public float currentMoveSpeed; // 플레이어 현재 이동 속도
 
     public IPlayerAbility playerAbility; // 플레이어 특수 능력
+    public Blink blink; // 플레이어 점멸 능력
 
     void Awake()
     {
@@ -29,12 +30,18 @@ public class PlayerStat : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        // 플레이어가 움직일 때마다 currentPosition을 업데이트
+        currentPosition.position = this.transform.position;
+    }
+
     void Init()
     {
         currentHealth = maxHealth;
         currentMoveSpeed = initialMoveSpeed;
-        // 나중에 특수 능력 선택 로직 수정
-        this.SetAbility(new EMP());
+        currentPosition = transform;
+        this.SetAbility(blink);
     }
 
     public void SetAbility(IPlayerAbility newAbility)
