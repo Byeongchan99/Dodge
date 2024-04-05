@@ -14,7 +14,7 @@ public class PlayerStat : MonoBehaviour
     public float currentMoveSpeed; // 플레이어 현재 이동 속도
 
     public IPlayerAbility playerAbility; // 플레이어 특수 능력
-    public Blink blink; // 플레이어 점멸 능력
+    [SerializeField] private Blink blink; // 플레이어 점멸 능력
 
     void Awake()
     {
@@ -41,6 +41,7 @@ public class PlayerStat : MonoBehaviour
         currentHealth = _maxHealth;
         currentMoveSpeed = _initialMoveSpeed;
         currentPosition = transform;
+        // 특수 능력 선택 로직 나중에 추가하기
         this.SetAbility(blink);
     }
 

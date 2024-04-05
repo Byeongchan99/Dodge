@@ -11,18 +11,17 @@ public class Blink : MonoBehaviour, IPlayerAbility
     [SerializeField] private float _slowDownFactor = 0.05f; // 시간을 느리게 하는 요소
     [SerializeField] private float _blinkDuration = 0.5f; // 점멸 지속 시간
 
+    public float cooldownTime = 5f; // 쿨타임 5초
+    private float nextAbilityTime = 0f; // 다음 능력 사용 가능 시간
+
     private bool isBlinking = false;
 
     public void Execute()
     {
-        if (!isBlinking)
+        if (!isBlinking && Time.time >= nextAbilityTime)
         {
-            // 시간을 느리게 한다
-            Time.timeScale = _slowDownFactor;
-            Time.fixedDeltaTime = 0.02f * Time.timeScale;
-
-            // 플레이어가 입력한 위치를 받아서 저장한다
             StartCoroutine(BlinkRoutine());
+            nextAbilityTime = Time.time + cooldownTime; // 다음 사용 가능 시간 업데이트
         }
     }
 
