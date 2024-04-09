@@ -21,14 +21,6 @@ public class StatDataManager : MonoBehaviour
     /// <summary> 원본 스탯 데이터 </summary>
     public StatData originalStatData;
 
-    /// <summary> 옵저버 패턴으로 구현한 현재 스탯 데이터 </summary>
-    public event EventHandler<StatDataChangedEventArgs> StatDataChanged;
-
-    private void OnStatDataChanged(StatDataChangedEventArgs e)
-    {
-        StatDataChanged?.Invoke(this, e);
-    }
-
     private CopyedStatData _currentStatData;
     public CopyedStatData currentStatData
     {
@@ -36,8 +28,6 @@ public class StatDataManager : MonoBehaviour
         set
         {
             _currentStatData = value;
-            // setter에서 값이 변경될 때마다 OnStatDataChanged 발생
-            OnStatDataChanged(new StatDataChangedEventArgs(_currentStatData));
         }
     }
 
@@ -82,16 +72,5 @@ public class StatDataManager : MonoBehaviour
             Debug.LogWarning("잘못된 이벤트 이름: " + eventName);
             return null;
         }
-    }
-}
-
-/// <summary> 변경된 데이터를 이벤트 인자로 전달하기 위한 클래스 </summary>
-public class StatDataChangedEventArgs : EventArgs
-{
-    public CopyedStatData NewStatData { get; }
-
-    public StatDataChangedEventArgs(CopyedStatData newStatData)
-    {
-        NewStatData = newStatData;
     }
 }

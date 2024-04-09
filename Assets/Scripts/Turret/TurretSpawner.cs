@@ -27,9 +27,9 @@ public class TurretSpawner : MonoBehaviour
     [SerializeField] StatData currentEventData;
     [SerializeField] List<int> eventSpawnLevels = new List<int>();
     [SerializeField] List<float> eventSpawnCooltimePercents = new List<float>();
-    */
     /// <summary> 옵저버 패턴으로 가져온 스탯 데이터 </summary>
     private CopyedStatData cachedStatData;
+    */
 
     private float _nextSpawnTime = 0f;
     private bool _isSpawning = false; // 현재 소환 중인지 여부를 나타내는 플래그
@@ -43,8 +43,6 @@ public class TurretSpawner : MonoBehaviour
 
     void Start()
     {
-        StatDataManager.Instance.StatDataChanged += OnStatDataChanged;
-        cachedStatData = StatDataManager.Instance.currentStatData;
         StartCoroutine(SpawnTurretRoutine());
     }
     /****************************************************************************
@@ -75,13 +73,13 @@ public class TurretSpawner : MonoBehaviour
         */
     }
 
+    /*
     // 옵저버 패턴으로 가져온 스탯 데이터 변경 시 호출되는 콜백 메서드
     private void OnStatDataChanged(object sender, StatDataChangedEventArgs e)
     {
         cachedStatData = e.NewStatData;
     }
 
-    /*
     /// <summary> 이벤트에 따른 터렛 소환 데이터 조정 </summary>
     /// <param name="eventName"> 적용할 이벤트 이름 </param>
     void AdjustEvent(string eventName)
@@ -272,7 +270,7 @@ public class TurretSpawner : MonoBehaviour
 
             // 터렛 초기화
             turret.turretIndex = turretPrefabs.IndexOf(turretToSpawn);
-            turret.projectileCount = cachedStatData.turretDatas[turretPrefabs.IndexOf(turretToSpawn)].projectileCount;
+            turret.projectileCount = StatDataManager.Instance.currentStatData.turretDatas[turretPrefabs.IndexOf(turretToSpawn)].projectileCount;
 
             _nextSpawnTime = ChooseCooldown(turretToSpawn); // 다음 소환까지의 시간 설정
         }
@@ -290,7 +288,7 @@ public class TurretSpawner : MonoBehaviour
 
         for (int i = 0; i < turretPrefabs.Count; i++)
         {
-            currentChance += cachedStatData.turretSpawnerDatas[i].spawnChance; // 누적 확률 업데이트
+            currentChance += StatDataManager.Instance.currentStatData.turretSpawnerDatas[i].spawnChance; // 누적 확률 업데이트
             if (randomChance <= currentChance)
             {
                 return turretPrefabs[i]; // 조건을 만족하는 터렛 선택
@@ -328,7 +326,7 @@ public class TurretSpawner : MonoBehaviour
     float ChooseCooldown(GameObject turret)
     {
         int index = turretPrefabs.IndexOf(turret);
-        return cachedStatData.turretSpawnerDatas[index].spawnCooldown;
+        return StatDataManager.Instance.currentStatData.turretSpawnerDatas[index].spawnCooldown;
     }
 
     /****************************************************************************
