@@ -19,6 +19,8 @@ public class PlayerStat : MonoBehaviour
     [SerializeField] private EMP emp; // 플레이어 EMP 능력
     [SerializeField] private DefenseProtocol defenseProtocol; // 플레이어 방어 프로토콜 능력
 
+    private List<ItemEffect> activeItems = new List<ItemEffect>(); // 현재 적용 중인 아이템 효과 리스트
+
     void Awake()
     {
         if (Instance == null)
@@ -67,13 +69,27 @@ public class PlayerStat : MonoBehaviour
         }
     }
 
-    public void ApplyBuff()
+    public void ApplyItemEffect(ItemEffect effect)
     {
         // 버프 적용 처리
+        effect.ApplyEffect();
+        activeItems.Add(effect);
+        StartCoroutine(RemoveItemEffectEffectAfterDuration(effect));
     }
 
-    public void RemoveBuff()
+    private IEnumerator RemoveItemEffectEffectAfterDuration(ItemEffect effect)
     {
-        // 버프 제거 처리
+        yield return new WaitForSeconds(effect.GetDuration());
+        effect.RemoveEffect();
+        activeItems.Remove(effect);
+    }
+
+    public void RemoveAllEffects()
+    {
+        foreach (ItemEffect effect in activeItems)
+        {
+            effect.RemoveEffect();
+        }
+        activeItems.Clear();
     }
 }

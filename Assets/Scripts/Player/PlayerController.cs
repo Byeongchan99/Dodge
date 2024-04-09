@@ -19,14 +19,17 @@ public class PlayerController : MonoBehaviour
         PlayerStat.Instance.playerAbility.Execute();
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         // 아이템 충돌 감지
         if (collision.gameObject.CompareTag("Item"))
         {
             // 아이템 획득 처리
         }
+    }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
         // 투사체 충돌 감지
         if (collision.gameObject.CompareTag("Projectile"))
         {
