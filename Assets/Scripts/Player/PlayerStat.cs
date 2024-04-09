@@ -12,10 +12,12 @@ public class PlayerStat : MonoBehaviour
     public int currentHealth; // 플레이어 현재 체력
     [SerializeField] private float _initialMoveSpeed; // 플레이어 초기 이동 속도
     public float currentMoveSpeed; // 플레이어 현재 이동 속도
+    public bool isInvincibility; // 무적 상태인지 여부 
 
     public IPlayerAbility playerAbility; // 플레이어 특수 능력
     [SerializeField] private Blink blink; // 플레이어 점멸 능력
     [SerializeField] private EMP emp; // 플레이어 EMP 능력
+    [SerializeField] private DefenseProtocol defenseProtocol; // 플레이어 방어 프로토콜 능력
 
     void Awake()
     {
@@ -43,7 +45,7 @@ public class PlayerStat : MonoBehaviour
         currentMoveSpeed = _initialMoveSpeed;
         currentPosition = transform;
         // 특수 능력 선택 로직 나중에 추가하기
-        this.SetAbility(emp);
+        this.SetAbility(defenseProtocol);
     }
 
     public void SetAbility(IPlayerAbility newAbility)
@@ -53,8 +55,11 @@ public class PlayerStat : MonoBehaviour
 
     public void TakeDamage()
     {
-        // 피격 처리
-        currentHealth--;
+        if (!isInvincibility) // 무적 상태가 아닐 때
+        {
+            // 피격 처리
+            currentHealth--;
+        }
         // 나중에 피격 로직 수정
         if (currentHealth <= 0)
         {

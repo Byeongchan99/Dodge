@@ -2287,12 +2287,13 @@ GameObject:
   - component: {fileID: 1609651031}
   - component: {fileID: 1609651033}
   - component: {fileID: 1609651034}
+  - component: {fileID: 1609651035}
   - component: {fileID: 1609651030}
   - component: {fileID: 1609651029}
   - component: {fileID: 1609651028}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2329,8 +2330,10 @@ MonoBehaviour:
   currentHealth: 0
   _initialMoveSpeed: 150
   currentMoveSpeed: 0
+  isInvincibility: 0
   blink: {fileID: 1609651033}
   emp: {fileID: 1609651034}
+  defenseProtocol: {fileID: 1609651035}
 --- !u!212 &1609651028
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2373,7 +2376,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: -9095717837082945937, guid: bd3cb4af8406d4436a2ae8c2aafe1f8d, type: 3}
-  m_Color: {r: 0, g: 0.20787644, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2486,7 +2489,7 @@ MonoBehaviour:
   _blinkMoveSpeed: 5
   _slowDownFactor: 0.05
   _blinkDuration: 0.5
-  _cooldownTime: 5
+  _cooldownTime: 3
 --- !u!114 &1609651034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2503,6 +2506,20 @@ MonoBehaviour:
   _slowDownFactor: 0.05
   _slowDuration: 0.05
   _EMPDuration: 0.5
+  cooldownTime: 4
+--- !u!114 &1609651035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1609651025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b4dc7081587d0940b509439c3711560, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _DefenseProtocolDuration: 2
   cooldownTime: 5
 --- !u!1 &1654747174
 GameObject:
