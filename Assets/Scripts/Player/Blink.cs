@@ -10,7 +10,7 @@ public class Blink : MonoBehaviour, IPlayerAbility
     [SerializeField] private float _blinkMoveSpeed = 5.0f; // 블링크 지속 시간 동안 이동 속도
     [SerializeField] private float _slowDownFactor = 0.05f; // 시간을 느리게 하는 요소
     [SerializeField] private float _blinkDuration = 0.5f; // 점멸 지속 시간
-    [SerializeField] private float cooldownTime = 5f; // 쿨타임 5초
+    [SerializeField] private float _cooldownTime = 5f; // 쿨타임 5초
     private float _nextAbilityTime = 0f; // 다음 능력 사용 가능 시간
 
     private bool isBlinking = false;
@@ -20,7 +20,7 @@ public class Blink : MonoBehaviour, IPlayerAbility
         if (!isBlinking && Time.time >= _nextAbilityTime)
         {
             StartCoroutine(BlinkRoutine());
-            _nextAbilityTime = Time.time + cooldownTime; // 다음 사용 가능 시간 업데이트
+            _nextAbilityTime = Time.time + _cooldownTime; // 다음 사용 가능 시간 업데이트
         }
     }
 

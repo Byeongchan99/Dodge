@@ -15,6 +15,7 @@ public class PlayerStat : MonoBehaviour
 
     public IPlayerAbility playerAbility; // 플레이어 특수 능력
     [SerializeField] private Blink blink; // 플레이어 점멸 능력
+    [SerializeField] private EMP emp; // 플레이어 EMP 능력
 
     void Awake()
     {
@@ -42,7 +43,7 @@ public class PlayerStat : MonoBehaviour
         currentMoveSpeed = _initialMoveSpeed;
         currentPosition = transform;
         // 특수 능력 선택 로직 나중에 추가하기
-        this.SetAbility(blink);
+        this.SetAbility(emp);
     }
 
     public void SetAbility(IPlayerAbility newAbility)

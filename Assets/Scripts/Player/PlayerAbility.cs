@@ -7,15 +7,6 @@ public interface IPlayerAbility
     void Execute();
 }
 
-public class EMP : IPlayerAbility
-{
-    public void Execute()
-    {
-        // EMP 구현
-        // 근처의 투사체 무력화
-    }
-}
-
 public class DefenseProtocol: IPlayerAbility
 {
     public void Execute()

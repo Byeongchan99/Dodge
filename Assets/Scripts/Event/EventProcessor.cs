@@ -34,40 +34,38 @@ public class EventProcessor : MonoBehaviour
                 // Bullet Turret의 업그레이드 처리를 위한 내부 switch 문
                 switch (enhancement.enhancementType)
                 {
-                    case TurretUpgradeInfo.EnhancementType.ProjectileSplit:
-                        // Bullet Turret 분열 총알 업그레이드 처리
-                        StatDataManager.Instance.currentStatData.turretDatas[0].projectileIndex = 1;
+                    case TurretUpgradeInfo.EnhancementType.IsProjectileSplit:
+                        // 분열 총알 업그레이드 처리
+                        Debug.Log("분열 총알 업그레이드 " + enhancement.value);
+                        StatDataManager.Instance.currentStatData.turretDatas[0].projectileIndex = (int)enhancement.value;
                         break;
-                    case TurretUpgradeInfo.EnhancementType.CountIncrease:
+                    case TurretUpgradeInfo.EnhancementType.CountChange:
                         // 개수 증가 처리
-                        StatDataManager.Instance.currentStatData.turretDatas[0].projectileCount++;
+                        Debug.Log("총알 개수 변경 " + enhancement.value);
+                        StatDataManager.Instance.currentStatData.turretDatas[0].projectileCount += (int)enhancement.value;
                         break;
-                    case TurretUpgradeInfo.EnhancementType.SpeedIncrease:
+                    case TurretUpgradeInfo.EnhancementType.SpeedChange:
                         // 속도 증가 처리
-                        Debug.Log("총알 속도 증가");
-                        StatDataManager.Instance.currentStatData.projectileDatas[0].projectileSpeed += 3.0f;
-                        break;
-                    case TurretUpgradeInfo.EnhancementType.RemoveSplit:
-                        StatDataManager.Instance.currentStatData.turretDatas[0].projectileIndex = 0;
+                        Debug.Log("총알 속도 변경 " + enhancement.value);
+                        StatDataManager.Instance.currentStatData.projectileDatas[0].projectileSpeed += enhancement.value;
                         break;
                     case TurretUpgradeInfo.EnhancementType.Init:
                         // 초기화 로직
                         StatDataManager.Instance.currentStatData = new CopyedStatData(StatDataManager.Instance.originalStatData);
                         break;
-                        // 기타 필요한 경우 추가
                 }
                 break;
             case TurretUpgradeInfo.TurretType.Laser:
                 // Laser Turret의 업그레이드 처리
                 switch (enhancement.enhancementType)
                 {
-                    case TurretUpgradeInfo.EnhancementType.RemainTimeIncrease:
+                    case TurretUpgradeInfo.EnhancementType.RemainTimeChange:
 
                         break;
-                    case TurretUpgradeInfo.EnhancementType.CountIncrease:
+                    case TurretUpgradeInfo.EnhancementType.CountChange:
                         // 개수 증가 처리
                         break;
-                    case TurretUpgradeInfo.EnhancementType.SpeedIncrease:
+                    case TurretUpgradeInfo.EnhancementType.SpeedChange:
                         // 속도 증가 처리
                         break;
                         // 기타 필요한 경우 추가
@@ -77,13 +75,13 @@ public class EventProcessor : MonoBehaviour
                 // Rocket Turret의 업그레이드 처리
                 switch (enhancement.enhancementType)
                 {
-                    case TurretUpgradeInfo.EnhancementType.InductionUpgrade:
+                    case TurretUpgradeInfo.EnhancementType.IsInductionUpgrade:
 
                         break;
-                    case TurretUpgradeInfo.EnhancementType.CountIncrease:
+                    case TurretUpgradeInfo.EnhancementType.CountChange:
                         // 개수 증가 처리
                         break;
-                    case TurretUpgradeInfo.EnhancementType.SpeedIncrease:
+                    case TurretUpgradeInfo.EnhancementType.SpeedChange:
                         // 속도 증가 처리
                         break;
                         // 기타 필요한 경우 추가
@@ -93,13 +91,13 @@ public class EventProcessor : MonoBehaviour
                 // Mortar Turret의 업그레이드 처리
                 switch (enhancement.enhancementType)
                 {
-                    case TurretUpgradeInfo.EnhancementType.ProjectileSplit:
+                    case TurretUpgradeInfo.EnhancementType.IsProjectileSplit:
 
                         break;
-                    case TurretUpgradeInfo.EnhancementType.CountIncrease:
+                    case TurretUpgradeInfo.EnhancementType.CountChange:
                         // 개수 증가 처리
                         break;
-                    case TurretUpgradeInfo.EnhancementType.SpeedIncrease:
+                    case TurretUpgradeInfo.EnhancementType.SpeedChange:
                         // 속도 증가 처리
                         break;
                         // 기타 필요한 경우 추가

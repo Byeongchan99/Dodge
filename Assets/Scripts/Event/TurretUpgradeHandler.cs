@@ -11,7 +11,8 @@ public class TurretUpgradeHandler : MonoBehaviour
         TurretUpgradeInfo bulletTurretSplit = new TurretUpgradeInfo
         {
             turretType = TurretUpgradeInfo.TurretType.Bullet,
-            enhancementType = TurretUpgradeInfo.EnhancementType.ProjectileSplit,
+            enhancementType = TurretUpgradeInfo.EnhancementType.IsProjectileSplit,
+            value = 1,
         };
 
         EventManager.TriggerEnhancementEvent("TurretUpgrade", bulletTurretSplit);
@@ -24,7 +25,8 @@ public class TurretUpgradeHandler : MonoBehaviour
         TurretUpgradeInfo bulletTurretRemoveSplit = new TurretUpgradeInfo
         {
             turretType = TurretUpgradeInfo.TurretType.Bullet,
-            enhancementType = TurretUpgradeInfo.EnhancementType.RemoveSplit,
+            enhancementType = TurretUpgradeInfo.EnhancementType.IsProjectileSplit,
+            value = 0,
         };
 
         EventManager.TriggerEnhancementEvent("TurretUpgrade", bulletTurretRemoveSplit);
@@ -37,10 +39,25 @@ public class TurretUpgradeHandler : MonoBehaviour
         TurretUpgradeInfo bulletTurretCountIncrease = new TurretUpgradeInfo
         {
             turretType = TurretUpgradeInfo.TurretType.Bullet,
-            enhancementType = TurretUpgradeInfo.EnhancementType.CountIncrease,
+            enhancementType = TurretUpgradeInfo.EnhancementType.CountChange,
+            value = 1,
         };
 
         EventManager.TriggerEnhancementEvent("TurretUpgrade", bulletTurretCountIncrease);
+    }
+
+    /// <summary> 총알 터렛 개수 감소 이벤트 </summary>
+    public void BulletTurretCountDecreaseEvent()
+    {
+        Debug.Log("Count Decrease");
+        TurretUpgradeInfo bulletTurretCountDecrease = new TurretUpgradeInfo
+        {
+            turretType = TurretUpgradeInfo.TurretType.Bullet,
+            enhancementType = TurretUpgradeInfo.EnhancementType.CountChange,
+            value = -1,
+        };
+
+        EventManager.TriggerEnhancementEvent("TurretUpgrade", bulletTurretCountDecrease);
     }
 
     /// <summary> 총알 터렛 속도 증가 이벤트 </summary>
@@ -50,10 +67,25 @@ public class TurretUpgradeHandler : MonoBehaviour
         TurretUpgradeInfo bulletTurretSpeedIncrease = new TurretUpgradeInfo
         {
             turretType = TurretUpgradeInfo.TurretType.Bullet,
-            enhancementType = TurretUpgradeInfo.EnhancementType.SpeedIncrease,
+            enhancementType = TurretUpgradeInfo.EnhancementType.SpeedChange,
+            value = 3.0f,
         };
 
         EventManager.TriggerEnhancementEvent("TurretUpgrade", bulletTurretSpeedIncrease);
+    }
+
+    /// <summary> 총알 터렛 속도 감소 이벤트 </summary>
+    public void BulletTurretSpeedDecreaseEvent()
+    {
+        Debug.Log("Speed Decrease");
+        TurretUpgradeInfo bulletTurretSpeedDecrease = new TurretUpgradeInfo
+        {
+            turretType = TurretUpgradeInfo.TurretType.Bullet,
+            enhancementType = TurretUpgradeInfo.EnhancementType.SpeedChange,
+            value = -3.0f,
+        };
+
+        EventManager.TriggerEnhancementEvent("TurretUpgrade", bulletTurretSpeedDecrease);
     }
 
     /// <summary> 총알 터렛 초기화 이벤트 </summary>
