@@ -283,7 +283,7 @@ public class TurretSpawner : MonoBehaviour
     /// <summary> 터렛 종류 선택 </summary>
     GameObject ChooseTurretType()
     {
-        float randomChance = Random.value; // 0과 1 사이의 랜덤한 값
+        float randomChance = Random.value * 100; // 0과 1 사이의 랜덤한 값
         float currentChance = 0f;
 
         for (int i = 0; i < turretPrefabs.Count; i++)

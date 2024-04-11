@@ -6,21 +6,32 @@ using UnityEngine;
 public class StatData : ScriptableObject
 {
     [System.Serializable]
-    public class TurretSpawnerData
+    public class BaseSpawnData
     {
         public int spawnLevel; // 소환 레벨
         public float spawnChance; // 소환 확률
         public float spawnCooldown; // 소환 쿨타임
         public float spawnCooldownPercent; // 감소시킬 소환 쿨타임 퍼센트
 
-        // 깊은 복사를 위한 복사 생성자
-        public TurretSpawnerData(TurretSpawnerData source)
+        public BaseSpawnData(BaseSpawnData source)
         {
             this.spawnLevel = source.spawnLevel;
             this.spawnChance = source.spawnChance;
             this.spawnCooldown = source.spawnCooldown;
             this.spawnCooldownPercent = source.spawnCooldownPercent;
         }
+    }
+
+    [System.Serializable]
+    public class ItemData : BaseSpawnData
+    {
+        public ItemData(ItemData source) : base(source) { }
+    }
+
+    [System.Serializable]
+    public class TurretSpawnerData : BaseSpawnData
+    {
+        public TurretSpawnerData(TurretSpawnerData source) : base(source) { }
     }
 
     [System.Serializable]
@@ -53,26 +64,8 @@ public class StatData : ScriptableObject
         }
     }
 
-    [System.Serializable]
-    public class ItemData
-    {
-        public int spawnLevel; // 소환 레벨
-        public float spawnChance; // 소환 확률
-        public float spawnCooldown; // 소환 쿨타임
-        public float spawnCooldownPercent; // 감소시킬 소환 쿨타임 퍼센트
-
-        // 깊은 복사를 위한 복사 생성자
-        public ItemData(ItemData source)
-        {
-            this.spawnLevel = source.spawnLevel;
-            this.spawnChance = source.spawnChance;
-            this.spawnCooldown = source.spawnCooldown;
-            this.spawnCooldownPercent = source.spawnCooldownPercent;
-        }
-    }
-
+    public List<ItemData> itemDatas;
     public List<TurretSpawnerData> turretSpawnerDatas;
     public List<TurretData> turretDatas;
     public List<ProjectileData> projectileDatas;
-    public List<ItemData> itemDatas;
 }

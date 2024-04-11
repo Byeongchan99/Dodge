@@ -27,6 +27,11 @@ public class ItemPoolManager : MonoBehaviour
         if (!pools.ContainsKey(poolName))
         {
             pools[poolName] = new ObjectPool<BaseItem>(prefab, initialCount, container);
+            Debug.Log($"Pool created for {poolName} with {initialCount} items.");
+        }
+        else
+        {
+            Debug.Log($"Pool for {poolName} already exists.");
         }
     }
 

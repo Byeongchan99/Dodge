@@ -1744,7 +1744,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b388ef8c69d7bac4ca126e7c21537eb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turretDataList:
+  statDataList:
   - eventName: Init
     statData: {fileID: 11400000, guid: 18e6d8498bca9494aaf89c9ce472787c, type: 2}
   originalStatData: {fileID: 0}

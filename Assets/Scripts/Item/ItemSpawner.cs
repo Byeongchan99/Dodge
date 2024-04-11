@@ -75,18 +75,19 @@ public class ItemSpawner : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning($"Failed to get turret of type {itemToSpawn} from pool.");
+            Debug.LogWarning($"Failed to get item of type {itemToSpawn} from pool.");
         }
     }
 
     /// <summary> 아이템 종류 선택 </summary>
     GameObject ChooseItemType()
     {
-        float randomChance = Random.value; // 0과 1 사이의 랜덤한 값
+        float randomChance = Random.value * 100; // 0과 1 사이의 랜덤한 값
         float currentChance = 0f;
 
         for (int i = 0; i < itemPrefabs.Count; i++)
         {
+            Debug.Log(i + "번째 아이템 소환 확률: " + StatDataManager.Instance.currentStatData.itemDatas[i].spawnChance);
             currentChance += StatDataManager.Instance.currentStatData.itemDatas[i].spawnChance; // 누적 확률 업데이트
             if (randomChance <= currentChance)
             {

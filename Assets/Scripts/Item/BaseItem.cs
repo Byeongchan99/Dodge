@@ -20,8 +20,7 @@ public class BaseItem : MonoBehaviour
     /// <summary> 아이템 파괴 </summary>
     protected void DestroyItem()
     {
-        // 나중에 오브젝트 풀로 변경
-        Destroy(gameObject);
+        ItemPoolManager.Instance.Return(this.GetType().Name, this);
     }
 
     void OnTriggerEnter2D(Collider2D collision)
