@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5576954299116067334}
   - component: {fileID: 8720342869040531844}
   m_Layer: 0
-  m_Name: MoveSpeedIncreaseItem
+  m_Name: MoveSpeedUpItem
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

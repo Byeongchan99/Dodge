@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turretSpawnerDatas:
   - spawnLevel: 1
-    spawnChance: 1
+    spawnChance: 0
     spawnCooldown: 3
     spawnCooldownPercent: 0
   - spawnLevel: 0
@@ -51,3 +51,20 @@ MonoBehaviour:
     projectileLifeTime: 0
   - projectileSpeed: 5
     projectileLifeTime: 0
+  itemDatas:
+  - spawnLevel: 1
+    spawnChance: 0
+    spawnCooldown: 10
+    spawnCooldownPercent: 0
+  - spawnLevel: 1
+    spawnChance: 0
+    spawnCooldown: 10
+    spawnCooldownPercent: 0
+  - spawnLevel: 0
+    spawnChance: 0
+    spawnCooldown: 0
+    spawnCooldownPercent: 0
+  - spawnLevel: 0
+    spawnChance: 0
+    spawnCooldown: 0
+    spawnCooldownPercent: 0
