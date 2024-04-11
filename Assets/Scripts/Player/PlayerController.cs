@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("어빌리티 실행");
             UseAbility();
         }
     }

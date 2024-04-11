@@ -19,6 +19,7 @@ public class Blink : MonoBehaviour, IPlayerAbility
     {
         if (!isBlinking && Time.time >= _nextAbilityTime)
         {
+            Debug.Log("블링크 실행");
             StartCoroutine(BlinkRoutine());
             _nextAbilityTime = Time.time + _cooldownTime; // 다음 사용 가능 시간 업데이트
         }
