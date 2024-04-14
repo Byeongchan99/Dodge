@@ -9,17 +9,19 @@ public class BaseItem : MonoBehaviour
     private void OnEnable()
     {
         InitItem();
+        Invoke("DestroyItem", 5f); // 5초 후 DestroyItem 메소드 호출
     }
 
     /// <summary> 아이템 초기화 </summary>
     protected virtual void InitItem()
     {
-        // 아이템 효과 초기화
+        // 아이템 효과 초기화    
     }
 
     /// <summary> 아이템 파괴 </summary>
     protected void DestroyItem()
     {
+        CancelInvoke("DestroyItem"); // 중복 호출 방지
         ItemPoolManager.Instance.Return(this.GetType().Name, this);
     }
 

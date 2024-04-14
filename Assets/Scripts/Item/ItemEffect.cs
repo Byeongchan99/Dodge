@@ -4,18 +4,18 @@ using UnityEngine;
 
 public abstract class ItemEffect
 {
-    protected float duration;
+    protected float _duration;
     protected GameObject target;
 
     public ItemEffect(float duration, GameObject target)
     {
-        this.duration = duration;
+        this._duration = duration;
         this.target = target;
     }
 
     public float GetDuration()
     {
-        return duration;
+        return _duration;
     }
 
     public abstract void ApplyEffect();

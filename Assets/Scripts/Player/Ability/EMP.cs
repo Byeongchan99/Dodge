@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class EMP : MonoBehaviour, IPlayerAbility
 {
-    public GameObject EMPPrefab; // EMP 프리팹
-    private GameObject EMPClone; // 게임에 생성된 EMP 객체
+    private BaseEffect EMPEffect; // EMP 효과
 
     [SerializeField] private float _slowDownFactor = 0.05f; // 시간을 느리게 하는 요소
     [SerializeField] private float _slowDuration = 0.05f; // 슬로우 지속 시간
@@ -17,10 +16,10 @@ public class EMP : MonoBehaviour, IPlayerAbility
 
     public void Execute()
     {
-        if (!isEMP && Time.time >= _nextAbilityTime)
+        if (!isEMP && Time.unscaledTime >= _nextAbilityTime)
         {
             StartCoroutine(EMPRoutine());
-            _nextAbilityTime = Time.time + cooldownTime; // 다음 사용 가능 시간 업데이트
+            _nextAbilityTime = Time.unscaledTime + cooldownTime; // 다음 사용 가능 시간 업데이트
         }
     }
 
@@ -38,32 +37,22 @@ public class EMP : MonoBehaviour, IPlayerAbility
         }
 
         // EMP 활성화
-        if (EMPClone == null)
-        {
-            EMPClone = Instantiate(EMPPrefab, PlayerStat.Instance.currentPosition.position, Quaternion.identity);
-        }
-        else
-        {
-            EMPClone.transform.position = PlayerStat.Instance.currentPosition.position; // EMPClone이 이미 있으면 위치만 업데이트
-        }
-        EMPClone.SetActive(true);
+        EMPEffect = EffectPoolManager.Instance.Get("EMPEffect");
+        EMPEffect.transform.position = PlayerStat.Instance.currentPosition.position;
 
         // 시간을 느리게 한다
-        Time.timeScale = _slowDownFactor;
-        Time.fixedDeltaTime = 0.02f * Time.timeScale;
-
-        // _slowDuration 동안 대기
-        yield return new WaitForSecondsRealtime(_slowDuration);
-
-        // 시간 흐름을 원래대로 복구
-        Time.timeScale = 1f;
-        Time.fixedDeltaTime = 0.02f;
+        GameManager.Instance.StartSlowEffect(_slowDuration); // 슬로우 모션 효과 적용
+        GameManager.Instance.isAbilitySlowMotion = true;
 
         // EMP 지속시간 동안 대기
         yield return new WaitForSeconds(_EMPDuration - _slowDuration);
 
         // EMP 비활성화
-        EMPClone.SetActive(false);
+        if (EMPEffect != null)
+        {
+            EffectPoolManager.Instance.Return("EMPEffect", EMPEffect);  // 캐시된 효과 인스턴스를 풀로 반환
+            EMPEffect = null;  // 참조 해제
+        }
 
         // PlayerMovement 스크립트 활성화
         if (playerMovement != null)

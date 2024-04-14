@@ -12,10 +12,10 @@ public class DefenseProtocol : MonoBehaviour, IPlayerAbility
 
     public void Execute()
     {
-        if (!isDefense && Time.time >= _nextAbilityTime)
+        if (!isDefense && Time.unscaledTime >= _nextAbilityTime)
         {
             StartCoroutine(DefenseProtocolRoutine());
-            _nextAbilityTime = Time.time + cooldownTime; // 다음 사용 가능 시간 업데이트
+            _nextAbilityTime = Time.unscaledTime + cooldownTime; // 다음 사용 가능 시간 업데이트
         }
     }
 

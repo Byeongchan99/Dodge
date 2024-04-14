@@ -12,6 +12,7 @@ public class PlayerStat : MonoBehaviour
     public int currentHealth; // 플레이어 현재 체력
     [SerializeField] private float _initialMoveSpeed; // 플레이어 초기 이동 속도
     public float currentMoveSpeed; // 플레이어 현재 이동 속도
+
     public bool isInvincibility; // 무적 상태인지 여부 
 
     public IPlayerAbility playerAbility; // 플레이어 특수 능력
@@ -47,7 +48,7 @@ public class PlayerStat : MonoBehaviour
         currentMoveSpeed = _initialMoveSpeed;
         currentPosition = transform;
         // 특수 능력 선택 로직 나중에 추가하기
-        this.SetAbility(blink);
+        this.SetAbility(emp);
     }
 
     public void SetAbility(IPlayerAbility newAbility)
@@ -79,7 +80,7 @@ public class PlayerStat : MonoBehaviour
 
     private IEnumerator RemoveItemEffectEffectAfterDuration(ItemEffect effect)
     {
-        yield return new WaitForSeconds(effect.GetDuration());
+        yield return new WaitForSecondsRealtime(effect.GetDuration());
         effect.RemoveEffect();
         activeItems.Remove(effect);
     }

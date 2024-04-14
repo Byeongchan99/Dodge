@@ -12,6 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 026653c8ea812fa4692aa20d3a35007d, type: 3}
   m_Name: Init
   m_EditorClassIdentifier: 
+  itemDatas:
+  - spawnLevel: 0
+    spawnChance: 0
+    spawnCooldown: 5
+    spawnCooldownPercent: 0
+  - spawnLevel: 0
+    spawnChance: 0
+    spawnCooldown: 10
+    spawnCooldownPercent: 0
+  - spawnLevel: 0
+    spawnChance: 0
+    spawnCooldown: 5
+    spawnCooldownPercent: 0
+  - spawnLevel: 1
+    spawnChance: 0
+    spawnCooldown: 5
+    spawnCooldownPercent: 0
+  - spawnLevel: 0
+    spawnChance: 0
+    spawnCooldown: 0
+    spawnCooldownPercent: 0
   turretSpawnerDatas:
   - spawnLevel: 1
     spawnChance: 0
@@ -51,20 +72,3 @@ MonoBehaviour:
     projectileLifeTime: 0
   - projectileSpeed: 5
     projectileLifeTime: 0
-  itemDatas:
-  - spawnLevel: 1
-    spawnChance: 0
-    spawnCooldown: 10
-    spawnCooldownPercent: 0
-  - spawnLevel: 1
-    spawnChance: 0
-    spawnCooldown: 10
-    spawnCooldownPercent: 0
-  - spawnLevel: 0
-    spawnChance: 0
-    spawnCooldown: 0
-    spawnCooldownPercent: 0
-  - spawnLevel: 0
-    spawnChance: 0
-    spawnCooldown: 0
-    spawnCooldownPercent: 0

@@ -8,7 +8,6 @@ public class Blink : MonoBehaviour, IPlayerAbility
     private GameObject playerClone; // 게임에 생성된 분신 객체
 
     [SerializeField] private float _blinkMoveSpeed = 5.0f; // 블링크 지속 시간 동안 이동 속도
-    [SerializeField] private float _slowDownFactor = 0.05f; // 시간을 느리게 하는 요소
     [SerializeField] private float _blinkDuration = 0.5f; // 점멸 지속 시간
     [SerializeField] private float _cooldownTime = 3f; // 쿨타임 5초
     private float _nextAbilityTime = 0f; // 다음 능력 사용 가능 시간
@@ -17,11 +16,12 @@ public class Blink : MonoBehaviour, IPlayerAbility
 
     public void Execute()
     {
-        if (!isBlinking && Time.time >= _nextAbilityTime)
+        if (!isBlinking && Time.unscaledTime >= _nextAbilityTime)
         {
             Debug.Log("블링크 실행");
             StartCoroutine(BlinkRoutine());
-            _nextAbilityTime = Time.time + _cooldownTime; // 다음 사용 가능 시간 업데이트
+            Debug.Log("블링크 종료");
+            _nextAbilityTime = Time.unscaledTime + _cooldownTime; // 다음 사용 가능 시간 업데이트
         }
     }
 
@@ -47,8 +47,8 @@ public class Blink : MonoBehaviour, IPlayerAbility
         playerClone.SetActive(true);
 
         // 시간을 느리게 한다
-        Time.timeScale = _slowDownFactor;
-        Time.fixedDeltaTime = 0.02f * Time.timeScale;
+        GameManager.Instance.StartSlowEffect(_blinkDuration);
+        GameManager.Instance.isAbilitySlowMotion = true;
 
         // 위치 설정
         Vector3 startPosition = PlayerStat.Instance.currentPosition.position;
@@ -95,11 +95,8 @@ public class Blink : MonoBehaviour, IPlayerAbility
             playerMovement.enabled = true;
         }
 
-        // 시간 정상화
-        Time.timeScale = 1.0f;
-        Time.fixedDeltaTime = 0.02f;
-
         // 점멸 상태 해제
         isBlinking = false;
+        GameManager.Instance.isAbilitySlowMotion = false;
     }
 }

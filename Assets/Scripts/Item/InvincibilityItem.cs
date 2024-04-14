@@ -6,6 +6,6 @@ public class InvincibilityItem : BaseItem
 {
     protected override void InitItem()
     {
-        itemEffect = new InvincibilityEffect(5f, PlayerStat.Instance.gameObject, 1f);
+        itemEffect = new InvincibilityEffect(5f, PlayerStat.Instance.gameObject);
     }
 }

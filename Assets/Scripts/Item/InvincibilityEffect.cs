@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InvincibilityEffect : ItemEffect
 {
-    public InvincibilityEffect(float duration, GameObject target, float isInvincibility) : base(duration, target) { }
+    public InvincibilityEffect(float duration, GameObject target) : base(duration, target) { }
 
     public override void ApplyEffect()
     {

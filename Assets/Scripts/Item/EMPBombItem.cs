@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveSpeedUpItem : BaseItem
+public class EMPBombItem : BaseItem
 {
     protected override void InitItem()
     {
-        itemEffect = new MoveSpeedUpEffect(5f, PlayerStat.Instance.gameObject, 1.5f);
+        itemEffect = new EMPBombEffect(0.5f, PlayerStat.Instance.gameObject);
     }
 }
