@@ -5,11 +5,12 @@ using UnityEngine;
 public class BaseItem : MonoBehaviour
 {
     protected ItemEffect itemEffect;
+    [SerializeField] protected float itemRemainTime = 10f;
 
     private void OnEnable()
     {
         InitItem();
-        Invoke("DestroyItem", 5f); // 5초 후 DestroyItem 메소드 호출
+        Invoke("DestroyItem", itemRemainTime); // 10초 후 DestroyItem 메소드 호출
     }
 
     /// <summary> 아이템 초기화 </summary>

@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Init
   m_EditorClassIdentifier: 
   itemDatas:
-  - spawnLevel: 0
+  - spawnLevel: 1
     spawnChance: 0
-    spawnCooldown: 5
+    spawnCooldown: 3
     spawnCooldownPercent: 0
   - spawnLevel: 1
     spawnChance: 0
-    spawnCooldown: 5
+    spawnCooldown: 3
     spawnCooldownPercent: 0
   - spawnLevel: 0
     spawnChance: 0

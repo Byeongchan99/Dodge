@@ -34,6 +34,10 @@ public class EMP : MonoBehaviour, IPlayerAbility
             playerMovement.rb.velocity = Vector2.zero;
             playerMovement.enabled = false;
         }
+        else
+        {
+            Debug.LogWarning("PlayerMovement 스크립트를 찾을 수 없습니다.");
+        }
 
         // EMP 활성화
         EMPEffect = EffectPoolManager.Instance.Get("EMPEffect");
