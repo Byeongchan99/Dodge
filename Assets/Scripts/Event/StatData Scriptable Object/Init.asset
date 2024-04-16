@@ -17,15 +17,15 @@ MonoBehaviour:
     spawnChance: 0
     spawnCooldown: 5
     spawnCooldownPercent: 0
-  - spawnLevel: 0
+  - spawnLevel: 1
     spawnChance: 0
-    spawnCooldown: 10
+    spawnCooldown: 5
     spawnCooldownPercent: 0
   - spawnLevel: 0
     spawnChance: 0
     spawnCooldown: 5
     spawnCooldownPercent: 0
-  - spawnLevel: 1
+  - spawnLevel: 0
     spawnChance: 0
     spawnCooldown: 5
     spawnCooldownPercent: 0

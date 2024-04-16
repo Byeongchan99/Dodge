@@ -5,9 +5,11 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+
     private Coroutine slowMotionRoutine = null;
-    private float remainingSlowDuration = 0f;  // 남은 슬로우 모션 효과 시간
-    private float originalFixedDeltaTime;
+    private float _remainingSlowDuration = 0f;  // 남은 슬로우 모션 효과 시간
+    private float _originalFixedDeltaTime;
+    [SerializeField] private float _slowDownFactor = 0.05f; // 시간을 느리게 하는 요소
 
     public bool isAbilitySlowMotion; // 특수 능력으로 인한 슬로우 모션 여부
     public bool isItemSlowMotion; // 아이템으로 인한 슬로우 모션 여부
@@ -30,7 +32,7 @@ public class GameManager : MonoBehaviour
     void Init()
     {
         // 게임 초기화
-        originalFixedDeltaTime = Time.fixedDeltaTime;  // 초기 FixedDeltaTime 저장
+        _originalFixedDeltaTime = Time.fixedDeltaTime;  // 초기 FixedDeltaTime 저장
         isAbilitySlowMotion = false;
         isItemSlowMotion = false;
         slowMotionItemCount = 0;
@@ -38,7 +40,7 @@ public class GameManager : MonoBehaviour
 
     public void StartSlowEffect(float duration)
     {
-        if (slowMotionRoutine != null && remainingSlowDuration > duration)
+        if (slowMotionRoutine != null && _remainingSlowDuration > duration)
         {
             Debug.Log("현재 슬로우 효과가 남아있는 시간이 더 길므로 새 요청 무시");
             return;  // 현재 남아있는 슬로우 모션이 더 길면 새 요청 무시
@@ -54,20 +56,20 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator ApplySlowMotion(float duration)
     {
-        Time.timeScale = 0.05f;
-        Time.fixedDeltaTime = originalFixedDeltaTime * Time.timeScale;
+        Time.timeScale = _slowDownFactor;
+        Time.fixedDeltaTime = _originalFixedDeltaTime * Time.timeScale;
 
-        remainingSlowDuration = duration;  // 슬로우 모션 지속 시간 업데이트
-        while (remainingSlowDuration > 0)
+        _remainingSlowDuration = duration;  // 슬로우 모션 지속 시간 업데이트
+        while (_remainingSlowDuration > 0)
         {
             yield return null;
-            remainingSlowDuration -= Time.unscaledDeltaTime;  // 실제 시간 감소로 업데이트
+            _remainingSlowDuration -= Time.unscaledDeltaTime;  // 실제 시간 감소로 업데이트
         }
 
         Time.timeScale = 1.0f;
-        Time.fixedDeltaTime = originalFixedDeltaTime;  // 원래대로 복구
+        Time.fixedDeltaTime = _originalFixedDeltaTime;  // 원래대로 복구
 
         slowMotionRoutine = null;
-        remainingSlowDuration = 0f;  // 남은 시간 초기화
+        _remainingSlowDuration = 0f;  // 남은 시간 초기화
     }
 }

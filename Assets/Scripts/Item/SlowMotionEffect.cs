@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class SlowMotionEffect : ItemEffect
 {
-    private float _slowDownFactor = 0.05f; // 시간을 느리게 하는 요소
-
     public SlowMotionEffect(float duration, GameObject target) : base(duration, target) { }
 
     public override void ApplyEffect()

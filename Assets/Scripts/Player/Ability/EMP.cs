@@ -6,7 +6,6 @@ public class EMP : MonoBehaviour, IPlayerAbility
 {
     private BaseEffect EMPEffect; // EMP 효과
 
-    [SerializeField] private float _slowDownFactor = 0.05f; // 시간을 느리게 하는 요소
     [SerializeField] private float _slowDuration = 0.05f; // 슬로우 지속 시간
     [SerializeField] private float _EMPDuration = 0.5f; // EMP 지속 시간
     [SerializeField] private float cooldownTime = 4f; // 쿨타임 5초
