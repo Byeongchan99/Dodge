@@ -48,7 +48,7 @@ public class PlayerStat : MonoBehaviour
         currentMoveSpeed = _initialMoveSpeed;
         currentPosition = transform;
         // 특수 능력 선택 로직 나중에 추가하기
-        this.SetAbility(emp);
+        this.SetAbility(blink);
     }
 
     public void SetAbility(IPlayerAbility newAbility)

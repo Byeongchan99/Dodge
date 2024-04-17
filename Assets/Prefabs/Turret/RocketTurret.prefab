@@ -169,9 +169,7 @@ MonoBehaviour:
   projectilePrefabs:
   - {fileID: 4932673681797147661, guid: c25f6bc7c08f26a47b52f9e7d40d7ca1, type: 3}
   spawner: {fileID: 0}
-  turretIndex: 0
-  currentLifeTime: 0
-  projectileCount: 2
+  turretIndex: 2
   spawnPointIndex: 0
   rotatePoint: {fileID: 1356929597027367013}
   _direction: {x: 0, y: 0}

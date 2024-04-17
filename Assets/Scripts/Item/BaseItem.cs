@@ -5,7 +5,7 @@ using UnityEngine;
 public class BaseItem : MonoBehaviour
 {
     protected ItemEffect itemEffect;
-    [SerializeField] protected float itemRemainTime = 10f;
+    [SerializeField] protected float itemRemainTime = 20f;
 
     private void OnEnable()
     {

@@ -28,14 +28,6 @@ public class BulletTurret : BaseTurret
             // atan2를 사용하여 라디안으로 방향 각도를 계산한 다음, 도(degree)로 변환
             _angle = Mathf.Atan2(_direction.y, _direction.x) * Mathf.Rad2Deg;
 
-            /*
-            // 스프라이트가 뒤집혀 있으면 각도 조정
-            if (transform.localScale.x < 0)
-            {
-                _angle = 180f - _angle; // 뒤집힌 스프라이트에 대해 각도를 조정
-            }
-            */
-
             if (spawnPointIndex == 0)
             {
                 _angle += 90;
@@ -54,6 +46,7 @@ public class BulletTurret : BaseTurret
             Vector3 rotation = new Vector3(0, 0, _angle);
             // 회전 애니메이션이 완료된 후 ShootProjectile 메서드 호출
             rotatePoint.DOLocalRotate(rotation, 0.5f).SetEase(Ease.OutSine).OnComplete(ShootProjectile);
+            _timeSinceLastShot = 0f;
         }
     }
 
@@ -66,8 +59,6 @@ public class BulletTurret : BaseTurret
             return;
         }
 
-        // direction 벡터를 반시계 방향으로 90도 회전
-        //Vector2 shootingDirection = new Vector2(-direction.y, direction.x);
         // direction 벡터를 바탕으로 Quaternion 생성
         Quaternion rotation = Quaternion.LookRotation(Vector3.forward, _direction);
 

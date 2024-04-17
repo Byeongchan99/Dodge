@@ -43,6 +43,7 @@ public class RocketTurret : BaseTurret
             Vector3 rotation = new Vector3(0, 0, _angle);
             // 회전 애니메이션이 완료된 후 ShootProjectile 메서드 호출
             rotatePoint.DOLocalRotate(rotation, 0.5f).SetEase(Ease.OutSine).OnComplete(ShootProjectile);
+            _timeSinceLastShot = 0f;
         }
     }
 

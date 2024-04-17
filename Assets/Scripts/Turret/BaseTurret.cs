@@ -8,12 +8,20 @@ public abstract class BaseTurret : MonoBehaviour
     /****************************************************************************
                                  protected Fields
     ****************************************************************************/
-    /// <summary> 공격 속도 = 터렛 유지 시간 / 투사체 발사 개수 </summary>
+    /// <summary> 투사체 발사 개수 </summary>
+    [SerializeField] protected int _projectileCount;
+    /// <summary> 현재 남은 투사체 발사 개수 </summary>
+    protected int currentProjectileCount; 
+    /// <summary> 공격 속도 </summary>
     [SerializeField] protected float _attackSpeed;
     /// <summary> 마지막 발사 이후 경과 시간 </summary>
     [SerializeField] protected float _timeSinceLastShot = 0f;
     /// <summary> 터렛 유지 시간 </summary>
     [SerializeField] protected float _lifeTime;
+    /// <summary> 현재 터렛 유지 시간 </summary>
+    protected float currentLifeTime;
+    /// <summary> 마지막 투사체 발사 여부 플래그 </summary>
+    protected bool isLastProjectileShot = false;
 
     /// <summary> 투사체가 발사되는 위치(투사체가 생성되는 위치) </summary>
     [SerializeField] protected Transform firePoint;
@@ -22,9 +30,6 @@ public abstract class BaseTurret : MonoBehaviour
 
     /// <summary> 발사할 투사체 프리팹 리스트 </summary>
     [SerializeField] protected GameObject[] projectilePrefabs;
-    /// <summary> 현재 발사할 투사체 프리팹 </summary>
-    //[SerializeField] protected GameObject currentProjectilePrefabs;
-
     /****************************************************************************
                                    public Fields
     ****************************************************************************/
@@ -32,13 +37,8 @@ public abstract class BaseTurret : MonoBehaviour
     public TurretSpawner spawner;
     /// <summary> 터렛 종류 인덱스 </summary>
     public int turretIndex;
-    /// <summary> 현재 터렛 유지 시간 </summary>
-    public float currentLifeTime;
-    /// <summary> 투사체 발사 개수 </summary>
-    public int projectileCount;
     /// <summary> 소환 위치 인덱스 </summary>
     public int spawnPointIndex;
-
     /****************************************************************************
                                     Unity Callbacks
     ****************************************************************************/
@@ -49,20 +49,24 @@ public abstract class BaseTurret : MonoBehaviour
 
     void Update()
     {
-        if (ShouldShoot())
+        if (currentLifeTime <= 0 && isLastProjectileShot)
         {
-            Shoot();
-            _timeSinceLastShot = 0f;
+            Invoke("DisableTurret", 1.5f);  // 마지막 투사체 발사 1.5초 후에 터렛 비활성화
+            return;
         }
 
         _timeSinceLastShot += Time.deltaTime;
-
-        if (currentLifeTime <= 0)
-        {
-            DisableTurret();
-        }
-
         currentLifeTime -= Time.deltaTime;
+
+        if (ShouldShoot())
+        {
+            Shoot();
+            _projectileCount--;  // 발사할 투사체 수 감소
+            if (_projectileCount == 0)
+            {
+                isLastProjectileShot = true;
+            }
+        }
     }
 
     /****************************************************************************
@@ -79,9 +83,10 @@ public abstract class BaseTurret : MonoBehaviour
     {
         _lifeTime = StatDataManager.Instance.currentStatData.turretDatas[turretIndex].turretLifeTime;
         currentLifeTime = _lifeTime;
-        projectileCount = StatDataManager.Instance.currentStatData.turretDatas[turretIndex].projectileCount;
-        _attackSpeed = _lifeTime / projectileCount;
-        //currentProjectilePrefabs = projectilePrefabs[0];
+        _projectileCount = StatDataManager.Instance.currentStatData.turretDatas[turretIndex].projectileCount;
+        currentProjectileCount = _projectileCount;
+        _attackSpeed = _lifeTime / _projectileCount;
+        _attackSpeed = Mathf.Max(_attackSpeed, 0.5f);  // 공격 속도 보장
         targetPosition = PlayerStat.Instance.transform;
     }
 
@@ -110,12 +115,5 @@ public abstract class BaseTurret : MonoBehaviour
     /****************************************************************************
                                  public Methods
     ****************************************************************************/
-    /*
-    /// <summary> 발사할 투사체 변경 </summary>
-    public virtual void ChangeProjectile(int projectileIndex)
-    {
-        //Debug.Log("ChangeProjectile");
-        currentProjectilePrefabs = projectilePrefabs[projectileIndex];
-    }
-    */
+
 }

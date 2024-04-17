@@ -13,23 +13,6 @@ public class TurretSpawner : MonoBehaviour
     [SerializeField] private bool[] isAvailableSpawnPosition;
     /// <summary> 소환할 터렛 프리팹 리스트 </summary>
     [SerializeField] List<GameObject> turretPrefabs;
-    /*
-    /// <summary> 터렛 종류별 소환 레벨 </summary>
-    [SerializeField] List<int> turretSpawnLevels;
-    /// <summary> 터렛 종류별 소환 확률 </summary>
-    [SerializeField] List<float> turretSpawnChances;
-    /// <summary> 터렛 종류별 초기 소환 쿨타임 </summary>
-    [SerializeField] List<float> turretInitialSpawnCooltimes;
-    /// <summary> 터렛 종류별 소환 쿨타임 </summary>
-    [SerializeField] List<float> turretSpawnCooltimes;
-
-    /// <summary> 스크립터블 오브젝트에서 로드한 터렛 소환 데이터 </summary>
-    [SerializeField] StatData currentEventData;
-    [SerializeField] List<int> eventSpawnLevels = new List<int>();
-    [SerializeField] List<float> eventSpawnCooltimePercents = new List<float>();
-    /// <summary> 옵저버 패턴으로 가져온 스탯 데이터 </summary>
-    private CopyedStatData cachedStatData;
-    */
 
     private float _nextSpawnTime = 0f;
     private bool _isSpawning = false; // 현재 소환 중인지 여부를 나타내는 플래그
@@ -57,159 +40,7 @@ public class TurretSpawner : MonoBehaviour
         {
             isAvailableSpawnPosition[i] = true;
         }
-
-        /*
-        // 이벤트 이름에 따른 스크립터블 오브젝트 데이터 로드
-        currentEventData = StatDataManager.Instance.GetDataForEvent("Init");
-
-        // 터렛 종류별 초기 소환 쿨타임 적용
-        for (int i = 0; i < turretInitialSpawnCooltimes.Count; i++)
-        {
-            turretSpawnCooltimes[i] = turretInitialSpawnCooltimes[i];
-        }
-
-        // 터렛 종류별 데이터 초기화
-        SettingTurretSpawnerDatas(currentEventData);
-        */
     }
-
-    /*
-    // 옵저버 패턴으로 가져온 스탯 데이터 변경 시 호출되는 콜백 메서드
-    private void OnStatDataChanged(object sender, StatDataChangedEventArgs e)
-    {
-        cachedStatData = e.NewStatData;
-    }
-
-    /// <summary> 이벤트에 따른 터렛 소환 데이터 조정 </summary>
-    /// <param name="eventName"> 적용할 이벤트 이름 </param>
-    void AdjustEvent(string eventName)
-    {
-        // 이벤트 이름에 따른 스크립터블 오브젝트 데이터 로드
-        currentEventData = StatDataManager.Instance.GetDataForEvent(eventName);
-        SettingTurretSpawnerDatas(currentEventData);
-    }
-    */
-
-    /*
-    /// <summary> 스크립터블 오브젝트에서 터렛 소환 데이터 적용 </summary>
-    void SettingTurretSpawnerDatas(StatData turretSpawnerData)
-    {
-        eventSpawnLevels.Clear();
-        eventSpawnCooltimePercents.Clear();
-
-        // 터렛 종류별 데이터를 리스트에 추가
-        for (int i = 0; i < turretSpawnerData.turretSpawnerDatas.Count; i++)
-        {
-            eventSpawnLevels.Add(turretSpawnerData.turretSpawnerDatas[i].spawnLevel);
-            eventSpawnCooltimePercents.Add(turretSpawnerData.turretSpawnerDatas[i].spawnCooldownPercent);
-        }
-
-        // 터렛 종류별 데이터 적용
-        // 터렛 종류별 소환 레벨 적용
-        SettingTurretSpawnLevel(eventSpawnLevels.ToArray());
-        // 적용된 터렛 종류별 소환 레벨로 터렛 종류별 소환 확률 적용
-        SettingTurretSpawnChances(turretSpawnLevels.ToArray());
-        // 터렛 종류별 소환 쿨타임 적용
-        SettingTurretSpawnCooltimes(eventSpawnCooltimePercents.ToArray());
-    }
-    */
-
-    /*
-    /// <summary> 터렛 종류별 소환 레벨 변경 </summary>
-    /// <param name="levels"> 포탑 소환 레벨을 조정할 값 배열 </param>
-    void SettingTurretSpawnLevel(params int[] levels)
-    {
-        // 포탑 소환 레벨을 조정할 값 배열의 길이와 포탑 소환 레벨 배열의 길이가 일치하는지 확인
-        if (levels.Length != turretSpawnLevels.Count)
-        {
-            Debug.LogError("포탑 소환 레벨을 조정할 값 배열의 길이와 포탑 소환 레벨 배열의 길이가 다름" + levels.Length + " " + turretSpawnLevels.Count);
-            return;
-        }
-
-        // 터렛 레벨 변경
-        for (int i = 0; i < levels.Length; i++)
-        {
-            turretSpawnLevels[i] += levels[i];
-        }
-    }
-    */
-
-    /*
-    /// <summary> 터렛 종류별 선택 확률 변경 </summary>
-    /// <param name="levels"> 각 터렛의 레벨 배열 </param>
-    void SettingTurretSpawnChances(params int[] levels)
-    {
-        // 각 터렛의 레벨 배열의 길이와 터렛 소환 확률 배열의 길이가 일치하는지 확인
-        if (levels.Length != turretSpawnChances.Count)
-        {
-            Debug.LogError("각 터렛의 레벨 배열의 길이와 터렛 소환 확률 배열의 길이가 다름");
-            return;
-        }
-
-        // 레벨 합계 계산
-        int levelSum = 0;
-        for (int i = 0; i < levels.Length; i++)
-        {
-            levelSum += levels[i];
-        }
-
-        // 레벨 합계가 0인 경우, 모든 확률을 동일하게 설정하여 에러 방지
-        if (levelSum == 0)
-        {
-            Debug.LogError("레벨 합계가 0. 모든 확률 동일하게 설정");
-            float equalChance = 100f / levels.Length;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                turretSpawnChances[i] = equalChance;
-            }
-            return;
-        }
-
-        // 각 터렛의 소환 확률 계산
-        float chancePerLevel = 100f / levelSum;
-        float totalPercentage = 0f; // 검증을 위한 총 확률 합계 계산
-        for (int i = 0; i < levels.Length; i++)
-        {
-            turretSpawnChances[i] = chancePerLevel * levels[i];
-            totalPercentage += turretSpawnChances[i];
-        }
-
-        // 확률의 총합이 100%에 가까운지 확인 (부동소수점 연산으로 인한 작은 오차 허용)
-        if (Mathf.Abs(100f - totalPercentage) > 0.01f)
-        {
-            Debug.LogWarning($"확률 총합이 100%가 아님. 총합: {totalPercentage}%");
-        }
-    }
-    */
-
-    /*
-    /// <summary> 터렛 종류별 소환 쿨타임 변경 </summary>
-    /// <param name="cooltimePercents"> 쿨타임을 조정할 퍼센트 값 배열 </param>
-    void SettingTurretSpawnCooltimes(params float[] cooltimePercents)
-    {
-        // 쿨타임을 조정할 퍼센트 값 배열의 길이가 터렛 소환 쿨타임 배열의 길이와 일치하는지 확인
-        if (cooltimePercents.Length != turretSpawnCooltimes.Count)
-        {
-            Debug.LogError("쿨타임을 조정할 퍼센트 값 배열의 길이와 터렛 소환 쿨타임 배열의 길이가 다름");
-            return;
-        }
-
-        // 터렛 쿨타임 변경
-        for (int i = 0; i < cooltimePercents.Length; i++)
-        {
-            // 입력된 비율 값이 음수인지 확인
-            if (cooltimePercents[i] < 0)
-            {
-                Debug.LogWarning($"{i}번째 터렛 쿨타임 비율이 음수이면 쿨타임 증가");
-            }
-            // 초기 쿨타임의 비율만큼 쿨타임 감소
-            float value = turretInitialSpawnCooltimes[i] * cooltimePercents[i];
-
-            // 쿨타임에 비율 적용
-            turretSpawnCooltimes[i] -= value;
-        }
-    }
-    */
 
     /// <summary> 터렛 소환 코루틴 </summary>
     IEnumerator SpawnTurretRoutine()
@@ -244,8 +75,7 @@ public class TurretSpawner : MonoBehaviour
 
         if (turret != null)
         {
-            // 터렛 활성화 및 위치 설정
-            turret.gameObject.SetActive(true);
+            // 위치 설정
             turret.transform.position = spawnPosition.position;
             turret.transform.rotation = Quaternion.identity;
 
@@ -268,11 +98,12 @@ public class TurretSpawner : MonoBehaviour
             turret.spawnPointIndex = spawnPositionIndex;
             turret.spawner = this;
 
-            // 터렛 초기화
+            // 터렛 정보
             turret.turretIndex = turretPrefabs.IndexOf(turretToSpawn);
-            turret.projectileCount = StatDataManager.Instance.currentStatData.turretDatas[turretPrefabs.IndexOf(turretToSpawn)].projectileCount;
 
             _nextSpawnTime = ChooseCooldown(turretToSpawn); // 다음 소환까지의 시간 설정
+
+            turret.gameObject.SetActive(true);
         }
         else
         {

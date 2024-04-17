@@ -20,7 +20,7 @@ public class BaseProjectile : MonoBehaviour
     {
         _speed = StatDataManager.Instance.currentStatData.projectileDatas[0].projectileSpeed;
         _lifetime = StatDataManager.Instance.currentStatData.projectileDatas[0].projectileLifeTime;
-        Invoke("DestroyProjectile", _lifetime);
+        StartCoroutine(LifecycleCoroutine());
     }
 
     protected void Update()
@@ -54,7 +54,9 @@ public class BaseProjectile : MonoBehaviour
     /// <summary> 발사체 파괴 </summary>
     protected void DestroyProjectile()
     {
+        Debug.Log("투사체 풀에 반환");
         ProjectilePoolManager.Instance.Return(this.GetType().Name, this);
+        StopAllCoroutines();
     }
 
     /// <summary> 충돌 검사 </summary>
@@ -76,5 +78,12 @@ public class BaseProjectile : MonoBehaviour
             Debug.Log("EMP와 충돌");
             DestroyProjectile();
         }
+    }
+
+    /// <summary> 생명 주기 관리 코루틴 </summary>
+    protected IEnumerator LifecycleCoroutine()
+    {
+        yield return new WaitForSeconds(_lifetime);  // 지정된 시간(_lifetime) 동안 대기
+        DestroyProjectile();  // 시간이 지나면 발사체를 파괴
     }
 }
