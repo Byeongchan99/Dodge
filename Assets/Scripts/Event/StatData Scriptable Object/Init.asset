@@ -34,7 +34,7 @@ MonoBehaviour:
     spawnCooldown: 0
     spawnCooldownPercent: 0
   turretSpawnerDatas:
-  - spawnLevel: 1
+  - spawnLevel: 0
     spawnChance: 0
     spawnCooldown: 3
     spawnCooldownPercent: 0
@@ -42,11 +42,11 @@ MonoBehaviour:
     spawnChance: 0
     spawnCooldown: 4
     spawnCooldownPercent: 0
-  - spawnLevel: 1
+  - spawnLevel: 0
     spawnChance: 0
     spawnCooldown: 3
     spawnCooldownPercent: 0
-  - spawnLevel: 0
+  - spawnLevel: 1
     spawnChance: 0
     spawnCooldown: 4
     spawnCooldownPercent: 0
@@ -60,7 +60,7 @@ MonoBehaviour:
   - projectileCount: 2
     projectileIndex: 0
     turretLifeTime: 5
-  - projectileCount: 0
+  - projectileCount: 2
     projectileIndex: 0
     turretLifeTime: 0
   projectileDatas:

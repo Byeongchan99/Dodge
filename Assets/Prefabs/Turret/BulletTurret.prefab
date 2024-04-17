@@ -161,6 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73eaf2ebd70746549a6d4544619516e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _projectileCount: 0
   _attackSpeed: 0
   _timeSinceLastShot: 0
   _lifeTime: 5
@@ -171,8 +172,6 @@ MonoBehaviour:
   - {fileID: 2165887944137837541, guid: 4244a559614907e4996fc011d0a93ede, type: 3}
   spawner: {fileID: 0}
   turretIndex: 0
-  currentLifeTime: 0
-  projectileCount: 5
   spawnPointIndex: 0
   rotatePoint: {fileID: 1356929597027367013}
   _direction: {x: 0, y: 0}
