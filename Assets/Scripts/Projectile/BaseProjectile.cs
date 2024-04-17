@@ -6,7 +6,8 @@ public class BaseProjectile : MonoBehaviour
 {
     protected Rigidbody2D rb;
 
-    public float speed = 5.0f;
+    [SerializeField] protected float _speed;
+    [SerializeField] protected float _lifetime;
     public Vector2 moveDirection;
 
     /// <summary> 초기화 </summary>
@@ -17,7 +18,9 @@ public class BaseProjectile : MonoBehaviour
 
     protected virtual void OnEnable()
     {
-        speed = StatDataManager.Instance.currentStatData.projectileDatas[0].projectileSpeed;
+        _speed = StatDataManager.Instance.currentStatData.projectileDatas[0].projectileSpeed;
+        _lifetime = StatDataManager.Instance.currentStatData.projectileDatas[0].projectileLifeTime;
+        Invoke("DestroyProjectile", _lifetime);
     }
 
     protected void Update()
@@ -35,7 +38,7 @@ public class BaseProjectile : MonoBehaviour
     /// <summary> 이동 </summary>
     protected virtual void Move()
     {
-        rb.velocity = moveDirection.normalized * speed;
+        rb.velocity = moveDirection.normalized * _speed;
     }
 
     /// <summary> 맵 범위 검사 </summary>

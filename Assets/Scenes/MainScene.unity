@@ -733,7 +733,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletTurret: {fileID: 7142985893305235348, guid: 6598a472629392647ac7d0f0395deee6, type: 3}
   laserTurret: {fileID: 0}
-  rocketTurret: {fileID: 0}
+  rocketTurret: {fileID: 7142985893305235348, guid: dd74682cb7d474849a60d37a3779d95c, type: 3}
   turretContainer: {fileID: 482760519}
 --- !u!114 &482760521
 MonoBehaviour:
@@ -1876,6 +1876,8 @@ MonoBehaviour:
   isAvailableSpawnPosition: 
   turretPrefabs:
   - {fileID: 7142985893305235348, guid: 6598a472629392647ac7d0f0395deee6, type: 3}
+  - {fileID: 0}
+  - {fileID: 7142985893305235348, guid: dd74682cb7d474849a60d37a3779d95c, type: 3}
 --- !u!1 &951026692
 GameObject:
   m_ObjectHideFlags: 0
@@ -2713,6 +2715,7 @@ MonoBehaviour:
   ghost: {fileID: 2488347224407324659, guid: 4b4aa7587a3cd6747b3b969e720e84e8, type: 3}
   ghostDelay: 0.1
   isMakeGhost: 0
+  moveSpeedUpItemCount: 0
   ghostEffectContainer: {fileID: 393263291}
 --- !u!114 &1609651034
 MonoBehaviour:
@@ -3210,6 +3213,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 2849789079709403121, guid: d841075615611104287c35b8cbec0b24, type: 3}
   splitBulletPrefab: {fileID: 2165887944137837541, guid: 4244a559614907e4996fc011d0a93ede, type: 3}
+  rocketPrefab: {fileID: 4932673681797147661, guid: c25f6bc7c08f26a47b52f9e7d40d7ca1, type: 3}
   projectileContainer: {fileID: 2054376002}
 --- !u!114 &2054376004
 MonoBehaviour:

@@ -14,6 +14,8 @@ public class TurretPool : MonoBehaviour
     private void Start()
     {
         TurretPoolManager.Instance.CreatePool(bulletTurret.GetComponent<BulletTurret>(), 10, turretContainer);
+        //TurretPoolManager.Instance.CreatePool(laserTurret.GetComponent<LaserTurret>(), 10, turretContainer);
+        TurretPoolManager.Instance.CreatePool(rocketTurret.GetComponent<RocketTurret>(), 10, turretContainer);
         // 다른 발사체 풀도 생성
     }
 }
