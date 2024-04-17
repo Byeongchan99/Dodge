@@ -36,7 +36,7 @@ public class MortarTurret : BaseTurret
         {
             // 총알 위치와 회전 설정
             bomb.transform.position = firePoint.position;
-            bomb.target = targetPosition;
+            bomb.SetDirection(targetPosition.position - firePoint.position);
             bomb.gameObject.SetActive(true);
         }
         else

@@ -8,7 +8,7 @@ public class BaseProjectile : MonoBehaviour
 
     [SerializeField] protected float _speed;
     [SerializeField] protected float _lifetime;
-    public Vector2 moveDirection;
+    protected Vector2 moveDirection;
 
     /// <summary> √ ±‚»≠ </summary>
     protected virtual void Awake()
