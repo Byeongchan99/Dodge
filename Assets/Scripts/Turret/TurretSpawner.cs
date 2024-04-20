@@ -100,7 +100,6 @@ public class TurretSpawner : MonoBehaviour
 
             // 터렛 정보
             turret.turretIndex = turretPrefabs.IndexOf(turretToSpawn);
-
             _nextSpawnTime = ChooseCooldown(turretToSpawn); // 다음 소환까지의 시간 설정
 
             turret.gameObject.SetActive(true);
@@ -119,7 +118,7 @@ public class TurretSpawner : MonoBehaviour
 
         for (int i = 0; i < turretPrefabs.Count; i++)
         {
-            Debug.Log(i + "번째 터렛 소환 확률: " + StatDataManager.Instance.currentStatData.turretSpawnerDatas[i].spawnChance);
+            //Debug.Log(i + "번째 터렛 소환 확률: " + StatDataManager.Instance.currentStatData.turretSpawnerDatas[i].spawnChance);
             currentChance += StatDataManager.Instance.currentStatData.turretSpawnerDatas[i].spawnChance; // 누적 확률 업데이트
             if (randomChance <= currentChance)
             {

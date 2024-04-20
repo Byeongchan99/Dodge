@@ -87,7 +87,7 @@ public class ItemSpawner : MonoBehaviour
 
         for (int i = 0; i < itemPrefabs.Count; i++)
         {
-            Debug.Log(i + "번째 아이템 소환 확률: " + StatDataManager.Instance.currentStatData.itemDatas[i].spawnChance);
+            //Debug.Log(i + "번째 아이템 소환 확률: " + StatDataManager.Instance.currentStatData.itemDatas[i].spawnChance);
             currentChance += StatDataManager.Instance.currentStatData.itemDatas[i].spawnChance; // 누적 확률 업데이트
             if (randomChance <= currentChance)
             {

@@ -223,5 +223,5 @@ MonoBehaviour:
   projectilePrefabs:
   - {fileID: 5015218198545573938, guid: e9df44c11f3ca4942896208e0abf683c, type: 3}
   spawner: {fileID: 0}
-  turretIndex: 0
+  turretIndex: 3
   spawnPointIndex: 0
