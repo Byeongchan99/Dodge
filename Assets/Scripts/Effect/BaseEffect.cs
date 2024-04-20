@@ -15,4 +15,12 @@ public class BaseEffect : MonoBehaviour
     {
         
     }
+
+    /// <summary> ÀÌÆåÆ® ÆÄ±« </summary>
+    protected void DestroyEffect()
+    {
+        Debug.Log("ÀÌÆåÆ® Ç®¿¡ ¹ÝÈ¯");
+        EffectPoolManager.Instance.Return(this.GetType().Name, this);
+        StopAllCoroutines();
+    }
 }

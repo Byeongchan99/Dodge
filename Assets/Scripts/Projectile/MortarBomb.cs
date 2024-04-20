@@ -6,7 +6,7 @@ using static UnityEngine.GraphicsBuffer;
 public class MortarBomb : BaseProjectile
 {
     [SerializeField] private AnimationCurve heightCurve;  // 높이 변화를 위한 애니메이션 커브
-    [SerializeField] private float flightDuration = 3.0f;  // 전체 비행 시간
+    [SerializeField] private float flightDuration = 2.0f;  // 전체 비행 시간
     [SerializeField] private float hoverHeight = 15f;    // 최대 높이
 
     protected override void OnEnable()

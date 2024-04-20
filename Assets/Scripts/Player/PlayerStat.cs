@@ -62,6 +62,7 @@ public class PlayerStat : MonoBehaviour
         {
             // 피격 처리
             currentHealth--;
+            Debug.Log("피격! 현재 체력: " + currentHealth);
         }
         // 나중에 피격 로직 수정
         if (currentHealth <= 0)

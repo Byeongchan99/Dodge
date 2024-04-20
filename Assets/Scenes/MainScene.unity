@@ -1023,6 +1023,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EMPPrefab: {fileID: 8316688933625705081, guid: b09032ced1071e34f924881ac95b28d7, type: 3}
+  MortarBombEffectPrefab: {fileID: 8011254534305329955, guid: 843201f7b65d40c45b43bb3e6cf600dd, type: 3}
   effectContainer: {fileID: 542002890}
 --- !u!114 &542002889
 MonoBehaviour:

@@ -72,7 +72,7 @@ public class BaseProjectile : MonoBehaviour
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        // 나중에 EMP와 충돌했을 때
+        // EMP와 충돌했을 때
         if (collision.gameObject.CompareTag("EMP"))
         {
             Debug.Log("EMP와 충돌");

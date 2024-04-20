@@ -81,14 +81,20 @@ public abstract class BaseTurret : MonoBehaviour
     /// <summary> 터렛 초기화 </summary>
     protected virtual void InitTurret()
     {
-        //Debug.Log("터렛 인덱스 " + turretIndex + " 초기화");
+        // 터렛 설정
+        // 터렛 유지 시간
         _lifeTime = StatDataManager.Instance.currentStatData.turretDatas[turretIndex].turretLifeTime;
         currentLifeTime = _lifeTime;
+        // 투사체 발사 개수
         _projectileCount = StatDataManager.Instance.currentStatData.turretDatas[turretIndex].projectileCount;
         currentProjectileCount = _projectileCount;
-        //Debug.Log("LifeTime: " + _lifeTime + ", ProjectileCount: " + _projectileCount);
+        // 공격 속도
         _attackSpeed = _lifeTime / _projectileCount;
         _attackSpeed = Mathf.Max(_attackSpeed, 0.5f);  // 공격 속도 보장
+
+        // 변수 초기화
+        _timeSinceLastShot = 0f;
+        isLastProjectileShot = false;
         targetPosition = PlayerStat.Instance.transform;
     }
 

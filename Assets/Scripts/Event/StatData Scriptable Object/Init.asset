@@ -58,7 +58,7 @@ MonoBehaviour:
     turretLifeTime: 5
   - projectileCount: 2
     projectileIndex: 0
-    turretLifeTime: 0
+    turretLifeTime: 5
   projectileDatas:
   - projectileSpeed: 5
     projectileLifeTime: 5
@@ -67,4 +67,4 @@ MonoBehaviour:
   - projectileSpeed: 3
     projectileLifeTime: 10
   - projectileSpeed: 5
-    projectileLifeTime: 3
+    projectileLifeTime: 2
