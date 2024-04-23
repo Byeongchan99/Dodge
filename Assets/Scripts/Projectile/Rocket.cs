@@ -25,7 +25,7 @@ public class Rocket : BaseProjectile
             rotateAmount = Mathf.Clamp(rotateAmount, -0.4f, 0.4f);
 
             rb.angularVelocity = -rotateAmount * rotateSpeed;
-            rb.velocity = transform.up * _speed;  // 'transform.forward' 대신 'transform.up' 사용
+            rb.velocity = transform.up * _speed;
         }
     }
 }

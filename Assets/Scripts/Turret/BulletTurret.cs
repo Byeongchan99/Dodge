@@ -65,12 +65,16 @@ public class BulletTurret : BaseTurret
         // 오브젝트 풀에서 총알 가져오기
         int currentProjectileIndex= StatDataManager.Instance.currentStatData.turretDatas[0].projectileIndex;
         Bullet bullet = ProjectilePoolManager.Instance.Get(projectilePrefabs[currentProjectileIndex].name) as Bullet;
+        float bulletSize = StatDataManager.Instance.currentStatData.projectileDatas[currentProjectileIndex].projectileSize;
 
         if (bullet != null)
         {
             // 총알 위치와 회전 설정
             bullet.transform.position = firePoint.position;
             bullet.transform.rotation = rotation;
+            // 크기 변경
+            bullet.transform.localScale = new Vector3(bulletSize, bulletSize, bulletSize);
+            // 방향 설정
             bullet.SetDirection(_direction);
             bullet.gameObject.SetActive(true);
         }
@@ -80,6 +84,7 @@ public class BulletTurret : BaseTurret
         }
     }
 
+    /// <summary> 터렛 비활성화 </summary>
     protected override void DisableTurret()
     {
         rotatePoint.localRotation = Quaternion.identity;

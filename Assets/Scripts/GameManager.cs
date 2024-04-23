@@ -18,7 +18,6 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] Text timeText; // 임시 시간 표시
     [SerializeField] Text playerHealth; // 임시 플레이어 체력 표시
-    private float gameStartTime;
 
     void Awake()
     {

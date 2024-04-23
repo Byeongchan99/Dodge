@@ -60,6 +60,7 @@ public class StatData : ScriptableObject
         public string projectileName; // 투사체 이름
         public float projectileSpeed; // 투사체 속도
         public float projectileLifeTime; // 투사체 유지 시간
+        public Vector3 projectileSize; // 투사체 크기
 
         // 깊은 복사를 위한 복사 생성자
         public ProjectileData(ProjectileData source)
@@ -67,6 +68,7 @@ public class StatData : ScriptableObject
             this.projectileName = source.projectileName;
             this.projectileSpeed = source.projectileSpeed;
             this.projectileLifeTime = source.projectileLifeTime;
+            this.projectileSize = source.projectileSize;
         }
     }
 
