@@ -13,6 +13,8 @@ public class PlayerStat : MonoBehaviour
     [SerializeField] private float _initialMoveSpeed; // 플레이어 초기 이동 속도
     public float currentMoveSpeed; // 플레이어 현재 이동 속도
 
+    private Coroutine invincibilityRoutine = null; // 무적 상태 코루틴
+    private float _remainingInvincibilityDuration = 0f; // 남은 무적 상태 지속 시간
     public bool isInvincibility; // 무적 상태인지 여부 
 
     public IPlayerAbility playerAbility; // 플레이어 특수 능력
@@ -42,20 +44,24 @@ public class PlayerStat : MonoBehaviour
         currentPosition.position = this.transform.position;
     }
 
+    /// <summary> 초기화 </summary>
     void Init()
     {
         currentHealth = _maxHealth;
         currentMoveSpeed = _initialMoveSpeed;
         currentPosition = transform;
+        isInvincibility = false;
         // 특수 능력 선택 로직 나중에 추가하기
         this.SetAbility(blink);
     }
 
+    /// <summary> 어빌리티 설정 </summary>
     public void SetAbility(IPlayerAbility newAbility)
     {
         this.playerAbility = newAbility;
     }
 
+    /// <summary> 데미지 처리 </summary>
     public void TakeDamage()
     {
         if (!isInvincibility) // 무적 상태가 아닐 때
@@ -63,6 +69,7 @@ public class PlayerStat : MonoBehaviour
             // 피격 처리
             currentHealth--;
             Debug.Log("피격! 현재 체력: " + currentHealth);
+            StartInvincibility(1.5f); // 1초 동안 무적
         }
         // 나중에 피격 로직 수정
         if (currentHealth <= 0)
@@ -71,6 +78,40 @@ public class PlayerStat : MonoBehaviour
         }
     }
 
+    public void StartInvincibility(float duration)
+    {
+        if (invincibilityRoutine != null && _remainingInvincibilityDuration > duration)
+        {
+            Debug.Log("현재 무적 효과가 남아있는 시간이 더 길므로 새 요청 무시");
+            return;  // 현재 남아있는 슬로우 모션이 더 길면 새 요청 무시
+        }
+
+        if (invincibilityRoutine != null)
+        {
+            StopCoroutine(invincibilityRoutine);  // 이전 슬로우 모션 코루틴 중지
+        }
+
+        invincibilityRoutine = StartCoroutine(ApplyInvincibility(duration));
+    }
+
+    /// <summary> 무적 시간 적용 타이머 </summary>
+    private IEnumerator ApplyInvincibility(float duration)
+    {
+        Debug.Log("무적 상태 시작");
+        isInvincibility = true;
+        
+        _remainingInvincibilityDuration = duration;  // 무적 지속 시간 업데이트
+        while (_remainingInvincibilityDuration > 0)
+        {
+            yield return null;
+            _remainingInvincibilityDuration -= Time.deltaTime;  // 실제 시간 감소로 업데이트
+        }
+
+        invincibilityRoutine = null;
+        isInvincibility = false;
+    }
+
+    /// <summary> 아이템 효과 적용 </summary>
     public void ApplyItemEffect(ItemEffect effect)
     {
         // 버프 적용 처리
@@ -79,6 +120,7 @@ public class PlayerStat : MonoBehaviour
         StartCoroutine(RemoveItemEffectEffectAfterDuration(effect));
     }
 
+    /// <summary> 아이템 효과 적용 타이머 </summary>
     private IEnumerator RemoveItemEffectEffectAfterDuration(ItemEffect effect)
     {
         yield return new WaitForSecondsRealtime(effect.GetDuration());
@@ -86,6 +128,7 @@ public class PlayerStat : MonoBehaviour
         activeItems.Remove(effect);
     }
 
+    /// <summary> 아이템 효과 제거 </summary>
     public void RemoveAllEffects()
     {
         foreach (ItemEffect effect in activeItems)

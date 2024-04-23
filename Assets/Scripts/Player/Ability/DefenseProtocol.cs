@@ -36,8 +36,8 @@ public class DefenseProtocol : MonoBehaviour, IPlayerAbility
             playerMovement.enabled = false;
         }
 
-        // 방어 프로토콜 활성화
-        PlayerStat.Instance.isInvincibility = true;
+        // 무적 효과 활성화
+        PlayerStat.Instance.StartInvincibility(_DefenseProtocolDuration + 0.1f);
 
         // 플레이어의 스프라이트를 노란색으로 변경
         SpriteRenderer playerSprite = GetComponent<SpriteRenderer>();
@@ -63,9 +63,6 @@ public class DefenseProtocol : MonoBehaviour, IPlayerAbility
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
 
-        yield return new WaitForSecondsRealtime(0.1f); // 약간의 무적 시간
-
-        PlayerStat.Instance.isInvincibility = false;
         isDefense = false;
 
         yield return null;

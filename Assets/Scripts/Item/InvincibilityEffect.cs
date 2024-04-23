@@ -12,7 +12,7 @@ public class InvincibilityEffect : ItemEffect
     {
         // 무적 적용
         Debug.Log("무적 아이템 효과 적용");
-        PlayerStat.Instance.isInvincibility = true;
+        PlayerStat.Instance.StartInvincibility(_duration);  // 무적 상태 시작
         _colorChangeCoroutine = target.GetComponent<MonoBehaviour>().StartCoroutine(ChangeColor());
     }
 
@@ -20,7 +20,6 @@ public class InvincibilityEffect : ItemEffect
     {
         // 무적 해제
         Debug.Log("무적 아이템 효과 종료");
-        PlayerStat.Instance.isInvincibility = false;
         if (_colorChangeCoroutine != null)
         {
             target.GetComponent<MonoBehaviour>().StopCoroutine(_colorChangeCoroutine);
