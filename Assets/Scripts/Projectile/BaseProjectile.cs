@@ -7,7 +7,7 @@ public class BaseProjectile : MonoBehaviour
     protected Rigidbody2D rb;
 
     [SerializeField] protected float _speed;
-    [SerializeField] protected float _lifetime;
+    [SerializeField] protected float _lifeTime;
     protected Vector2 moveDirection;
 
     /// <summary> 초기화 </summary>
@@ -19,7 +19,7 @@ public class BaseProjectile : MonoBehaviour
     protected virtual void OnEnable()
     {
         _speed = StatDataManager.Instance.currentStatData.projectileDatas[0].projectileSpeed;
-        _lifetime = StatDataManager.Instance.currentStatData.projectileDatas[0].projectileLifeTime;
+        _lifeTime = StatDataManager.Instance.currentStatData.projectileDatas[0].projectileLifeTime;
         StartCoroutine(LifecycleCoroutine());
     }
 
@@ -83,7 +83,7 @@ public class BaseProjectile : MonoBehaviour
     /// <summary> 생명 주기 관리 코루틴 </summary>
     protected IEnumerator LifecycleCoroutine()
     {
-        yield return new WaitForSeconds(_lifetime);  // 지정된 시간(_lifetime) 동안 대기
+        yield return new WaitForSeconds(_lifeTime);  // 지정된 시간(_lifetime) 동안 대기
         DestroyProjectile();  // 시간이 지나면 발사체를 파괴
     }
 }

@@ -24,6 +24,7 @@ public class MortarBombEffect : BaseEffect
         yield return new WaitForSeconds(2f);  // 포탄이 터질 때까지 대기
         effectCollider.enabled = true;
         yield return new WaitForSeconds(0.1f); // 콜라이더 활성화 후 0.1초 대기
+        effectCollider.enabled = false;
         DestroyEffect();
     }
 

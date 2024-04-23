@@ -73,7 +73,7 @@ public abstract class BaseTurret : MonoBehaviour
                                  private Methods
     ****************************************************************************/
     /// <summary> 투사체를 발사 가능한지 확인 </summary>
-    protected bool ShouldShoot()
+    protected virtual bool ShouldShoot()
     {
         return _timeSinceLastShot >= _attackSpeed;
     }

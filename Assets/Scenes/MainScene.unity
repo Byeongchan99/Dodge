@@ -732,7 +732,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletTurret: {fileID: 7142985893305235348, guid: 6598a472629392647ac7d0f0395deee6, type: 3}
-  laserTurret: {fileID: 0}
+  laserTurret: {fileID: 7142985893305235348, guid: 331bf309adabbe74a8495645dca404e4, type: 3}
   rocketTurret: {fileID: 7142985893305235348, guid: b1b8f6867b4166d42a126d9aff94df3a, type: 3}
   mortarTurret: {fileID: 7142985893305235348, guid: dd74682cb7d474849a60d37a3779d95c, type: 3}
   turretContainer: {fileID: 482760519}
@@ -1023,7 +1023,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EMPPrefab: {fileID: 8316688933625705081, guid: b09032ced1071e34f924881ac95b28d7, type: 3}
-  MortarBombEffectPrefab: {fileID: 8011254534305329955, guid: 843201f7b65d40c45b43bb3e6cf600dd, type: 3}
+  laserAttackAreaEffectPrefab: {fileID: 7776144373081150357, guid: c2e5832b402552d4aae3a06c13e92712, type: 3}
+  mortarBombEffectPrefab: {fileID: 8011254534305329955, guid: 843201f7b65d40c45b43bb3e6cf600dd, type: 3}
   effectContainer: {fileID: 542002890}
 --- !u!114 &542002889
 MonoBehaviour:
@@ -1878,7 +1879,7 @@ MonoBehaviour:
   isAvailableSpawnPosition: 
   turretPrefabs:
   - {fileID: 7142985893305235348, guid: 6598a472629392647ac7d0f0395deee6, type: 3}
-  - {fileID: 0}
+  - {fileID: 7142985893305235348, guid: 331bf309adabbe74a8495645dca404e4, type: 3}
   - {fileID: 7142985893305235348, guid: b1b8f6867b4166d42a126d9aff94df3a, type: 3}
   - {fileID: 7142985893305235348, guid: dd74682cb7d474849a60d37a3779d95c, type: 3}
 --- !u!1 &951026692
@@ -3216,6 +3217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 2849789079709403121, guid: d841075615611104287c35b8cbec0b24, type: 3}
   splitBulletPrefab: {fileID: 2165887944137837541, guid: 4244a559614907e4996fc011d0a93ede, type: 3}
+  laserPrefab: {fileID: 7776144373081150357, guid: 82f61e953991c254689da71614772246, type: 3}
   rocketPrefab: {fileID: 4932673681797147661, guid: c25f6bc7c08f26a47b52f9e7d40d7ca1, type: 3}
   mortarBombPrefab: {fileID: 5015218198545573938, guid: e9df44c11f3ca4942896208e0abf683c, type: 3}
   projectileContainer: {fileID: 2054376002}

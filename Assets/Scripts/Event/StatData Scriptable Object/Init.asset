@@ -13,58 +13,77 @@ MonoBehaviour:
   m_Name: Init
   m_EditorClassIdentifier: 
   itemDatas:
-  - spawnLevel: 1
+  - name: MoveSpeedUpItem
+    spawnLevel: 1
     spawnChance: 0
     spawnCooldown: 3
     spawnCooldownPercent: 0
-  - spawnLevel: 1
+  - name: InvincibilityItem
+    spawnLevel: 1
     spawnChance: 0
     spawnCooldown: 3
     spawnCooldownPercent: 0
-  - spawnLevel: 1
+  - name: SlowMotionItem
+    spawnLevel: 1
     spawnChance: 0
     spawnCooldown: 5
     spawnCooldownPercent: 0
-  - spawnLevel: 1
+  - name: EMPBombItem
+    spawnLevel: 1
     spawnChance: 0
     spawnCooldown: 5
     spawnCooldownPercent: 0
   turretSpawnerDatas:
-  - spawnLevel: 0
+  - name: BulletTurret
+    spawnLevel: 0
     spawnChance: 0
     spawnCooldown: 3
     spawnCooldownPercent: 0
-  - spawnLevel: 0
+  - name: LaserTurret
+    spawnLevel: 1
     spawnChance: 0
     spawnCooldown: 4
     spawnCooldownPercent: 0
-  - spawnLevel: 0
+  - name: RocketTurret
+    spawnLevel: 0
     spawnChance: 0
     spawnCooldown: 3
     spawnCooldownPercent: 0
-  - spawnLevel: 1
+  - name: MortarTurret
+    spawnLevel: 0
     spawnChance: 0
     spawnCooldown: 4
     spawnCooldownPercent: 0
   turretDatas:
-  - projectileCount: 5
+  - turretName: BulletTurret
+    projectileCount: 5
     projectileIndex: 0
     turretLifeTime: 5
-  - projectileCount: 0
+  - turretName: LaserTurret
+    projectileCount: 1
     projectileIndex: 0
-    turretLifeTime: 0
-  - projectileCount: 2
+    turretLifeTime: 3
+  - turretName: RocketTurret
+    projectileCount: 2
     projectileIndex: 0
     turretLifeTime: 5
-  - projectileCount: 2
+  - turretName: MortarTurret
+    projectileCount: 2
     projectileIndex: 0
     turretLifeTime: 5
   projectileDatas:
-  - projectileSpeed: 5
+  - projectileName: Bullet
+    projectileSpeed: 5
     projectileLifeTime: 5
-  - projectileSpeed: 5
+  - projectileName: SplitBullet
+    projectileSpeed: 5
     projectileLifeTime: 0
-  - projectileSpeed: 3
+  - projectileName: Laser
+    projectileSpeed: 5
+    projectileLifeTime: 1.5
+  - projectileName: Rocket
+    projectileSpeed: 3
     projectileLifeTime: 10
-  - projectileSpeed: 5
+  - projectileName: MortarBomb
+    projectileSpeed: 3
     projectileLifeTime: 2

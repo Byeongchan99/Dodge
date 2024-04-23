@@ -10,8 +10,8 @@ public class Rocket : BaseProjectile
     protected override void OnEnable()
     {
         _speed = StatDataManager.Instance.currentStatData.projectileDatas[2].projectileSpeed;
-        _lifetime = StatDataManager.Instance.currentStatData.projectileDatas[2].projectileLifeTime;
-        Invoke("DestroyProjectile", _lifetime);
+        _lifeTime = StatDataManager.Instance.currentStatData.projectileDatas[2].projectileLifeTime;
+        Invoke("DestroyProjectile", _lifeTime);
     }
 
     void FixedUpdate()
