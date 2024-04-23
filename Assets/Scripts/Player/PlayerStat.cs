@@ -7,6 +7,7 @@ public class PlayerStat : MonoBehaviour
     public static PlayerStat Instance { get; private set; } // 싱글톤 인스턴스
 
     public Transform currentPosition; // 플레이어 현재 위치
+    public SpriteRenderer spriteRenderer;
 
     [SerializeField] private int _maxHealth; // 플레이어 최대 체력
     public int currentHealth; // 플레이어 현재 체력
@@ -47,6 +48,8 @@ public class PlayerStat : MonoBehaviour
     /// <summary> 초기화 </summary>
     void Init()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
         currentHealth = _maxHealth;
         currentMoveSpeed = _initialMoveSpeed;
         currentPosition = transform;
@@ -103,12 +106,18 @@ public class PlayerStat : MonoBehaviour
         _remainingInvincibilityDuration = duration;  // 무적 지속 시간 업데이트
         while (_remainingInvincibilityDuration > 0)
         {
-            yield return null;
-            _remainingInvincibilityDuration -= Time.deltaTime;  // 실제 시간 감소로 업데이트
+            // 깜박이는 이펙트
+            spriteRenderer.color = new Color(1, 1, 1, 0.5f);  // 반투명
+            yield return new WaitForSeconds(0.1f);
+            spriteRenderer.color = new Color(1, 1, 1, 1);  // 원래 상태
+            yield return new WaitForSeconds(0.1f);
+            _remainingInvincibilityDuration -= 0.2f;  // 실제 시간 감소로 업데이트
         }
 
+        Debug.Log("무적 상태 종료");
         invincibilityRoutine = null;
         isInvincibility = false;
+        spriteRenderer.color = new Color(1, 1, 1, 1);
     }
 
     /// <summary> 아이템 효과 적용 </summary>
