@@ -11,7 +11,7 @@ public abstract class BaseTurret : MonoBehaviour
     /// <summary> 투사체 발사 개수 </summary>
     [SerializeField] protected int _projectileCount;
     /// <summary> 현재 남은 투사체 발사 개수 </summary>
-    protected int currentProjectileCount; 
+    [SerializeField] protected int currentProjectileCount; 
     /// <summary> 공격 속도 </summary>
     [SerializeField] protected float _attackSpeed;
     /// <summary> 마지막 발사 이후 경과 시간 </summary>
@@ -19,7 +19,7 @@ public abstract class BaseTurret : MonoBehaviour
     /// <summary> 터렛 유지 시간 </summary>
     [SerializeField] protected float _lifeTime;
     /// <summary> 현재 터렛 유지 시간 </summary>
-    protected float currentLifeTime;
+    [SerializeField] protected float currentLifeTime;
     /// <summary> 마지막 투사체 발사 여부 플래그 </summary>
     protected bool isLastProjectileShot = false;
 
@@ -51,7 +51,7 @@ public abstract class BaseTurret : MonoBehaviour
     {
         if (currentLifeTime <= 0 && isLastProjectileShot)
         {
-            Invoke("DisableTurret", 1.5f);  // 마지막 투사체 발사 1.5초 후에 터렛 비활성화
+            StartCoroutine(StartDisableTurret());
             return;
         }
 
@@ -101,6 +101,13 @@ public abstract class BaseTurret : MonoBehaviour
     /// <summary> 투사체 발사 </summary>
     protected abstract void Shoot();
 
+    /// <summary> 터렛 비활성화 실행 코루틴 </summary>
+    IEnumerator StartDisableTurret()
+    {
+        yield return new WaitForSeconds(1.5f);
+        DisableTurret();
+    }
+
     /// <summary> 터렛 비활성화 </summary>
     protected virtual void DisableTurret()
     {
@@ -115,6 +122,8 @@ public abstract class BaseTurret : MonoBehaviour
         {
             spawner.SetPositionAvailable(spawnPointIndex);
         }
+
+        StopAllCoroutines();
     }
 
     /// <summary> 터렛의 포를 회전 </summary>
