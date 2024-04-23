@@ -75,15 +75,20 @@ MonoBehaviour:
   - projectileName: Bullet
     projectileSpeed: 5
     projectileLifeTime: 5
+    projectileSize: {x: 0, y: 0, z: 0}
   - projectileName: SplitBullet
     projectileSpeed: 5
     projectileLifeTime: 0
+    projectileSize: {x: 0, y: 0, z: 0}
   - projectileName: Laser
     projectileSpeed: 5
     projectileLifeTime: 1.5
+    projectileSize: {x: 0, y: 0, z: 0}
   - projectileName: Rocket
     projectileSpeed: 3
     projectileLifeTime: 10
+    projectileSize: {x: 0, y: 0, z: 0}
   - projectileName: MortarBomb
     projectileSpeed: 3
     projectileLifeTime: 2
+    projectileSize: {x: 0, y: 0, z: 0}
