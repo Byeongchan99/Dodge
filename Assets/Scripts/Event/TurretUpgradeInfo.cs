@@ -25,5 +25,4 @@ public class TurretUpgradeInfo
     public EnhancementType enhancementType;
 
     public float value; // 강화 값
-    public Vector3 projectileSize; // 발사체 크기
 }

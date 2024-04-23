@@ -88,6 +88,34 @@ public class TurretUpgradeHandler : MonoBehaviour
         EventManager.TriggerEnhancementEvent("TurretUpgrade", bulletTurretSpeedDecrease);
     }
 
+    /// <summary> 총알 터렛 크기 증가 이벤트 </summary>
+    public void BulletTurretSizeIncreaseEvent()
+    {
+        Debug.Log("Size Increase");
+        TurretUpgradeInfo bulletTurretSizeIncrease = new TurretUpgradeInfo
+        {
+            turretType = TurretUpgradeInfo.TurretType.Bullet,
+            enhancementType = TurretUpgradeInfo.EnhancementType.SizeChange,
+            value = 1.5f,
+        };
+
+        EventManager.TriggerEnhancementEvent("TurretUpgrade", bulletTurretSizeIncrease);
+    }
+
+    /// <summary> 총알 터렛 크기 감소 이벤트 </summary>
+    public void BulletTurretSizeDecreaseEvent()
+    {
+        Debug.Log("Size Decrease");
+        TurretUpgradeInfo bulletTurretSizeDecrease = new TurretUpgradeInfo
+        {
+            turretType = TurretUpgradeInfo.TurretType.Bullet,
+            enhancementType = TurretUpgradeInfo.EnhancementType.SizeChange,
+            value = 2.0f / 3.0f,
+        };
+
+        EventManager.TriggerEnhancementEvent("TurretUpgrade", bulletTurretSizeDecrease);
+    }
+
     /// <summary> 총알 터렛 초기화 이벤트 </summary>
     public void InitBulletTurretEvent()
     {

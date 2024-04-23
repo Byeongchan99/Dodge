@@ -28,8 +28,6 @@ public class EventProcessor : MonoBehaviour
     /// <summary> 이벤트 적용 </summary>
     private void HandleTurretUpgradeEvent(TurretUpgradeInfo enhancement)
     {
-        
-
         switch (enhancement.turretType)
         {
             case TurretUpgradeInfo.TurretType.Bullet:
@@ -55,9 +53,9 @@ public class EventProcessor : MonoBehaviour
                         // 크기 변경 처리
                         Debug.Log("총알 크기 변경 " + enhancement.value);
                         Vector3 newSize = new Vector3(
-                            StatDataManager.Instance.currentStatData.projectileDatas[0].projectileSize.x + enhancement.projectileSize.X,
-                            StatDataManager.Instance.currentStatData.projectileDatas[0].projectileSize.y + enhancement.projectileSize.Y,
-                            StatDataManager.Instance.currentStatData.projectileDatas[0].projectileSize.z + enhancement.projectileSize.Z
+                            StatDataManager.Instance.currentStatData.projectileDatas[0].projectileSize.x *= enhancement.value,
+                            StatDataManager.Instance.currentStatData.projectileDatas[0].projectileSize.y *= enhancement.value,
+                            StatDataManager.Instance.currentStatData.projectileDatas[0].projectileSize.z *= enhancement.value
                             );
                         StatDataManager.Instance.currentStatData.projectileDatas[0].projectileSize = newSize;
                         break;  
@@ -86,11 +84,11 @@ public class EventProcessor : MonoBehaviour
                         // 속도 변경 처리
                         Debug.Log("레이저 크기 변경 " + enhancement.value);
                         Vector3 newSize = new Vector3(
-                                                    StatDataManager.Instance.currentStatData.projectileDatas[1].projectileSize.x + enhancement.projectileSize.X,
-                                                    StatDataManager.Instance.currentStatData.projectileDatas[1].projectileSize.y + enhancement.projectileSize.Y,
-                                                    StatDataManager.Instance.currentStatData.projectileDatas[1].projectileSize.z + enhancement.projectileSize.Z
-                                                    );
-                        StatDataManager.Instance.currentStatData.projectileDatas[0].projectileSize = newSize;
+                            StatDataManager.Instance.currentStatData.projectileDatas[1].projectileSize.x *= enhancement.value,
+                            StatDataManager.Instance.currentStatData.projectileDatas[1].projectileSize.y *= enhancement.value,
+                            StatDataManager.Instance.currentStatData.projectileDatas[1].projectileSize.z *= enhancement.value
+                            );
+                        StatDataManager.Instance.currentStatData.projectileDatas[1].projectileSize = newSize;
                         break;
                     case TurretUpgradeInfo.EnhancementType.Init:
                         // 초기화 로직
@@ -123,11 +121,11 @@ public class EventProcessor : MonoBehaviour
                         // 크기 변경 처리
                         Debug.Log("로켓 크기 변경 " + enhancement.value);
                         Vector3 newSize = new Vector3(
-                                                    StatDataManager.Instance.currentStatData.projectileDatas[2].projectileSize.x + enhancement.projectileSize.X,
-                                                    StatDataManager.Instance.currentStatData.projectileDatas[2].projectileSize.y + enhancement.projectileSize.Y,
-                                                    StatDataManager.Instance.currentStatData.projectileDatas[2].projectileSize.z + enhancement.projectileSize.Z
-                                                    );
-                        StatDataManager.Instance.currentStatData.projectileDatas[0].projectileSize = newSize;
+                            StatDataManager.Instance.currentStatData.projectileDatas[2].projectileSize.x *= enhancement.value,
+                            StatDataManager.Instance.currentStatData.projectileDatas[2].projectileSize.y *= enhancement.value,
+                            StatDataManager.Instance.currentStatData.projectileDatas[2].projectileSize.z *= enhancement.value
+                            );
+                        StatDataManager.Instance.currentStatData.projectileDatas[2].projectileSize = newSize;
                         break;
                     case TurretUpgradeInfo.EnhancementType.Init:
                         // 초기화 로직
@@ -160,11 +158,11 @@ public class EventProcessor : MonoBehaviour
                         // 크기 변경 처리
                         Debug.Log("폭발 범위 변경 " + enhancement.value);
                         Vector3 newSize = new Vector3(
-                                                    StatDataManager.Instance.currentStatData.projectileDatas[3].projectileSize.x + enhancement.projectileSize.X,
-                                                    StatDataManager.Instance.currentStatData.projectileDatas[3].projectileSize.y + enhancement.projectileSize.Y,
-                                                    StatDataManager.Instance.currentStatData.projectileDatas[3].projectileSize.z + enhancement.projectileSize.Z
-                                                    );
-                        StatDataManager.Instance.currentStatData.projectileDatas[0].projectileSize = newSize;
+                            StatDataManager.Instance.currentStatData.projectileDatas[3].projectileSize.x *= enhancement.value,
+                            StatDataManager.Instance.currentStatData.projectileDatas[3].projectileSize.y *= enhancement.value,
+                            StatDataManager.Instance.currentStatData.projectileDatas[3].projectileSize.z *= enhancement.value
+                            );
+                        StatDataManager.Instance.currentStatData.projectileDatas[3].projectileSize = newSize;
                         break;
                     case TurretUpgradeInfo.EnhancementType.Init:
                         // 초기화 로직
