@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,6 +15,10 @@ public class GameManager : MonoBehaviour
     public bool isAbilitySlowMotion; // 특수 능력으로 인한 슬로우 모션 여부
     public bool isItemSlowMotion; // 아이템으로 인한 슬로우 모션 여부
     public int slowMotionItemCount; // 사용한 슬로 모션 아이템 개수
+
+    [SerializeField] Text timeText; // 임시 시간 표시
+    [SerializeField] Text playerHealth; // 임시 플레이어 체력 표시
+    private float gameStartTime;
 
     void Awake()
     {
@@ -36,6 +41,13 @@ public class GameManager : MonoBehaviour
         isAbilitySlowMotion = false;
         isItemSlowMotion = false;
         slowMotionItemCount = 0;
+    }
+
+    // 임시 시간 표시
+    private void Update()
+    {
+        timeText.text = "Time: " + Time.unscaledTime.ToString(); // 임시라서 시간 정확하지 않음 -> 나중에 게임 시작 시 타이머 시작하도록 변경
+        playerHealth.text = "Player HP: " + PlayerStat.Instance.currentHealth.ToString();
     }
 
     public void StartSlowEffect(float duration)

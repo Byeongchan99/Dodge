@@ -231,8 +231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 0
-  _lifetime: 0
-  moveDirection: {x: 0, y: 0}
+  _lifeTime: 10
   target: {fileID: 0}
   rotateSpeed: 200
 --- !u!50 &5828716134871570917
