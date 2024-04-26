@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "StatData", menuName = "ScriptableObjects/StatData", order = 1)]
 public class StatData : ScriptableObject
 {
+    // 스포너 데이터
     [System.Serializable]
     public class BaseSpawnData
     {
@@ -36,6 +37,7 @@ public class StatData : ScriptableObject
         public TurretSpawnerData(TurretSpawnerData source) : base(source) { }
     }
 
+    // 터렛 데이터
     [System.Serializable]
     public class TurretData
     {
@@ -54,13 +56,14 @@ public class StatData : ScriptableObject
         }
     }
 
+    // 투사체 데이터
     [System.Serializable]
     public class ProjectileData
     {
         public string projectileName; // 투사체 이름
         public float projectileSpeed; // 투사체 속도
-        public float projectileLifeTime; // 투사체 유지 시간
-        public Vector3 projectileSize; // 투사체 크기
+        public float projectileLifeTime; // 투사체 유지 시간 - 레이저와 로켓에서만 사용
+        public Vector3 projectileSize; // 투사체 크기 - 박격포탄의 경우 이펙트의 크기
 
         // 깊은 복사를 위한 복사 생성자
         public ProjectileData(ProjectileData source)

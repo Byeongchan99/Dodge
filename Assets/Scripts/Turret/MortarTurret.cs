@@ -32,8 +32,10 @@ public class MortarTurret : BaseTurret
         int currentProjectileIndex = StatDataManager.Instance.currentStatData.turretDatas[3].projectileIndex;
         MortarBomb bomb = ProjectilePoolManager.Instance.Get(projectilePrefabs[currentProjectileIndex].name) as MortarBomb;
 
+        // 박격포탄의 데미지는 이펙트에서 플레이어에게 적용
         // 이펙트 투사체 풀에서 위험 범위 이펙트 가져오기
         MortarBombEffect bombEffect = EffectPoolManager.Instance.Get("MortarBombEffect") as MortarBombEffect;
+        Vector3 effectSize = StatDataManager.Instance.currentStatData.projectileDatas[3].projectileSize;
 
         if (bomb != null && bombEffect != null) 
         {
@@ -44,6 +46,8 @@ public class MortarTurret : BaseTurret
 
             // 위험 범위 이펙트 위치 설정
             bombEffect.transform.position = targetPosition.position;
+            // 위험 범위 이펙트 크기 설정
+            bombEffect.transform.localScale = effectSize;
             bombEffect.gameObject.SetActive(true);
         }
         else

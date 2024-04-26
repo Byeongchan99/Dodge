@@ -30,27 +30,28 @@ public class EventProcessor : MonoBehaviour
     {
         switch (enhancement.turretType)
         {
+            // 총알 터렛
             case TurretUpgradeInfo.TurretType.Bullet:
-                // Bullet Turret의 업그레이드 처리를 위한 내부 switch 문
+                // Bullet Turret의 업그레이드 처리
                 switch (enhancement.enhancementType)
                 {
                     case TurretUpgradeInfo.EnhancementType.IsProjectileSplit:
-                        // 분열 총알 업그레이드 처리
+                        // 분열 총알 업그레이드
                         Debug.Log("분열 총알 업그레이드 " + enhancement.value);
                         StatDataManager.Instance.currentStatData.turretDatas[0].projectileIndex = (int)enhancement.value;
                         break;
                     case TurretUpgradeInfo.EnhancementType.CountChange:
-                        // 개수 변경 처리
+                        // 개수 변경
                         Debug.Log("총알 개수 변경 " + enhancement.value);
                         StatDataManager.Instance.currentStatData.turretDatas[0].projectileCount += (int)enhancement.value;
                         break;
                     case TurretUpgradeInfo.EnhancementType.SpeedChange:
-                        // 속도 변경 처리
+                        // 속도 변경
                         Debug.Log("총알 속도 변경 " + enhancement.value);
                         StatDataManager.Instance.currentStatData.projectileDatas[0].projectileSpeed += enhancement.value;
                         break;
                     case TurretUpgradeInfo.EnhancementType.SizeChange:
-                        // 크기 변경 처리
+                        // 크기 변경
                         Debug.Log("총알 크기 변경 " + enhancement.value);
                         Vector3 newSize = new Vector3(
                             StatDataManager.Instance.currentStatData.projectileDatas[0].projectileSize.x *= enhancement.value,
@@ -60,28 +61,30 @@ public class EventProcessor : MonoBehaviour
                         StatDataManager.Instance.currentStatData.projectileDatas[0].projectileSize = newSize;
                         break;  
                     case TurretUpgradeInfo.EnhancementType.Init:
-                        // 초기화 로직
+                        // 초기화
                         Debug.Log("터렛 초기화");
                         StatDataManager.Instance.currentStatData = new CopyedStatData(StatDataManager.Instance.originalStatData);
                         break;
                 }
                 break;
+
+            // 레이저 터렛
             case TurretUpgradeInfo.TurretType.Laser:
                 // Laser Turret의 업그레이드 처리
                 switch (enhancement.enhancementType)
                 {
-                    case TurretUpgradeInfo.EnhancementType.RemainTimeChange:
-                        // 지속 시간 처리
+                    case TurretUpgradeInfo.EnhancementType.LifeTimeChange:
+                        // 지속 시간
                         Debug.Log("레이저 지속 시간 변경 " + enhancement.value);
                         StatDataManager.Instance.currentStatData.projectileDatas[1].projectileLifeTime += enhancement.value;
                         break;
                     case TurretUpgradeInfo.EnhancementType.CountChange:
-                        // 개수 변경 처리
+                        // 개수 변경
                         Debug.Log("레이저 개수 변경 " + enhancement.value);
                         StatDataManager.Instance.currentStatData.turretDatas[1].projectileCount += (int)enhancement.value;
                         break;
                     case TurretUpgradeInfo.EnhancementType.SizeChange:
-                        // 속도 변경 처리
+                        // 속도 변경
                         Debug.Log("레이저 크기 변경 " + enhancement.value);
                         Vector3 newSize = new Vector3(
                             StatDataManager.Instance.currentStatData.projectileDatas[1].projectileSize.x *= enhancement.value,
@@ -91,34 +94,36 @@ public class EventProcessor : MonoBehaviour
                         StatDataManager.Instance.currentStatData.projectileDatas[1].projectileSize = newSize;
                         break;
                     case TurretUpgradeInfo.EnhancementType.Init:
-                        // 초기화 로직
+                        // 초기화
                         Debug.Log("터렛 초기화");
                         StatDataManager.Instance.currentStatData = new CopyedStatData(StatDataManager.Instance.originalStatData);
                         break;
                         // 기타 필요한 경우 추가
                 }
                 break;
+
+            // 로켓 터렛
             case TurretUpgradeInfo.TurretType.Rocket:
                 // Rocket Turret의 업그레이드 처리
                 switch (enhancement.enhancementType)
                 {
+                    case TurretUpgradeInfo.EnhancementType.LifeTimeChange:
+                        // 지속 시간 증가
+                        Debug.Log("로켓 지속 시간 변경 " + enhancement.value);
+                        StatDataManager.Instance.currentStatData.projectileDatas[2].projectileLifeTime += enhancement.value;
+                        break;
                     case TurretUpgradeInfo.EnhancementType.CountChange:
-                        // 개수 증가 처리
+                        // 개수 증가
                         Debug.Log("로켓 개수 변경 " + enhancement.value);
                         StatDataManager.Instance.currentStatData.turretDatas[2].projectileCount += (int)enhancement.value;
                         break;
                     case TurretUpgradeInfo.EnhancementType.SpeedChange:
-                        // 속도 증가 처리
+                        // 속도 증가
                         Debug.Log("로켓 속도 변경 " + enhancement.value);
                         StatDataManager.Instance.currentStatData.projectileDatas[2].projectileSpeed += enhancement.value;
                         break;
-                    case TurretUpgradeInfo.EnhancementType.RemainTimeChange:
-                        // 지속 시간 증가 처리
-                        Debug.Log("로켓 지속 시간 변경 " + enhancement.value);
-                        StatDataManager.Instance.currentStatData.projectileDatas[2].projectileLifeTime += enhancement.value;
-                        break;
                     case TurretUpgradeInfo.EnhancementType.SizeChange:
-                        // 크기 변경 처리
+                        // 크기 변경
                         Debug.Log("로켓 크기 변경 " + enhancement.value);
                         Vector3 newSize = new Vector3(
                             StatDataManager.Instance.currentStatData.projectileDatas[2].projectileSize.x *= enhancement.value,
@@ -128,34 +133,36 @@ public class EventProcessor : MonoBehaviour
                         StatDataManager.Instance.currentStatData.projectileDatas[2].projectileSize = newSize;
                         break;
                     case TurretUpgradeInfo.EnhancementType.Init:
-                        // 초기화 로직
+                        // 초기화
                         Debug.Log("터렛 초기화");
                         StatDataManager.Instance.currentStatData = new CopyedStatData(StatDataManager.Instance.originalStatData);
                         break;
                     // 기타 필요한 경우 추가
                 }
                 break;
+
+            // 박격포 터렛
             case TurretUpgradeInfo.TurretType.Mortar:
                 // Mortar Turret의 업그레이드 처리
                 switch (enhancement.enhancementType)
                 {
                     case TurretUpgradeInfo.EnhancementType.IsProjectileSplit:
-                        // 분열 박격포탄 업그레이드 처리
+                        // 분열 박격포탄 업그레이드
                         Debug.Log("분열 박격포탄 업그레이드 " + enhancement.value);
                         StatDataManager.Instance.currentStatData.turretDatas[3].projectileIndex = (int)enhancement.value;
                         break;
                     case TurretUpgradeInfo.EnhancementType.CountChange:
-                        // 개수 증가 처리
+                        // 개수 증가
                         Debug.Log("박격포탄 개수 변경 " + enhancement.value);
                         StatDataManager.Instance.currentStatData.turretDatas[3].projectileCount += (int)enhancement.value;
                         break;
                     case TurretUpgradeInfo.EnhancementType.SpeedChange:
-                        // 속도 증가 처리
+                        // 속도 증가
                         Debug.Log("박격포탄 속도 변경 " + enhancement.value);
                         StatDataManager.Instance.currentStatData.projectileDatas[3].projectileSpeed += enhancement.value;
                         break;
                     case TurretUpgradeInfo.EnhancementType.SizeChange:
-                        // 크기 변경 처리
+                        // 크기 변경
                         Debug.Log("폭발 범위 변경 " + enhancement.value);
                         Vector3 newSize = new Vector3(
                             StatDataManager.Instance.currentStatData.projectileDatas[3].projectileSize.x *= enhancement.value,
@@ -165,7 +172,7 @@ public class EventProcessor : MonoBehaviour
                         StatDataManager.Instance.currentStatData.projectileDatas[3].projectileSize = newSize;
                         break;
                     case TurretUpgradeInfo.EnhancementType.Init:
-                        // 초기화 로직
+                        // 초기화
                         Debug.Log("터렛 초기화");
                         StatDataManager.Instance.currentStatData = new CopyedStatData(StatDataManager.Instance.originalStatData);
                         break;

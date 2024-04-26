@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class Bullet : BaseProjectile
 {
+    /// <summary> 총알 스탯 가져오기 </summary>
     protected override void OnEnable()
     {
         _speed = StatDataManager.Instance.currentStatData.projectileDatas[0].projectileSpeed;
     }
 
+    /// <summary> 총알 움직임 구현 </summary>
     protected override void Move()
     {
-        // 발사체 특유의 움직임 로직
-        //rb.velocity = transform.right * speed;
+        // rb.velocity = moveDirection.normalized * _speed;
         base.Move();
     }
 }

@@ -50,7 +50,7 @@ public class BulletTurret : BaseTurret
         }
     }
 
-    /// <summary> 발사체 생성 </summary>
+    /// <summary> 총알 생성 </summary>
     private void ShootProjectile()
     {
         if (firePoint == null)
@@ -72,10 +72,11 @@ public class BulletTurret : BaseTurret
             // 총알 위치와 회전 설정
             bullet.transform.position = firePoint.position;
             bullet.transform.rotation = rotation;
-            // 크기 변경
+            // 크기 설정
             bullet.transform.localScale = bulletSize;
             // 방향 설정
             bullet.SetDirection(_direction);
+            // 총알 활성화
             bullet.gameObject.SetActive(true);
         }
         else

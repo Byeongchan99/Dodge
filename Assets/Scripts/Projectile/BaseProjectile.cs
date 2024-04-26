@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class BaseProjectile : MonoBehaviour
 {
+    /****************************************************************************
+                              private Fields
+    ****************************************************************************/
     protected Rigidbody2D rb;
 
     [SerializeField] protected float _speed;
     [SerializeField] protected float _lifeTime;
     protected Vector2 moveDirection;
 
+    /****************************************************************************
+                                   Unity Callbacks
+    ****************************************************************************/
     /// <summary> 초기화 </summary>
     protected virtual void Awake()
     {
@@ -18,9 +24,10 @@ public class BaseProjectile : MonoBehaviour
 
     protected virtual void OnEnable()
     {
-        _speed = StatDataManager.Instance.currentStatData.projectileDatas[0].projectileSpeed;
-        _lifeTime = StatDataManager.Instance.currentStatData.projectileDatas[0].projectileLifeTime;
-        StartCoroutine(LifecycleCoroutine());
+        // 투사체 스탯 가져오고 _lifeTime 동안 유지
+        // _speed = StatDataManager.Instance.currentStatData.projectileDatas[0].projectileSpeed;
+        // _lifeTime = StatDataManager.Instance.currentStatData.projectileDatas[0].projectileLifeTime;
+        // StartCoroutine(LifecycleCoroutine());
     }
 
     protected void Update()
@@ -28,19 +35,9 @@ public class BaseProjectile : MonoBehaviour
         CheckOutOfBounds();
     }
 
-    /// <summary> 방향 설정 </summary>
-    public void SetDirection(Vector2 dir)
-    {
-        moveDirection = dir;
-        Move();
-    }
-
-    /// <summary> 이동 </summary>
-    protected virtual void Move()
-    {
-        rb.velocity = moveDirection.normalized * _speed;
-    }
-
+    /****************************************************************************
+                                    private Methods
+    ****************************************************************************/
     /// <summary> 맵 범위 검사 </summary>
     protected void CheckOutOfBounds()
     {
@@ -57,6 +54,22 @@ public class BaseProjectile : MonoBehaviour
         Debug.Log("투사체 풀에 반환");
         ProjectilePoolManager.Instance.Return(this.GetType().Name, this);
         StopAllCoroutines();
+    }
+
+    /// <summary> 생명 주기 관리 코루틴 </summary>
+    protected IEnumerator LifecycleCoroutine()
+    {
+        yield return new WaitForSeconds(_lifeTime);  // 지정된 시간(_lifetime) 동안 대기
+        DestroyProjectile();  // 시간이 지나면 발사체를 파괴
+    }
+
+    /****************************************************************************
+                                abstract and virtual Methods
+    ****************************************************************************/
+    /// <summary> 이동 </summary>
+    protected virtual void Move()
+    {
+        rb.velocity = moveDirection.normalized * _speed;
     }
 
     /// <summary> 충돌 검사 </summary>
@@ -80,10 +93,13 @@ public class BaseProjectile : MonoBehaviour
         }
     }
 
-    /// <summary> 생명 주기 관리 코루틴 </summary>
-    protected IEnumerator LifecycleCoroutine()
+    /****************************************************************************
+                              public Methods
+    ****************************************************************************/
+    /// <summary> 방향 설정 </summary>
+    public void SetDirection(Vector2 dir)
     {
-        yield return new WaitForSeconds(_lifeTime);  // 지정된 시간(_lifetime) 동안 대기
-        DestroyProjectile();  // 시간이 지나면 발사체를 파괴
+        moveDirection = dir;
+        Move();
     }
 }

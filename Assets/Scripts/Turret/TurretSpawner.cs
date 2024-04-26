@@ -16,6 +16,7 @@ public class TurretSpawner : MonoBehaviour
 
     private float _nextSpawnTime = 0f;
     private bool _isSpawning = false; // 현재 소환 중인지 여부를 나타내는 플래그
+
     /****************************************************************************
                                    Unity Callbacks
     ****************************************************************************/
@@ -28,6 +29,7 @@ public class TurretSpawner : MonoBehaviour
     {
         StartCoroutine(SpawnTurretRoutine());
     }
+
     /****************************************************************************
                                     private Methods
     ****************************************************************************/

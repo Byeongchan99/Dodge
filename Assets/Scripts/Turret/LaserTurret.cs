@@ -11,6 +11,7 @@ public class LaserTurret : BaseTurret
     quaternion rotation;
     float _angle;
 
+    /// <summary> 한 발만 쏘는 레이저 터렛 </summary>
     protected override bool ShouldShoot()
     {
         return !isLastProjectileShot;
@@ -67,12 +68,16 @@ public class LaserTurret : BaseTurret
 
         // 이펙트 투사체 풀에서 위험 범위 이펙트 가져오기
         LaserAttackAreaEffect laserEffect = EffectPoolManager.Instance.Get("LaserAttackAreaEffect") as LaserAttackAreaEffect;
+        Vector3 effectSize = StatDataManager.Instance.currentStatData.projectileDatas[1].projectileSize;
 
         if (laserEffect != null)
         {
             // 위치 설정
             laserEffect.transform.position = firePoint.position;
             laserEffect.transform.rotation = rotation;
+            // 크기 설정
+            laserEffect.transform.localScale = effectSize;
+            // 위험 범위 활성화
             laserEffect.gameObject.SetActive(true);
         }
         else
@@ -84,12 +89,14 @@ public class LaserTurret : BaseTurret
         StartCoroutine(ShootProjectileAfterDelay(1f));
     }
 
+    /// <summary> 지연 후 레이저 생성 </summary>
     private IEnumerator ShootProjectileAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
         ShootProjectile();
     }
-    /// <summary> 발사체 생성 </summary>
+
+    /// <summary> 레이저 생성 </summary>
     private void ShootProjectile()
     {
         if (firePoint == null)
@@ -101,16 +108,19 @@ public class LaserTurret : BaseTurret
         // direction 벡터를 바탕으로 Quaternion 생성
         rotation = Quaternion.LookRotation(Vector3.forward, _direction);
 
-        // 오브젝트 풀에서 총알 가져오기
-        int currentProjectileIndex = StatDataManager.Instance.currentStatData.turretDatas[0].projectileIndex;
+        // 오브젝트 풀에서 레이저 가져오기
+        int currentProjectileIndex = StatDataManager.Instance.currentStatData.turretDatas[1].projectileIndex;
         Laser laser = ProjectilePoolManager.Instance.Get(projectilePrefabs[currentProjectileIndex].name) as Laser;
+        Vector3 laserSize = StatDataManager.Instance.currentStatData.projectileDatas[1].projectileSize;
 
         if (laser != null)
         {
-            // 총알 위치와 회전 설정
+            // 레이저 위치와 회전 설정
             laser.transform.position = firePoint.position;
             laser.transform.rotation = rotation;
-            laser.SetDirection(_direction);
+            // 크기 설정
+            laser.transform.localScale = laserSize;
+            // 레이저 활성화
             laser.gameObject.SetActive(true);
         }
         else
@@ -119,6 +129,7 @@ public class LaserTurret : BaseTurret
         }
     }
 
+    /// <summary> 터렛 비활성화 </summary>
     protected override void DisableTurret()
     {
         rotatePoint.localRotation = Quaternion.identity;

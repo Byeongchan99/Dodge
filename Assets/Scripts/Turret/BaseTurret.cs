@@ -30,6 +30,7 @@ public abstract class BaseTurret : MonoBehaviour
 
     /// <summary> 발사할 투사체 프리팹 리스트 </summary>
     [SerializeField] protected GameObject[] projectilePrefabs;
+
     /****************************************************************************
                                    public Fields
     ****************************************************************************/
@@ -39,6 +40,7 @@ public abstract class BaseTurret : MonoBehaviour
     public int turretIndex;
     /// <summary> 소환 위치 인덱스 </summary>
     public int spawnPointIndex;
+
     /****************************************************************************
                                     Unity Callbacks
     ****************************************************************************/
@@ -72,12 +74,17 @@ public abstract class BaseTurret : MonoBehaviour
     /****************************************************************************
                                  private Methods
     ****************************************************************************/
-    /// <summary> 투사체를 발사 가능한지 확인 </summary>
-    protected virtual bool ShouldShoot()
+    /// <summary> 터렛 비활성화 실행 코루틴 </summary>
+    /// 마지막 발사 후 애니메이션 적용하기 위해 사용
+    IEnumerator StartDisableTurret()
     {
-        return _timeSinceLastShot >= _attackSpeed;
+        yield return new WaitForSeconds(1.5f);
+        DisableTurret();
     }
 
+    /****************************************************************************
+                            abstract and virtual Methods
+    ****************************************************************************/
     /// <summary> 터렛 초기화 </summary>
     protected virtual void InitTurret()
     {
@@ -98,15 +105,17 @@ public abstract class BaseTurret : MonoBehaviour
         targetPosition = PlayerStat.Instance.transform;
     }
 
+    /// <summary> 투사체를 발사 가능한지 확인 </summary>
+    protected virtual bool ShouldShoot()
+    {
+        return _timeSinceLastShot >= _attackSpeed;
+    }
+
+    /// <summary> 터렛의 포를 회전 </summary>
+    protected abstract void RotateTurret();
+
     /// <summary> 투사체 발사 </summary>
     protected abstract void Shoot();
-
-    /// <summary> 터렛 비활성화 실행 코루틴 </summary>
-    IEnumerator StartDisableTurret()
-    {
-        yield return new WaitForSeconds(1.5f);
-        DisableTurret();
-    }
 
     /// <summary> 터렛 비활성화 </summary>
     protected virtual void DisableTurret()
@@ -126,11 +135,7 @@ public abstract class BaseTurret : MonoBehaviour
         StopAllCoroutines();
     }
 
-    /// <summary> 터렛의 포를 회전 </summary>
-    protected abstract void RotateTurret();
-
     /****************************************************************************
                                  public Methods
     ****************************************************************************/
-
 }

@@ -35,7 +35,7 @@ MonoBehaviour:
     spawnCooldownPercent: 0
   turretSpawnerDatas:
   - name: BulletTurret
-    spawnLevel: 1
+    spawnLevel: 0
     spawnChance: 0
     spawnCooldown: 3
     spawnCooldownPercent: 0
@@ -50,7 +50,7 @@ MonoBehaviour:
     spawnCooldown: 3
     spawnCooldownPercent: 0
   - name: MortarTurret
-    spawnLevel: 0
+    spawnLevel: 1
     spawnChance: 0
     spawnCooldown: 4
     spawnCooldownPercent: 0
@@ -74,7 +74,7 @@ MonoBehaviour:
   projectileDatas:
   - projectileName: Bullet
     projectileSpeed: 5
-    projectileLifeTime: 5
+    projectileLifeTime: -1
     projectileSize: {x: 0.3, y: 0.3, z: 0.3}
   - projectileName: Laser
     projectileSpeed: 5
@@ -85,6 +85,6 @@ MonoBehaviour:
     projectileLifeTime: 10
     projectileSize: {x: 0.3, y: 0.3, z: 0.3}
   - projectileName: MortarBomb
-    projectileSpeed: 3
-    projectileLifeTime: 2
-    projectileSize: {x: 0.4, y: 0.4, z: 0.4}
+    projectileSpeed: 2
+    projectileLifeTime: -1
+    projectileSize: {x: 2.5, y: 1.5, z: 2.5}

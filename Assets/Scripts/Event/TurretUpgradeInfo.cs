@@ -18,7 +18,7 @@ public class TurretUpgradeInfo
         CountChange, // 발사체 개수 변경
         SpeedChange, // 발사체 속도 변경
         IsProjectileSplit, // 발사체 분열
-        RemainTimeChange, // 발사체 지속시간 증가(레이저 터렛, 로켓 터렛 적용)
+        LifeTimeChange, // 발사체 지속시간 증가(레이저 터렛, 로켓 터렛 적용)
         SizeChange, // 크기 변경
         Init, // 초기화  
     }

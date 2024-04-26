@@ -62,12 +62,16 @@ public class RocketTurret : BaseTurret
         // 오브젝트 풀에서 총알 가져오기
         int currentProjectileIndex = StatDataManager.Instance.currentStatData.turretDatas[2].projectileIndex;
         Rocket rocket = ProjectilePoolManager.Instance.Get(projectilePrefabs[currentProjectileIndex].name) as Rocket;
+        Vector3 rocketSize = StatDataManager.Instance.currentStatData.projectileDatas[2].projectileSize;
 
         if (rocket != null)
         {
-            // 총알 위치와 회전 설정
+            // 로켓 위치와 회전 설정
             rocket.transform.position = firePoint.position;
             rocket.transform.rotation = rotation;
+            // 크기 설정
+            rocket.transform.localScale = rocketSize;
+            // 목표 설정
             rocket.target = targetPosition;
             rocket.gameObject.SetActive(true);
         }
@@ -77,6 +81,7 @@ public class RocketTurret : BaseTurret
         }
     }
 
+    /// <summary> 로켓 비활성화 </summary>
     protected override void DisableTurret()
     {
         rotatePoint.localRotation = Quaternion.identity;
