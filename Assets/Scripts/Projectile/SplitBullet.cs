@@ -21,7 +21,7 @@ public class SplitBullet : Bullet
         Quaternion currentRotation = transform.rotation;
         Vector2 currentDirection = moveDirection;
 
-        // 오브젝트 풀에서 분열 총알 가져오기
+        // 오브젝트 풀에서 기본 총알 가져오기
         Bullet bullet1 = ProjectilePoolManager.Instance.Get(_bulletPoolName) as Bullet;
         Bullet bullet2 = ProjectilePoolManager.Instance.Get(_bulletPoolName) as Bullet;
         Bullet bullet3 = ProjectilePoolManager.Instance.Get(_bulletPoolName) as Bullet;

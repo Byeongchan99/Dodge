@@ -5,25 +5,41 @@ using static UnityEngine.GraphicsBuffer;
 
 public class MortarBomb : BaseProjectile
 {
-    [SerializeField] private AnimationCurve heightCurve;  // 높이 변화를 위한 애니메이션 커브
-    [SerializeField] private float flightDuration;  // 전체 비행 시간
-    [SerializeField] private float hoverHeight = 15f;    // 최대 높이
+    [SerializeField] protected AnimationCurve heightCurve;  // 높이 변화를 위한 애니메이션 커브
+    [SerializeField] protected float flightDuration;  // 전체 비행 시간
+    public float hoverHeight = 5f;    // 최대 높이
+    public bool isSplit = false;  // 분열 여부
 
     /// <summary> 박격포탄 스탯 가져오기 </summary>
     protected override void OnEnable()
     {
         _speed = StatDataManager.Instance.currentStatData.projectileDatas[3].projectileSpeed;
-        flightDuration = _speed; // 전체 비행 시간 설정
+        setFlightDuration();
+        isSplit = false;
+    }
+
+    public void setSplit(float duration)
+    {
+        flightDuration = duration;
+        isSplit = true;
+    }
+
+    protected void setFlightDuration()
+    {
+        if (!isSplit)
+        {
+            flightDuration = _speed;
+        }        
     }
 
     /// <summary> 박격포탄 움직임 구현 </summary>
     protected override void Move()
     {
-        StartCoroutine(IEFlight());
+        StartCoroutine(Flight());
     }
 
     /// <summary> 박격포탄 움직임 코루틴 </summary>
-    private IEnumerator IEFlight()
+    protected virtual IEnumerator Flight()
     {
         float time = 0.0f;
         Vector3 start = transform.position;

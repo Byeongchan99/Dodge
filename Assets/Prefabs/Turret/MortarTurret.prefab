@@ -215,13 +215,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _projectileCount: 0
+  currentProjectileCount: 0
   _attackSpeed: 0
   _timeSinceLastShot: 0
   _lifeTime: 5
+  currentLifeTime: 0
   firePoint: {fileID: 4374321606287822755}
   targetPosition: {fileID: 0}
   projectilePrefabs:
   - {fileID: 5015218198545573938, guid: e9df44c11f3ca4942896208e0abf683c, type: 3}
+  - {fileID: 5015218198545573938, guid: b5834cf2eca4b664f82e750a02f9a897, type: 3}
   spawner: {fileID: 0}
   turretIndex: 3
   spawnPointIndex: 0

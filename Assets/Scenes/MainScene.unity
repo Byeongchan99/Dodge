@@ -9410,6 +9410,7 @@ MonoBehaviour:
   laserPrefab: {fileID: 7776144373081150357, guid: 82f61e953991c254689da71614772246, type: 3}
   rocketPrefab: {fileID: 4932673681797147661, guid: c25f6bc7c08f26a47b52f9e7d40d7ca1, type: 3}
   mortarBombPrefab: {fileID: 5015218198545573938, guid: e9df44c11f3ca4942896208e0abf683c, type: 3}
+  splitMortarBomb: {fileID: 5015218198545573938, guid: b5834cf2eca4b664f82e750a02f9a897, type: 3}
   projectileContainer: {fileID: 2054376002}
 --- !u!114 &2054376004
 MonoBehaviour:
