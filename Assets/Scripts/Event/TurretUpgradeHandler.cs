@@ -292,7 +292,7 @@ public class TurretUpgradeHandler : MonoBehaviour
     }
 
     /// <summary> 로켓 속도 증가 이벤트 </summary>
-    public void rocketTurretSpeedIncreaseEvent()
+    public void RocketTurretSpeedIncreaseEvent()
     {
         Debug.Log("Speed Increase");
         TurretUpgradeInfo rocketTurretSpeedIncrease = new TurretUpgradeInfo
@@ -306,7 +306,7 @@ public class TurretUpgradeHandler : MonoBehaviour
     }
 
     /// <summary> 로켓 속도 감소 이벤트 </summary>
-    public void rocketTurretSpeedDecreaseEvent()
+    public void RocketTurretSpeedDecreaseEvent()
     {
         Debug.Log("Speed Decrease");
         TurretUpgradeInfo rocketTurretSpeedDecrease = new TurretUpgradeInfo

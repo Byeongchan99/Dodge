@@ -208,7 +208,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1081800020}
         m_TargetAssemblyTypeName: TurretUpgradeHandler, Assembly-CSharp
-        m_MethodName: BulletTurretSplitEvent
+        m_MethodName: MortarTurretSplitEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -348,7 +348,7 @@ GameObject:
   - component: {fileID: 91925510}
   - component: {fileID: 91925509}
   m_Layer: 5
-  m_Name: Button Split Event
+  m_Name: Button LifeTime Increase Event
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -420,7 +420,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1081800020}
         m_TargetAssemblyTypeName: TurretUpgradeHandler, Assembly-CSharp
-        m_MethodName: BulletTurretSplitEvent
+        m_MethodName: LaserTurretLifeTimeIncreaseEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -560,7 +560,7 @@ GameObject:
   - component: {fileID: 122528135}
   - component: {fileID: 122528134}
   m_Layer: 5
-  m_Name: Button Split Bullet Event
+  m_Name: Button LifeTime Decrease Event
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -632,7 +632,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1081800020}
         m_TargetAssemblyTypeName: TurretUpgradeHandler, Assembly-CSharp
-        m_MethodName: BulletTurretRemoveSplitEvent
+        m_MethodName: RocketTurretLifeTimeDecreaseEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -695,7 +695,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &125979231
 RectTransform:
   m_ObjectHideFlags: 0
@@ -712,8 +712,6 @@ RectTransform:
   - {fileID: 1277940253}
   - {fileID: 1787188995}
   - {fileID: 762648642}
-  - {fileID: 2057891192}
-  - {fileID: 249147595}
   - {fileID: 780035600}
   - {fileID: 1417715203}
   - {fileID: 1727882230}
@@ -809,7 +807,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1081800020}
         m_TargetAssemblyTypeName: TurretUpgradeHandler, Assembly-CSharp
-        m_MethodName: BulletTurretSpeedDecreaseEvent
+        m_MethodName: MortarTurretSpeedDecreaseEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -927,7 +925,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uBD84\uC5F4 \uCD1D\uC54C \uC81C\uAC70"
+  m_Text: "\uC9C0\uC18D \uC2DC\uAC04 \uAC10\uC18C"
 --- !u!222 &147410392
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1028,7 +1026,7 @@ GameObject:
   - component: {fileID: 186104912}
   - component: {fileID: 186104911}
   m_Layer: 5
-  m_Name: Button Split Event
+  m_Name: Button LifeTime Increase Event
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1100,7 +1098,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1081800020}
         m_TargetAssemblyTypeName: TurretUpgradeHandler, Assembly-CSharp
-        m_MethodName: BulletTurretSplitEvent
+        m_MethodName: RocketTurretLifeTimeIncreaseEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1233,7 +1231,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1081800020}
         m_TargetAssemblyTypeName: TurretUpgradeHandler, Assembly-CSharp
-        m_MethodName: BulletTurretSizeIncreaseEvent
+        m_MethodName: MortarTurretSizeIncreaseEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1736,139 +1734,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 224593620}
   m_CullTransparentMesh: 1
---- !u!1 &249147594
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 249147595}
-  - component: {fileID: 249147598}
-  - component: {fileID: 249147597}
-  - component: {fileID: 249147596}
-  m_Layer: 5
-  m_Name: Button Speed Decrease Event
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &249147595
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 249147594}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.1900002, y: 1.1900002, z: 1.1900002}
-  m_ConstrainProportionsScale: 1
-  m_Children:
-  - {fileID: 1585005962}
-  m_Father: {fileID: 125979231}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 641, y: 250}
-  m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &249147596
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 249147594}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 0
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 249147597}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1081800020}
-        m_TargetAssemblyTypeName: TurretUpgradeHandler, Assembly-CSharp
-        m_MethodName: BulletTurretSpeedDecreaseEvent
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &249147597
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 249147594}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &249147598
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 249147594}
-  m_CullTransparentMesh: 1
 --- !u!1 &250272188
 GameObject:
   m_ObjectHideFlags: 0
@@ -2367,7 +2232,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1081800020}
         m_TargetAssemblyTypeName: TurretUpgradeHandler, Assembly-CSharp
-        m_MethodName: BulletTurretCountDecreaseEvent
+        m_MethodName: MortarTurretCountDecreaseEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2757,7 +2622,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &505751291
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3741,7 +3606,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1081800020}
         m_TargetAssemblyTypeName: TurretUpgradeHandler, Assembly-CSharp
-        m_MethodName: BulletTurretSpeedDecreaseEvent
+        m_MethodName: RocketTurretSpeedDecreaseEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3921,85 +3786,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 657845713}
-  m_CullTransparentMesh: 1
---- !u!1 &658221441
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 658221442}
-  - component: {fileID: 658221444}
-  - component: {fileID: 658221443}
-  m_Layer: 5
-  m_Name: Text (Legacy)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &658221442
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 658221441}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2057891192}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &658221443
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 658221441}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: "\uC18D\uB3C4 \uC99D\uAC00"
---- !u!222 &658221444
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 658221441}
   m_CullTransparentMesh: 1
 --- !u!1 &675927008
 GameObject:
@@ -4337,7 +4123,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1081800020}
         m_TargetAssemblyTypeName: TurretUpgradeHandler, Assembly-CSharp
-        m_MethodName: BulletTurretSizeIncreaseEvent
+        m_MethodName: RocketTurretSizeIncreaseEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4549,7 +4335,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1081800020}
         m_TargetAssemblyTypeName: TurretUpgradeHandler, Assembly-CSharp
-        m_MethodName: BulletTurretCountDecreaseEvent
+        m_MethodName: LaserTurretCountDecreaseEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4712,7 +4498,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 441, y: 200}
+  m_AnchoredPosition: {x: 441, y: 250}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &780035601
@@ -4761,7 +4547,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1081800020}
         m_TargetAssemblyTypeName: TurretUpgradeHandler, Assembly-CSharp
-        m_MethodName: BulletTurretSizeIncreaseEvent
+        m_MethodName: LaserTurretSizeIncreaseEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5016,7 +4802,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1081800020}
         m_TargetAssemblyTypeName: TurretUpgradeHandler, Assembly-CSharp
-        m_MethodName: BulletTurretSizeDecreaseEvent
+        m_MethodName: RocketTurretSizeDecreaseEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5704,6 +5490,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1059079015}
+  - component: {fileID: 1059079016}
   m_Layer: 5
   m_Name: Test Buttons
   m_TagString: Untagged
@@ -5734,6 +5521,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1059079016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059079014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1ea7ab9e9c8d164ea398c5e40deb7bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttons:
+  - {fileID: 1802769150}
+  - {fileID: 788257960}
+  - {fileID: 250272190}
+  - {fileID: 554734491}
 --- !u!1 &1068647814
 GameObject:
   m_ObjectHideFlags: 0
@@ -5804,7 +5608,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uBD84\uC5F4 \uCD1D\uC54C \uD65C\uC131\uD654"
+  m_Text: "\uC9C0\uC18D \uC2DC\uAC04 \uC99D\uAC00"
 --- !u!222 &1068647817
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5968,7 +5772,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1081800020}
         m_TargetAssemblyTypeName: TurretUpgradeHandler, Assembly-CSharp
-        m_MethodName: InitBulletTurretEvent
+        m_MethodName: InitMortarTurretEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6086,7 +5890,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uB808\uC774\uC800 \uD130\uB81B"
+  m_Text: "\uBC15\uACA9\uD3EC \uD130\uB81B"
 --- !u!222 &1110945985
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6377,7 +6181,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uBD84\uC5F4 \uCD1D\uC54C \uC81C\uAC70"
+  m_Text: "\uC9C0\uC18D \uC2DC\uAC04 \uAC10\uC18C"
 --- !u!222 &1234795649
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6432,7 +6236,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1240657696
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6553,7 +6357,7 @@ GameObject:
   - component: {fileID: 1277940255}
   - component: {fileID: 1277940254}
   m_Layer: 5
-  m_Name: Button Split Remove Event
+  m_Name: Button LifeTime Decrease Event
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6625,7 +6429,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1081800020}
         m_TargetAssemblyTypeName: TurretUpgradeHandler, Assembly-CSharp
-        m_MethodName: BulletTurretRemoveSplitEvent
+        m_MethodName: LaserTurretLifeTimeDecreaseEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6929,7 +6733,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 641, y: 200}
+  m_AnchoredPosition: {x: 641, y: 250}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1417715204
@@ -6978,7 +6782,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1081800020}
         m_TargetAssemblyTypeName: TurretUpgradeHandler, Assembly-CSharp
-        m_MethodName: BulletTurretSizeDecreaseEvent
+        m_MethodName: LaserTurretSizeDecreaseEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7323,7 +7127,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1081800020}
         m_TargetAssemblyTypeName: TurretUpgradeHandler, Assembly-CSharp
-        m_MethodName: InitBulletTurretEvent
+        m_MethodName: InitRocketTurretEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7441,7 +7245,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uBD84\uC5F4 \uCD1D\uC54C \uD65C\uC131\uD654"
+  m_Text: "\uC9C0\uC18D \uC2DC\uAC04 \uC99D\uAC00"
 --- !u!222 &1570561784
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7449,85 +7253,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1570561781}
-  m_CullTransparentMesh: 1
---- !u!1 &1585005961
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1585005962}
-  - component: {fileID: 1585005964}
-  - component: {fileID: 1585005963}
-  m_Layer: 5
-  m_Name: Text (Legacy)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1585005962
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1585005961}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 249147595}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1585005963
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1585005961}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: "\uC18D\uB3C4 \uAC10\uC18C"
---- !u!222 &1585005964
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1585005961}
   m_CullTransparentMesh: 1
 --- !u!1 &1598794842
 GameObject:
@@ -8177,7 +7902,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1081800020}
         m_TargetAssemblyTypeName: TurretUpgradeHandler, Assembly-CSharp
-        m_MethodName: BulletTurretCountIncreaseEvent
+        m_MethodName: MortarTurretCountIncreaseEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8261,7 +7986,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 541, y: 150}
+  m_AnchoredPosition: {x: 541, y: 200}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1727882231
@@ -8310,7 +8035,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1081800020}
         m_TargetAssemblyTypeName: TurretUpgradeHandler, Assembly-CSharp
-        m_MethodName: InitBulletTurretEvent
+        m_MethodName: InitLaserTurretEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8576,7 +8301,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1081800020}
         m_TargetAssemblyTypeName: TurretUpgradeHandler, Assembly-CSharp
-        m_MethodName: BulletTurretCountIncreaseEvent
+        m_MethodName: LaserTurretCountIncreaseEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8761,7 +8486,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1823575494
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9234,7 +8959,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1081800020}
         m_TargetAssemblyTypeName: TurretUpgradeHandler, Assembly-CSharp
-        m_MethodName: BulletTurretCountIncreaseEvent
+        m_MethodName: RocketTurretCountIncreaseEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9398,7 +9123,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1081800020}
         m_TargetAssemblyTypeName: TurretUpgradeHandler, Assembly-CSharp
-        m_MethodName: BulletTurretRemoveSplitEvent
+        m_MethodName: MortarTurretRemoveSplitEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9698,139 +9423,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9e69bb261bad6d4c89514094580148e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &2057891191
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2057891192}
-  - component: {fileID: 2057891195}
-  - component: {fileID: 2057891194}
-  - component: {fileID: 2057891193}
-  m_Layer: 5
-  m_Name: Button Speed Increase Event
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &2057891192
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2057891191}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.1900002, y: 1.1900002, z: 1.1900002}
-  m_ConstrainProportionsScale: 1
-  m_Children:
-  - {fileID: 658221442}
-  m_Father: {fileID: 125979231}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 441, y: 250}
-  m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2057891193
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2057891191}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 0
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 2057891194}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1081800020}
-        m_TargetAssemblyTypeName: TurretUpgradeHandler, Assembly-CSharp
-        m_MethodName: BulletTurretSpeedIncreaseEvent
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &2057891194
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2057891191}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &2057891195
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2057891191}
-  m_CullTransparentMesh: 1
 --- !u!1 &2066505945
 GameObject:
   m_ObjectHideFlags: 0
@@ -9916,7 +9508,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1081800020}
         m_TargetAssemblyTypeName: TurretUpgradeHandler, Assembly-CSharp
-        m_MethodName: BulletTurretSpeedIncreaseEvent
+        m_MethodName: RocketTurretSpeedIncreaseEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10128,7 +9720,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1081800020}
         m_TargetAssemblyTypeName: TurretUpgradeHandler, Assembly-CSharp
-        m_MethodName: BulletTurretCountDecreaseEvent
+        m_MethodName: RocketTurretCountDecreaseEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10292,7 +9884,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1081800020}
         m_TargetAssemblyTypeName: TurretUpgradeHandler, Assembly-CSharp
-        m_MethodName: BulletTurretSpeedIncreaseEvent
+        m_MethodName: MortarTurretSpeedIncreaseEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10504,7 +10096,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1081800020}
         m_TargetAssemblyTypeName: TurretUpgradeHandler, Assembly-CSharp
-        m_MethodName: BulletTurretSizeDecreaseEvent
+        m_MethodName: MortarTurretSizeDecreaseEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
