@@ -43,12 +43,16 @@ public class EventProcessor : MonoBehaviour
                     case TurretUpgradeInfo.EnhancementType.CountChange:
                         // 개수 변경
                         Debug.Log("총알 개수 변경 " + enhancement.value);
-                        StatDataManager.Instance.currentStatData.turretDatas[0].projectileCount += (int)enhancement.value;
+                        // 범위 설정
+                        int newProjectileCount = StatDataManager.Instance.currentStatData.turretDatas[0].projectileCount + (int)enhancement.value;
+                        StatDataManager.Instance.currentStatData.turretDatas[0].projectileCount = Mathf.Max(1, newProjectileCount);
                         break;
                     case TurretUpgradeInfo.EnhancementType.SpeedChange:
                         // 속도 변경
                         Debug.Log("총알 속도 변경 " + enhancement.value);
-                        StatDataManager.Instance.currentStatData.projectileDatas[0].projectileSpeed += enhancement.value;
+                        // 범위 설정
+                        float newProjectileSpeed = StatDataManager.Instance.currentStatData.projectileDatas[0].projectileSpeed + enhancement.value;
+                        StatDataManager.Instance.currentStatData.projectileDatas[0].projectileSpeed = Mathf.Max(0.5f, newProjectileSpeed);
                         break;
                     case TurretUpgradeInfo.EnhancementType.SizeChange:
                         // 크기 변경
@@ -76,12 +80,16 @@ public class EventProcessor : MonoBehaviour
                     case TurretUpgradeInfo.EnhancementType.LifeTimeChange:
                         // 지속 시간
                         Debug.Log("레이저 지속 시간 변경 " + enhancement.value);
-                        StatDataManager.Instance.currentStatData.projectileDatas[1].projectileLifeTime += enhancement.value;
+                        // 범위 설정
+                        float newLifeTime = StatDataManager.Instance.currentStatData.projectileDatas[1].projectileLifeTime + enhancement.value;
+                        StatDataManager.Instance.currentStatData.projectileDatas[1].projectileLifeTime = Mathf.Max(0.5f, newLifeTime);
                         break;
                     case TurretUpgradeInfo.EnhancementType.CountChange:
                         // 개수 변경
                         Debug.Log("레이저 개수 변경 " + enhancement.value);
-                        StatDataManager.Instance.currentStatData.turretDatas[1].projectileCount += (int)enhancement.value;
+                        // 범위 설정
+                        int newProjectileCount = StatDataManager.Instance.currentStatData.turretDatas[1].projectileCount + (int)enhancement.value;
+                        StatDataManager.Instance.currentStatData.turretDatas[1].projectileCount = Mathf.Max(1, newProjectileCount);
                         break;
                     case TurretUpgradeInfo.EnhancementType.SizeChange:
                         // 속도 변경
@@ -110,17 +118,23 @@ public class EventProcessor : MonoBehaviour
                     case TurretUpgradeInfo.EnhancementType.LifeTimeChange:
                         // 지속 시간 증가
                         Debug.Log("로켓 지속 시간 변경 " + enhancement.value);
-                        StatDataManager.Instance.currentStatData.projectileDatas[2].projectileLifeTime += enhancement.value;
+                        // 범위 설정
+                        float newLifeTime = StatDataManager.Instance.currentStatData.projectileDatas[2].projectileLifeTime + enhancement.value;
+                        StatDataManager.Instance.currentStatData.projectileDatas[2].projectileLifeTime = Mathf.Max(0.5f, newLifeTime);
                         break;
                     case TurretUpgradeInfo.EnhancementType.CountChange:
                         // 개수 증가
                         Debug.Log("로켓 개수 변경 " + enhancement.value);
-                        StatDataManager.Instance.currentStatData.turretDatas[2].projectileCount += (int)enhancement.value;
+                        // 범위 설정
+                        int newProjectileCount = StatDataManager.Instance.currentStatData.turretDatas[2].projectileCount + (int)enhancement.value;
+                        StatDataManager.Instance.currentStatData.turretDatas[2].projectileCount = Mathf.Max(1, newProjectileCount);
                         break;
                     case TurretUpgradeInfo.EnhancementType.SpeedChange:
                         // 속도 증가
                         Debug.Log("로켓 속도 변경 " + enhancement.value);
-                        StatDataManager.Instance.currentStatData.projectileDatas[2].projectileSpeed += enhancement.value;
+                        // 범위 설정
+                        float newProjectileSpeed = StatDataManager.Instance.currentStatData.projectileDatas[2].projectileSpeed + enhancement.value;
+                        StatDataManager.Instance.currentStatData.projectileDatas[2].projectileSpeed = Mathf.Max(0.5f, newProjectileSpeed);
                         break;
                     case TurretUpgradeInfo.EnhancementType.SizeChange:
                         // 크기 변경
@@ -154,12 +168,16 @@ public class EventProcessor : MonoBehaviour
                     case TurretUpgradeInfo.EnhancementType.CountChange:
                         // 개수 증가
                         Debug.Log("박격포탄 개수 변경 " + enhancement.value);
-                        StatDataManager.Instance.currentStatData.turretDatas[3].projectileCount += (int)enhancement.value;
+                        // 범위 설정
+                        int newProjectileCount = StatDataManager.Instance.currentStatData.turretDatas[3].projectileCount + (int)enhancement.value;
+                        StatDataManager.Instance.currentStatData.turretDatas[3].projectileCount = Mathf.Max(1, newProjectileCount);
                         break;
                     case TurretUpgradeInfo.EnhancementType.SpeedChange:
                         // 속도 증가
                         Debug.Log("박격포탄 속도 변경 " + enhancement.value);
-                        StatDataManager.Instance.currentStatData.projectileDatas[3].projectileSpeed += enhancement.value;
+                        // 범위 설정
+                        float newProjectileSpeed = StatDataManager.Instance.currentStatData.projectileDatas[3].projectileSpeed + enhancement.value;
+                        StatDataManager.Instance.currentStatData.projectileDatas[3].projectileSpeed = Mathf.Max(0.5f, newProjectileSpeed);
                         break;
                     case TurretUpgradeInfo.EnhancementType.SizeChange:
                         // 크기 변경

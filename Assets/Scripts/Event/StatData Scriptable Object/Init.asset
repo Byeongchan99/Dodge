@@ -40,7 +40,7 @@ MonoBehaviour:
     spawnCooldown: 3
     spawnCooldownPercent: 0
   - name: LaserTurret
-    spawnLevel: 0
+    spawnLevel: 1
     spawnChance: 0
     spawnCooldown: 4
     spawnCooldownPercent: 0
@@ -50,7 +50,7 @@ MonoBehaviour:
     spawnCooldown: 3
     spawnCooldownPercent: 0
   - name: MortarTurret
-    spawnLevel: 1
+    spawnLevel: 0
     spawnChance: 0
     spawnCooldown: 4
     spawnCooldownPercent: 0
