@@ -62,7 +62,7 @@ MonoBehaviour:
   - turretName: LaserTurret
     projectileCount: 1
     projectileIndex: 0
-    turretLifeTime: 3
+    turretLifeTime: 5
   - turretName: RocketTurret
     projectileCount: 2
     projectileIndex: 0

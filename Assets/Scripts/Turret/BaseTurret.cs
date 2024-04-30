@@ -63,8 +63,8 @@ public abstract class BaseTurret : MonoBehaviour
         if (ShouldShoot())
         {
             Shoot();
-            _projectileCount--;  // 발사할 투사체 수 감소
-            if (_projectileCount == 0)
+            currentProjectileCount--;  // 발사할 투사체 수 감소
+            if (currentProjectileCount == 0)
             {
                 isLastProjectileShot = true;
             }
@@ -96,8 +96,8 @@ public abstract class BaseTurret : MonoBehaviour
         _projectileCount = StatDataManager.Instance.currentStatData.turretDatas[turretIndex].projectileCount;
         currentProjectileCount = _projectileCount;
         // 공격 속도
-        _attackSpeed = _lifeTime / _projectileCount;
-        _attackSpeed = Mathf.Max(_attackSpeed, 0.5f);  // 공격 속도 보장
+        _attackSpeed = _lifeTime / (_projectileCount + 1);
+        //_attackSpeed = Mathf.Max(_attackSpeed, 0.5f);  // 공격 속도 보장
 
         // 변수 초기화
         _timeSinceLastShot = 0f;
@@ -108,7 +108,7 @@ public abstract class BaseTurret : MonoBehaviour
     /// <summary> 투사체를 발사 가능한지 확인 </summary>
     protected virtual bool ShouldShoot()
     {
-        return _timeSinceLastShot >= _attackSpeed;
+        return _timeSinceLastShot >= _attackSpeed && currentProjectileCount > 0;
     }
 
     /// <summary> 터렛의 포를 회전 </summary>

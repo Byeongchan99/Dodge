@@ -11,12 +11,6 @@ public class LaserTurret : BaseTurret
     quaternion rotation;
     float _angle;
 
-    /// <summary> 한 발만 쏘는 레이저 터렛 </summary>
-    protected override bool ShouldShoot()
-    {
-        return !isLastProjectileShot;
-    }
-
     /// <summary> 발사 </summary>
     protected override void Shoot()
     {
@@ -50,18 +44,18 @@ public class LaserTurret : BaseTurret
             // Z축 회전
             Vector3 rotation = new Vector3(0, 0, _angle);
             // 회전 애니메이션이 완료된 후 ShootProjectile 메서드 호출
-            rotatePoint.DOLocalRotate(rotation, 0.5f).SetEase(Ease.OutSine).OnComplete(activeAttackArea);
+            rotatePoint.DOLocalRotate(rotation, 0.5f).SetEase(Ease.OutSine).OnComplete(() => StartCoroutine(shootLaser()));
             _timeSinceLastShot = 0f;
         }
     }
 
-    /// <summary> 공격 범위 활성화 </summary>
-    private void activeAttackArea()
+    /// <summary> 공격 범위 활성화 후 레이저 생성 </summary>
+    private IEnumerator shootLaser()
     {
         if (firePoint == null)
         {
             Debug.LogError("Projectile prefab or fire point is not set.");
-            return;
+            yield break;
         }
 
         rotation = Quaternion.LookRotation(Vector3.forward, _direction);
@@ -85,28 +79,8 @@ public class LaserTurret : BaseTurret
             Debug.LogWarning("Failed to get effect from pool.");
         }
 
-        // 1초 지연 후 ShootProjectile 호출
-        StartCoroutine(ShootProjectileAfterDelay(1f));
-    }
-
-    /// <summary> 지연 후 레이저 생성 </summary>
-    private IEnumerator ShootProjectileAfterDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        ShootProjectile();
-    }
-
-    /// <summary> 레이저 생성 </summary>
-    private void ShootProjectile()
-    {
-        if (firePoint == null)
-        {
-            Debug.LogError("Projectile prefab or fire point is not set.");
-            return;
-        }
-
-        // direction 벡터를 바탕으로 Quaternion 생성
-        rotation = Quaternion.LookRotation(Vector3.forward, _direction);
+        // 1초 지연 후 레이저 생성
+        yield return new WaitForSeconds(1f);
 
         // 오브젝트 풀에서 레이저 가져오기
         int currentProjectileIndex = StatDataManager.Instance.currentStatData.turretDatas[1].projectileIndex;
