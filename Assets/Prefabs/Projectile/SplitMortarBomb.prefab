@@ -154,7 +154,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   flightDuration: 2
   hoverHeight: 5
-  _mortarBombPoolName: MortarBomb
+  _mortarBombPoolName: SplitedMortarBomb
 --- !u!50 &4880732452445382398
 Rigidbody2D:
   serializedVersion: 4

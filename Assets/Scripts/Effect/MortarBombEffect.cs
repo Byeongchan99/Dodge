@@ -5,25 +5,27 @@ using UnityEngine;
 public class MortarBombEffect : BaseEffect
 {
     PolygonCollider2D effectCollider;
-    float delayTime;
+    protected float _delayTime;
 
     private void Awake()
     {
         effectCollider = GetComponent<PolygonCollider2D>();
         effectCollider.enabled = false;
-        delayTime = StatDataManager.Instance.currentStatData.projectileDatas[3].projectileSpeed;
     }
 
     /// <summary> 초기화 /// </summary>
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
+        _delayTime = StatDataManager.Instance.currentStatData.projectileDatas[3].projectileSpeed;
+
         StartCoroutine(ActiveMortarBombEffect());
     }
 
     // MortarBomb이 터질 때 콜라이더 활성화 그 후 이펙트 비활성화
-    IEnumerator ActiveMortarBombEffect()
+    protected IEnumerator ActiveMortarBombEffect()
     {
-        yield return new WaitForSeconds(delayTime);  // 포탄이 터질 때까지 대기
+        Debug.Log("delayTime: " + _delayTime);
+        yield return new WaitForSeconds(_delayTime);  // 포탄이 터질 때까지 대기
         effectCollider.enabled = true;
         yield return new WaitForSeconds(0.1f); // 콜라이더 활성화 후 0.1초 대기
         effectCollider.enabled = false;

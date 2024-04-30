@@ -40,27 +40,26 @@ public class SplitMortarBomb : MortarBomb
         Debug.Log("분열 시작");
         for (int i = 0; i < 4; i++)
         {
-            MortarBomb mortarBomb = ProjectilePoolManager.Instance.Get(_mortarBombPoolName) as MortarBomb;
-            if (mortarBomb != null)
+            SplitedMortarBomb splitedMortarBomb = ProjectilePoolManager.Instance.Get(_mortarBombPoolName) as SplitedMortarBomb;
+            if (splitedMortarBomb != null)
             {
-                mortarBomb.transform.position = transform.position; // 현재 위치 설정
-                mortarBomb.SetDirection(directions[i]); // 분열 방향 설정
-                mortarBomb.transform.localScale = mortarBombSize; // 크기 설정
-                mortarBomb.hoverHeight = hoverHeight / 4; // 최대 높이 설정
-                mortarBomb.setSplit(flightDuration / 2); // 비행 시간 설정
-                mortarBomb.gameObject.SetActive(true); // 활성화
+                splitedMortarBomb.transform.position = transform.position; // 현재 위치 설정
+                splitedMortarBomb.SetDirection(directions[i]); // 분열 방향 설정
+                splitedMortarBomb.transform.localScale = mortarBombSize; // 크기 설정
+                splitedMortarBomb.setMortarBomb(flightDuration / 2, hoverHeight / 4); // 박격포탄 스탯 설정
+                splitedMortarBomb.gameObject.SetActive(true); // 활성화
             }
             else
             {
                 Debug.LogWarning("Failed to get mortar bomb from pool.");
             }
 
-            MortarBombEffect bombEffect = EffectPoolManager.Instance.Get("MortarBombEffect") as MortarBombEffect;
-            if (bombEffect != null)
+            SplitedMortarBombEffect splitedBombEffect = EffectPoolManager.Instance.Get("SplitedMortarBombEffect") as SplitedMortarBombEffect;
+            if (splitedBombEffect != null)
             {
-                bombEffect.transform.position = transform.position + directions[i]; // 위치 설정 (적당한 거리 조절)
-                bombEffect.transform.localScale = effectSize; // 크기 설정
-                bombEffect.gameObject.SetActive(true); // 활성화
+                splitedBombEffect.transform.position = transform.position + directions[i]; // 위치 설정 (적당한 거리 조절)
+                splitedBombEffect.transform.localScale = effectSize; // 크기 설정
+                splitedBombEffect.gameObject.SetActive(true); // 활성화
             }
             else
             {

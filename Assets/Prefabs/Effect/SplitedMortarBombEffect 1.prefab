@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1263578437556190053}
   - component: {fileID: 7945016861998309629}
-  - component: {fileID: -5999034985145612514}
+  - component: {fileID: -1473297718659173905}
   - component: {fileID: 701291764532958565}
   m_Layer: 0
-  m_Name: MortarBombEffect
+  m_Name: SplitedMortarBombEffect 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -86,7 +86,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-5999034985145612514
+--- !u!114 &-1473297718659173905
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,10 +95,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 8011254534305329955}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 926bb126f29fd0c4fba4d0e7f9ef1404, type: 3}
+  m_Script: {fileID: 11500000, guid: 869dde02006e11b4c93dfaec3ab3e679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayTime: 0
 --- !u!60 &701291764532958565
 PolygonCollider2D:
   m_ObjectHideFlags: 0

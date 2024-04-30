@@ -2931,6 +2931,7 @@ MonoBehaviour:
   EMPPrefab: {fileID: 8316688933625705081, guid: b09032ced1071e34f924881ac95b28d7, type: 3}
   laserAttackAreaEffectPrefab: {fileID: 7776144373081150357, guid: c2e5832b402552d4aae3a06c13e92712, type: 3}
   mortarBombEffectPrefab: {fileID: 8011254534305329955, guid: 843201f7b65d40c45b43bb3e6cf600dd, type: 3}
+  splitedMortarBombEffectPrefab: {fileID: 8011254534305329955, guid: 5d3bf35dd7919b24ea1ac231a81b7261, type: 3}
   effectContainer: {fileID: 542002890}
 --- !u!114 &542002889
 MonoBehaviour:
@@ -9411,6 +9412,7 @@ MonoBehaviour:
   rocketPrefab: {fileID: 4932673681797147661, guid: c25f6bc7c08f26a47b52f9e7d40d7ca1, type: 3}
   mortarBombPrefab: {fileID: 5015218198545573938, guid: e9df44c11f3ca4942896208e0abf683c, type: 3}
   splitMortarBomb: {fileID: 5015218198545573938, guid: b5834cf2eca4b664f82e750a02f9a897, type: 3}
+  splitedMortarBomb: {fileID: 5015218198545573938, guid: bd5cf198bba05bb4ca8e80e3e83a2fd7, type: 3}
   projectileContainer: {fileID: 2054376002}
 --- !u!114 &2054376004
 MonoBehaviour:

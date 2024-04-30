@@ -10,6 +10,7 @@ public class ProjectilePool : MonoBehaviour
     public GameObject rocketPrefab;
     public GameObject mortarBombPrefab;
     public GameObject splitMortarBomb;
+    public GameObject splitedMortarBomb;
     // 다른 발사체 프리팹도 추가
 
     public Transform projectileContainer;
@@ -22,6 +23,7 @@ public class ProjectilePool : MonoBehaviour
         ProjectilePoolManager.Instance.CreatePool(rocketPrefab.GetComponent<Rocket>(), 20, projectileContainer);
         ProjectilePoolManager.Instance.CreatePool(mortarBombPrefab.GetComponent<MortarBomb>(), 20, projectileContainer);
         ProjectilePoolManager.Instance.CreatePool(splitMortarBomb.GetComponent<SplitMortarBomb>(), 20, projectileContainer);
+        ProjectilePoolManager.Instance.CreatePool(splitedMortarBomb.GetComponent<SplitedMortarBomb>(), 20, projectileContainer);
         // 다른 발사체 풀도 생성
     }
 }
