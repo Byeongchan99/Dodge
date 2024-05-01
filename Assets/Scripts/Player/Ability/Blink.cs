@@ -58,22 +58,11 @@ public class Blink : MonoBehaviour, IPlayerAbility
         // 특수 능력 지속 시간동안 분신 조종
         while (elapsedTime < _blinkDuration)
         {
-            if (Input.GetKey(KeyCode.UpArrow))
-            {
-                nextPosition += Vector3.up * _blinkMoveSpeed * Time.unscaledDeltaTime;
-            }
-            if (Input.GetKey(KeyCode.DownArrow))
-            {
-                nextPosition += Vector3.down * _blinkMoveSpeed * Time.unscaledDeltaTime;
-            }
-            if (Input.GetKey(KeyCode.LeftArrow))
-            {
-                nextPosition += Vector3.left * _blinkMoveSpeed * Time.unscaledDeltaTime;
-            }
-            if (Input.GetKey(KeyCode.RightArrow))
-            {
-                nextPosition += Vector3.right * _blinkMoveSpeed * Time.unscaledDeltaTime;
-            }
+            // 입력에 따른 위치 계산
+            float horizontal = Input.GetAxisRaw("Horizontal") * _blinkMoveSpeed * Time.unscaledDeltaTime;
+            float vertical = Input.GetAxisRaw("Vertical") * _blinkMoveSpeed * Time.unscaledDeltaTime;
+            Vector3 moveDirection = new Vector3(horizontal, vertical, 0);
+            nextPosition += moveDirection;
 
             // 분신 위치 업데이트
             playerClone.transform.position = nextPosition;
