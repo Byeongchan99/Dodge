@@ -24,7 +24,6 @@ public class MortarBombEffect : BaseEffect
     // MortarBomb이 터질 때 콜라이더 활성화 그 후 이펙트 비활성화
     protected IEnumerator ActiveMortarBombEffect()
     {
-        Debug.Log("delayTime: " + _delayTime);
         yield return new WaitForSeconds(_delayTime);  // 포탄이 터질 때까지 대기
         effectCollider.enabled = true;
         yield return new WaitForSeconds(0.1f); // 콜라이더 활성화 후 0.1초 대기

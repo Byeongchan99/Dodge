@@ -48,9 +48,7 @@ public class StatDataManager : MonoBehaviour
         // 현재 스탯 데이터 설정
         Debug.Log("스탯 매니저 초기화");
         originalStatData = GetDataForEvent("Init");
-        currentStatData = new CopyedStatData(originalStatData);
-        SetSpawnChances(currentStatData.turretSpawnerDatas);
-        SetSpawnChances(currentStatData.itemDatas);
+        InitStatData();
     }
 
     /// <summary> 리스트를 딕셔너리로 변환 </summary>
@@ -75,6 +73,14 @@ public class StatDataManager : MonoBehaviour
             Debug.LogWarning("잘못된 이벤트 이름: " + eventName);
             return null;
         }
+    }
+
+    /// <summary> currentStatData 초기화 </summary>
+    public void InitStatData()
+    {
+        currentStatData = new CopyedStatData(originalStatData);
+        SetSpawnChances(currentStatData.turretSpawnerDatas);
+        SetSpawnChances(currentStatData.itemDatas);
     }
 
     /// <summary> currentData의 spawnLevel을 토대로 터렛의 spawnChance들을 설정 </summary>

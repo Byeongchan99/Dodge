@@ -72,6 +72,7 @@ public class TurretSpawner : MonoBehaviour
 
         Transform spawnPosition = spawnPositions[spawnPositionIndex];
 
+        //Debug.Log("터렛 소환: " + turretToSpawn.name + " at " + spawnPositionIndex + "번째 위치");
         // 오브젝트 풀에서 터렛 가져오기
         BaseTurret turret = TurretPoolManager.Instance.Get(turretToSpawn.name);
 

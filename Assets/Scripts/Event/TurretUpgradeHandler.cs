@@ -143,7 +143,7 @@ public class TurretUpgradeHandler : MonoBehaviour
         {
             turretType = TurretUpgradeInfo.TurretType.Laser,
             enhancementType = TurretUpgradeInfo.EnhancementType.LifeTimeChange,
-            value = 1.0f,
+            value = 0.5f,
         };
 
         EventManager.TriggerEnhancementEvent("TurretUpgrade", laserTurretLifeTimeIncrease);
@@ -157,7 +157,7 @@ public class TurretUpgradeHandler : MonoBehaviour
         {
             turretType = TurretUpgradeInfo.TurretType.Laser,
             enhancementType = TurretUpgradeInfo.EnhancementType.LifeTimeChange,
-            value = -1.0f,
+            value = -0.5f,
         };
 
         EventManager.TriggerEnhancementEvent("TurretUpgrade", laserTurretLifeTimeDecrease);
