@@ -51,7 +51,7 @@ public class BaseProjectile : MonoBehaviour
     /// <summary> 발사체 파괴 </summary>
     protected void DestroyProjectile()
     {
-        Debug.Log("투사체 풀에 반환");
+        //Debug.Log("투사체 풀에 반환");
         ProjectilePoolManager.Instance.Return(this.GetType().Name, this);
         StopAllCoroutines();
     }

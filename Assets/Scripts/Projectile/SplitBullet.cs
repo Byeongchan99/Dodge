@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SplitBullet : Bullet
 {
-    [SerializeField] float _splitTime = 1f;
+    [SerializeField] float _splitTime;
     [SerializeField] string _bulletPoolName;
 
     protected override void OnEnable()
@@ -15,6 +15,8 @@ public class SplitBullet : Bullet
 
     IEnumerator Split()
     {
+        // 분열 타이밍이 속도에 반비례하도록 설정
+        _splitTime = 5 / _speed;
         yield return new WaitForSeconds(_splitTime);
 
         // 현재 총알의 방향을 기준으로 분열

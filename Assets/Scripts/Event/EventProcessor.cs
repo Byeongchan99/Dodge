@@ -53,7 +53,7 @@ public class EventProcessor : MonoBehaviour
                         Debug.Log("총알 속도 변경 " + enhancement.value);
                         // 범위 설정
                         float newProjectileSpeed = StatDataManager.Instance.currentStatData.projectileDatas[0].projectileSpeed + enhancement.value;
-                        StatDataManager.Instance.currentStatData.projectileDatas[0].projectileSpeed = Mathf.Max(0.5f, newProjectileSpeed);
+                        StatDataManager.Instance.currentStatData.projectileDatas[0].projectileSpeed = Mathf.Clamp(newProjectileSpeed, 0.5f, 10f);
                         break;
                     case TurretUpgradeInfo.EnhancementType.SizeChange:
                         // 크기 변경
@@ -63,6 +63,15 @@ public class EventProcessor : MonoBehaviour
                             StatDataManager.Instance.currentStatData.projectileDatas[0].projectileSize.y *= enhancement.value,
                             StatDataManager.Instance.currentStatData.projectileDatas[0].projectileSize.z *= enhancement.value
                             );
+                        // 적용할 최소 및 최대 크기 제한값 설정
+                        Vector3 minSize = new Vector3(0.1f, 0.1f, 0.1f);
+                        Vector3 maxSize = new Vector3(1f, 1f, 1f);
+
+                        // Vector3의 각 요소에 대해 Clamp 적용
+                        newSize.x = Mathf.Clamp(newSize.x, minSize.x, maxSize.x);
+                        newSize.y = Mathf.Clamp(newSize.y, minSize.y, maxSize.y);
+                        newSize.z = Mathf.Clamp(newSize.z, minSize.z, maxSize.z);
+
                         StatDataManager.Instance.currentStatData.projectileDatas[0].projectileSize = newSize;
                         break;  
                     case TurretUpgradeInfo.EnhancementType.Init:
@@ -83,10 +92,15 @@ public class EventProcessor : MonoBehaviour
                         Debug.Log("레이저 지속 시간 변경 " + enhancement.value);
                         // 범위 설정
                         float newProjectileLifeTime = StatDataManager.Instance.currentStatData.projectileDatas[1].projectileLifeTime + enhancement.value;
-                        StatDataManager.Instance.currentStatData.projectileDatas[1].projectileLifeTime = Mathf.Max(0.5f, newProjectileLifeTime);
-                        // 터렛의 유지 시간 또한 같이 변경
-                        float newTurretLifeTime = StatDataManager.Instance.currentStatData.turretDatas[1].turretLifeTime + (enhancement.value * StatDataManager.Instance.currentStatData.turretDatas[1].projectileCount);
-                        StatDataManager.Instance.currentStatData.turretDatas[1].turretLifeTime = Mathf.Max(3f, newTurretLifeTime);
+                        // projectileLifeTime을 최소 0.5초, 최대 5초 사이로 제한
+                        float clampedProjectileLifeTime = Mathf.Clamp(newProjectileLifeTime, 0.5f, 5f);
+                        StatDataManager.Instance.currentStatData.projectileDatas[1].projectileLifeTime = clampedProjectileLifeTime;
+                        // newProjectileLifeTime 5보다 컸을 경우에만 터렛의 유지 시간 조정
+                        if (newProjectileLifeTime > 5f)
+                        {
+                            float adjustedTurretLifeTime = StatDataManager.Instance.currentStatData.turretDatas[1].turretLifeTime + (enhancement.value * StatDataManager.Instance.currentStatData.turretDatas[1].projectileCount);
+                            StatDataManager.Instance.currentStatData.turretDatas[1].turretLifeTime = Mathf.Max(3f, adjustedTurretLifeTime);
+                        }
                         break;
                     case TurretUpgradeInfo.EnhancementType.CountChange:
                         // 개수 변경
@@ -95,7 +109,7 @@ public class EventProcessor : MonoBehaviour
                         int newProjectileCount = StatDataManager.Instance.currentStatData.turretDatas[1].projectileCount + (int)enhancement.value;
                         StatDataManager.Instance.currentStatData.turretDatas[1].projectileCount = Mathf.Max(1, newProjectileCount);
                         // 터렛의 유지 시간 또한 같이 변경
-                        newTurretLifeTime = (StatDataManager.Instance.currentStatData.turretDatas[1].turretLifeTime * StatDataManager.Instance.currentStatData.turretDatas[1].projectileCount);
+                        float newTurretLifeTime = (StatDataManager.Instance.currentStatData.turretDatas[1].turretLifeTime * StatDataManager.Instance.currentStatData.turretDatas[1].projectileCount);
                         StatDataManager.Instance.currentStatData.turretDatas[1].turretLifeTime = Mathf.Max(3f, newTurretLifeTime);
                         break;
                     case TurretUpgradeInfo.EnhancementType.SizeChange:
@@ -103,9 +117,19 @@ public class EventProcessor : MonoBehaviour
                         Debug.Log("레이저 크기 변경 " + enhancement.value);
                         Vector3 newSize = new Vector3(
                             StatDataManager.Instance.currentStatData.projectileDatas[1].projectileSize.x *= enhancement.value,
-                            StatDataManager.Instance.currentStatData.projectileDatas[1].projectileSize.y *= enhancement.value,
+                            StatDataManager.Instance.currentStatData.projectileDatas[1].projectileSize.y = 25f, // 고정값
                             StatDataManager.Instance.currentStatData.projectileDatas[1].projectileSize.z *= enhancement.value
                             );
+
+                        // 적용할 최소 및 최대 크기 제한값 설정
+                        Vector3 minSize = new Vector3(0.2f, 25f, 0.2f);
+                        Vector3 maxSize = new Vector3(2.5f, 25f, 2.5f);
+
+                        // Vector3의 각 요소에 대해 Clamp 적용
+                        newSize.x = Mathf.Clamp(newSize.x, minSize.x, maxSize.x);
+                        newSize.y = 25f; // 고정값
+                        newSize.z = Mathf.Clamp(newSize.z, minSize.z, maxSize.z);
+
                         StatDataManager.Instance.currentStatData.projectileDatas[1].projectileSize = newSize;
                         break;
                     case TurretUpgradeInfo.EnhancementType.Init:
@@ -127,7 +151,7 @@ public class EventProcessor : MonoBehaviour
                         Debug.Log("로켓 지속 시간 변경 " + enhancement.value);
                         // 범위 설정
                         float newProjectileLifeTime = StatDataManager.Instance.currentStatData.projectileDatas[2].projectileLifeTime + enhancement.value;
-                        StatDataManager.Instance.currentStatData.projectileDatas[2].projectileLifeTime = Mathf.Max(0.5f, newProjectileLifeTime);
+                        StatDataManager.Instance.currentStatData.projectileDatas[2].projectileLifeTime = Mathf.Clamp(newProjectileLifeTime, 5f, 20f);
                         break;
                     case TurretUpgradeInfo.EnhancementType.CountChange:
                         // 개수 증가
@@ -141,7 +165,7 @@ public class EventProcessor : MonoBehaviour
                         Debug.Log("로켓 속도 변경 " + enhancement.value);
                         // 범위 설정
                         float newProjectileSpeed = StatDataManager.Instance.currentStatData.projectileDatas[2].projectileSpeed + enhancement.value;
-                        StatDataManager.Instance.currentStatData.projectileDatas[2].projectileSpeed = Mathf.Max(0.5f, newProjectileSpeed);
+                        StatDataManager.Instance.currentStatData.projectileDatas[2].projectileSpeed = Mathf.Clamp(newProjectileSpeed, 0.5f, 10f);
                         break;
                     case TurretUpgradeInfo.EnhancementType.SizeChange:
                         // 크기 변경
@@ -151,6 +175,15 @@ public class EventProcessor : MonoBehaviour
                             StatDataManager.Instance.currentStatData.projectileDatas[2].projectileSize.y *= enhancement.value,
                             StatDataManager.Instance.currentStatData.projectileDatas[2].projectileSize.z *= enhancement.value
                             );
+                        // 적용할 최소 및 최대 크기 제한값 설정
+                        Vector3 minSize = new Vector3(0.1f, 0.1f, 0.1f);
+                        Vector3 maxSize = new Vector3(1f, 1f, 1f);
+
+                        // Vector3의 각 요소에 대해 Clamp 적용
+                        newSize.x = Mathf.Clamp(newSize.x, minSize.x, maxSize.x);
+                        newSize.y = Mathf.Clamp(newSize.y, minSize.y, maxSize.y);
+                        newSize.z = Mathf.Clamp(newSize.z, minSize.z, maxSize.z);
+
                         StatDataManager.Instance.currentStatData.projectileDatas[2].projectileSize = newSize;
                         break;
                     case TurretUpgradeInfo.EnhancementType.Init:
@@ -184,7 +217,7 @@ public class EventProcessor : MonoBehaviour
                         Debug.Log("박격포탄 속도 변경 " + enhancement.value);
                         // 범위 설정
                         float newProjectileSpeed = StatDataManager.Instance.currentStatData.projectileDatas[3].projectileSpeed + enhancement.value;
-                        StatDataManager.Instance.currentStatData.projectileDatas[3].projectileSpeed = Mathf.Max(0.5f, newProjectileSpeed);
+                        StatDataManager.Instance.currentStatData.projectileDatas[3].projectileSpeed = Mathf.Clamp(newProjectileSpeed, 1f, 5f);
                         break;
                     case TurretUpgradeInfo.EnhancementType.SizeChange:
                         // 크기 변경
@@ -194,6 +227,15 @@ public class EventProcessor : MonoBehaviour
                             StatDataManager.Instance.currentStatData.projectileDatas[3].projectileSize.y *= enhancement.value,
                             StatDataManager.Instance.currentStatData.projectileDatas[3].projectileSize.z *= enhancement.value
                             );
+                        // 적용할 최소 및 최대 크기 제한값 설정
+                        Vector3 minSize = new Vector3(1.666667f, 1f, 1.666667f);
+                        Vector3 maxSize = new Vector3(3.75f, 2.25f, 3.75f);
+
+                        // Vector3의 각 요소에 대해 Clamp 적용
+                        newSize.x = Mathf.Clamp(newSize.x, minSize.x, maxSize.x);
+                        newSize.y = Mathf.Clamp(newSize.y, minSize.y, maxSize.y);
+                        newSize.z = Mathf.Clamp(newSize.z, minSize.z, maxSize.z);
+
                         StatDataManager.Instance.currentStatData.projectileDatas[3].projectileSize = newSize;
                         break;
                     case TurretUpgradeInfo.EnhancementType.Init:

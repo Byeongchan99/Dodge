@@ -71,7 +71,7 @@ public class TurretUpgradeHandler : MonoBehaviour
         {
             turretType = TurretUpgradeInfo.TurretType.Bullet,
             enhancementType = TurretUpgradeInfo.EnhancementType.SpeedChange,
-            value = 3.0f,
+            value = 0.5f,
         };
 
         EventManager.TriggerEnhancementEvent("TurretUpgrade", bulletTurretSpeedIncrease);
@@ -85,7 +85,7 @@ public class TurretUpgradeHandler : MonoBehaviour
         {
             turretType = TurretUpgradeInfo.TurretType.Bullet,
             enhancementType = TurretUpgradeInfo.EnhancementType.SpeedChange,
-            value = -3.0f,
+            value = -0.5f,
         };
 
         EventManager.TriggerEnhancementEvent("TurretUpgrade", bulletTurretSpeedDecrease);
@@ -99,7 +99,7 @@ public class TurretUpgradeHandler : MonoBehaviour
         {
             turretType = TurretUpgradeInfo.TurretType.Bullet,
             enhancementType = TurretUpgradeInfo.EnhancementType.SizeChange,
-            value = 1.5f,
+            value = 1.1f,
         };
 
         EventManager.TriggerEnhancementEvent("TurretUpgrade", bulletTurretSizeIncrease);
@@ -113,7 +113,7 @@ public class TurretUpgradeHandler : MonoBehaviour
         {
             turretType = TurretUpgradeInfo.TurretType.Bullet,
             enhancementType = TurretUpgradeInfo.EnhancementType.SizeChange,
-            value = 2.0f / 3.0f,
+            value = 10f / 11f,
         };
 
         EventManager.TriggerEnhancementEvent("TurretUpgrade", bulletTurretSizeDecrease);
@@ -199,7 +199,7 @@ public class TurretUpgradeHandler : MonoBehaviour
         {
             turretType = TurretUpgradeInfo.TurretType.Laser,
             enhancementType = TurretUpgradeInfo.EnhancementType.SizeChange,
-            value = 1.5f,
+            value = 1.1f,
         };
 
         EventManager.TriggerEnhancementEvent("TurretUpgrade", laserTurretSizeIncrease);
@@ -213,7 +213,7 @@ public class TurretUpgradeHandler : MonoBehaviour
         {
             turretType = TurretUpgradeInfo.TurretType.Laser,
             enhancementType = TurretUpgradeInfo.EnhancementType.SizeChange,
-            value = 2.0f / 3.0f,
+            value = 10f / 11f,
         };
 
         EventManager.TriggerEnhancementEvent("TurretUpgrade", laserTurretSizeDecrease);
@@ -243,7 +243,7 @@ public class TurretUpgradeHandler : MonoBehaviour
         {
             turretType = TurretUpgradeInfo.TurretType.Rocket,
             enhancementType = TurretUpgradeInfo.EnhancementType.LifeTimeChange,
-            value = 1.0f,
+            value = 0.5f,
         };
 
         EventManager.TriggerEnhancementEvent("TurretUpgrade", rocketTurretLifeTimeIncrease);
@@ -257,7 +257,7 @@ public class TurretUpgradeHandler : MonoBehaviour
         {
             turretType = TurretUpgradeInfo.TurretType.Rocket,
             enhancementType = TurretUpgradeInfo.EnhancementType.LifeTimeChange,
-            value = -1.0f,
+            value = -0.5f,
         };
 
         EventManager.TriggerEnhancementEvent("TurretUpgrade", rocketTurretLifeTimeDecrease);
@@ -299,7 +299,7 @@ public class TurretUpgradeHandler : MonoBehaviour
         {
             turretType = TurretUpgradeInfo.TurretType.Rocket,
             enhancementType = TurretUpgradeInfo.EnhancementType.SpeedChange,
-            value = 1.0f,
+            value = 0.5f,
         };
 
         EventManager.TriggerEnhancementEvent("TurretUpgrade", rocketTurretSpeedIncrease);
@@ -313,7 +313,7 @@ public class TurretUpgradeHandler : MonoBehaviour
         {
             turretType = TurretUpgradeInfo.TurretType.Rocket,
             enhancementType = TurretUpgradeInfo.EnhancementType.SpeedChange,
-            value = -1.0f,
+            value = -0.5f,
         };
 
         EventManager.TriggerEnhancementEvent("TurretUpgrade", rocketTurretSpeedDecrease);
@@ -327,7 +327,7 @@ public class TurretUpgradeHandler : MonoBehaviour
         {
             turretType = TurretUpgradeInfo.TurretType.Rocket,
             enhancementType = TurretUpgradeInfo.EnhancementType.SizeChange,
-            value = 1.5f,
+            value = 1.1f,
         };
 
         EventManager.TriggerEnhancementEvent("TurretUpgrade", rocketTurretSizeIncrease);
@@ -341,7 +341,7 @@ public class TurretUpgradeHandler : MonoBehaviour
         {
             turretType = TurretUpgradeInfo.TurretType.Rocket,
             enhancementType = TurretUpgradeInfo.EnhancementType.SizeChange,
-            value = 2.0f / 3.0f,
+            value = 10f / 11f,
         };
 
         EventManager.TriggerEnhancementEvent("TurretUpgrade", rocketTurretSizeDecrease);
@@ -427,7 +427,7 @@ public class TurretUpgradeHandler : MonoBehaviour
         {
             turretType = TurretUpgradeInfo.TurretType.Mortar,
             enhancementType = TurretUpgradeInfo.EnhancementType.SpeedChange,
-            value = -0.5f,
+            value = -0.1f,
         };
 
         EventManager.TriggerEnhancementEvent("TurretUpgrade", mortarTurretSpeedIncrease);
@@ -441,7 +441,7 @@ public class TurretUpgradeHandler : MonoBehaviour
         {
             turretType = TurretUpgradeInfo.TurretType.Mortar,
             enhancementType = TurretUpgradeInfo.EnhancementType.SpeedChange,
-            value = 0.5f,
+            value = 0.1f,
         };
 
         EventManager.TriggerEnhancementEvent("TurretUpgrade", mortarTurretSpeedDecrease);
@@ -455,7 +455,7 @@ public class TurretUpgradeHandler : MonoBehaviour
         {
             turretType = TurretUpgradeInfo.TurretType.Mortar,
             enhancementType = TurretUpgradeInfo.EnhancementType.SizeChange,
-            value = 1.5f,
+            value = 1.1f,
         };
 
         EventManager.TriggerEnhancementEvent("TurretUpgrade", mortarTurretSizeIncrease);
@@ -469,7 +469,7 @@ public class TurretUpgradeHandler : MonoBehaviour
         {
             turretType = TurretUpgradeInfo.TurretType.Mortar,
             enhancementType = TurretUpgradeInfo.EnhancementType.SizeChange,
-            value = 2.0f / 3.0f,
+            value = 10f / 11f,
         };
 
         EventManager.TriggerEnhancementEvent("TurretUpgrade", mortarTurretSizeDecrease);
