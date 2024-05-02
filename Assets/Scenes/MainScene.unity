@@ -5377,6 +5377,14 @@ MonoBehaviour:
   statDataList:
   - eventName: Init
     statData: {fileID: 11400000, guid: 18e6d8498bca9494aaf89c9ce472787c, type: 2}
+  - eventName: Bullet
+    statData: {fileID: 11400000, guid: 3ee70a1c469ef8d418d4a0c46a017056, type: 2}
+  - eventName: Laser
+    statData: {fileID: 11400000, guid: bac880e9c08e26f4e94d44e310a9a1da, type: 2}
+  - eventName: Rocket
+    statData: {fileID: 11400000, guid: 10f5f1802533f284f826c5f1b74e0824, type: 2}
+  - eventName: Mortar
+    statData: {fileID: 11400000, guid: d4e7559e1073858499d0abdcb2a603b3, type: 2}
   originalStatData: {fileID: 0}
 --- !u!1 &1038371769
 GameObject:

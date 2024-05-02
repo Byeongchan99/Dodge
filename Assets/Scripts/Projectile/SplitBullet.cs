@@ -16,7 +16,7 @@ public class SplitBullet : Bullet
     IEnumerator Split()
     {
         // 분열 타이밍이 속도에 반비례하도록 설정
-        _splitTime = 5 / _speed;
+        _splitTime = 4 / _speed;
         yield return new WaitForSeconds(_splitTime);
 
         // 현재 총알의 방향을 기준으로 분열
