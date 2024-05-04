@@ -1290,7 +1290,7 @@ GameObject:
   - component: {fileID: 203533820}
   - component: {fileID: 203533819}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: Game Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1418,7 +1418,7 @@ GameObject:
   m_Component:
   - component: {fileID: 217314730}
   m_Layer: 0
-  m_Name: ObjectPool
+  m_Name: Object Pool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2481,7 +2481,7 @@ GameObject:
   - component: {fileID: 482760521}
   - component: {fileID: 482760520}
   m_Layer: 0
-  m_Name: TurretPool
+  m_Name: Turret Pool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2910,7 +2910,7 @@ GameObject:
   - component: {fileID: 542002889}
   - component: {fileID: 542002888}
   m_Layer: 0
-  m_Name: EffectPool
+  m_Name: Effect Pool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5341,7 +5341,7 @@ GameObject:
   - component: {fileID: 951026693}
   - component: {fileID: 951026694}
   m_Layer: 0
-  m_Name: StatDataManager
+  m_Name: StatData Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5386,6 +5386,50 @@ MonoBehaviour:
   - eventName: Mortar
     statData: {fileID: 11400000, guid: d4e7559e1073858499d0abdcb2a603b3, type: 2}
   originalStatData: {fileID: 0}
+--- !u!1 &1020278219
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1020278221}
+  - component: {fileID: 1020278220}
+  m_Layer: 0
+  m_Name: Stage Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1020278220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1020278219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3a342cea35b8a241bc0915d2a2071c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1020278221
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1020278219}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.8766079, y: -0.42112762, z: -0.09017316}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1038371769
 GameObject:
   m_ObjectHideFlags: 0
@@ -7618,7 +7662,7 @@ GameObject:
   - component: {fileID: 1615706930}
   - component: {fileID: 1615706929}
   m_Layer: 0
-  m_Name: ItemPool
+  m_Name: Item Pool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9381,7 +9425,7 @@ GameObject:
   - component: {fileID: 2054376004}
   - component: {fileID: 2054376003}
   m_Layer: 0
-  m_Name: ProjectilePool
+  m_Name: Projectile Pool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10250,4 +10294,5 @@ SceneRoots:
   - {fileID: 203533820}
   - {fileID: 1081800017}
   - {fileID: 951026693}
+  - {fileID: 1020278221}
   - {fileID: 1609651026}
