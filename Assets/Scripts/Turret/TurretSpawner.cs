@@ -27,7 +27,7 @@ public class TurretSpawner : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(SpawnTurretRoutine());
+        //StartCoroutine(SpawnTurretRoutine());
     }
 
     /****************************************************************************
@@ -174,5 +174,10 @@ public class TurretSpawner : MonoBehaviour
         {
             isAvailableSpawnPosition[positionIndex] = true;
         }
+    }
+
+    public void StartSpawn()
+    {
+        StartCoroutine(SpawnTurretRoutine());
     }
 }

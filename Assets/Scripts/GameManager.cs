@@ -19,6 +19,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] Text timeText; // 임시 시간 표시
     [SerializeField] Text playerHealth; // 임시 플레이어 체력 표시
 
+    private IEnumerator timerCoroutine;
+    private float timer = 0f;
+    private bool isPaused = false;
+
     void Awake()
     {
         if (Instance == null)
@@ -45,7 +49,6 @@ public class GameManager : MonoBehaviour
     // 임시 시간 표시
     private void Update()
     {
-        timeText.text = "Time: " + Time.unscaledTime.ToString(); // 임시라서 시간 정확하지 않음 -> 나중에 게임 시작 시 타이머 시작하도록 변경
         playerHealth.text = "Player HP: " + PlayerStat.Instance.currentHealth.ToString();
     }
 
@@ -82,5 +85,35 @@ public class GameManager : MonoBehaviour
 
         slowMotionRoutine = null;
         _remainingSlowDuration = 0f;  // 남은 시간 초기화
+    }
+
+    public void StartTimer()
+    {
+        timerCoroutine = RunTimer();
+        StartCoroutine(timerCoroutine);
+    }
+
+    private IEnumerator RunTimer()
+    {
+        while (true)
+        {
+            if (!isPaused)
+            {
+                timer += Time.unscaledDeltaTime;
+                timeText.text = "Time: " + timer.ToString();
+
+            }
+            yield return null;  // 다음 프레임까지 기다림
+        }
+    }
+
+    public void PauseTimer()
+    {
+        isPaused = true;
+    }
+
+    public void ResumeTimer()
+    {
+        isPaused = false;
     }
 }

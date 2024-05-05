@@ -14,6 +14,7 @@ public class ItemSpawner : MonoBehaviour
 
     private float _nextSpawnTime = 0f;
     private bool _isSpawning = false; // 현재 소환 중인지 여부를 나타내는 플래그
+
     /****************************************************************************
                                    Unity Callbacks
     ****************************************************************************/
@@ -24,7 +25,7 @@ public class ItemSpawner : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(SpawnItemRoutine());
+        //StartCoroutine(SpawnItemRoutine());
     }
 
     /****************************************************************************
@@ -109,5 +110,13 @@ public class ItemSpawner : MonoBehaviour
     {
         int index = itemPrefabs.IndexOf(item);
         return StatDataManager.Instance.currentStatData.itemDatas[index].spawnCooldown;
+    }
+
+    /****************************************************************************
+                                  public Methods
+    ****************************************************************************/
+    public void StartSpawn()
+    {
+        StartCoroutine(SpawnItemRoutine());
     }
 }
