@@ -5582,7 +5582,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1059079014}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1ea7ab9e9c8d164ea398c5e40deb7bd, type: 3}
   m_Name: 
@@ -7205,13 +7205,13 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1081800020}
         m_TargetAssemblyTypeName: TurretUpgradeHandler, Assembly-CSharp
-        m_MethodName: BulletTurretSplitEvent
-        m_Mode: 1
+        m_MethodName: StartRandomUpgrades
+        m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 0
+          m_FloatArgument: 10
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -8722,7 +8722,43 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1802769151}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 951026694}
+        m_TargetAssemblyTypeName: StatDataManager, Assembly-CSharp
+        m_MethodName: SetOriginalStatData
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Bullet
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1081800020}
+        m_TargetAssemblyTypeName: TurretUpgradeHandler, Assembly-CSharp
+        m_MethodName: SetStageEvents
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1081800020}
+        m_TargetAssemblyTypeName: TurretUpgradeHandler, Assembly-CSharp
+        m_MethodName: StartRandomUpgrades
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 10
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1802769151
 MonoBehaviour:
   m_ObjectHideFlags: 0

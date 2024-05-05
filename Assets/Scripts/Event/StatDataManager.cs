@@ -47,7 +47,13 @@ public class StatDataManager : MonoBehaviour
 
         // 현재 스탯 데이터 설정
         Debug.Log("스탯 매니저 초기화");
-        originalStatData = GetDataForEvent("Init");
+        SetOriginalStatData("Init");
+    }
+
+    /// <summary> 오리지널 스탯 데이터 설정 </summary>
+    public void SetOriginalStatData(string eventName)
+    {
+        originalStatData = GetDataForEvent(eventName);
         InitStatData();
     }
 
@@ -62,7 +68,7 @@ public class StatDataManager : MonoBehaviour
     }
 
     /// <summary> 이벤트 이름에 따라 적절한 스크립터블 오브젝트 데이터 반환 </summary>
-    public StatData GetDataForEvent(string eventName)
+    private StatData GetDataForEvent(string eventName)
     {
         if (statDataByEvent.ContainsKey(eventName))
         {
