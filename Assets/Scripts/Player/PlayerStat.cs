@@ -72,8 +72,7 @@ public class PlayerStat : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-
-        currentHealth = _maxHealth;
+    
         currentMoveSpeed = _initialMoveSpeed;
         currentPosition = transform;
         isInvincibility = false;
@@ -92,20 +91,24 @@ public class PlayerStat : MonoBehaviour
             spriteRenderer.sprite = data.characterSprite;
             animator.runtimeAnimatorController = data.animatorController;  // 애니메이터 컨트롤러 설정
 
-            // 플레이어 어빌리티 설정
+            // 플레이어 타입에 따른 체력과 어빌리티 설정
             if (typeIndex == 0)
             {
                 playerAbility = blink;
+                _maxHealth = 2;
             } 
             else if (typeIndex == 1)
             {
                 playerAbility = emp;
+                _maxHealth = 3;
             }
             else if (typeIndex == 2)
             {
                 playerAbility = defenseProtocol;
+                _maxHealth = 4;
             }
         }
+        currentHealth = _maxHealth;
     }
 
     /// <summary> 데미지 처리 </summary>

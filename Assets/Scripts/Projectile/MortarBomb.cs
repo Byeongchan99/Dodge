@@ -9,6 +9,8 @@ public class MortarBomb : BaseProjectile
     [SerializeField] protected float flightDuration;  // 전체 비행 시간
     [SerializeField] protected float hoverHeight = 5f;    // 최대 높이
 
+    protected MortarBombEffect bombEffect;
+
     /// <summary> 박격포탄 스탯 가져오기 </summary>
     protected override void OnEnable()
     {
@@ -20,6 +22,11 @@ public class MortarBomb : BaseProjectile
     protected override void Move()
     {
         StartCoroutine(Flight());
+    }
+
+    public void SetBombEffect(MortarBombEffect effect)
+    {
+        bombEffect = effect;
     }
 
     /// <summary> 박격포탄 움직임 코루틴 </summary>
@@ -42,5 +49,16 @@ public class MortarBomb : BaseProjectile
             yield return null;
         }
         DestroyProjectile();
+    }
+
+    protected override void OnTriggerEnter2D(Collider2D collision)
+    {
+        // EMP와 충돌했을 때
+        if (collision.gameObject.CompareTag("EMP"))
+        {
+            Debug.Log("EMP와 충돌");
+            DestroyProjectile();
+            bombEffect.DestroyByEMP();
+        }
     }
 }

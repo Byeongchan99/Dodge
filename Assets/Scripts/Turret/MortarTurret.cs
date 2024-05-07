@@ -42,6 +42,8 @@ public class MortarTurret : BaseTurret
             // 총알 위치와 회전 설정
             bomb.transform.position = firePoint.position;
             bomb.SetDirection(targetPosition.position - firePoint.position);
+            // 이펙트 참조 설정
+            bomb.SetBombEffect(bombEffect);
             bomb.gameObject.SetActive(true);
 
             // 위험 범위 이펙트 위치 설정

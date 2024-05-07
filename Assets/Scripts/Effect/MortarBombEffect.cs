@@ -41,4 +41,10 @@ public class MortarBombEffect : BaseEffect
             PlayerStat.Instance.TakeDamage();
         }
     }
+
+    public void DestroyByEMP()
+    {
+        Debug.Log("¹Ú°ÝÆ÷ÅºÀÌ EMP¿¡ ÀÇÇØ ¼Ò¸ê");
+        DestroyEffect();
+    }
 }

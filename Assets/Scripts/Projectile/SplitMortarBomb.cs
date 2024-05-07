@@ -41,20 +41,22 @@ public class SplitMortarBomb : MortarBomb
         for (int i = 0; i < 4; i++)
         {
             SplitedMortarBomb splitedMortarBomb = ProjectilePoolManager.Instance.Get(_mortarBombPoolName) as SplitedMortarBomb;
+            SplitedMortarBombEffect splitedBombEffect = EffectPoolManager.Instance.Get("SplitedMortarBombEffect") as SplitedMortarBombEffect;
+
             if (splitedMortarBomb != null)
             {
                 splitedMortarBomb.transform.position = transform.position; // 현재 위치 설정
                 splitedMortarBomb.SetDirection(directions[i]); // 분열 방향 설정
                 splitedMortarBomb.transform.localScale = mortarBombSize; // 크기 설정
                 splitedMortarBomb.setMortarBomb(flightDuration / 2, hoverHeight / 4); // 박격포탄 스탯 설정
+                splitedMortarBomb.SetBombEffect(splitedBombEffect); // 이펙트 참조 설정
                 splitedMortarBomb.gameObject.SetActive(true); // 활성화
             }
             else
             {
                 Debug.LogWarning("Failed to get mortar bomb from pool.");
             }
-
-            SplitedMortarBombEffect splitedBombEffect = EffectPoolManager.Instance.Get("SplitedMortarBombEffect") as SplitedMortarBombEffect;
+           
             if (splitedBombEffect != null)
             {
                 splitedBombEffect.transform.position = transform.position + directions[i]; // 위치 설정 (적당한 거리 조절)
