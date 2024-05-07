@@ -8,6 +8,7 @@ public class PlayerStat : MonoBehaviour
 
     public Transform currentPosition; // 플레이어 현재 위치
     public SpriteRenderer spriteRenderer;
+    public Animator animator;
 
     [SerializeField] private int _maxHealth; // 플레이어 최대 체력
     public int currentHealth; // 플레이어 현재 체력
@@ -24,6 +25,26 @@ public class PlayerStat : MonoBehaviour
     [SerializeField] private DefenseProtocol defenseProtocol; // 플레이어 방어 프로토콜 능력
 
     private List<ItemEffect> activeItems = new List<ItemEffect>(); // 현재 적용 중인 아이템 효과 리스트
+
+    // 캐릭터 타입을 위한 enum
+    public enum CharacterType
+    {
+        Light,
+        Medium,
+        Heavy
+    }
+
+    // 캐릭터 데이터
+    [System.Serializable]
+    public class CharacterData
+    {
+        public Sprite characterSprite;
+        public RuntimeAnimatorController animatorController;  // 애니메이터 컨트롤러 추가
+        public int characterTypeIndex; // 캐릭터 타입 인덱스
+    }
+
+    // 캐릭터 데이터 리스트
+    public List<CharacterData> characterList;
 
     void Awake()
     {
@@ -49,19 +70,41 @@ public class PlayerStat : MonoBehaviour
     void Init()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
 
         currentHealth = _maxHealth;
         currentMoveSpeed = _initialMoveSpeed;
         currentPosition = transform;
         isInvincibility = false;
-        // 특수 능력 선택 로직 나중에 추가하기
-        this.SetAbility(blink);
+
+        // 기본 캐릭터 설정
+        SetCharacter(1);
     }
 
-    /// <summary> 어빌리티 설정 </summary>
-    public void SetAbility(IPlayerAbility newAbility)
+    // 캐릭터 변경 메서드
+    public void SetCharacter(int typeIndex)
     {
-        this.playerAbility = newAbility;
+        Debug.Log("캐릭터 변경: " + typeIndex);
+        if (characterList[typeIndex] != null) 
+        {
+            CharacterData data = characterList[typeIndex];
+            spriteRenderer.sprite = data.characterSprite;
+            animator.runtimeAnimatorController = data.animatorController;  // 애니메이터 컨트롤러 설정
+
+            // 플레이어 어빌리티 설정
+            if (typeIndex == 0)
+            {
+                playerAbility = blink;
+            } 
+            else if (typeIndex == 1)
+            {
+                playerAbility = emp;
+            }
+            else if (typeIndex == 2)
+            {
+                playerAbility = defenseProtocol;
+            }
+        }
     }
 
     /// <summary> 데미지 처리 </summary>

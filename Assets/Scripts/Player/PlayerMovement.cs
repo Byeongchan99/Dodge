@@ -6,11 +6,14 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D rb;
+    SpriteRenderer spriteRenderer;
+
     private Vector2 InputVec;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -20,6 +23,12 @@ public class PlayerMovement : MonoBehaviour
         InputVec = Vector2.zero;
         InputVec.x = Input.GetAxisRaw("Horizontal");
         InputVec.y = Input.GetAxisRaw("Vertical");
+
+        // 플레이어 방향 전환
+        if (InputVec.x != 0)
+        {
+            spriteRenderer.flipX = InputVec.x < 0;
+        }
     }
 
     void FixedUpdate()
