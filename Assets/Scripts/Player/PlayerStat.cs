@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using UnityEngine;
 
 public class PlayerStat : MonoBehaviour
@@ -115,6 +116,7 @@ public class PlayerStat : MonoBehaviour
             // 피격 처리
             currentHealth--;
             Debug.Log("피격! 현재 체력: " + currentHealth);
+            StartCoroutine(FlickerEffect(1.5f)); // 1.5초 동안 깜빡임 효과
             StartInvincibility(1.5f); // 1초 동안 무적
         }
         // 나중에 피격 로직 수정
@@ -140,6 +142,26 @@ public class PlayerStat : MonoBehaviour
         invincibilityRoutine = StartCoroutine(ApplyInvincibility(duration));
     }
 
+    private IEnumerator FlickerEffect(float duration)
+    {
+        float timeLeft = duration;  // 남은 시간을 추적하는 변수
+        while (timeLeft > 0)
+        {
+            // 깜빡이는 이펙트: 반투명
+            spriteRenderer.color = new Color(1, 1, 1, 0.5f);
+            yield return new WaitForSeconds(0.1f);  // 0.1초 대기
+
+            // 깜빡이는 이펙트: 원래 상태
+            spriteRenderer.color = new Color(1, 1, 1, 1);
+            yield return new WaitForSeconds(0.1f);  // 0.1초 대기
+
+            timeLeft -= 0.2f;  // 지연 시간(0.1 + 0.1)만큼 시간 감소
+        }
+        // 루프 종료 후 색상 원상 복구
+        spriteRenderer.color = new Color(1, 1, 1, 1);
+    }
+
+
     /// <summary> 무적 시간 적용 타이머 </summary>
     private IEnumerator ApplyInvincibility(float duration)
     {
@@ -149,12 +171,8 @@ public class PlayerStat : MonoBehaviour
         _remainingInvincibilityDuration = duration;  // 무적 지속 시간 업데이트
         while (_remainingInvincibilityDuration > 0)
         {
-            // 깜박이는 이펙트
-            spriteRenderer.color = new Color(1, 1, 1, 0.5f);  // 반투명
             yield return new WaitForSeconds(0.1f);
-            spriteRenderer.color = new Color(1, 1, 1, 1);  // 원래 상태
-            yield return new WaitForSeconds(0.1f);
-            _remainingInvincibilityDuration -= 0.2f;  // 실제 시간 감소로 업데이트
+            _remainingInvincibilityDuration -= 0.1f;  // 실제 시간 감소로 업데이트
         }
 
         Debug.Log("무적 상태 종료");
