@@ -19,11 +19,16 @@ public class TurretUpgradeHandler : MonoBehaviour
         // 스테이지별 이벤트를 초기화
         stageEvents = new Dictionary<int, List<ITurretUpgradeEvent>>()
         {
-            {0, new List<ITurretUpgradeEvent>{ new BulletTurretSplit(), new BulletTurretCountIncrease(), new BulletTurretSpeedIncrease(), new BulletTurretSizeIncrease() }},
+            {0, new List<ITurretUpgradeEvent>{ new BulletTurretSplit(), new BulletTurretRemoveSplit(), new BulletTurretCountIncrease(), new BulletTurretSpeedIncrease(), new BulletTurretSizeIncrease() }},
             {1, new List<ITurretUpgradeEvent>{ new LaserTurretLifeTimeIncrease(), new LaserTurretCountIncrease(), new LaserTurretSizeIncrease() }},
             {2, new List<ITurretUpgradeEvent>{ new RocketTurretLifeTimeIncrease(), new RocketTurretCountIncrease(), new RocketTurretSpeedIncrease(), new RocketTurretSizeIncrease() }},
-            {3, new List<ITurretUpgradeEvent>{ new MortarTurretSplit(), new MortarTurretCountIncrease(), new MortarTurretSpeedIncrease(), new MortarTurretSizeIncrease() }},
-            {4, new List<ITurretUpgradeEvent>{ }},
+            {3, new List<ITurretUpgradeEvent>{ new MortarTurretSplit(), new MortarTurretRemoveSplit(), new MortarTurretCountIncrease(), new MortarTurretSpeedIncrease(), new MortarTurretSizeIncrease() }},
+            {4, new List<ITurretUpgradeEvent>{
+                new BulletTurretSplit(), new BulletTurretRemoveSplit(), new BulletTurretCountIncrease(), new BulletTurretSpeedIncrease(), new BulletTurretSizeIncrease(),
+                new LaserTurretLifeTimeIncrease(), new LaserTurretCountIncrease(), new LaserTurretSizeIncrease(),
+                new RocketTurretLifeTimeIncrease(), new RocketTurretCountIncrease(), new RocketTurretSpeedIncrease(), new RocketTurretSizeIncrease(),
+                new MortarTurretSplit(), new MortarTurretRemoveSplit(), new MortarTurretCountIncrease(), new MortarTurretSpeedIncrease(), new MortarTurretSizeIncrease()
+            }},
             // 다른 스테이지 이벤트 추가
         };
     }

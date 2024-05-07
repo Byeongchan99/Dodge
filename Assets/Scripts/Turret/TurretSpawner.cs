@@ -121,7 +121,7 @@ public class TurretSpawner : MonoBehaviour
 
         for (int i = 0; i < turretPrefabs.Count; i++)
         {
-            Debug.Log(i + "¹øÂ° ÅÍ·¿ ¼ÒÈ¯ È®·ü: " + StatDataManager.Instance.currentStatData.turretSpawnerDatas[i].spawnChance);
+            //Debug.Log(i + "¹øÂ° ÅÍ·¿ ¼ÒÈ¯ È®·ü: " + StatDataManager.Instance.currentStatData.turretSpawnerDatas[i].spawnChance);
             currentChance += StatDataManager.Instance.currentStatData.turretSpawnerDatas[i].spawnChance; // ´©Àû È®·ü ¾÷µ¥ÀÌÆ®
             if (randomChance <= currentChance)
             {
