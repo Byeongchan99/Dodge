@@ -5961,6 +5961,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a342cea35b8a241bc0915d2a2071c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turretSpawner: {fileID: 949981283}
+  itemSpawner: {fileID: 925929093}
+  gameManager: {fileID: 203533819}
+  turretUpgradeHandler: {fileID: 1081800020}
 --- !u!4 &1020278221
 Transform:
   m_ObjectHideFlags: 0
@@ -7193,51 +7197,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 949981283}
-        m_TargetAssemblyTypeName: TurretSpawner, Assembly-CSharp
-        m_MethodName: StartSpawn
+      - m_Target: {fileID: 1020278220}
+        m_TargetAssemblyTypeName: StageManager, Assembly-CSharp
+        m_MethodName: StartStage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 925929093}
-        m_TargetAssemblyTypeName: ItemSpawner, Assembly-CSharp
-        m_MethodName: StartSpawn
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 203533819}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: StartTimer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1081800020}
-        m_TargetAssemblyTypeName: TurretUpgradeHandler, Assembly-CSharp
-        m_MethodName: StartRandomUpgrades
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 10
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
