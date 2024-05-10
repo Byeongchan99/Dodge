@@ -78,31 +78,38 @@ public class PlayerStat : MonoBehaviour
         isInvincibility = false;
 
         // 기본 캐릭터 설정
-        SetCharacter(1);
+        SetCharacter();
+    }
+
+    private int currentCharacterType = 0; // 기본 캐릭터 타입
+    public void OnCharacterTypeClicked(int typeIndex)
+    {
+        currentCharacterType = typeIndex;
+        Debug.Log("선택한 캐릭터 타입: " + currentCharacterType);
     }
 
     // 캐릭터 변경 메서드
-    public void SetCharacter(int typeIndex)
+    public void SetCharacter()
     {
-        Debug.Log("캐릭터 변경: " + typeIndex);
-        if (characterList[typeIndex] != null) 
+        Debug.Log("캐릭터 변경: " + currentCharacterType);
+        if (characterList[currentCharacterType] != null) 
         {
-            CharacterData data = characterList[typeIndex];
+            CharacterData data = characterList[currentCharacterType];
             spriteRenderer.sprite = data.characterSprite;
             animator.runtimeAnimatorController = data.animatorController;  // 애니메이터 컨트롤러 설정
 
             // 플레이어 타입에 따른 체력과 어빌리티 설정
-            if (typeIndex == 0)
+            if (currentCharacterType == 0)
             {
                 playerAbility = blink;
                 _maxHealth = 2;
             } 
-            else if (typeIndex == 1)
+            else if (currentCharacterType == 1)
             {
                 playerAbility = emp;
                 _maxHealth = 3;
             }
-            else if (typeIndex == 2)
+            else if (currentCharacterType == 2)
             {
                 playerAbility = defenseProtocol;
                 _maxHealth = 4;
