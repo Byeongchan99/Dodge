@@ -19,7 +19,7 @@ public class BaseEffect : MonoBehaviour
     /// <summary> 이펙트 파괴 </summary>
     protected void DestroyEffect()
     {
-        Debug.Log("이펙트 풀에 반환");
+        //Debug.Log("이펙트 풀에 반환");
         EffectPoolManager.Instance.Return(this.GetType().Name, this);
         StopAllCoroutines();
     }

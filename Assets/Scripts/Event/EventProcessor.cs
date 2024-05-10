@@ -110,6 +110,7 @@ public class EventProcessor : MonoBehaviour
                         StatDataManager.Instance.currentStatData.turretDatas[1].projectileCount = Mathf.Max(1, newProjectileCount);
                         // 터렛의 유지 시간 또한 같이 변경
                         float newTurretLifeTime = (StatDataManager.Instance.currentStatData.turretDatas[1].turretLifeTime * StatDataManager.Instance.currentStatData.turretDatas[1].projectileCount);
+                        Debug.Log("newTurretLifeTime" + newTurretLifeTime);
                         StatDataManager.Instance.currentStatData.turretDatas[1].turretLifeTime = Mathf.Max(3f, newTurretLifeTime);
                         break;
                     case TurretUpgradeInfo.EnhancementType.SizeChange:
