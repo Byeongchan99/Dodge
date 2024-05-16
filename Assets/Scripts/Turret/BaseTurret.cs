@@ -97,6 +97,7 @@ public abstract class BaseTurret : MonoBehaviour
         currentProjectileCount = _projectileCount;
         // 공격 속도
         _attackSpeed = _lifeTime / (_projectileCount + 1);
+        Debug.Log("Attack Speed: " + _attackSpeed);
         //_attackSpeed = Mathf.Max(_attackSpeed, 0.5f);  // 공격 속도 보장
 
         // 변수 초기화
