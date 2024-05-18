@@ -10,6 +10,12 @@ public class LaserTurret : BaseTurret
     [SerializeField] Vector2 _direction;
     quaternion rotation;
     float _angle;
+    [SerializeField] bool isShooting = false;
+
+    protected override bool ShouldShoot()
+    {
+        return (_timeSinceLastShot >= _attackSpeed && currentProjectileCount > 0 && isShooting == false);
+    }
 
     /// <summary> 발사 </summary>
     protected override void Shoot()
@@ -81,6 +87,7 @@ public class LaserTurret : BaseTurret
 
         // 1초 지연 후 레이저 생성
         yield return new WaitForSeconds(1f);
+        isShooting = true;
 
         // 오브젝트 풀에서 레이저 가져오기
         int currentProjectileIndex = StatDataManager.Instance.currentStatData.turretDatas[1].projectileIndex;
@@ -101,6 +108,9 @@ public class LaserTurret : BaseTurret
         {
             Debug.LogWarning("Failed to get projectile from pool.");
         }
+
+        yield return new WaitForSeconds(StatDataManager.Instance.currentStatData.projectileDatas[1].projectileLifeTime);
+        isShooting = false;
     }
 
     /// <summary> 터렛 비활성화 </summary>

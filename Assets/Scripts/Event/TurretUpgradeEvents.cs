@@ -173,7 +173,7 @@ public class LaserTurretLifeTimeIncrease : ITurretUpgradeEvent
         {
             turretType = TurretUpgradeInfo.TurretType.Laser,
             enhancementType = TurretUpgradeInfo.EnhancementType.LifeTimeChange,
-            value = 0.5f,
+            value = 0.1f,
         };
 
         EventManager.TriggerEnhancementEvent("TurretUpgrade", laserTurretLifeTimeIncrease);
@@ -190,7 +190,7 @@ public class LaserTurretLifeTimeDecrease : ITurretUpgradeEvent
         {
             turretType = TurretUpgradeInfo.TurretType.Laser,
             enhancementType = TurretUpgradeInfo.EnhancementType.LifeTimeChange,
-            value = -0.5f,
+            value = -0.1f,
         };
 
         EventManager.TriggerEnhancementEvent("TurretUpgrade", laserTurretLifeTimeDecrease);

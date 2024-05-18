@@ -93,25 +93,22 @@ public class EventProcessor : MonoBehaviour
                         // 범위 설정
                         float newProjectileLifeTime = StatDataManager.Instance.currentStatData.projectileDatas[1].projectileLifeTime + enhancement.value;
                         // projectileLifeTime을 최소 0.5초, 최대 5초 사이로 제한
-                        float clampedProjectileLifeTime = Mathf.Clamp(newProjectileLifeTime, 0.5f, 5f);
+                        float clampedProjectileLifeTime = Mathf.Clamp(newProjectileLifeTime, 0.5f, 3f);
                         StatDataManager.Instance.currentStatData.projectileDatas[1].projectileLifeTime = clampedProjectileLifeTime;
-                        // newProjectileLifeTime 5보다 컸을 경우에만 터렛의 유지 시간 조정
-                        if (newProjectileLifeTime <= 5f)
-                        {
-                            float adjustedTurretLifeTime = StatDataManager.Instance.currentStatData.turretDatas[1].turretLifeTime + (enhancement.value * (StatDataManager.Instance.currentStatData.turretDatas[1].projectileCount + 1));
-                            StatDataManager.Instance.currentStatData.turretDatas[1].turretLifeTime = Mathf.Max(3f, adjustedTurretLifeTime);
-                            Debug.Log("adjustedTurretLifeTime" + adjustedTurretLifeTime);
-                        }
+                        // 터렛 유지 시간 조정
+                        float newTurretLifeTime = (StatDataManager.Instance.currentStatData.projectileDatas[1].projectileLifeTime + 1.5f) * (StatDataManager.Instance.currentStatData.turretDatas[1].projectileCount + 1);
+                        StatDataManager.Instance.currentStatData.turretDatas[1].turretLifeTime = Mathf.Max(4f, newTurretLifeTime);
                         break;
                     case TurretUpgradeInfo.EnhancementType.CountChange:
                         // 개수 변경
                         Debug.Log("레이저 개수 변경 " + enhancement.value);
                         // 범위 설정
                         int newProjectileCount = StatDataManager.Instance.currentStatData.turretDatas[1].projectileCount + (int)enhancement.value;
-                        StatDataManager.Instance.currentStatData.turretDatas[1].projectileCount = Mathf.Max(1, newProjectileCount);
-                        // 터렛의 유지 시간 또한 같이 변경
-                        int currentProjectileCount = StatDataManager.Instance.currentStatData.turretDatas[1].projectileCount;
-                        float newTurretLifeTime = (StatDataManager.Instance.currentStatData.turretDatas[1].turretLifeTime / currentProjectileCount) * (currentProjectileCount + 1) + 0.5f * currentProjectileCount;
+                        // projectileCount를 최소 1개, 최대 3개 사이로 제한
+                        int clampedProjectileCount = Mathf.Clamp(newProjectileCount, 1, 3);
+                        StatDataManager.Instance.currentStatData.turretDatas[1].projectileCount = clampedProjectileCount;
+                        // 터렛의 유지 시간 조정
+                        newTurretLifeTime = (StatDataManager.Instance.currentStatData.projectileDatas[1].projectileLifeTime + 1.5f) * (StatDataManager.Instance.currentStatData.turretDatas[1].projectileCount + 1);
                         Debug.Log("newTurretLifeTime" + newTurretLifeTime);
                         StatDataManager.Instance.currentStatData.turretDatas[1].turretLifeTime = Mathf.Max(3f, newTurretLifeTime);
                         break;
