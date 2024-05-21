@@ -32,7 +32,10 @@ public class FullscreenUI : MonoBehaviour
         gameObject.SetActive(true);
         _state = VisibleState.Appearing;
         // 화면 중앙으로 이동
-        _rectTransform.DOAnchorPos(Vector2.zero, 0.5f).OnComplete(() => _state = VisibleState.Appeared);
+        //_rectTransform.DOAnchorPos(Vector2.zero, 0.5f).OnComplete(() => _state = VisibleState.Appeared);
+
+        _rectTransform.anchoredPosition = Vector2.zero;
+        _state = VisibleState.Appeared;
     }
 
     /// <summary> UI 요소를 숨기는 메서드 </summary>
@@ -40,10 +43,14 @@ public class FullscreenUI : MonoBehaviour
     {
         _state = VisibleState.Disappearing;
         // 원래 위치로 이동
+        /*
         _rectTransform.DOAnchorPos(_originalPosition, 0.5f).OnComplete(() =>
         {
             _state = VisibleState.Disappeared;
         });
+        */
+        _rectTransform.anchoredPosition = _originalPosition;
+        _state = VisibleState.Disappeared;
         gameObject.SetActive(false);
     }
 }

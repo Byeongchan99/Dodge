@@ -6,13 +6,17 @@ using UnityEngine.UI;
 public class HUDManager : MonoBehaviour
 {
     [SerializeField] Text timeText; // 임시 시간 표시
+    [SerializeField] private GameObject timerUI; // 타이머 UI
 
     private IEnumerator timerCoroutine;
     private float timer = 0f;
     private bool isPaused = false;
 
+    [SerializeField] private GameObject healthBar; // 체력바 UI
+
     public void ActiveTimer()
     {
+        timerUI.SetActive(true);
         timerCoroutine = RunTimer();
         StartCoroutine(timerCoroutine);
     }
@@ -41,8 +45,8 @@ public class HUDManager : MonoBehaviour
         isPaused = false;
     }
 
-    void ActiveHealthBar()
+    public void ActiveHealthBar()
     {
-
+        healthBar.SetActive(true);
     }
 }

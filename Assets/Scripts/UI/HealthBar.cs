@@ -20,12 +20,13 @@ public class HealthBar : MonoBehaviour, IHealthObserver
         if (playerStat != null)
         {
             playerStat.RegisterObserver(this);
-            // OnHealthChanged(playerStat.MaxHealth);
+            OnHealthChanged(playerStat.MaxHealth);
         }
     }
 
     public void OnHealthChanged(float health)
     {
+        //Debug.Log("체력 칸 활성화");
         // 체력 칸 활성화
         for (int i = 0; i < playerStat.MaxHealth; i++)
         {
