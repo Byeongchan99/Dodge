@@ -17,4 +17,13 @@ public class StageManager : MonoBehaviour
         HUDManager.ActiveTimer();
         turretUpgradeHandler.StartRandomUpgrades(10); // 파라미터가 있는 경우도 고려
     }
+
+    /*
+    public void ExitStage()
+    {
+        turretSpawner.StopSpawn();
+        itemSpawner.StopSpawn();
+        HUDManager.PauseTimer();
+    }
+    */
 }

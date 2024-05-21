@@ -6,17 +6,10 @@ using UnityEngine.UI;
 public class HUDManager : MonoBehaviour
 {
     [SerializeField] Text timeText; // 임시 시간 표시
-    [SerializeField] Text playerHealth; // 임시 플레이어 체력 표시
 
     private IEnumerator timerCoroutine;
     private float timer = 0f;
     private bool isPaused = false;
-
-    // 임시 시간 표시
-    private void Update()
-    {
-        playerHealth.text = "Player HP: " + PlayerStat.Instance.currentHealth.ToString();
-    }
 
     public void ActiveTimer()
     {

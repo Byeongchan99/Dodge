@@ -32,6 +32,11 @@ public class PlayerStat : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public Animator animator;
 
+    public int MaxHealth // 플레이어 최대 체력 프로퍼티
+    {
+        get { return _maxHealth; }
+        private set { _maxHealth = value; }
+    }
     public int currentHealth; // 플레이어 현재 체력
     public float currentMoveSpeed; // 플레이어 현재 이동 속도
 
@@ -184,6 +189,7 @@ public class PlayerStat : MonoBehaviour
             }
         }
         currentHealth = _maxHealth;
+        NotifyObservers();
     }
 
     /// <summary> 데미지 처리 </summary>
