@@ -8,8 +8,8 @@ public class NotificationManager : MonoBehaviour
 {
     // Text noticeText;
 
-    public GameObject notificationPrefab; // 알림 프리팹
-    public Transform notificationParent;  // 알림을 배치할 부모 객체
+    public GameObject notificationPrefab; // 공지 프리팹
+    public Transform notificationParent;  // 공지 내용을 배치할 부모 객체
     private Queue<string> notificationQueue = new Queue<string>();
     private bool isDisplayingNotification = false;
 
@@ -23,7 +23,7 @@ public class NotificationManager : MonoBehaviour
         EventManager.StopListening("TurretUpgrade", HandleTurretUpgradeEvent);
     }
 
-    /// <summary> 알림창에 들어갈 내용 관리 </summary>
+    /// <summary> 공지창에 들어갈 내용 관리 </summary>
     private void HandleTurretUpgradeEvent(TurretUpgradeInfo enhancement)
     {
         string turretName = string.Empty;
@@ -293,11 +293,11 @@ public class NotificationManager : MonoBehaviour
         AddNotification(turretName + " " + enhancementTypeName, OnNotification);
     }
 
-    /// <summary> 알림창 큐에 추가 </summary>
+    /// <summary> 공지창 큐에 추가 </summary>
     public void AddNotification(string message, bool OnNotification)
     {
         Debug.Log(message);
-        // 만약 알림을 안해도 되는 이벤트일 경우는 무시
+        // 만약 공지을 안해도 되는 이벤트일 경우는 무시
         if (OnNotification == true)
         {
             notificationQueue.Enqueue(message);
@@ -308,7 +308,7 @@ public class NotificationManager : MonoBehaviour
         }
     }
 
-    /// <summary> 알림창 디스플레이 </summary>
+    /// <summary> 공지창 디스플레이 </summary>
     private IEnumerator DisplayNotification()
     {
         while (notificationQueue.Count > 0)
@@ -333,7 +333,7 @@ public class NotificationManager : MonoBehaviour
         isDisplayingNotification = false;
     }
 
-    /// <summary> 알림창 페이드 인 효과 </summary>
+    /// <summary> 공지창 페이드 인 효과 </summary>
     private IEnumerator FadeIn(CanvasGroup canvasGroup)
     {
         float duration = 0.5f;
@@ -345,7 +345,7 @@ public class NotificationManager : MonoBehaviour
         canvasGroup.alpha = 1;
     }
 
-    /// <summary> 알림창 페이드 아웃 효과 </summary>
+    /// <summary> 공지창 페이드 아웃 효과 </summary>
     private IEnumerator FadeOut(CanvasGroup canvasGroup)
     {
         float duration = 0.5f;
