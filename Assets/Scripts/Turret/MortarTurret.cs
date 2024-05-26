@@ -6,6 +6,20 @@ using UnityEngine;
 
 public class MortarTurret : BaseTurret
 {
+    private PlayerMovement playerMovement;
+    private float predictionFactor = 1f; // 예측 정도를 조절하는 변수
+    private float randomFactor = 1f; // 랜덤 정도를 조절하는 변수
+
+    protected override void OnEnable()
+    {
+        playerMovement = FindObjectOfType<PlayerMovement>();
+        if (playerMovement == null)
+        {
+            Debug.LogError("PlayerMovement script not found in the scene.");
+        }
+        base.OnEnable();
+    }
+
     /// <summary> 발사 </summary>
     protected override void Shoot()
     {
@@ -37,17 +51,24 @@ public class MortarTurret : BaseTurret
         MortarBombEffect bombEffect = EffectPoolManager.Instance.Get("MortarBombEffect") as MortarBombEffect;
         Vector3 effectSize = StatDataManager.Instance.currentStatData.projectileDatas[3].projectileSize;
 
-        if (bomb != null && bombEffect != null) 
+        if (bomb != null && bombEffect != null)
         {
+            // 플레이어의 진행 벡터와 랜덤 벡터 계산
+            Vector3 playerMovementVector = playerMovement.InputVec * predictionFactor;
+            Vector3 randomOffset = new Vector3(Random.Range(-randomFactor, randomFactor), 0, Random.Range(-randomFactor, randomFactor));
+
+            // 최종 목표 위치 계산
+            Vector3 finalTargetPosition = targetPosition.position + playerMovementVector + randomOffset;
+
             // 총알 위치와 회전 설정
             bomb.transform.position = firePoint.position;
-            bomb.SetDirection(targetPosition.position - firePoint.position);
+            bomb.SetDirection(finalTargetPosition - firePoint.position);
             // 이펙트 참조 설정
             bomb.SetBombEffect(bombEffect);
             bomb.gameObject.SetActive(true);
 
             // 위험 범위 이펙트 위치 설정
-            bombEffect.transform.position = targetPosition.position;
+            bombEffect.transform.position = finalTargetPosition;
             // 위험 범위 이펙트 크기 설정
             bombEffect.transform.localScale = effectSize;
             bombEffect.gameObject.SetActive(true);

@@ -44,7 +44,7 @@ public abstract class BaseTurret : MonoBehaviour
     /****************************************************************************
                                     Unity Callbacks
     ****************************************************************************/
-    void OnEnable()
+    protected virtual void OnEnable()
     {
         InitTurret(); // √ ±‚»≠
     }

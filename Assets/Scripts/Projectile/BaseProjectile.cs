@@ -97,6 +97,7 @@ public class BaseProjectile : MonoBehaviour
                               public Methods
     ****************************************************************************/
     /// <summary> 방향 설정 </summary>
+    // 박격포 터렛의 경우에는 폭발 위치
     public void SetDirection(Vector2 dir)
     {
         moveDirection = dir;
