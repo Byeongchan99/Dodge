@@ -14,9 +14,9 @@ public class TurretUpgradeHandler : MonoBehaviour
         SetStageEvents(1);  // 초기 스테이지 설정
     }
 
+    /// <summary> 스테이지별 사용할 이벤트를 초기화 </summary>
     void InitializeStageEvents()
     {
-        // 스테이지별 이벤트를 초기화
         stageEvents = new Dictionary<int, List<ITurretUpgradeEvent>>()
         {
             {0, new List<ITurretUpgradeEvent>{ new BulletTurretSplit(), new BulletTurretRemoveSplit(), new BulletTurretCountIncrease(), new BulletTurretSpeedIncrease(), new BulletTurretSizeIncrease() }},
@@ -33,9 +33,9 @@ public class TurretUpgradeHandler : MonoBehaviour
         };
     }
 
+    /// <summary> 스테이지에 따라 적용할 이벤트 목록을 설정 </summary>
     public void SetStageEvents(int stageNumber)
     {
-        // 스테이지에 따라 적용할 이벤트 목록을 설정
         if (stageEvents.TryGetValue(stageNumber, out var events))
         {
             currentEvents = events;
@@ -47,6 +47,7 @@ public class TurretUpgradeHandler : MonoBehaviour
         }
     }
 
+    /// <summary> 랜덤 업그레이드 코루틴 시작 </summary>
     public void StartRandomUpgrades(float interval)
     {
         if (upgradeCoroutine != null)
@@ -56,6 +57,7 @@ public class TurretUpgradeHandler : MonoBehaviour
         upgradeCoroutine = StartCoroutine(TriggerRandomUpgrade(interval));
     }
 
+    /// <summary> interval 마다 랜덤으로 터렛 업그레이드 실행 </summary>
     private IEnumerator TriggerRandomUpgrade(float interval)
     {
         while (true)
@@ -69,6 +71,7 @@ public class TurretUpgradeHandler : MonoBehaviour
         }
     }
 
+    /// <summary> 랜덤 업그레이드 코루틴 중지 </summary>
     public void StopRandomUpgrades()
     {
         if (upgradeCoroutine != null)

@@ -43,6 +43,7 @@ public class StatData : ScriptableObject
     {
         public string turretName; // 터렛 이름
         public int projectileCount; // 투사체 발사 개수
+        public bool isMaxProjectileCount; // 최대 투사체 발사 개수인지
         public int projectileIndex; // 현재 투사체 인덱스
         public float turretLifeTime; // 터렛 유지 시간
 
@@ -51,6 +52,7 @@ public class StatData : ScriptableObject
         {
             this.turretName = source.turretName;
             this.projectileCount = source.projectileCount;
+            this.isMaxProjectileCount = source.isMaxProjectileCount;
             this.projectileIndex = source.projectileIndex;
             this.turretLifeTime = source.turretLifeTime;
         }
@@ -62,16 +64,22 @@ public class StatData : ScriptableObject
     {
         public string projectileName; // 투사체 이름
         public float projectileSpeed; // 투사체 속도
+        public bool isMaxProjectileSpeed; // 최대 투사체 속도인지
         public float projectileLifeTime; // 투사체 유지 시간 - 레이저와 로켓에서만 사용
+        public bool isMaxProjectileLifeTime; // 최대 투사체 유지 시간인지
         public Vector3 projectileSize; // 투사체 크기 - 박격포탄의 경우 이펙트의 크기
+        public bool isMaxProjectileSize; // 최대 투사체 크기인지
 
         // 깊은 복사를 위한 복사 생성자
         public ProjectileData(ProjectileData source)
         {
             this.projectileName = source.projectileName;
             this.projectileSpeed = source.projectileSpeed;
+            this.isMaxProjectileSpeed = source.isMaxProjectileSpeed;
             this.projectileLifeTime = source.projectileLifeTime;
+            this.isMaxProjectileLifeTime = source.isMaxProjectileLifeTime;
             this.projectileSize = source.projectileSize;
+            this.isMaxProjectileSize = source.isMaxProjectileSize;
         }
     }
 
