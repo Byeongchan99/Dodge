@@ -16,4 +16,4 @@ MonoBehaviour:
   stageName: "\uB808\uC774\uC800 \uD130\uB81B \uC2A4\uD14C\uC774\uC9C0"
   statDataName: Laser
   statData: {fileID: 11400000, guid: bac880e9c08e26f4e94d44e310a9a1da, type: 2}
-  mapPrefab: {fileID: 1887036623148970226, guid: 0812c117b67019e418a7cddbca4de30d, type: 3}
+  mapPrefab: {fileID: 1887036623148970226, guid: 50a7550ccb0c25d45a6c1456b658d1b5, type: 3}

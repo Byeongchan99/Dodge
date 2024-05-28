@@ -16,4 +16,4 @@ MonoBehaviour:
   stageName: "\uBC15\uACA9\uD3EC \uD130\uB81B \uC2A4\uD14C\uC774\uC9C0"
   statDataName: Mortar
   statData: {fileID: 11400000, guid: d4e7559e1073858499d0abdcb2a603b3, type: 2}
-  mapPrefab: {fileID: 1887036623148970226, guid: 0812c117b67019e418a7cddbca4de30d, type: 3}
+  mapPrefab: {fileID: 1887036623148970226, guid: aa0a98f708e70504f8f8bde402c45697, type: 3}

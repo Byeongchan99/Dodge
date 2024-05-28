@@ -12,6 +12,15 @@ public class CharacterInfoUI : MonoBehaviour
     public Text characterAbilityDescriptionText;
     public Image characterImage;
 
+    [SerializeField]
+    private CharacterData initialCharacterData;
+
+    void Start()
+    {
+        // 캐릭터 정보 초기화
+        UpdateCharacterInfo(initialCharacterData);
+    }
+
     public void UpdateCharacterInfo(CharacterData characterData)
     {
         if (characterData != null)
@@ -22,6 +31,16 @@ public class CharacterInfoUI : MonoBehaviour
             characterAbilityText.text = "Ability: " + characterData.characterAbility;
             characterAbilityDescriptionText.text = characterData.characterAbilityDescription;
             characterImage.sprite = characterData.characterSprite;
+        }
+        else
+        {
+            Debug.Log("캐릭터 데이터가 없습니다.");
+            characterNameText.text = "";
+            characterTypeText.text = "";
+            characterHPText.text = "";
+            characterAbilityText.text = "";
+            characterAbilityDescriptionText.text = "";
+            characterImage.sprite = null;
         }
     }
 }

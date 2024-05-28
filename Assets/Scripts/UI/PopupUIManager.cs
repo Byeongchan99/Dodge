@@ -156,5 +156,10 @@ namespace UIManage
         {
             OpenPopup("Stage Information");
         }
+
+        public void CloseStageInformationPopup()
+        {
+            ClosePopup("Stage Information");
+        }
     }
 }

@@ -16,4 +16,4 @@ MonoBehaviour:
   stageName: "\uD30C\uC774\uB110 \uC2A4\uD14C\uC774\uC9C0"
   statDataName: Init
   statData: {fileID: 11400000, guid: 18e6d8498bca9494aaf89c9ce472787c, type: 2}
-  mapPrefab: {fileID: 1887036623148970226, guid: 0812c117b67019e418a7cddbca4de30d, type: 3}
+  mapPrefab: {fileID: 1887036623148970226, guid: 61ae16f786f64ef40ba545460871c9ca, type: 3}

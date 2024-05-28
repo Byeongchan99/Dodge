@@ -16,4 +16,4 @@ MonoBehaviour:
   stageName: "\uB85C\uCF13 \uD130\uB81B \uC2A4\uD14C\uC774\uC9C0"
   statDataName: Rocket
   statData: {fileID: 11400000, guid: 10f5f1802533f284f826c5f1b74e0824, type: 2}
-  mapPrefab: {fileID: 1887036623148970226, guid: 0812c117b67019e418a7cddbca4de30d, type: 3}
+  mapPrefab: {fileID: 1887036623148970226, guid: 2d0bbcdc635fb0e4f9ba69bf8100e228, type: 3}
