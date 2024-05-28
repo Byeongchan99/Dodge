@@ -7,7 +7,7 @@ using static StatData;
 [System.Serializable]
 public class StatDataEntry
 {
-    public string eventName;
+    public string statDataName;
     public StatData statData;
 }
 
@@ -51,9 +51,9 @@ public class StatDataManager : MonoBehaviour
     }
 
     /// <summary> 오리지널 스탯 데이터 설정 </summary>
-    public void SetOriginalStatData(string eventName)
+    public void SetOriginalStatData(string statDataName)
     {
-        originalStatData = GetDataForEvent(eventName);
+        originalStatData = GetDataForEvent(statDataName);
         InitStatData();
     }
 
@@ -63,20 +63,20 @@ public class StatDataManager : MonoBehaviour
         statDataByEvent.Clear();
         foreach (var entry in statDataList)
         {
-            statDataByEvent[entry.eventName] = entry.statData;
+            statDataByEvent[entry.statDataName] = entry.statData;
         }
     }
 
-    /// <summary> 이벤트 이름에 따라 적절한 스크립터블 오브젝트 데이터 반환 </summary>
-    private StatData GetDataForEvent(string eventName)
+    /// <summary> 스탯 데이터 이름에 따라 적절한 스크립터블 오브젝트 데이터 반환 </summary>
+    private StatData GetDataForEvent(string statDataName)
     {
-        if (statDataByEvent.ContainsKey(eventName))
+        if (statDataByEvent.ContainsKey(statDataName))
         {
-            return statDataByEvent[eventName];
+            return statDataByEvent[statDataName];
         }
         else
         {
-            Debug.LogWarning("잘못된 이벤트 이름: " + eventName);
+            Debug.LogWarning("잘못된 이벤트 이름: " + statDataName);
             return null;
         }
     }
