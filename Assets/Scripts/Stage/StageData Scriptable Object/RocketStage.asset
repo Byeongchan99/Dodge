@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f597f55cd472c0d409a4dc97c6ef04b7, type: 3}
   m_Name: RocketStage
   m_EditorClassIdentifier: 
-  stageID: 0
-  stageName: 
-  statDataName: 
-  statData: {fileID: 0}
-  mapPrefab: {fileID: 0}
+  stageID: 3
+  stageName: "\uB85C\uCF13 \uD130\uB81B \uC2A4\uD14C\uC774\uC9C0"
+  statDataName: Rocket
+  statData: {fileID: 11400000, guid: 10f5f1802533f284f826c5f1b74e0824, type: 2}
+  mapPrefab: {fileID: 1887036623148970226, guid: 0812c117b67019e418a7cddbca4de30d, type: 3}

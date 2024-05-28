@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d51f260a793737d41a0f1f4d09ca9277, type: 3}
   m_Name: MediumType
   m_EditorClassIdentifier: 
-  characterName: 
-  characterType: 
-  characterHP: 0
-  characterAbility: 
-  characterAnimator: {fileID: 0}
+  characterName: "\uBBF8\uB514\uC6C0"
+  characterType: Medium
+  characterTypeIndex: 1
+  characterHP: 3
+  characterAbility: EMP
+  characterAbilityDescription: "EMP\uB97C \uBC1C\uC0AC\uD574 \uC8FC\uBCC0\uC758 \uD22C\uC0AC\uCCB4\uB97C
+    \uD30C\uAD34\uD569\uB2C8\uB2E4."
+  characterSprite: {fileID: 21300000, guid: 149a7e627fefd3749a623f36482b787e, type: 3}

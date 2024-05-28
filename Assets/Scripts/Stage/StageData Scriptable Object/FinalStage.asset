@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f597f55cd472c0d409a4dc97c6ef04b7, type: 3}
-  m_Name: LaserStage
+  m_Name: FinalStage
   m_EditorClassIdentifier: 
-  stageID: 2
-  stageName: "\uB808\uC774\uC800 \uD130\uB81B \uC2A4\uD14C\uC774\uC9C0"
-  statDataName: Laser
-  statData: {fileID: 11400000, guid: bac880e9c08e26f4e94d44e310a9a1da, type: 2}
+  stageID: 0
+  stageName: "\uD30C\uC774\uB110 \uC2A4\uD14C\uC774\uC9C0"
+  statDataName: Init
+  statData: {fileID: 11400000, guid: 18e6d8498bca9494aaf89c9ce472787c, type: 2}
   mapPrefab: {fileID: 1887036623148970226, guid: 0812c117b67019e418a7cddbca4de30d, type: 3}

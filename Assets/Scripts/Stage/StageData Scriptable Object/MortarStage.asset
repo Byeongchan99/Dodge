@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f597f55cd472c0d409a4dc97c6ef04b7, type: 3}
   m_Name: MortarStage
   m_EditorClassIdentifier: 
-  stageID: 0
-  stageName: 
-  statDataName: 
-  statData: {fileID: 0}
-  mapPrefab: {fileID: 0}
+  stageID: 4
+  stageName: "\uBC15\uACA9\uD3EC \uD130\uB81B \uC2A4\uD14C\uC774\uC9C0"
+  statDataName: Mortar
+  statData: {fileID: 11400000, guid: d4e7559e1073858499d0abdcb2a603b3, type: 2}
+  mapPrefab: {fileID: 1887036623148970226, guid: 0812c117b67019e418a7cddbca4de30d, type: 3}
