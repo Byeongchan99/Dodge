@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class StageInfoButton : MonoBehaviour
 {
     public StageData stageData;
+    public UserData userData; // 임시 유저 데이터
     public StageInfoUI stageInfoUI;
 
     void Start()
@@ -21,9 +22,9 @@ public class StageInfoButton : MonoBehaviour
     void OnButtonClick()
     {
         // 스테이지 정보를 업데이트
-        if (stageInfoUI != null && stageData != null)
+        if (stageInfoUI != null && stageData != null && userData != null) 
         {
-            stageInfoUI.UpdateStageInfo(stageData);
+            stageInfoUI.UpdateStageInfo(stageData, userData);
         }
     }
 }

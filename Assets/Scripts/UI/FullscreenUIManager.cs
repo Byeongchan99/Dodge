@@ -125,23 +125,29 @@ public class FullscreenUIManager : MonoBehaviour
         Pop();
     }
 
+    /// <summary> UI 버튼에 할당하기 위한 메서드 </summary>
+    public void OnPushFullscreenUI(string UIName)
+    {
+        Push(UIName);
+    }
+
+    /*
     /// <summary> 캐릭터 선택창 버튼 클릭 메서드 </summary>
     public void OnCharacterSelectButtonClicked()
     {
         Push("Character Select");
     }
 
-    /*
     /// <summary> 홈 버튼 클릭 메서드 </summary>
     public void OnHomeButtonClicked()
     {
         PopToRoot();
     }
-    */
 
     /// <summary> 스테이지 선택창 버튼 클릭 메서드 </summary>
     public void OnStageSelectButtonClicked()
     {
         Push("Stage Select");
     }
+    */
 }

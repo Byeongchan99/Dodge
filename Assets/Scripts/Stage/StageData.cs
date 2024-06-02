@@ -5,7 +5,8 @@ public class StageData : ScriptableObject
 {
     public int stageID;
     public string stageName;
-    public string statDataName;
+    public string statDataName; // 적용하는 StatData
+    public string stageInformation;
     public StatData statData;
     public GameObject mapPrefab; // 맵 프리팹을 저장하기 위해 GameObject 타입 사용
 }

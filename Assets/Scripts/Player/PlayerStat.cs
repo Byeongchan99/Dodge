@@ -207,7 +207,8 @@ public class PlayerStat : MonoBehaviour
         // 나중에 피격 로직 수정
         if (currentHealth <= 0)
         {
-            Destroy(gameObject); // 플레이어 파괴
+            GameManager.Instance.testGameOver();
+            //Destroy(gameObject); // 플레이어 파괴
         }
     }
 

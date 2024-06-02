@@ -15,7 +15,6 @@ public class GameManager : MonoBehaviour
     public bool isItemSlowMotion; // 아이템으로 인한 슬로우 모션 여부
     public int slowMotionItemCount; // 사용한 슬로 모션 아이템 개수
 
-
     void Awake()
     {
         if (Instance == null)
@@ -72,5 +71,13 @@ public class GameManager : MonoBehaviour
 
         slowMotionRoutine = null;
         _remainingSlowDuration = 0f;  // 남은 시간 초기화
+    }
+
+    // 임시 게임 종료 로직
+    public StageManager stageManager;
+    public void testGameOver()
+    {
+        Time.timeScale = 0;
+        stageManager.ClearStage();
     }
 }

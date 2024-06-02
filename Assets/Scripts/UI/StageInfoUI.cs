@@ -7,13 +7,46 @@ public class StageInfoUI : MonoBehaviour
 {
     public Text stageNameText;
     public Text stageInformationText;
+    public GameObject isGameClearImage;
 
-    public void UpdateStageInfo(StageData stageData)
+    public void UpdateStageInfo(StageData stageData, UserData userData)
     {
         if (stageData != null)
         {
             stageNameText.text = stageData.stageName;
-            stageInformationText.text = "Stat Data: " + stageData.statDataName;
+            stageInformationText.text = stageData.stageInformation;
+        }
+
+        // 임시 유저 데이터 사용
+        if (userData != null)
+        {
+            if (userData.stageInfos[stageData.stageID].isCleared)
+            {
+                isGameClearImage.SetActive(true);
+            }
+            else
+            {
+                isGameClearImage.SetActive(false);
+            }
+            OnStarChanged(userData.stageInfos[stageData.stageID].score);
+        }
+    }
+
+    [SerializeField] private GameObject[] StarUnits; // 별 칸을 나타내는 GameObject 배열
+
+    public void OnStarChanged(float score)
+    {
+        // 별 활성화
+        for (int i = 0; i < 3; i++)
+        {
+            if (i < score / 30 - 1)  
+            {
+                StarUnits[i].SetActive(true);
+            }
+            else
+            {
+                StarUnits[i].SetActive(false);
+            }
         }
     }
 }

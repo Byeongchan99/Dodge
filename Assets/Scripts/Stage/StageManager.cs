@@ -5,16 +5,28 @@ using UnityEngine;
 
 public class StageManager : MonoBehaviour
 {
+    // 스포너 및 이벤트
     [SerializeField] private TurretSpawner turretSpawner;
     [SerializeField] private ItemSpawner itemSpawner;
     [SerializeField] private TurretUpgradeHandler turretUpgradeHandler;
+    // UI
     [SerializeField] private GameObject fullscreenUIContainer;
     [SerializeField] private HUDManager HUDManager;
-    [SerializeField] private StageData currentStageData;
-
+    // 스테이지 데이터
     [SerializeField] private List<StageData> stageDataList;
-
+    [SerializeField] private StageData currentStageData; // 현재 스테이지 데이터
     private GameObject currentMap;
+
+    public UserData userData; // 유저 데이터(임시)
+
+    private float timer = 0f;
+    private bool isPaused = false;
+    private Coroutine timerCoroutine;
+
+    public void SetStageData(int stageID)
+    {
+        currentStageData = stageDataList[stageID];
+    }
 
     // 퍼사드 메소드: 모든 초기화 작업을 시작
     public void StartStage()
@@ -36,11 +48,63 @@ public class StageManager : MonoBehaviour
         HUDManager.ActiveHealthBar();
         fullscreenUIContainer.SetActive(false);
         turretUpgradeHandler.StartRandomUpgrades(10); // 파라미터가 있는 경우도 고려
+
+        // 타이머 시작
+        StartTimer();
     }
 
-    public void SetStageData(int stageID)
+    public void ClearStage()
     {
-        currentStageData = stageDataList[stageID];
+        if (userData != null && currentStageData.stageID >= 0 && currentStageData.stageID < userData.stageInfos.Length)
+        {
+            if (timer > 90f) 
+                userData.stageInfos[currentStageData.stageID].isCleared = true;
+            userData.stageInfos[currentStageData.stageID].score = Mathf.FloorToInt(timer);
+            SaveUserData();
+        }
+    }
+
+    private void SaveUserData()
+    {
+#if UNITY_EDITOR
+        // 에디터 모드에서 ScriptableObject 데이터를 저장
+        UnityEditor.EditorUtility.SetDirty(userData);
+        UnityEditor.AssetDatabase.SaveAssets();
+#endif
+    }
+
+    private void StartTimer()
+    {
+        timer = 0f;
+        isPaused = false;
+        if (timerCoroutine != null)
+        {
+            StopCoroutine(timerCoroutine);
+        }
+        timerCoroutine = StartCoroutine(RunTimer());
+    }
+
+    private IEnumerator RunTimer()
+    {
+        while (true)
+        {
+            if (!isPaused)
+            {
+                timer += Time.unscaledDeltaTime;
+                HUDManager.UpdateTimerUI(timer); // HUDManager를 통해 UI 업데이트
+            }
+            yield return null;
+        }
+    }
+
+    public void PauseTimer()
+    {
+        isPaused = true;
+    }
+
+    public void ResumeTimer()
+    {
+        isPaused = false;
     }
 
     /*
