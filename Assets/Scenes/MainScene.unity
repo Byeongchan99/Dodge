@@ -2544,55 +2544,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 703400111}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 951026694}
-        m_TargetAssemblyTypeName: StatDataManager, Assembly-CSharp
-        m_MethodName: SetOriginalStatData
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: Laser
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1081800020}
-        m_TargetAssemblyTypeName: TurretUpgradeHandler, Assembly-CSharp
-        m_MethodName: SetStageEvents
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1772935382}
-        m_TargetAssemblyTypeName: UIManage.PopupUIManager, Assembly-CSharp
-        m_MethodName: OpenStageInformationPopup
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1020278220}
-        m_TargetAssemblyTypeName: StageManager, Assembly-CSharp
-        m_MethodName: SetStageData
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &703400111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2646,6 +2598,13 @@ MonoBehaviour:
   stageData: {fileID: 11400000, guid: 9418b38069685f5459c21eb3588ba383, type: 2}
   userData: {fileID: 11400000, guid: 3d8036e16cfa7f045ab09a7203185075, type: 2}
   stageInfoUI: {fileID: 1246463738}
+  statDataManager: {fileID: 0}
+  turretUpgradeHandler: {fileID: 0}
+  popupUIManager: {fileID: 0}
+  stageManager: {fileID: 0}
+  statDataParameter: Laser
+  turretUpgradeParameter: 1
+  setStageDataParameter: 1
 --- !u!1 &716717832
 GameObject:
   m_ObjectHideFlags: 0
@@ -2729,55 +2688,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 716717835}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 951026694}
-        m_TargetAssemblyTypeName: StatDataManager, Assembly-CSharp
-        m_MethodName: SetOriginalStatData
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Bullet
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1081800020}
-        m_TargetAssemblyTypeName: TurretUpgradeHandler, Assembly-CSharp
-        m_MethodName: SetStageEvents
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1772935382}
-        m_TargetAssemblyTypeName: UIManage.PopupUIManager, Assembly-CSharp
-        m_MethodName: OpenStageInformationPopup
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1020278220}
-        m_TargetAssemblyTypeName: StageManager, Assembly-CSharp
-        m_MethodName: SetStageData
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &716717835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2831,6 +2742,13 @@ MonoBehaviour:
   stageData: {fileID: 11400000, guid: 136180d8ca7ca4849a9e1fb031082872, type: 2}
   userData: {fileID: 11400000, guid: 3d8036e16cfa7f045ab09a7203185075, type: 2}
   stageInfoUI: {fileID: 1246463738}
+  statDataManager: {fileID: 0}
+  turretUpgradeHandler: {fileID: 0}
+  popupUIManager: {fileID: 0}
+  stageManager: {fileID: 0}
+  statDataParameter: Bullet
+  turretUpgradeParameter: 0
+  setStageDataParameter: 0
 --- !u!1 &720383159
 GameObject:
   m_ObjectHideFlags: 0
@@ -2951,55 +2869,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 721388071}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 951026694}
-        m_TargetAssemblyTypeName: StatDataManager, Assembly-CSharp
-        m_MethodName: SetOriginalStatData
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: Rocket
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1081800020}
-        m_TargetAssemblyTypeName: TurretUpgradeHandler, Assembly-CSharp
-        m_MethodName: SetStageEvents
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1772935382}
-        m_TargetAssemblyTypeName: UIManage.PopupUIManager, Assembly-CSharp
-        m_MethodName: OpenStageInformationPopup
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1020278220}
-        m_TargetAssemblyTypeName: StageManager, Assembly-CSharp
-        m_MethodName: SetStageData
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &721388071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3053,6 +2923,13 @@ MonoBehaviour:
   stageData: {fileID: 11400000, guid: 0137231e42a50374991896ea51b09b5d, type: 2}
   userData: {fileID: 11400000, guid: 3d8036e16cfa7f045ab09a7203185075, type: 2}
   stageInfoUI: {fileID: 1246463738}
+  statDataManager: {fileID: 0}
+  turretUpgradeHandler: {fileID: 0}
+  popupUIManager: {fileID: 0}
+  stageManager: {fileID: 0}
+  statDataParameter: Rocket
+  turretUpgradeParameter: 2
+  setStageDataParameter: 2
 --- !u!1 &733799842
 GameObject:
   m_ObjectHideFlags: 0
@@ -3361,55 +3238,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 756492864}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 951026694}
-        m_TargetAssemblyTypeName: StatDataManager, Assembly-CSharp
-        m_MethodName: SetOriginalStatData
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: Mortar
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1081800020}
-        m_TargetAssemblyTypeName: TurretUpgradeHandler, Assembly-CSharp
-        m_MethodName: SetStageEvents
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1772935382}
-        m_TargetAssemblyTypeName: UIManage.PopupUIManager, Assembly-CSharp
-        m_MethodName: OpenStageInformationPopup
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1020278220}
-        m_TargetAssemblyTypeName: StageManager, Assembly-CSharp
-        m_MethodName: SetStageData
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &756492864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3463,6 +3292,13 @@ MonoBehaviour:
   stageData: {fileID: 11400000, guid: a16db2c6ab17ef64394235c4867a97b4, type: 2}
   userData: {fileID: 11400000, guid: 3d8036e16cfa7f045ab09a7203185075, type: 2}
   stageInfoUI: {fileID: 1246463738}
+  statDataManager: {fileID: 0}
+  turretUpgradeHandler: {fileID: 0}
+  popupUIManager: {fileID: 0}
+  stageManager: {fileID: 0}
+  statDataParameter: Mortar
+  turretUpgradeParameter: 3
+  setStageDataParameter: 3
 --- !u!1 &758530725
 GameObject:
   m_ObjectHideFlags: 0
@@ -7193,55 +7029,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1810952753}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 951026694}
-        m_TargetAssemblyTypeName: StatDataManager, Assembly-CSharp
-        m_MethodName: SetOriginalStatData
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: Init
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1081800020}
-        m_TargetAssemblyTypeName: TurretUpgradeHandler, Assembly-CSharp
-        m_MethodName: SetStageEvents
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 4
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1772935382}
-        m_TargetAssemblyTypeName: UIManage.PopupUIManager, Assembly-CSharp
-        m_MethodName: OpenStageInformationPopup
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1020278220}
-        m_TargetAssemblyTypeName: StageManager, Assembly-CSharp
-        m_MethodName: SetStageData
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 4
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1810952753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7295,6 +7083,13 @@ MonoBehaviour:
   stageData: {fileID: 11400000, guid: 48d0921025b9e844fa1190c7bf67ed7b, type: 2}
   userData: {fileID: 11400000, guid: 3d8036e16cfa7f045ab09a7203185075, type: 2}
   stageInfoUI: {fileID: 1246463738}
+  statDataManager: {fileID: 0}
+  turretUpgradeHandler: {fileID: 0}
+  popupUIManager: {fileID: 0}
+  stageManager: {fileID: 0}
+  statDataParameter: Init
+  turretUpgradeParameter: 4
+  setStageDataParameter: 4
 --- !u!1 &1821622715
 GameObject:
   m_ObjectHideFlags: 0
