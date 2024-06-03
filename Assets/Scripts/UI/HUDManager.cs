@@ -9,9 +9,14 @@ public class HUDManager : MonoBehaviour
     [SerializeField] private GameObject timerUI; // 타이머 UI
     [SerializeField] private GameObject healthBar; // 체력바 UI
 
-    public void ActiveTimer()
+    public void EnableTimer()
     {
         timerUI.SetActive(true);
+    }
+
+    public void DisableTimer()
+    {
+        timerUI.SetActive(false);
     }
 
     public void UpdateTimerUI(float time)
@@ -19,8 +24,13 @@ public class HUDManager : MonoBehaviour
         timeText.text = "Time: " + time.ToString("F2");
     }
 
-    public void ActiveHealthBar()
+    public void EnableHealthBar()
     {
         healthBar.SetActive(true);
+    }
+
+    public void DisableHealthBar()
+    {
+        healthBar.SetActive(false);
     }
 }

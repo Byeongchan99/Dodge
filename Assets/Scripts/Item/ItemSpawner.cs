@@ -119,4 +119,9 @@ public class ItemSpawner : MonoBehaviour
     {
         StartCoroutine(SpawnItemRoutine());
     }
+
+    public void StopSpawn()
+    {
+        StopCoroutine(SpawnItemRoutine());
+    }
 }

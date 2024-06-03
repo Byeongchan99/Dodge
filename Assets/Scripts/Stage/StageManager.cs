@@ -44,8 +44,8 @@ public class StageManager : MonoBehaviour
 
         turretSpawner.StartSpawn();
         itemSpawner.StartSpawn();
-        HUDManager.ActiveTimer();
-        HUDManager.ActiveHealthBar();
+        HUDManager.EnableTimer();
+        HUDManager.EnableHealthBar();
         fullscreenUIContainer.SetActive(false);
         turretUpgradeHandler.StartRandomUpgrades(10); // 파라미터가 있는 경우도 고려
 
@@ -55,6 +55,7 @@ public class StageManager : MonoBehaviour
 
     public void ClearStage()
     {
+        // 유저 데이터 갱신
         if (userData != null && currentStageData.stageID >= 0 && currentStageData.stageID < userData.stageInfos.Length)
         {
             if (timer > 90f) 
@@ -62,6 +63,14 @@ public class StageManager : MonoBehaviour
             userData.stageInfos[currentStageData.stageID].score = Mathf.FloorToInt(timer);
             SaveUserData();
         }
+
+        // 스테이지 선택창으로 이동
+        turretSpawner.StopSpawn();
+        itemSpawner.StopSpawn();
+        HUDManager.DisableTimer();
+        HUDManager.DisableHealthBar();
+        fullscreenUIContainer.SetActive(true);
+        turretUpgradeHandler.StopRandomUpgrades();
     }
 
     private void SaveUserData()

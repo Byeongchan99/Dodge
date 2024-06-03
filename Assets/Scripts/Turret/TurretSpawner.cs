@@ -180,4 +180,9 @@ public class TurretSpawner : MonoBehaviour
     {
         StartCoroutine(SpawnTurretRoutine());
     }
+
+    public void StopSpawn()
+    {
+        StopCoroutine(SpawnTurretRoutine());
+    }
 }

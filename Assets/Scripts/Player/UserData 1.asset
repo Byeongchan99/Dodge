@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: UserData 1
   m_EditorClassIdentifier: 
   stageInfos:
-  - isCleared: 0
-    score: 42
-  - isCleared: 0
-    score: 0
+  - isCleared: 1
+    score: 98
+  - isCleared: 1
+    score: 103
   - isCleared: 0
     score: 0
   - isCleared: 0
