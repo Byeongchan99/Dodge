@@ -72,12 +72,4 @@ public class GameManager : MonoBehaviour
         slowMotionRoutine = null;
         _remainingSlowDuration = 0f;  // 남은 시간 초기화
     }
-
-    // 임시 게임 종료 로직
-    public StageManager stageManager;
-    public void testGameOver()
-    {
-        Time.timeScale = 0;
-        stageManager.ClearStage();
-    }
 }

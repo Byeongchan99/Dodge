@@ -159,6 +159,7 @@ public class PlayerStat : MonoBehaviour
     public void OnCharacterTypeClicked(int typeIndex)
     {
         _currentCharacterType = typeIndex;
+        currentCharacterData = characterList[_currentCharacterType];
         Debug.Log("선택한 캐릭터 타입: " + _currentCharacterType);
     }
 
@@ -168,7 +169,6 @@ public class PlayerStat : MonoBehaviour
         Debug.Log("캐릭터 변경: " + _currentCharacterType);
         if (characterList[_currentCharacterType] != null)
         {
-            currentCharacterData = characterList[_currentCharacterType];
             spriteRenderer.sprite = currentCharacterData.characterSprite;
             animator.runtimeAnimatorController = currentCharacterData.animatorController;  // 애니메이터 컨트롤러 설정
 
@@ -208,8 +208,10 @@ public class PlayerStat : MonoBehaviour
         // 나중에 피격 로직 수정
         if (currentHealth <= 0)
         {
+            /*
             GameManager.Instance.testGameOver();
             //Destroy(gameObject); // 플레이어 파괴
+            */
         }
     }
 

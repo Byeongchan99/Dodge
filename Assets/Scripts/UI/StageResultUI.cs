@@ -11,7 +11,7 @@ public class StageResultUI : MonoBehaviour
 
     public void UpdateStageResult(StageData stageData, UserData userData)
     {
-
+        Debug.Log("PlayerStat.Instance.currentCharacterData: " + PlayerStat.Instance.currentCharacterData.characterTypeIndex);
         characterImage.sprite = PlayerStat.Instance.currentCharacterData.characterSprite;
         
         if (stageData != null)

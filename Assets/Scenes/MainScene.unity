@@ -867,7 +867,6 @@ MonoBehaviour:
   isAbilitySlowMotion: 0
   isItemSlowMotion: 0
   slowMotionItemCount: 0
-  stageManager: {fileID: 1020278220}
 --- !u!4 &203533820
 Transform:
   m_ObjectHideFlags: 0
@@ -6871,14 +6870,14 @@ MonoBehaviour:
   isInvincibility: 0
   characterList:
   - characterSprite: {fileID: 0}
-    animatorController: {fileID: 22100000, guid: 2460a485317b12643b85a57431e0733d, type: 2}
+    animatorController: {fileID: 0}
     characterTypeIndex: 0
   - characterSprite: {fileID: 0}
-    animatorController: {fileID: 22100000, guid: 6e88a74b18f079648b983f9d818859a0, type: 2}
-    characterTypeIndex: 1
+    animatorController: {fileID: 0}
+    characterTypeIndex: 0
   - characterSprite: {fileID: 0}
-    animatorController: {fileID: 22100000, guid: 573c0371683fad0478b3583ced3cb8f2, type: 2}
-    characterTypeIndex: 2
+    animatorController: {fileID: 0}
+    characterTypeIndex: 0
   currentCharacterData:
     characterSprite: {fileID: 0}
     animatorController: {fileID: 0}

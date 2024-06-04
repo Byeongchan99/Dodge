@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.U2D.Aseprite;
 using UnityEngine;
 
-public class StageManager : MonoBehaviour
+public class StageManager : MonoBehaviour, IHealthObserver
 {
     // 스포너 및 이벤트
     [SerializeField] private TurretSpawner turretSpawner;
@@ -17,13 +17,17 @@ public class StageManager : MonoBehaviour
     // 스테이지 데이터
     [SerializeField] private List<StageData> stageDataList;
     [SerializeField] private StageData currentStageData; // 현재 스테이지 데이터
-    private GameObject currentMap;
 
     public UserData userData; // 유저 데이터(임시)
 
     private float timer = 0f;
     private bool isPaused = false;
     private Coroutine timerCoroutine;
+
+    void Start()
+    {
+        PlayerStat.Instance.RegisterObserver(this);
+    }
 
     public void SetStageData(int stageID)
     {
@@ -36,7 +40,7 @@ public class StageManager : MonoBehaviour
         // 맵 프리팹 인스턴스화
         if (currentStageData != null && currentStageData.mapPrefab != null)
         {
-            currentMap = Instantiate(currentStageData.mapPrefab);
+            Instantiate(currentStageData.mapPrefab);
         }
         else
         {
@@ -57,7 +61,15 @@ public class StageManager : MonoBehaviour
         StartTimer();
     }
 
-    public void ClearStage()
+    public void OnHealthChanged(float health)
+    {
+        if (health <= 0)
+        {
+            ExitStage();
+        }
+    }
+
+    public void ExitStage()
     {
         // 유저 데이터 갱신
         if (userData != null && currentStageData.stageID >= 0 && currentStageData.stageID < userData.stageInfos.Length)
