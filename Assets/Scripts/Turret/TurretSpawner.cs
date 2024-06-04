@@ -17,6 +17,8 @@ public class TurretSpawner : MonoBehaviour
     private float _nextSpawnTime = 0f;
     private bool _isSpawning = false; // 현재 소환 중인지 여부를 나타내는 플래그
 
+    private Coroutine _spawnCoroutine; // 현재 실행 중인 소환 코루틴 인스턴스
+
     /****************************************************************************
                                    Unity Callbacks
     ****************************************************************************/
@@ -25,17 +27,13 @@ public class TurretSpawner : MonoBehaviour
         Init();
     }
 
-    void Start()
-    {
-        //StartCoroutine(SpawnTurretRoutine());
-    }
-
     /****************************************************************************
                                     private Methods
     ****************************************************************************/
     /// <summary> 초기화 </summary>
     void Init()
     {
+        _isSpawning = false;
         // 모든 소환 위치를 사용 가능 상태로 초기화
         isAvailableSpawnPosition = new bool[spawnPositions.Length];
         for (int i = 0; i < isAvailableSpawnPosition.Length; i++)
@@ -178,11 +176,19 @@ public class TurretSpawner : MonoBehaviour
 
     public void StartSpawn()
     {
-        StartCoroutine(SpawnTurretRoutine());
+        if (_spawnCoroutine == null)
+        {
+            Init();
+            _spawnCoroutine = StartCoroutine(SpawnTurretRoutine());
+        }
     }
 
     public void StopSpawn()
     {
-        StopCoroutine(SpawnTurretRoutine());
+        if (_spawnCoroutine != null)
+        {
+            StopCoroutine(_spawnCoroutine);
+            _spawnCoroutine = null;
+        }
     }
 }

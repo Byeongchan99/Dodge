@@ -82,6 +82,8 @@ public class PlayerStat : MonoBehaviour
         currentMoveSpeed = _initialMoveSpeed;
         currentPosition = transform;
         isInvincibility = false;
+
+        SetCharacter();
     }
 
     /// <summary> ±ôºıÀÓ È¿°ú ÄÚ·çÆ¾ </summary>

@@ -49,6 +49,7 @@ public class StageManager : MonoBehaviour, IHealthObserver
         }
 
         // 스테이지 시작
+        PlayerStat.Instance.SetCharacter();
         turretSpawner.StartSpawn();
         itemSpawner.StartSpawn();
         turretUpgradeHandler.StartRandomUpgrades(10);

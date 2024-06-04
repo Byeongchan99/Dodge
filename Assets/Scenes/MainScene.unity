@@ -6872,7 +6872,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ef569e73ca9e66048bc789a86c85dcad, type: 2}
   - {fileID: 11400000, guid: 28bbe13819336b349b6232f56148d489, type: 2}
   - {fileID: 11400000, guid: 03c66b28700ce244f8a103953680a31a, type: 2}
-  currentCharacterData: {fileID: 0}
+  currentCharacterData: {fileID: 11400000, guid: 28bbe13819336b349b6232f56148d489, type: 2}
 --- !u!212 &1609651028
 SpriteRenderer:
   m_ObjectHideFlags: 0
