@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 2084368026381238632}
   m_Layer: 0
   m_Name: BulletTurret
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -162,9 +162,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _projectileCount: 0
+  currentProjectileCount: 0
   _attackSpeed: 0
   _timeSinceLastShot: 0
   _lifeTime: 5
+  currentLifeTime: 0
   firePoint: {fileID: 2930688534002741497}
   targetPosition: {fileID: 0}
   projectilePrefabs:

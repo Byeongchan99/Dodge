@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 701291764532958565}
   m_Layer: 0
   m_Name: MortarBombEffect
-  m_TagString: Untagged
+  m_TagString: Effect
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,7 +98,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 926bb126f29fd0c4fba4d0e7f9ef1404, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayTime: 0
 --- !u!60 &701291764532958565
 PolygonCollider2D:
   m_ObjectHideFlags: 0

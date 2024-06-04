@@ -79,7 +79,7 @@ public class MortarTurret : BaseTurret
         }
     }
 
-    protected override void DisableTurret()
+    public override void DisableTurret()
     {
         base.DisableTurret();
     }

@@ -20,6 +20,8 @@ public class StageManager : MonoBehaviour, IHealthObserver
 
     public UserData userData; // 유저 데이터(임시)
 
+    public Eraser eraser;
+
     private float timer = 0f;
     private bool isPaused = false;
     private Coroutine timerCoroutine;
@@ -66,6 +68,7 @@ public class StageManager : MonoBehaviour, IHealthObserver
     {
         if (health <= 0)
         {
+            eraser.EraseAll();
             ExitStage();
         }
     }

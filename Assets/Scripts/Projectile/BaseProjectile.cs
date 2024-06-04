@@ -48,14 +48,6 @@ public class BaseProjectile : MonoBehaviour
         }
     }
 
-    /// <summary> 발사체 파괴 </summary>
-    protected void DestroyProjectile()
-    {
-        //Debug.Log("투사체 풀에 반환");
-        ProjectilePoolManager.Instance.Return(this.GetType().Name, this);
-        StopAllCoroutines();
-    }
-
     /// <summary> 생명 주기 관리 코루틴 </summary>
     protected IEnumerator LifecycleCoroutine()
     {
@@ -102,5 +94,13 @@ public class BaseProjectile : MonoBehaviour
     {
         moveDirection = dir;
         Move();
+    }
+
+    /// <summary> 발사체 파괴 </summary>
+    public void DestroyProjectile()
+    {
+        //Debug.Log("투사체 풀에 반환");
+        ProjectilePoolManager.Instance.Return(this.GetType().Name, this);
+        StopAllCoroutines();
     }
 }

@@ -86,7 +86,7 @@ public class BulletTurret : BaseTurret
     }
 
     /// <summary> 터렛 비활성화 </summary>
-    protected override void DisableTurret()
+    public override void DisableTurret()
     {
         rotatePoint.localRotation = Quaternion.identity;
         base.DisableTurret();

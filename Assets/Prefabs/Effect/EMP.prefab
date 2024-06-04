@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7222666641224241814}
   m_Layer: 0
   m_Name: EMP
-  m_TagString: EMP
+  m_TagString: Effect
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

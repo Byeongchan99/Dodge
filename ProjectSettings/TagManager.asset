@@ -7,6 +7,9 @@ TagManager:
   - Item
   - Projectile
   - EMP
+  - Turret
+  - Effect
+  - Map
   layers:
   - Default
   - TransparentFX

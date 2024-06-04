@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 3638243521627707545}
   m_Layer: 0
   m_Name: LaserTurret
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -162,9 +162,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _projectileCount: 0
+  currentProjectileCount: 0
   _attackSpeed: 0
   _timeSinceLastShot: 0
   _lifeTime: 5
+  currentLifeTime: 0
   firePoint: {fileID: 2930688534002741497}
   targetPosition: {fileID: 0}
   projectilePrefabs:
@@ -174,6 +176,7 @@ MonoBehaviour:
   spawnPointIndex: 0
   rotatePoint: {fileID: 1356929597027367013}
   _direction: {x: 0, y: 0}
+  isShooting: 0
 --- !u!1 &9203135417910183315
 GameObject:
   m_ObjectHideFlags: 0

@@ -118,8 +118,11 @@ public abstract class BaseTurret : MonoBehaviour
     /// <summary> 투사체 발사 </summary>
     protected abstract void Shoot();
 
+    /****************************************************************************
+                                 public Methods
+    ****************************************************************************/
     /// <summary> 터렛 비활성화 </summary>
-    protected virtual void DisableTurret()
+    public virtual void DisableTurret()
     {
         // 이름에서 (Clone)을 제거
         string poolName = gameObject.name.Replace("(Clone)", "");
@@ -135,8 +138,4 @@ public abstract class BaseTurret : MonoBehaviour
 
         StopAllCoroutines();
     }
-
-    /****************************************************************************
-                                 public Methods
-    ****************************************************************************/
 }

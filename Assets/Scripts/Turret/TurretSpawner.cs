@@ -45,6 +45,7 @@ public class TurretSpawner : MonoBehaviour
     /// <summary> 터렛 소환 코루틴 </summary>
     IEnumerator SpawnTurretRoutine()
     {
+        yield return new WaitForSeconds(_nextSpawnTime);
         while (true) // 무한 루프를 통해 게임 동안 지속적으로 터렛 소환
         {
             if (!_isSpawning) // 소환 중이 아닐 때만 새로운 터렛 소환 시도
