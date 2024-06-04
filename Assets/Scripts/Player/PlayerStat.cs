@@ -16,7 +16,6 @@ public class PlayerStat : MonoBehaviour
     private Coroutine invincibilityRoutine = null; // 무적 상태 코루틴
     private float _remainingInvincibilityDuration = 0f; // 남은 무적 상태 지속 시간
 
-    private int _currentCharacterType = 0; // 기본 캐릭터 타입
     [SerializeField] private Blink blink; // 플레이어 점멸 능력
     [SerializeField] private EMP emp; // 플레이어 EMP 능력
     [SerializeField] private DefenseProtocol defenseProtocol; // 플레이어 방어 프로토콜 능력
@@ -43,23 +42,6 @@ public class PlayerStat : MonoBehaviour
     public bool isInvincibility; // 무적 상태인지 여부 
 
     public IPlayerAbility playerAbility; // 플레이어 특수 능력
-
-    // 캐릭터 타입을 위한 enum
-    public enum CharacterType
-    {
-        Light,
-        Medium,
-        Heavy
-    }
-
-    // 캐릭터 데이터
-    [System.Serializable]
-    public class CharacterData
-    {
-        public Sprite characterSprite;
-        public RuntimeAnimatorController animatorController;  // 애니메이터 컨트롤러 추가
-        public int characterTypeIndex; // 캐릭터 타입 인덱스
-    }
 
     // 캐릭터 데이터 리스트
     public List<CharacterData> characterList;
@@ -100,9 +82,6 @@ public class PlayerStat : MonoBehaviour
         currentMoveSpeed = _initialMoveSpeed;
         currentPosition = transform;
         isInvincibility = false;
-
-        // 기본 캐릭터 설정
-        SetCharacter();
     }
 
     /// <summary> 깜빡임 효과 코루틴 </summary>
@@ -155,35 +134,33 @@ public class PlayerStat : MonoBehaviour
     /****************************************************************************
                                 public Methods
     ****************************************************************************/
-    /// <summary> 캐릭터 선택 버튼 클릭 </summary>
-    public void OnCharacterTypeClicked(int typeIndex)
+    /// <summary> 캐릭터 선택 </summary>
+    public void SelectCharacter(int characterTypeIndex)
     {
-        _currentCharacterType = typeIndex;
-        currentCharacterData = characterList[_currentCharacterType];
-        Debug.Log("선택한 캐릭터 타입: " + _currentCharacterType);
+        currentCharacterData = characterList[characterTypeIndex];
     }
 
     /// <summary> 캐릭터 변경 </summary>
     public void SetCharacter()
     {
-        Debug.Log("캐릭터 변경: " + _currentCharacterType);
-        if (characterList[_currentCharacterType] != null)
+        Debug.Log("캐릭터 변경: " + currentCharacterData.characterType);
+        if (characterList[currentCharacterData.characterTypeIndex] != null)
         {
             spriteRenderer.sprite = currentCharacterData.characterSprite;
             animator.runtimeAnimatorController = currentCharacterData.animatorController;  // 애니메이터 컨트롤러 설정
 
             // 플레이어 타입에 따른 체력과 어빌리티 설정
-            if (_currentCharacterType == 0)
+            if (currentCharacterData.characterTypeIndex == 0)
             {
                 playerAbility = blink;
                 _maxHealth = 2;
             }
-            else if (_currentCharacterType == 1)
+            else if (currentCharacterData.characterTypeIndex == 1)
             {
                 playerAbility = emp;
                 _maxHealth = 3;
             }
-            else if (_currentCharacterType == 2)
+            else if (currentCharacterData.characterTypeIndex == 2)
             {
                 playerAbility = defenseProtocol;
                 _maxHealth = 4;

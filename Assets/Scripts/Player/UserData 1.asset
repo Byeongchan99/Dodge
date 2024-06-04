@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageInfos:
   - isCleared: 0
-    score: 9
+    score: 26
+  - isCleared: 0
+    score: 8
   - isCleared: 0
     score: 0
   - isCleared: 0
     score: 0
-  - isCleared: 0
-    score: 33
   - isCleared: 0
     score: 0

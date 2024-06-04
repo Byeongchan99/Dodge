@@ -1158,7 +1158,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1609651027}
         m_TargetAssemblyTypeName: PlayerStat, Assembly-CSharp
-        m_MethodName: OnCharacterTypeClicked
+        m_MethodName: SelectCharacter
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3282,7 +3282,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1609651027}
         m_TargetAssemblyTypeName: PlayerStat, Assembly-CSharp
-        m_MethodName: OnCharacterTypeClicked
+        m_MethodName: SelectCharacter
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6869,19 +6869,10 @@ MonoBehaviour:
   currentMoveSpeed: 0
   isInvincibility: 0
   characterList:
-  - characterSprite: {fileID: 0}
-    animatorController: {fileID: 0}
-    characterTypeIndex: 0
-  - characterSprite: {fileID: 0}
-    animatorController: {fileID: 0}
-    characterTypeIndex: 0
-  - characterSprite: {fileID: 0}
-    animatorController: {fileID: 0}
-    characterTypeIndex: 0
-  currentCharacterData:
-    characterSprite: {fileID: 0}
-    animatorController: {fileID: 0}
-    characterTypeIndex: 0
+  - {fileID: 11400000, guid: ef569e73ca9e66048bc789a86c85dcad, type: 2}
+  - {fileID: 11400000, guid: 28bbe13819336b349b6232f56148d489, type: 2}
+  - {fileID: 11400000, guid: 03c66b28700ce244f8a103953680a31a, type: 2}
+  currentCharacterData: {fileID: 0}
 --- !u!212 &1609651028
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7332,7 +7323,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1609651027}
         m_TargetAssemblyTypeName: PlayerStat, Assembly-CSharp
-        m_MethodName: OnCharacterTypeClicked
+        m_MethodName: SelectCharacter
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -20,3 +20,4 @@ MonoBehaviour:
   characterAbilityDescription: "\uC77C\uC2DC\uC801\uC73C\uB85C \uBB34\uC801 \uC0C1\uD0DC\uAC00
     \uB418\uC9C0\uB9CC \uD589\uB3D9\uD560 \uC218 \uC5C6\uC2B5\uB2C8\uB2E4."
   characterSprite: {fileID: 21300000, guid: 2dfd1278bfe44ab459553dbdcf64cd1d, type: 3}
+  animatorController: {fileID: 22100000, guid: 573c0371683fad0478b3583ced3cb8f2, type: 2}
