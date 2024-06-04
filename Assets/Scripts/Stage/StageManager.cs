@@ -10,8 +10,10 @@ public class StageManager : MonoBehaviour
     [SerializeField] private ItemSpawner itemSpawner;
     [SerializeField] private TurretUpgradeHandler turretUpgradeHandler;
     // UI
+    [SerializeField] private FullscreenUIManager fullscreenUIManager;
     [SerializeField] private GameObject fullscreenUIContainer;
     [SerializeField] private HUDManager HUDManager;
+    [SerializeField] private StageResultUI stageResultUI;
     // 스테이지 데이터
     [SerializeField] private List<StageData> stageDataList;
     [SerializeField] private StageData currentStageData; // 현재 스테이지 데이터
@@ -42,12 +44,14 @@ public class StageManager : MonoBehaviour
             return;
         }
 
+        // 스테이지 시작
         turretSpawner.StartSpawn();
         itemSpawner.StartSpawn();
+        turretUpgradeHandler.StartRandomUpgrades(10);
+        // UI
         HUDManager.EnableTimer();
         HUDManager.EnableHealthBar();
         fullscreenUIContainer.SetActive(false);
-        turretUpgradeHandler.StartRandomUpgrades(10); // 파라미터가 있는 경우도 고려
 
         // 타이머 시작
         StartTimer();
@@ -60,17 +64,25 @@ public class StageManager : MonoBehaviour
         {
             if (timer > 90f) 
                 userData.stageInfos[currentStageData.stageID].isCleared = true;
-            userData.stageInfos[currentStageData.stageID].score = Mathf.FloorToInt(timer);
+
+            // 점수 갱신
+            if (userData.stageInfos[currentStageData.stageID].score < Mathf.FloorToInt(timer)) 
+                userData.stageInfos[currentStageData.stageID].score = Mathf.FloorToInt(timer);
+
             SaveUserData();
         }
 
-        // 스테이지 선택창으로 이동
+        // 스테이지 종료
         turretSpawner.StopSpawn();
         itemSpawner.StopSpawn();
+        turretUpgradeHandler.StopRandomUpgrades();
+        // HUD 비활성화
         HUDManager.DisableTimer();
         HUDManager.DisableHealthBar();
+        // 스테이지 결과창 활성화
+        stageResultUI.UpdateStageResult(currentStageData, userData);
+        fullscreenUIManager.OnPushFullscreenUI("Stage Result");
         fullscreenUIContainer.SetActive(true);
-        turretUpgradeHandler.StopRandomUpgrades();
     }
 
     private void SaveUserData()

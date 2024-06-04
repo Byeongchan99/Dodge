@@ -63,6 +63,7 @@ public class PlayerStat : MonoBehaviour
 
     // 캐릭터 데이터 리스트
     public List<CharacterData> characterList;
+    public CharacterData currentCharacterData;
 
     /****************************************************************************
                                Unity Callbacks
@@ -167,9 +168,9 @@ public class PlayerStat : MonoBehaviour
         Debug.Log("캐릭터 변경: " + _currentCharacterType);
         if (characterList[_currentCharacterType] != null)
         {
-            CharacterData data = characterList[_currentCharacterType];
-            spriteRenderer.sprite = data.characterSprite;
-            animator.runtimeAnimatorController = data.animatorController;  // 애니메이터 컨트롤러 설정
+            currentCharacterData = characterList[_currentCharacterType];
+            spriteRenderer.sprite = currentCharacterData.characterSprite;
+            animator.runtimeAnimatorController = currentCharacterData.animatorController;  // 애니메이터 컨트롤러 설정
 
             // 플레이어 타입에 따른 체력과 어빌리티 설정
             if (_currentCharacterType == 0)
