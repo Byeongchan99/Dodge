@@ -62,7 +62,7 @@ public class TurretUpgradeHandler : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(interval);
+            yield return new WaitForSecondsRealtime(interval);
             if (currentEvents != null && currentEvents.Count > 0)
             {
                 int eventIndex = Random.Range(0, currentEvents.Count);
