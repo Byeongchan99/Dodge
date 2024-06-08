@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageInfos:
   - isCleared: 0
-    score: 9
+    score: 0
   - isCleared: 0
-    score: 58
+    score: 0
   - isCleared: 0
     score: 0
   - isCleared: 0
