@@ -237,7 +237,7 @@ public class NotificationManager : MonoBehaviour
                         }
                         else
                         {
-                            // 이미 분열 총알이 비활성화되어 있을 때
+                            // 이미 분열 박격포탄이 비활성화되어 있을 때
                             if (StatDataManager.Instance.currentStatData.turretDatas[3].projectileIndex == 0)
                             {
                                 Debug.Log("분열 박격포탄 비활성화 되어있음");
