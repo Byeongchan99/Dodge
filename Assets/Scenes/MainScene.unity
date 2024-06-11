@@ -2542,6 +2542,18 @@ MonoBehaviour:
           m_StringArgument: Stage Select
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1053094068}
+        m_TargetAssemblyTypeName: StageSelectUI, Assembly-CSharp
+        m_MethodName: UpdateStageButtons
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &687998127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3784,6 +3796,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1053094068}
+        m_TargetAssemblyTypeName: StageSelectUI, Assembly-CSharp
+        m_MethodName: UpdateStageButtons
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &825318183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4210,8 +4234,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statDataList:
-  - statDataName: Init
-    statData: {fileID: 11400000, guid: 18e6d8498bca9494aaf89c9ce472787c, type: 2}
   - statDataName: Bullet
     statData: {fileID: 11400000, guid: 3ee70a1c469ef8d418d4a0c46a017056, type: 2}
   - statDataName: Laser
@@ -4220,6 +4242,8 @@ MonoBehaviour:
     statData: {fileID: 11400000, guid: 10f5f1802533f284f826c5f1b74e0824, type: 2}
   - statDataName: Mortar
     statData: {fileID: 11400000, guid: d4e7559e1073858499d0abdcb2a603b3, type: 2}
+  - statDataName: Final
+    statData: {fileID: 11400000, guid: 18e6d8498bca9494aaf89c9ce472787c, type: 2}
   originalStatData: {fileID: 0}
 --- !u!1 &986615795
 GameObject:
@@ -4991,6 +5015,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1053094066}
   - component: {fileID: 1053094067}
+  - component: {fileID: 1053094068}
   m_Layer: 5
   m_Name: Stage Select
   m_TagString: Untagged
@@ -5031,6 +5056,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9e8512a0f264614f8f495daffbe87d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1053094068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1053094065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3d188dee19d3cd4fbccdcf3ae5fde12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageManager: {fileID: 1020278220}
+  stageButtons:
+  - {fileID: 716717834}
+  - {fileID: 703400110}
+  - {fileID: 721388070}
+  - {fileID: 756492863}
+  - {fileID: 1810952752}
 --- !u!1 &1064839079
 GameObject:
   m_ObjectHideFlags: 0

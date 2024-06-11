@@ -47,7 +47,7 @@ public class StatDataManager : MonoBehaviour
 
         // 현재 스탯 데이터 설정
         Debug.Log("스탯 매니저 초기화");
-        SetOriginalStatData("Init");
+        SetOriginalStatData("Bullet");
     }
 
     /// <summary> 오리지널 스탯 데이터 설정 </summary>
