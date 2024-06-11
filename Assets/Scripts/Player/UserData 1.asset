@@ -15,8 +15,8 @@ MonoBehaviour:
   stageInfos:
   - isCleared: 0
     score: 0
-  - isCleared: 0
-    score: 81
+  - isCleared: 1
+    score: 117
   - isCleared: 0
     score: 0
   - isCleared: 0

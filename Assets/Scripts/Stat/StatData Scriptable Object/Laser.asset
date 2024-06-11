@@ -37,22 +37,22 @@ MonoBehaviour:
   - name: BulletTurret
     spawnLevel: 0
     spawnChance: 0
-    spawnCooldown: 3
+    spawnCooldown: 4
     spawnCooldownPercent: 0
   - name: LaserTurret
     spawnLevel: 1
     spawnChance: 0
-    spawnCooldown: 3
+    spawnCooldown: 4
     spawnCooldownPercent: 0
   - name: RocketTurret
     spawnLevel: 0
     spawnChance: 0
-    spawnCooldown: 3
+    spawnCooldown: 4
     spawnCooldownPercent: 0
   - name: MortarTurret
     spawnLevel: 0
     spawnChance: 0
-    spawnCooldown: 3
+    spawnCooldown: 4
     spawnCooldownPercent: 0
   turretDatas:
   - turretName: BulletTurret
