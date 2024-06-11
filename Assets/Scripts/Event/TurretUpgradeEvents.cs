@@ -231,6 +231,40 @@ public class LaserTurretCountDecrease : ITurretUpgradeEvent
     }
 }
 
+/// <summary> 레이저 발사 속도 증가 이벤트 </summary>
+public class LaserTurretSpeedIncrease : ITurretUpgradeEvent
+{
+    public void ExecuteEvent()
+    {
+        Debug.Log("레이저 발사 속도 증가");
+        TurretUpgradeInfo laserTurretSpeedIncrease = new TurretUpgradeInfo
+        {
+            turretType = TurretUpgradeInfo.TurretType.Laser,
+            enhancementType = TurretUpgradeInfo.EnhancementType.SpeedChange,
+            value = -0.1f,
+        };
+
+        EventManager.TriggerEnhancementEvent("TurretUpgrade", laserTurretSpeedIncrease);
+    }
+}
+
+/// <summary> 레이저 발사 속도 감소 이벤트 </summary>
+public class LaserTurretSpeedDecrease : ITurretUpgradeEvent
+{
+    public void ExecuteEvent()
+    {
+        Debug.Log("레이저 발사 속도 감소");
+        TurretUpgradeInfo laserTurretSpeedDecrease = new TurretUpgradeInfo
+        {
+            turretType = TurretUpgradeInfo.TurretType.Laser,
+            enhancementType = TurretUpgradeInfo.EnhancementType.SpeedChange,
+            value = 0.1f,
+        };
+
+        EventManager.TriggerEnhancementEvent("TurretUpgrade", laserTurretSpeedDecrease);
+    }
+}
+
 /// <summary> 레이저 크기 증가 이벤트 </summary>
 public class LaserTurretSizeIncrease : ITurretUpgradeEvent
 {

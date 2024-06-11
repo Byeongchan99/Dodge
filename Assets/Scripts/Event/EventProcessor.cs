@@ -120,6 +120,15 @@ public class EventProcessor : MonoBehaviour
                         Debug.Log("newTurretLifeTime" + newTurretLifeTime);
                         StatDataManager.Instance.currentStatData.turretDatas[1].turretLifeTime = Mathf.Max(3f, newTurretLifeTime);
                         break;
+                    case TurretUpgradeInfo.EnhancementType.SpeedChange:
+                        // 속도 변경
+                        Debug.Log("레이저 발사 속도 변경 " + enhancement.value);
+                        // 범위 설정
+                        float newProjectileSpeed = StatDataManager.Instance.currentStatData.projectileDatas[1].projectileSpeed + enhancement.value;
+                        StatDataManager.Instance.currentStatData.projectileDatas[1].projectileSpeed = Mathf.Clamp(newProjectileSpeed, 0.2f, 2f);
+                        if (StatDataManager.Instance.currentStatData.projectileDatas[1].projectileSpeed <= 0.2f)
+                            StatDataManager.Instance.currentStatData.projectileDatas[1].isMaxProjectileSpeed = true;
+                        break;
                     case TurretUpgradeInfo.EnhancementType.SizeChange:
                         // 속도 변경
                         Debug.Log("레이저 크기 변경 " + enhancement.value);

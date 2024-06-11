@@ -135,6 +135,19 @@ public class NotificationManager : MonoBehaviour
                             enhancementTypeName = "레이저 개수 변경";
                         }
                         break;
+                    case TurretUpgradeInfo.EnhancementType.SpeedChange:
+                        // 속도 변경
+                        if (StatDataManager.Instance.currentStatData.projectileDatas[1].isMaxProjectileSpeed)
+                        {
+                            enhancementTypeName = "레이저 발사 속도 최대치";
+                            Debug.Log("레이저 발사 속도 최대치");
+                            OnNotification = false;
+                        }
+                        else
+                        {
+                            enhancementTypeName = "레이저 발사 속도 변경";
+                        }
+                        break;
                     case TurretUpgradeInfo.EnhancementType.SizeChange:
                         // 크기 변경
                         if (StatDataManager.Instance.currentStatData.projectileDatas[1].isMaxProjectileSize)

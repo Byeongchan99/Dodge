@@ -85,8 +85,8 @@ public class LaserTurret : BaseTurret
             Debug.LogWarning("Failed to get effect from pool.");
         }
 
-        // 1초 지연 후 레이저 생성
-        yield return new WaitForSeconds(1f);
+        // 레이저 발사 속도만큼 지연 후 레이저 생성
+        yield return new WaitForSeconds(StatDataManager.Instance.currentStatData.projectileDatas[1].projectileSpeed);
         isShooting = true;
 
         // 오브젝트 풀에서 레이저 가져오기

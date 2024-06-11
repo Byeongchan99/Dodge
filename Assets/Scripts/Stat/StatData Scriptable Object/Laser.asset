@@ -84,7 +84,7 @@ MonoBehaviour:
     projectileSize: {x: 0.3, y: 0.3, z: 0.3}
     isMaxProjectileSize: 0
   - projectileName: Laser
-    projectileSpeed: 5
+    projectileSpeed: 1
     isMaxProjectileSpeed: 0
     projectileLifeTime: 1.5
     isMaxProjectileLifeTime: 0

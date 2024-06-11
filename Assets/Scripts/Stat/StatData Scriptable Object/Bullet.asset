@@ -57,34 +57,50 @@ MonoBehaviour:
   turretDatas:
   - turretName: BulletTurret
     projectileCount: 5
+    isMaxProjectileCount: 0
     projectileIndex: 0
     turretLifeTime: 6
   - turretName: LaserTurret
     projectileCount: 1
+    isMaxProjectileCount: 0
     projectileIndex: 0
     turretLifeTime: 6
   - turretName: RocketTurret
     projectileCount: 2
+    isMaxProjectileCount: 0
     projectileIndex: 0
     turretLifeTime: 6
   - turretName: MortarTurret
     projectileCount: 2
+    isMaxProjectileCount: 0
     projectileIndex: 0
     turretLifeTime: 6
   projectileDatas:
   - projectileName: Bullet
     projectileSpeed: 5
+    isMaxProjectileSpeed: 0
     projectileLifeTime: -1
+    isMaxProjectileLifeTime: 0
     projectileSize: {x: 0.3, y: 0.3, z: 0.3}
+    isMaxProjectileSize: 0
   - projectileName: Laser
-    projectileSpeed: 5
+    projectileSpeed: 1
+    isMaxProjectileSpeed: 0
     projectileLifeTime: 1.5
+    isMaxProjectileLifeTime: 0
     projectileSize: {x: 1, y: 25, z: 1}
+    isMaxProjectileSize: 0
   - projectileName: Rocket
     projectileSpeed: 3
+    isMaxProjectileSpeed: 0
     projectileLifeTime: 10
+    isMaxProjectileLifeTime: 0
     projectileSize: {x: 0.3, y: 0.3, z: 0.3}
+    isMaxProjectileSize: 0
   - projectileName: MortarBomb
     projectileSpeed: 2
+    isMaxProjectileSpeed: 0
     projectileLifeTime: -1
+    isMaxProjectileLifeTime: 0
     projectileSize: {x: 2.5, y: 1.5, z: 2.5}
+    isMaxProjectileSize: 0
