@@ -29,7 +29,7 @@ public class PlayerStat : MonoBehaviour
 
     public GameObject player; // 플레이어 게임 오브젝트
     public Transform currentPosition; // 플레이어 현재 위치
-    public SpriteRenderer spriteRenderer;
+    public SpriteRenderer spriteRenderer; // 플레이어 스프라이트 렌더러
     public Animator animator;
 
     public int MaxHealth // 플레이어 최대 체력 프로퍼티
@@ -49,7 +49,8 @@ public class PlayerStat : MonoBehaviour
     public CharacterData currentCharacterData;
 
     public UserDataManager userDataManager;
-    public GameObject crown;
+    public GameObject crown; // 왕관
+    SpriteRenderer crownSpriteRenderer; // 왕관 스프라이트 렌더러
 
     /****************************************************************************
                                Unity Callbacks
@@ -81,6 +82,7 @@ public class PlayerStat : MonoBehaviour
     void Init()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        crownSpriteRenderer = crown.GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
 
         currentMoveSpeed = _initialMoveSpeed;
@@ -106,6 +108,7 @@ public class PlayerStat : MonoBehaviour
             invincibilityRoutine = null;
             isInvincibility = false;
             spriteRenderer.color = new Color(1, 1, 1, 1);
+            crownSpriteRenderer.color = new Color(1, 1, 1, 1);
         }
     }
 
@@ -117,16 +120,19 @@ public class PlayerStat : MonoBehaviour
         {
             // 깜빡이는 이펙트: 반투명
             spriteRenderer.color = new Color(1, 1, 1, 0.5f);
+            crownSpriteRenderer.color = new Color(1, 1, 1, 0.5f);
             yield return new WaitForSeconds(0.1f);  // 0.1초 대기
 
             // 깜빡이는 이펙트: 원래 상태
             spriteRenderer.color = new Color(1, 1, 1, 1);
+            crownSpriteRenderer.color = new Color(1, 1, 1, 1);
             yield return new WaitForSeconds(0.1f);  // 0.1초 대기
 
             timeLeft -= 0.2f;  // 지연 시간(0.1 + 0.1)만큼 시간 감소
         }
         // 루프 종료 후 색상 원상 복구
         spriteRenderer.color = new Color(1, 1, 1, 1);
+        crownSpriteRenderer.color = new Color(1, 1, 1, 1);
     }
 
     /// <summary> 무적 시간 적용 타이머 </summary>
@@ -146,6 +152,7 @@ public class PlayerStat : MonoBehaviour
         invincibilityRoutine = null;
         isInvincibility = false;
         spriteRenderer.color = new Color(1, 1, 1, 1);
+        crownSpriteRenderer.color = new Color(1, 1, 1, 1);
     }
 
     /// <summary> 아이템 효과 적용 타이머 </summary>

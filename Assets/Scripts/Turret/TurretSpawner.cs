@@ -34,6 +34,7 @@ public class TurretSpawner : MonoBehaviour
     void Init()
     {
         _isSpawning = false;
+        _nextSpawnTime = 3f;
         // 모든 소환 위치를 사용 가능 상태로 초기화
         isAvailableSpawnPosition = new bool[spawnPositions.Length];
         for (int i = 0; i < isAvailableSpawnPosition.Length; i++)

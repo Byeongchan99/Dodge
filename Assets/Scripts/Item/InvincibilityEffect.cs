@@ -24,7 +24,24 @@ public class InvincibilityEffect : ItemEffect
         {
             target.GetComponent<MonoBehaviour>().StopCoroutine(_colorChangeCoroutine);
         }
-        target.GetComponent<SpriteRenderer>().color = Color.white;  // 색상을 원래대로 복구
+
+        // 색상을 원래대로 복구
+        RestoreOriginalColors();
+    }
+
+    private void RestoreOriginalColors()
+    {
+        SpriteRenderer playerSpriteRenderer = target.GetComponent<SpriteRenderer>();
+        if (playerSpriteRenderer != null)
+        {
+            playerSpriteRenderer.color = Color.white;
+        }
+
+        SpriteRenderer crownSpriteRenderer = target.GetComponentInChildren<SpriteRenderer>();
+        if (crownSpriteRenderer != null)
+        {
+            crownSpriteRenderer.color = Color.white;
+        }
     }
 
     private IEnumerator ChangeColor()
@@ -32,9 +49,24 @@ public class InvincibilityEffect : ItemEffect
         Color[] colors = new Color[] { Color.red, Color.yellow, Color.green, Color.cyan, Color.blue, Color.magenta };
         int colorIndex = 0;
 
+        SpriteRenderer playerSpriteRenderer = target.GetComponent<SpriteRenderer>();
+        SpriteRenderer crownSpriteRenderer = target.GetComponentInChildren<SpriteRenderer>();
+
         while (true)
         {
-            target.GetComponent<SpriteRenderer>().color = colors[colorIndex];  // 현재 인덱스의 색으로 변경
+            if (playerSpriteRenderer != null)
+            {
+                Debug.Log("플레이어 색상 변경");
+                playerSpriteRenderer.color = colors[colorIndex];
+            }
+
+            if (crownSpriteRenderer != null)
+            {
+                Debug.Log("왕관 색상 변경");
+                crownSpriteRenderer.color = colors[colorIndex];
+                Debug.Log("왕관 색상: " + crownSpriteRenderer.color.ToString());
+            }
+
             colorIndex = (colorIndex + 1) % colors.Length;  // 다음 색상 인덱스로 업데이트
             yield return new WaitForSeconds(0.1f);  // 0.1초 마다 색상 변경
         }

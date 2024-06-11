@@ -37,6 +37,7 @@ public class ItemSpawner : MonoBehaviour
     void Init()
     {
         _isSpawning = false;
+        _nextSpawnTime = 10f;
     }
 
     /// <summary> 아이템 소환 코루틴 </summary>
