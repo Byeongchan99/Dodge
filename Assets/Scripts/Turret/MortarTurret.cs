@@ -12,7 +12,7 @@ public class MortarTurret : BaseTurret
 
     protected override void OnEnable()
     {
-        playerMovement = FindObjectOfType<PlayerMovement>();
+        playerMovement = PlayerStat.Instance.player.GetComponent<PlayerMovement>();
         if (playerMovement == null)
         {
             Debug.LogError("PlayerMovement script not found in the scene.");

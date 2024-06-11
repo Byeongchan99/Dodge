@@ -23,3 +23,14 @@ MonoBehaviour:
     score: 0
   - isCleared: 0
     score: 0
+  achievementInfos:
+  - name: "\uCD1D\uC54C \uC2A4\uD14C\uC774\uC9C0 \uD074\uB9AC\uC5B4"
+    isAchieved: 0
+  - name: "\uB808\uC774\uC800 \uC2A4\uD14C\uC774\uC9C0 \uD074\uB9AC\uC5B4"
+    isAchieved: 0
+  - name: "\uB85C\uCF13 \uC2A4\uD14C\uC774\uC9C0 \uD074\uB9AC\uC5B4"
+    isAchieved: 0
+  - name: "\uBC15\uACA9\uD3EC \uC2A4\uD14C\uC774\uC9C0 \uD074\uB9AC\uC5B4"
+    isAchieved: 0
+  - name: "\uD30C\uC774\uB110 \uC2A4\uD14C\uC774\uC9C0 \uD074\uB9AC\uC5B4"
+    isAchieved: 0

@@ -27,6 +27,7 @@ public class PlayerStat : MonoBehaviour
     ****************************************************************************/
     public static PlayerStat Instance { get; private set; } // 싱글톤 인스턴스
 
+    public GameObject player; // 플레이어 게임 오브젝트
     public Transform currentPosition; // 플레이어 현재 위치
     public SpriteRenderer spriteRenderer;
     public Animator animator;
@@ -84,6 +85,7 @@ public class PlayerStat : MonoBehaviour
         isInvincibility = false;
 
         SetCharacter();
+        player.SetActive(false);
     }
 
     /// <summary> 깜빡임 효과 코루틴 </summary>

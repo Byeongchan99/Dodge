@@ -8,4 +8,6 @@ AnimatorOverrideController:
   m_PrefabAsset: {fileID: 0}
   m_Name: LightType
   m_Controller: {fileID: 9100000, guid: 08d3084e416682a40b8a358e29e46681, type: 2}
-  m_Clips: []
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 3afe013d78c8e0c49a4c1e6e8d7495aa, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 92f576d88a68fe046ac18efc9b399569, type: 2}

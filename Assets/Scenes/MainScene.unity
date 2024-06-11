@@ -6042,7 +6042,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 149a7e627fefd3749a623f36482b787e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6db2bff9b3fe7f349b9bd2fa99afc040, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6908,6 +6908,7 @@ MonoBehaviour:
   blink: {fileID: 1609651036}
   emp: {fileID: 1609651035}
   defenseProtocol: {fileID: 1609651034}
+  player: {fileID: 1609651025}
   currentPosition: {fileID: 0}
   spriteRenderer: {fileID: 0}
   animator: {fileID: 0}
@@ -9003,7 +9004,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 149a7e627fefd3749a623f36482b787e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63a76614335a6fe44bc2832e52caab55, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
