@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class StageSelectUI : MonoBehaviour
 {
-    public StageManager stageManager;
+    public UserDataManager userDataManager;
     public Button[] stageButtons;
 
     private void Start()
@@ -20,7 +20,7 @@ public class StageSelectUI : MonoBehaviour
 
         for (int i = 1; i < stageButtons.Length; i++)
         {
-            if (stageManager.userData.stageInfos[i - 1].isCleared)
+            if (userDataManager.userData.stageInfos[i - 1].isCleared)
             {
                 stageButtons[i].interactable = true;
             }

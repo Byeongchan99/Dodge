@@ -17,12 +17,12 @@ public class StageManager : MonoBehaviour, IHealthObserver
     // 스테이지 데이터
     [SerializeField] private List<StageData> stageDataList;
     [SerializeField] private StageData currentStageData; // 현재 스테이지 데이터
+    // 유저 데이터
+    [SerializeField] private UserDataManager userDataManager;
 
-    public UserData userData; // 유저 데이터(임시)
+    public Eraser eraser; // 게임 종료 후 초기화
 
-    public Eraser eraser;
-
-    private float timer = 0f;
+    private float timer = 0f; // 타이머
     private bool isPaused = false;
     private Coroutine timerCoroutine;
 
@@ -77,16 +77,16 @@ public class StageManager : MonoBehaviour, IHealthObserver
     public void ExitStage()
     {
         // 유저 데이터 갱신
-        if (userData != null && currentStageData.stageID >= 0 && currentStageData.stageID < userData.stageInfos.Length)
+        if (userDataManager.userData != null && currentStageData.stageID >= 0 && currentStageData.stageID < userDataManager.userData.stageInfos.Length)
         {
-            if (timer > 90f) 
-                userData.stageInfos[currentStageData.stageID].isCleared = true;
+            if (timer > 90f)
+                userDataManager.userData.stageInfos[currentStageData.stageID].isCleared = true;
 
             // 점수 갱신
-            if (userData.stageInfos[currentStageData.stageID].score < Mathf.FloorToInt(timer)) 
-                userData.stageInfos[currentStageData.stageID].score = Mathf.FloorToInt(timer);
+            if (userDataManager.userData.stageInfos[currentStageData.stageID].score < Mathf.FloorToInt(timer))
+                userDataManager.userData.stageInfos[currentStageData.stageID].score = Mathf.FloorToInt(timer);
 
-            SaveUserData();
+            userDataManager.SaveUserData();
         }
 
         // 스테이지 종료
@@ -98,18 +98,9 @@ public class StageManager : MonoBehaviour, IHealthObserver
         HUDManager.DisableTimer();
         HUDManager.DisableHealthBar();
         // 스테이지 결과창 활성화
-        stageResultUI.UpdateStageResult(currentStageData, userData);
+        stageResultUI.UpdateStageResult(currentStageData, userDataManager.userData);
         fullscreenUIManager.OnPushFullscreenUI("Stage Result");
         fullscreenUIContainer.SetActive(true);
-    }
-
-    private void SaveUserData()
-    {
-#if UNITY_EDITOR
-        // 에디터 모드에서 ScriptableObject 데이터를 저장
-        UnityEditor.EditorUtility.SetDirty(userData);
-        UnityEditor.AssetDatabase.SaveAssets();
-#endif
     }
 
     private void StartTimer()

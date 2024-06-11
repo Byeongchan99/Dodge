@@ -177,7 +177,7 @@ public class PlayerStat : MonoBehaviour
     /// <summary> 데미지 처리 </summary>
     public void TakeDamage()
     {
-        if (!isInvincibility) // 무적 상태가 아닐 때
+        if (!isInvincibility && currentHealth > 0) // 무적 상태가 아닐 때
         {
             // 피격 처리
             currentHealth--;
