@@ -48,6 +48,9 @@ public class PlayerStat : MonoBehaviour
     public List<CharacterData> characterList;
     public CharacterData currentCharacterData;
 
+    public UserDataManager userDataManager;
+    public GameObject crown;
+
     /****************************************************************************
                                Unity Callbacks
     ****************************************************************************/
@@ -83,6 +86,11 @@ public class PlayerStat : MonoBehaviour
         currentMoveSpeed = _initialMoveSpeed;
         currentPosition = transform;
         isInvincibility = false;
+
+        if (userDataManager.userData.stageInfos[4].isCleared)
+        {
+            crown.SetActive(true);
+        }
 
         SetCharacter();
         player.SetActive(false);
