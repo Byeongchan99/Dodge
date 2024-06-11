@@ -96,6 +96,19 @@ public class PlayerStat : MonoBehaviour
         player.SetActive(false);
     }
 
+    // 실행 중인 코루틴들 초기화
+    void InitCoroutines()
+    {
+        // 무적 상태 코루틴 중지
+        if (invincibilityRoutine != null)
+        {
+            StopCoroutine(invincibilityRoutine);
+            invincibilityRoutine = null;
+            isInvincibility = false;
+            spriteRenderer.color = new Color(1, 1, 1, 1);
+        }
+    }
+
     /// <summary> 깜빡임 효과 코루틴 </summary>
     private IEnumerator FlickerEffect(float duration)
     {
@@ -182,22 +195,32 @@ public class PlayerStat : MonoBehaviour
         NotifyObservers();
     }
 
+    /// <summary> 플레이어 비활성화 </summary>
+    public void DisablePlayer()
+    {
+        Debug.Log("플레이어 비활성화");
+        RemoveAllEffects(); // 모든 아이템 효과 제거
+        InitCoroutines(); // 모든 코루틴 초기화
+        player.SetActive(false);
+    }
+
     /// <summary> 데미지 처리 </summary>
     public void TakeDamage()
     {
         if (!isInvincibility && currentHealth > 0) // 무적 상태가 아닐 때
         {
+            StartCoroutine(FlickerEffect(1.5f)); // 1.5초 동안 깜빡임 효과
+            StartInvincibility(1.5f); // 1초 동안 무적
             // 피격 처리
             currentHealth--;
             NotifyObservers();
-            Debug.Log("피격! 현재 체력: " + currentHealth);
-            StartCoroutine(FlickerEffect(1.5f)); // 1.5초 동안 깜빡임 효과
-            StartInvincibility(1.5f); // 1초 동안 무적
+            Debug.Log("피격! 현재 체력: " + currentHealth);    
         }
+
         // 나중에 피격 로직 수정
         if (currentHealth <= 0)
         {
-            StopAllCoroutines(); // 모든 코루틴 중지
+            DisablePlayer(); // 플레이어 비활성화
             /*
             GameManager.Instance.testGameOver();
             //Destroy(gameObject); // 플레이어 파괴

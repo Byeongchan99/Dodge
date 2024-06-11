@@ -90,7 +90,7 @@ public class StageManager : MonoBehaviour, IHealthObserver
         }
 
         // 스테이지 종료
-        PlayerStat.Instance.player.SetActive(false);
+        PlayerStat.Instance.DisablePlayer();
         turretSpawner.StopSpawn();
         itemSpawner.StopSpawn();
         turretUpgradeHandler.StopRandomUpgrades();

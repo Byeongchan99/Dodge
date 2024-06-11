@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: UserData 1
   m_EditorClassIdentifier: 
   stageInfos:
-  - isCleared: 0
+  - isCleared: 1
+    score: 35
+  - isCleared: 1
+    score: 16
+  - isCleared: 1
+    score: 64
+  - isCleared: 1
     score: 0
-  - isCleared: 0
-    score: 0
-  - isCleared: 0
-    score: 0
-  - isCleared: 0
-    score: 0
-  - isCleared: 0
+  - isCleared: 1
     score: 0
   achievementInfos:
   - name: "\uCD1D\uC54C \uC2A4\uD14C\uC774\uC9C0 \uD074\uB9AC\uC5B4"
