@@ -35,12 +35,19 @@ public class InvincibilityEffect : ItemEffect
         if (playerSpriteRenderer != null)
         {
             playerSpriteRenderer.color = Color.white;
+            //Debug.Log("플레이어 색상 복구됨");
         }
 
-        SpriteRenderer crownSpriteRenderer = target.GetComponentInChildren<SpriteRenderer>();
-        if (crownSpriteRenderer != null)
+        // 자식 오브젝트의 SpriteRenderer 복구
+        Transform childTransform = target.transform.Find("Crown");  // 자식 오브젝트의 이름이 "Crown"이라고 가정
+        if (childTransform != null)
         {
-            crownSpriteRenderer.color = Color.white;
+            SpriteRenderer crownSpriteRenderer = childTransform.GetComponent<SpriteRenderer>();
+            if (crownSpriteRenderer != null)
+            {
+                crownSpriteRenderer.color = Color.white;
+                //Debug.Log("왕관 색상 복구됨");
+            }
         }
     }
 
@@ -50,21 +57,26 @@ public class InvincibilityEffect : ItemEffect
         int colorIndex = 0;
 
         SpriteRenderer playerSpriteRenderer = target.GetComponent<SpriteRenderer>();
-        SpriteRenderer crownSpriteRenderer = target.GetComponentInChildren<SpriteRenderer>();
+
+        Transform childTransform = target.transform.Find("Crown");  // 자식 오브젝트 Crown의 SpriteRenderer 가져오기
+        SpriteRenderer crownSpriteRenderer = null;
+        if (childTransform != null)
+        {
+            crownSpriteRenderer = childTransform.GetComponent<SpriteRenderer>();
+        }
 
         while (true)
         {
             if (playerSpriteRenderer != null)
             {
-                Debug.Log("플레이어 색상 변경");
+                //Debug.Log("플레이어 색상 변경");
                 playerSpriteRenderer.color = colors[colorIndex];
             }
 
             if (crownSpriteRenderer != null)
             {
-                Debug.Log("왕관 색상 변경");
+                //Debug.Log("왕관 색상 변경");
                 crownSpriteRenderer.color = colors[colorIndex];
-                Debug.Log("왕관 색상: " + crownSpriteRenderer.color.ToString());
             }
 
             colorIndex = (colorIndex + 1) % colors.Length;  // 다음 색상 인덱스로 업데이트
