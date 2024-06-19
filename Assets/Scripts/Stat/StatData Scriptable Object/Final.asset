@@ -33,6 +33,11 @@ MonoBehaviour:
     spawnChance: 0
     spawnCooldown: 20
     spawnCooldownPercent: 0
+  - name: GetScoreItem
+    spawnLevel: 1
+    spawnChance: 0
+    spawnCooldown: 20
+    spawnCooldownPercent: 0
   turretSpawnerDatas:
   - name: BulletTurret
     spawnLevel: 1

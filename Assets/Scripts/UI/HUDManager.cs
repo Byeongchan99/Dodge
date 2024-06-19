@@ -21,7 +21,7 @@ public class HUDManager : MonoBehaviour
 
     public void UpdateTimerUI(float time)
     {
-        timeText.text = "Time: " + time.ToString("F2");
+        timeText.text = "Score: " + time.ToString("F2");
     }
 
     public void EnableHealthBar()

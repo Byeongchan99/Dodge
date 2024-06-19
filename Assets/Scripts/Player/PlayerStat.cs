@@ -93,6 +93,10 @@ public class PlayerStat : MonoBehaviour
         {
             crown.SetActive(true);
         }
+        else
+        {
+            crown.SetActive(false);
+        }
 
         SetCharacter();
         player.SetActive(false);

@@ -43,7 +43,8 @@ public class ItemSpawner : MonoBehaviour
     /// <summary> 아이템 소환 코루틴 </summary>
     IEnumerator SpawnItemRoutine()
     {
-        yield return new WaitForSeconds(_nextSpawnTime);
+        // 아이템 소환의 경우 실제 시간 적용
+        yield return new WaitForSecondsRealtime(_nextSpawnTime);
         while (true) // 무한 루프를 통해 게임 동안 지속적으로 아이템 소환
         {
             if (!_isSpawning) // 소환 중이 아닐 때만 새로운 아이템 소환 시도
@@ -51,7 +52,7 @@ public class ItemSpawner : MonoBehaviour
                 _isSpawning = true; // 소환 시작 플래그 설정
                 SpawnItem();
                 // 선택된 아이템의 쿨타임에 따라 대기
-                yield return new WaitForSeconds(_nextSpawnTime);
+                yield return new WaitForSecondsRealtime(_nextSpawnTime);
                 _isSpawning = false; // 소환 완료 후 플래그 재설정
             }
             yield return null; // 다음 프레임까지 대기

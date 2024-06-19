@@ -1115,6 +1115,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 274413637}
   m_CullTransparentMesh: 1
+--- !u!1 &286815193
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 286815194}
+  - component: {fileID: 286815195}
+  m_Layer: 0
+  m_Name: Score Manger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &286815194
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 286815193}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1020278221}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &286815195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 286815193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89df9a87b613c0149919abab5ff13e4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HUDManager: {fileID: 1556797572}
 --- !u!1 &314090015
 GameObject:
   m_ObjectHideFlags: 0
@@ -2643,7 +2688,7 @@ GameObject:
   - component: {fileID: 692830880}
   - component: {fileID: 692830879}
   m_Layer: 5
-  m_Name: Star 90
+  m_Name: Star 150
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4114,7 +4159,8 @@ MonoBehaviour:
   - {fileID: 1051273515248385614, guid: 9bae199f05256f14e844b54590db4372, type: 3}
   - {fileID: 8538647137338726605, guid: 0d3ab961c7835a445b815e3651384547, type: 3}
   - {fileID: 4198687062574842583, guid: 8cc5805557f80a54caf17527803b1cfd, type: 3}
-  spawnPositionRange: {x: 6, y: 3}
+  - {fileID: 8538647137338726605, guid: 3938fdf141b614b44b7a6da03886ef42, type: 3}
+  spawnPositionRange: {x: 5.5, y: 2.5}
 --- !u!4 &925929094
 Transform:
   m_ObjectHideFlags: 0
@@ -4527,6 +4573,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 119579140}
+  - {fileID: 286815194}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1025739128
@@ -7322,7 +7369,8 @@ MonoBehaviour:
   moveSpeedUpItemPrefab: {fileID: 6206596959843001343, guid: fa0d01b2ea6716e4fa665176d2534862, type: 3}
   invincibilityItemPrefab: {fileID: 1051273515248385614, guid: 9bae199f05256f14e844b54590db4372, type: 3}
   slowMotionItemPrefab: {fileID: 8538647137338726605, guid: 0d3ab961c7835a445b815e3651384547, type: 3}
-  empBombPrefab: {fileID: 4198687062574842583, guid: 8cc5805557f80a54caf17527803b1cfd, type: 3}
+  empBombItemPrefab: {fileID: 4198687062574842583, guid: 8cc5805557f80a54caf17527803b1cfd, type: 3}
+  getScoreItemPrefab: {fileID: 8538647137338726605, guid: 3938fdf141b614b44b7a6da03886ef42, type: 3}
   itemContainer: {fileID: 1615706928}
 --- !u!114 &1615706930
 MonoBehaviour:
@@ -8239,8 +8287,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.21
-  m_Text: "3\uC131 \uC870\uAC74\n30\uCD08 \uC774\uC0C1 \uC0DD\uC874\n60\uCD08 \uC774\uC0C1
-    \uC0DD\uC874\n90\uCD08 \uC774\uC0C1 \uC0DD\uC874"
+  m_Text: "3\uC131 \uC870\uAC74\n50\uC810 \uC774\uC0C1 \uD68D\uB4DD\n100\uC810 \uC774\uC0C1
+    \uD68D\uB4DD\n150\uC810 \uC774\uC0C1 \uD68D\uB4DD"
 --- !u!222 &1821622718
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8261,7 +8309,7 @@ GameObject:
   - component: {fileID: 1862301871}
   - component: {fileID: 1862301870}
   m_Layer: 5
-  m_Name: Star 30
+  m_Name: Star 50
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8718,7 +8766,7 @@ GameObject:
   - component: {fileID: 1964752684}
   - component: {fileID: 1964752683}
   m_Layer: 5
-  m_Name: Star 60
+  m_Name: Star 100
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

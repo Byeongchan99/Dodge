@@ -38,7 +38,7 @@ public class StageInfoUI : MonoBehaviour
         // 별 활성화
         for (int i = 0; i < 3; i++)
         {
-            if (i < score / 30 - 1)  
+            if (i < (score / 50) - 1)  
             {
                 StarUnits[i].SetActive(true);
             }

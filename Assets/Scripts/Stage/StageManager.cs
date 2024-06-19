@@ -22,10 +22,6 @@ public class StageManager : MonoBehaviour, IHealthObserver
 
     public Eraser eraser; // 게임 종료 후 초기화
 
-    private float timer = 0f; // 타이머
-    private bool isPaused = false;
-    private Coroutine timerCoroutine;
-
     void Start()
     {
         PlayerStat.Instance.RegisterObserver(this);
@@ -62,7 +58,7 @@ public class StageManager : MonoBehaviour, IHealthObserver
         fullscreenUIContainer.SetActive(false);
 
         // 타이머 시작
-        StartTimer();
+        ScoreManager.Instance.StartTimer();
     }
 
     public void OnHealthChanged(float health)
@@ -79,12 +75,12 @@ public class StageManager : MonoBehaviour, IHealthObserver
         // 유저 데이터 갱신
         if (userDataManager.userData != null && currentStageData.stageID >= 0 && currentStageData.stageID < userDataManager.userData.stageInfos.Length)
         {
-            if (timer > 90f)
+            if (ScoreManager.Instance.GetCurrentScore() > 150f)
                 userDataManager.userData.stageInfos[currentStageData.stageID].isCleared = true;
 
             // 점수 갱신
-            if (userDataManager.userData.stageInfos[currentStageData.stageID].score < Mathf.FloorToInt(timer))
-                userDataManager.userData.stageInfos[currentStageData.stageID].score = Mathf.FloorToInt(timer);
+            if (userDataManager.userData.stageInfos[currentStageData.stageID].score < Mathf.FloorToInt(ScoreManager.Instance.GetCurrentScore()))
+                userDataManager.userData.stageInfos[currentStageData.stageID].score = Mathf.FloorToInt(ScoreManager.Instance.GetCurrentScore());
 
             userDataManager.SaveUserData();
         }
@@ -101,40 +97,6 @@ public class StageManager : MonoBehaviour, IHealthObserver
         stageResultUI.UpdateStageResult(currentStageData, userDataManager.userData);
         fullscreenUIManager.OnPushFullscreenUI("Stage Result");
         fullscreenUIContainer.SetActive(true);
-    }
-
-    private void StartTimer()
-    {
-        timer = 0f;
-        isPaused = false;
-        if (timerCoroutine != null)
-        {
-            StopCoroutine(timerCoroutine);
-        }
-        timerCoroutine = StartCoroutine(RunTimer());
-    }
-
-    private IEnumerator RunTimer()
-    {
-        while (true)
-        {
-            if (!isPaused)
-            {
-                timer += Time.unscaledDeltaTime;
-                HUDManager.UpdateTimerUI(timer); // HUDManager를 통해 UI 업데이트
-            }
-            yield return null;
-        }
-    }
-
-    public void PauseTimer()
-    {
-        isPaused = true;
-    }
-
-    public void ResumeTimer()
-    {
-        isPaused = false;
     }
 
     /*
