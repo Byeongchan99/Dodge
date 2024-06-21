@@ -938,7 +938,7 @@ GameObject:
   - component: {fileID: 208032573}
   - component: {fileID: 208032572}
   m_Layer: 5
-  m_Name: Star 90
+  m_Name: Star 150
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5414,7 +5414,7 @@ GameObject:
   - component: {fileID: 1138996237}
   - component: {fileID: 1138996236}
   m_Layer: 5
-  m_Name: Star 30
+  m_Name: Star 50
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6308,8 +6308,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.21
-  m_Text: "30\uCD08 \uC774\uC0C1 \uC0DD\uC874\n60\uCD08 \uC774\uC0C1 \uC0DD\uC874\n90\uCD08
-    \uC774\uC0C1 \uC0DD\uC874"
+  m_Text: "50\uC810 \uC774\uC0C1 \uD68D\uB4DD\n100\uC810 \uC774\uC0C1 \uD68D\uB4DD\n150\uC810
+    \uC774\uC0C1 \uD68D\uB4DD"
 --- !u!222 &1316536860
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6619,7 +6619,7 @@ GameObject:
   - component: {fileID: 1449705369}
   - component: {fileID: 1449705368}
   m_Layer: 5
-  m_Name: Star 60
+  m_Name: Star 100
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
