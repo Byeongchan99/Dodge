@@ -27,6 +27,11 @@ public class StageManager : MonoBehaviour, IHealthObserver
         PlayerStat.Instance.RegisterObserver(this);
     }
 
+    public StageData GetCurrentStageData()
+    {
+        return currentStageData;
+    }
+
     public void SetStageData(int stageID)
     {
         currentStageData = stageDataList[stageID];

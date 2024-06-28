@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -205,7 +205,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 16244162}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 470626139}
+        m_TargetAssemblyTypeName: PauseUI, Assembly-CSharp
+        m_MethodName: ClosePauseUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &16244162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1111,7 +1123,6 @@ MonoBehaviour:
   isAbilitySlowMotion: 0
   isItemSlowMotion: 0
   slowMotionItemCount: 0
-  isPlayingStage: 0
 --- !u!4 &203533820
 Transform:
   m_ObjectHideFlags: 0
@@ -2301,6 +2312,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageNameText: {fileID: 500830935}
   currentScoreText: {fileID: 163618856}
+  HUDManager: {fileID: 1556797572}
+  stageManager: {fileID: 1020278220}
 --- !u!1 &482760518
 GameObject:
   m_ObjectHideFlags: 0
@@ -6184,7 +6197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -6357,7 +6370,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &1038371773
 RectTransform:
@@ -10624,7 +10637,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}

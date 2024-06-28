@@ -40,10 +40,15 @@ namespace UIManage
                     // 일시 정지 창이 켜져있을 때
                     if (_popupLinkedList.First.Value.gameObject.name == "Pause" && GameManager.Instance.isPlayingStage) 
                     {
+                        PopupUI pausePopup = GetPopup("Pause");
+                        if (pausePopup != null)
+                        {
+                            PauseUI pauseUI = pausePopup.gameObject.GetComponent<PauseUI>();
+                            pauseUI.ClosePauseUI();
+                        }
                         // 일시 정지창 닫기
                         ClosePopup(_popupLinkedList.First.Value);
-                        // 타이머 재개
-                        ScoreManager.Instance.ResumeTimer();
+
                     }
                     else
                     {
@@ -53,10 +58,14 @@ namespace UIManage
                 // 현재 스테이지 플레이 중일 때
                 else if (GameManager.Instance.isPlayingStage)
                 {
+                    PopupUI pausePopup = GetPopup("Pause");
+                    if (pausePopup != null)
+                    {
+                        PauseUI pauseUI = pausePopup.gameObject.GetComponent<PauseUI>();
+                        pauseUI.OpenPauseUI();
+                    }
                     // 일시 정지창 열기
                     OpenPopup("Pause");
-                    // 타이머 일시 정지
-                    ScoreManager.Instance.PauseTimer();
                 }
             }
         }
