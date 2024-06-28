@@ -59,4 +59,24 @@ public class PauseUI : MonoBehaviour, IUpdateUI
             currentScoreText.text = "현재 점수: " + ScoreManager.Instance.GetCurrentScore();
         }
     }
+
+    public void OnOptionClick()
+    {
+
+    }
+
+    public void OnResumeClick()
+    {
+        ClosePauseUI();
+    }
+
+    public void OnRestartClick()
+    {
+
+    }
+
+    public void OnExitClick()
+    {
+
+    }
 }
