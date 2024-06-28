@@ -7,6 +7,7 @@ public class StageResultUI : MonoBehaviour, IUpdateUI
 {
     public Image characterImage;
     public Text stageNameText;
+    public Text stageScore;
     [SerializeField] private GameObject[] StarUnits; // º° Ä­À» ³ªÅ¸³»´Â GameObject ¹è¿­
 
     public void UpdateUIInfo(params object[] datas)
@@ -36,6 +37,7 @@ public class StageResultUI : MonoBehaviour, IUpdateUI
 
         if (userData != null)
         {
+            stageScore.text = "È¹µæ Á¡¼ö: " + ScoreManager.Instance.GetCurrentScore();
             OnStarChanged(userData.stageInfos[stageData.stageID].score);
         }
     }

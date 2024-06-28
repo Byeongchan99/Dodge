@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     private bool _isPlayingStage; // 스테이지 플레이 중 여부
+    private bool _isPaused; // 일시 정지 여부
     private Coroutine slowMotionRoutine = null;
     private float _remainingSlowDuration = 0f;  // 남은 슬로우 모션 효과 시간
     private float _originalFixedDeltaTime;
@@ -20,6 +21,12 @@ public class GameManager : MonoBehaviour
     {
         get { return _isPlayingStage; }
         set { _isPlayingStage = value; }
+    }
+
+    public bool isPaused
+    {
+        get { return _isPaused; }
+        set { _isPaused = value; }
     }
 
     void Awake()

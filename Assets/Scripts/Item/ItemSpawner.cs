@@ -43,10 +43,37 @@ public class ItemSpawner : MonoBehaviour
     /// <summary> 아이템 소환 코루틴 </summary>
     IEnumerator SpawnItemRoutine()
     {
+        while (true)
+        {
+            float elapsedTime = 0f;
+            while (elapsedTime < _nextSpawnTime)
+            {
+                if (!GameManager.Instance.isPaused)
+                {
+                    elapsedTime += Time.unscaledDeltaTime;
+                }
+                yield return null;
+            }
+
+            if (!GameManager.Instance.isPaused && !_isSpawning)
+            {
+                _isSpawning = true;
+                SpawnItem();
+                _isSpawning = false;
+            }
+        }
+
+        /*
         // 아이템 소환의 경우 실제 시간 적용
         yield return new WaitForSecondsRealtime(_nextSpawnTime);
         while (true) // 무한 루프를 통해 게임 동안 지속적으로 아이템 소환
         {
+            if (GameManager.Instance.isPaused)
+            {
+                Debug.Log("isPaused Item: " + GameManager.Instance.isPaused);
+                yield return null;
+            }
+
             if (!_isSpawning) // 소환 중이 아닐 때만 새로운 아이템 소환 시도
             {
                 _isSpawning = true; // 소환 시작 플래그 설정
@@ -57,6 +84,7 @@ public class ItemSpawner : MonoBehaviour
             }
             yield return null; // 다음 프레임까지 대기
         }
+        */
     }
 
     /// <summary> 아이템 소환 </summary>

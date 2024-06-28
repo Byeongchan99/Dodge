@@ -62,6 +62,26 @@ public class TurretUpgradeHandler : MonoBehaviour
     {
         while (true)
         {
+            float elapsedTime = 0f;
+            while (elapsedTime < interval)
+            {
+                if (!GameManager.Instance.isPaused)
+                {
+                    elapsedTime += Time.unscaledDeltaTime;
+                }
+                yield return null;
+            }
+
+            if (!GameManager.Instance.isPaused && currentEvents != null && currentEvents.Count > 0)
+            {
+                int eventIndex = Random.Range(0, currentEvents.Count);
+                currentEvents[eventIndex].ExecuteEvent();
+            }
+        }
+
+        /*
+        while (true)
+        {
             yield return new WaitForSecondsRealtime(interval);
             if (currentEvents != null && currentEvents.Count > 0)
             {
@@ -69,6 +89,7 @@ public class TurretUpgradeHandler : MonoBehaviour
                 currentEvents[eventIndex].ExecuteEvent();
             }
         }
+        */
     }
 
     /// <summary> 랜덤 업그레이드 코루틴 중지 </summary>

@@ -13,6 +13,7 @@ public class PauseUI : MonoBehaviour, IUpdateUI
 {
     public Text stageNameText;
     public Text currentScoreText;
+    float lastTimeScale;
 
     [SerializeField] private HUDManager HUDManager;
     [SerializeField] private StageManager stageManager;
@@ -21,9 +22,12 @@ public class PauseUI : MonoBehaviour, IUpdateUI
     {
         HUDManager.DisableTimer();
 
+        lastTimeScale = Time.timeScale; // 슬로우 효과 적용 중일 때를 대비하여 저장
         Time.timeScale = 0f;
         // 타이머 일시 정지
         ScoreManager.Instance.PauseTimer();
+
+        GameManager.Instance.isPaused = true;
 
         if (stageManager != null)
         {
@@ -39,9 +43,11 @@ public class PauseUI : MonoBehaviour, IUpdateUI
     {
         HUDManager.EnableTimer();
 
-        Time.timeScale = 1f;
+        Time.timeScale = lastTimeScale;
         // 타이머 재개
         ScoreManager.Instance.ResumeTimer();
+        
+        GameManager.Instance.isPaused = false;
     }
 
     public void UpdateUIInfo(params object[] datas)
