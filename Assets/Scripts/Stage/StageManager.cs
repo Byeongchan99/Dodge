@@ -96,7 +96,7 @@ public class StageManager : MonoBehaviour, IHealthObserver
         HUDManager.DisableTimer();
         HUDManager.DisableHealthBar();
         // 스테이지 결과창 활성화
-        stageResultUI.UpdateStageResult(currentStageData, userDataManager.userData);
+        stageResultUI.UpdateUIInfo(currentStageData, userDataManager.userData);
         fullscreenUIManager.OnPushFullscreenUI("Stage Result");
         fullscreenUIContainer.SetActive(true);
     }

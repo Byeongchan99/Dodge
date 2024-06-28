@@ -3,15 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StageInfoUI : MonoBehaviour
+public class StageInfoUI : MonoBehaviour, IUpdateUI
 {
     public Text stageNameText;
     public Text stageInformationText;
     public GameObject isGameClearImage;
     [SerializeField] private GameObject[] StarUnits; // 별 칸을 나타내는 GameObject 배열
 
-    public void UpdateStageInfo(StageData stageData, UserData userData)
+    public void UpdateUIInfo(params object[] datas)
     {
+        StageData stageData = null;
+        UserData userData = null;
+
+        foreach (var data in datas)
+        {
+            if (data is StageData)
+            {
+                stageData = data as StageData;
+            }
+            else if (data is UserData)
+            {
+                userData = data as UserData;
+            }
+        }
+
         if (stageData != null)
         {
             stageNameText.text = stageData.stageName;

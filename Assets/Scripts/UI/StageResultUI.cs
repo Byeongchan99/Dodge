@@ -3,14 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StageResultUI : MonoBehaviour
+public class StageResultUI : MonoBehaviour, IUpdateUI
 {
     public Image characterImage;
     public Text stageNameText;
     [SerializeField] private GameObject[] StarUnits; // 별 칸을 나타내는 GameObject 배열
 
-    public void UpdateStageResult(StageData stageData, UserData userData)
+    public void UpdateUIInfo(params object[] datas)
     {
+        StageData stageData = null;
+        UserData userData = null;
+
+        foreach (var data in datas)
+        {
+            if (data is StageData)
+            {
+                stageData = data as StageData;
+            }
+            else if (data is UserData)
+            {
+                userData = data as UserData;
+            }
+        }
+
         Debug.Log("PlayerStat.Instance.currentCharacterData: " + PlayerStat.Instance.currentCharacterData.characterTypeIndex);
         characterImage.sprite = PlayerStat.Instance.currentCharacterData.characterSprite;
         

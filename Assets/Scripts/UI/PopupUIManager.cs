@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Linq;
 using UnityEngine;
 
 namespace UIManage
@@ -93,6 +94,15 @@ namespace UIManage
             {
                 _popupDictionary.Add(name, popup);
             }
+        }
+
+        private PopupUI GetPopup(string UIName)
+        {
+            if (_popupDictionary.TryGetValue(UIName, out PopupUI popup))
+            {
+                return popup;
+            }
+            else { return null; }
         }
 
         /// <summary> ÆË¾÷ ¿­±â </summary>

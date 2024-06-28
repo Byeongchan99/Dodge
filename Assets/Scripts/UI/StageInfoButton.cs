@@ -42,7 +42,7 @@ public class StageInfoButton : MonoBehaviour
         // 스테이지 정보를 업데이트
         if (stageInfoUI != null && stageData != null && userData != null)
         {
-            stageInfoUI.UpdateStageInfo(stageData, userData);
+            stageInfoUI.UpdateUIInfo(stageData, userData);
         }
 
         // 각 매니저의 메서드 호출

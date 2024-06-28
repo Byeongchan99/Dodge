@@ -3,13 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PauseUI : MonoBehaviour
+public interface IUpdateUI
+{
+    void UpdateUIInfo(params object[] data);
+}
+
+public class PauseUI : MonoBehaviour, IUpdateUI
 {
     public Text stageNameText;
     public Text currentScoreText;
 
-    public void UpdatePauseUI(StageData stageData)
+    public void UpdateUIInfo(params object[] datas)
     {
+        StageData stageData = null; // √ ±‚»≠
+
+        foreach (var data in datas)
+        {
+            if (data is StageData)
+                stageData = data as StageData;
+        }
+
         if (stageData != null)
         {
             stageNameText.text = stageData.stageName;
