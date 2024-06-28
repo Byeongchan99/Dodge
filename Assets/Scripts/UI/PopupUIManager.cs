@@ -48,7 +48,6 @@ namespace UIManage
                         }
                         // 일시 정지창 닫기
                         ClosePopup(_popupLinkedList.First.Value);
-
                     }
                     else
                     {

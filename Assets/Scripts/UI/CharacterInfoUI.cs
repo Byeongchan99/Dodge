@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.U2D.Animation;
+using UnityEditor.U2D.Aseprite;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CharacterInfoUI : MonoBehaviour
+public class CharacterInfoUI : MonoBehaviour, IUpdateUI
 {
     public Text characterNameText;
     public Text characterTypeText;
@@ -12,17 +14,23 @@ public class CharacterInfoUI : MonoBehaviour
     public Text characterAbilityDescriptionText;
     public Image characterImage;
 
-    [SerializeField]
-    private CharacterData initialCharacterData;
-
-    void Start()
+    public void UpdateCharacterInfo()
     {
-        // 캐릭터 정보 초기화
-        UpdateCharacterInfo(initialCharacterData);
+        UpdateUIInfo(PlayerStat.Instance.currentCharacterData);
     }
 
-    public void UpdateCharacterInfo(CharacterData characterData)
+    public void UpdateUIInfo(params object[] datas)
     {
+        CharacterData characterData = null;
+
+        foreach (var data in datas)
+        {
+            if (data is CharacterData)
+            {
+                characterData = data as CharacterData;
+            }        
+        }
+
         if (characterData != null)
         {
             characterNameText.text = characterData.characterName;

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UIManage;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -72,11 +73,13 @@ public class PauseUI : MonoBehaviour, IUpdateUI
 
     public void OnRestartClick()
     {
-
+        ClosePauseUI();
+        stageManager.RestartStage();
     }
 
     public void OnExitClick()
     {
-
+        ClosePauseUI();
+        stageManager.ExitStage();
     }
 }

@@ -47,6 +47,7 @@ public class PlayerStat : MonoBehaviour
     // 캐릭터 데이터 리스트
     public List<CharacterData> characterList;
     public CharacterData currentCharacterData;
+    public CharacterData selectedCharacterData;
 
     public UserDataManager userDataManager;
     public GameObject crown; // 왕관
@@ -173,12 +174,13 @@ public class PlayerStat : MonoBehaviour
     /// <summary> 캐릭터 선택 </summary>
     public void SelectCharacter(int characterTypeIndex)
     {
-        currentCharacterData = characterList[characterTypeIndex];
+        selectedCharacterData = characterList[characterTypeIndex];
     }
 
     /// <summary> 캐릭터 변경 </summary>
     public void SetCharacter()
     {
+        currentCharacterData = selectedCharacterData;
         Debug.Log("캐릭터 변경: " + currentCharacterData.characterType);
         if (characterList[currentCharacterData.characterTypeIndex] != null)
         {

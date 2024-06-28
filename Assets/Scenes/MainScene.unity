@@ -1533,7 +1533,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 297413984}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 470626139}
+        m_TargetAssemblyTypeName: PauseUI, Assembly-CSharp
+        m_MethodName: OnRestartClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1772935382}
+        m_TargetAssemblyTypeName: UIManage.PopupUIManager, Assembly-CSharp
+        m_MethodName: ClosePopup
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Pause
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &297413984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1889,6 +1913,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Character Select
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 986615798}
+        m_TargetAssemblyTypeName: CharacterInfoUI, Assembly-CSharp
+        m_MethodName: UpdateCharacterInfo
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &364842888
@@ -2974,7 +3010,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 587299201}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 470626139}
+        m_TargetAssemblyTypeName: PauseUI, Assembly-CSharp
+        m_MethodName: OnExitClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1772935382}
+        m_TargetAssemblyTypeName: UIManage.PopupUIManager, Assembly-CSharp
+        m_MethodName: ClosePopup
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Pause
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &587299201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5510,6 +5570,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1772935382}
+        m_TargetAssemblyTypeName: UIManage.PopupUIManager, Assembly-CSharp
+        m_MethodName: ClosePopup
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Pause
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &954572137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5617,7 +5689,6 @@ MonoBehaviour:
   characterAbilityText: {fileID: 1603792991}
   characterAbilityDescriptionText: {fileID: 173661135}
   characterImage: {fileID: 2080441594}
-  initialCharacterData: {fileID: 11400000, guid: 28bbe13819336b349b6232f56148d489, type: 2}
 --- !u!1 &990775146
 GameObject:
   m_ObjectHideFlags: 0
@@ -8386,6 +8457,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 28bbe13819336b349b6232f56148d489, type: 2}
   - {fileID: 11400000, guid: 03c66b28700ce244f8a103953680a31a, type: 2}
   currentCharacterData: {fileID: 11400000, guid: 28bbe13819336b349b6232f56148d489, type: 2}
+  selectedCharacterData: {fileID: 11400000, guid: 28bbe13819336b349b6232f56148d489, type: 2}
   userDataManager: {fileID: 1652479102}
   crown: {fileID: 940402723}
 --- !u!212 &1609651028

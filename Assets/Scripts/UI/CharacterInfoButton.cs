@@ -23,7 +23,7 @@ public class CharacterInfoButton : MonoBehaviour
         // 캐릭터 정보를 업데이트
         if (characterInfoUI != null && characterData != null)
         {
-            characterInfoUI.UpdateCharacterInfo(characterData);
+            characterInfoUI.UpdateUIInfo(characterData);
         }
     }
 }

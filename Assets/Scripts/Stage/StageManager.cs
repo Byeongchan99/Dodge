@@ -27,17 +27,29 @@ public class StageManager : MonoBehaviour, IHealthObserver
         PlayerStat.Instance.RegisterObserver(this);
     }
 
+    // 현재 스테이지 데이터 반환
     public StageData GetCurrentStageData()
     {
         return currentStageData;
     }
 
+    // 현재 스테이지 데이터 설정
     public void SetStageData(int stageID)
     {
         currentStageData = stageDataList[stageID];
     }
 
+    public void OnHealthChanged(float health)
+    {
+        if (health <= 0)
+        {
+            eraser.EraseAll();
+            ExitStage();
+        }
+    }
+
     // 퍼사드 메소드: 모든 초기화 작업을 시작
+    // 스테이지 시작
     public void StartStage()
     {
         // 맵 프리팹 인스턴스화
@@ -67,15 +79,27 @@ public class StageManager : MonoBehaviour, IHealthObserver
         ScoreManager.Instance.StartTimer();
     }
 
-    public void OnHealthChanged(float health)
+    // 스테이지 재시작
+    public void RestartStage()
     {
-        if (health <= 0)
-        {
-            eraser.EraseAll();
-            ExitStage();
-        }
+        PlayerStat.Instance.DisablePlayer();
+        turretSpawner.StopSpawn();
+        itemSpawner.StopSpawn();
+        turretUpgradeHandler.StopRandomUpgrades();
+
+        PlayerStat.Instance.SetCharacter();
+        PlayerStat.Instance.player.SetActive(true);
+        turretSpawner.StartSpawn();
+        itemSpawner.StartSpawn();
+        turretUpgradeHandler.StartRandomUpgrades(10);
+
+        fullscreenUIContainer.SetActive(false);
+
+        // 타이머 시작
+        ScoreManager.Instance.StartTimer();
     }
 
+    // 스테이지 종료
     public void ExitStage()
     {
         // 유저 데이터 갱신
