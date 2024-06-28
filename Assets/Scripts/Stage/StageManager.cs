@@ -47,6 +47,7 @@ public class StageManager : MonoBehaviour, IHealthObserver
         }
 
         // 스테이지 시작
+        GameManager.Instance.isPlayingStage = true;
         PlayerStat.Instance.SetCharacter();
         PlayerStat.Instance.player.SetActive(true);
         turretSpawner.StartSpawn();
@@ -86,6 +87,7 @@ public class StageManager : MonoBehaviour, IHealthObserver
         }
 
         // 스테이지 종료
+        GameManager.Instance.isPlayingStage = false;
         PlayerStat.Instance.DisablePlayer();
         turretSpawner.StopSpawn();
         itemSpawner.StopSpawn();

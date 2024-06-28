@@ -35,11 +35,29 @@ namespace UIManage
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 if (_popupLinkedList.Count > 0)
-                {
-                    // 첫 번째 팝업 닫기
-                    ClosePopup(_popupLinkedList.First.Value);
+                {                  
+                    // 일시 정지 창이 켜져있을 때
+                    if (_popupLinkedList.First.Value.gameObject.name == "Pause" && GameManager.Instance.isPlayingStage) 
+                    {
+                        // 일시 정지창 닫기
+                        ClosePopup(_popupLinkedList.First.Value);
+                        // 타이머 재개
+                        ScoreManager.Instance.ResumeTimer();
+                    }
+                    else
+                    {
+                        ClosePopup(_popupLinkedList.First.Value);
+                    }
                 }
-            }         
+                // 현재 스테이지 플레이 중일 때
+                else if (GameManager.Instance.isPlayingStage)
+                {
+                    // 일시 정지창 열기
+                    OpenPopup("Pause");
+                    // 타이머 일시 정지
+                    ScoreManager.Instance.PauseTimer();
+                }
+            }
         }
 
         /****************************************************************************
@@ -83,8 +101,9 @@ namespace UIManage
             // 링크드 리스트에 추가하고
             _popupLinkedList.AddFirst(popup);
             // 활성화
-            popup.isOpen = true;
-            popup.gameObject.SetActive(true);
+            popup.Show();
+            //popup.isOpen = true;
+            //popup.gameObject.SetActive(true);
             // 순서 업데이트
             UpdatePopupUIOrder();
         }
@@ -108,8 +127,9 @@ namespace UIManage
             // 링크드 리스트에서 제거하고
             _popupLinkedList.Remove(popup);
             // 비활성화
-            popup.isOpen = false;
-            popup.gameObject.SetActive(false);
+            popup.Hide();
+            //popup.isOpen = false;
+            //popup.gameObject.SetActive(false);
             // 순서 업데이트
             UpdatePopupUIOrder();
         }

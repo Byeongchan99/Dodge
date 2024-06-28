@@ -34,7 +34,9 @@ public class FullscreenUIManager : MonoBehaviour
         // Esc 키를 누르면 현재 FullscreenUI를 숨기고 이전 FullscreenUI를 반환 - 뒤로가기
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Pop();
+            // 메인 화면이 아니라면 뒤로가기
+            if (_fullscreenStack.Count > 1)
+                Pop();
         }
     }
 

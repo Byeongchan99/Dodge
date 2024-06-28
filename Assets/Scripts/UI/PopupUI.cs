@@ -19,6 +19,32 @@ namespace UIManage
         // Focus를 사용할지 여부
         public bool useFocus;
 
+        // UIView의 원래 위치를 저장할 필드
+        private Vector2 _originalPosition;
+        // RectTransform 컴포넌트에 대한 참조
+        private RectTransform _rectTransform;
+
+        /// <summary> 시작 시 UIView의 원래 위치 저장 </summary>
+        void Awake()
+        {
+            _rectTransform = GetComponent<RectTransform>();
+            _originalPosition = _rectTransform.anchoredPosition;
+        }
+
+        public void Show()
+        {
+            _rectTransform.anchoredPosition = Vector2.zero;
+            isOpen = true;
+            gameObject.SetActive(true);
+        }
+
+        public void Hide()
+        {
+            _rectTransform.anchoredPosition = _originalPosition;
+            isOpen = false;
+            gameObject.SetActive(false);
+        }
+
         /// <summary> OnFocus 이벤트를 외부에서 트리거할 수 있는 메서드 </summary>
         public void TriggerOnFocus()
         {

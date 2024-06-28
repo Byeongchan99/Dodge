@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
+    private bool _isPlayingStage; // 스테이지 플레이 중 여부
     private Coroutine slowMotionRoutine = null;
     private float _remainingSlowDuration = 0f;  // 남은 슬로우 모션 효과 시간
     private float _originalFixedDeltaTime;
@@ -14,6 +15,12 @@ public class GameManager : MonoBehaviour
     public bool isAbilitySlowMotion; // 특수 능력으로 인한 슬로우 모션 여부
     public bool isItemSlowMotion; // 아이템으로 인한 슬로우 모션 여부
     public int slowMotionItemCount; // 사용한 슬로 모션 아이템 개수
+
+    public bool isPlayingStage
+    {
+        get { return _isPlayingStage; }
+        set { _isPlayingStage = value; }
+    }
 
     void Awake()
     {
