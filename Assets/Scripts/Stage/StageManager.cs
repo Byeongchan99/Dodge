@@ -42,8 +42,7 @@ public class StageManager : MonoBehaviour, IHealthObserver
     public void OnHealthChanged(float health)
     {
         if (health <= 0)
-        {
-            eraser.EraseAll();
+        {      
             ExitStage();
         }
     }
@@ -52,6 +51,8 @@ public class StageManager : MonoBehaviour, IHealthObserver
     // 스테이지 시작
     public void StartStage()
     {
+        // 모든 오브젝트 초기화
+        eraser.EraseAll();
         // 맵 프리팹 인스턴스화
         if (currentStageData != null && currentStageData.mapPrefab != null)
         {
@@ -82,21 +83,14 @@ public class StageManager : MonoBehaviour, IHealthObserver
     // 스테이지 재시작
     public void RestartStage()
     {
+        // 스테이지 종료
         PlayerStat.Instance.DisablePlayer();
         turretSpawner.StopSpawn();
         itemSpawner.StopSpawn();
         turretUpgradeHandler.StopRandomUpgrades();
 
-        PlayerStat.Instance.SetCharacter();
-        PlayerStat.Instance.player.SetActive(true);
-        turretSpawner.StartSpawn();
-        itemSpawner.StartSpawn();
-        turretUpgradeHandler.StartRandomUpgrades(10);
-
-        fullscreenUIContainer.SetActive(false);
-
-        // 타이머 시작
-        ScoreManager.Instance.StartTimer();
+        // 스테이지 재시작
+        StartStage();
     }
 
     // 스테이지 종료
@@ -115,6 +109,8 @@ public class StageManager : MonoBehaviour, IHealthObserver
             userDataManager.SaveUserData();
         }
 
+        // 모든 오브젝트 초기화
+        eraser.EraseAll();
         // 스테이지 종료
         GameManager.Instance.isPlayingStage = false;
         PlayerStat.Instance.DisablePlayer();
