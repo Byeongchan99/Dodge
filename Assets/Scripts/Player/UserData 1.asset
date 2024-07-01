@@ -14,23 +14,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageInfos:
   - isCleared: 1
-    score: 183
-  - isCleared: 1
-    score: 156
+    score: 153
   - isCleared: 0
-    score: 8
+    score: 0
+  - isCleared: 0
+    score: 0
   - isCleared: 0
     score: 0
   - isCleared: 0
     score: 0
   achievementInfos:
-  - name: "\uCD1D\uC54C \uC2A4\uD14C\uC774\uC9C0 \uD074\uB9AC\uC5B4"
+  - name: Achievement 1
     isAchieved: 0
-  - name: "\uB808\uC774\uC800 \uC2A4\uD14C\uC774\uC9C0 \uD074\uB9AC\uC5B4"
+  - name: Achievement 2
     isAchieved: 0
-  - name: "\uB85C\uCF13 \uC2A4\uD14C\uC774\uC9C0 \uD074\uB9AC\uC5B4"
+  - name: Achievement 3
     isAchieved: 0
-  - name: "\uBC15\uACA9\uD3EC \uC2A4\uD14C\uC774\uC9C0 \uD074\uB9AC\uC5B4"
+  - name: Achievement 4
     isAchieved: 0
-  - name: "\uD30C\uC774\uB110 \uC2A4\uD14C\uC774\uC9C0 \uD074\uB9AC\uC5B4"
+  - name: Achievement 5
     isAchieved: 0

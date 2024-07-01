@@ -5,35 +5,36 @@ using System.Runtime.InteropServices;
 
 public class FirestoreManager : MonoBehaviour
 {
+    public UserData userData;
+
     [DllImport("__Internal")]
-    public static extern void SaveData(string key, string value);
+    private static extern void SaveData(string key, string value);
 
     [DllImport("__Internal")]
     private static extern void LoadData(string key);
 
     void Start()
     {
-        // 예제: 데이터 저장
-        SaveData("userData", UserDataToJson());
+        SaveUserData();
+        LoadUserData();
+    }
 
-        // 예제: 데이터 불러오기
+    public void SaveUserData()
+    {
+        string json = JsonUtility.ToJson(userData);
+        SaveData("userData", json);
+        Debug.Log("Data saved: " + json);
+    }
+
+    public void LoadUserData()
+    {
         LoadData("userData");
-    }
-
-    private string UserDataToJson()
-    {
-        return JsonUtility.ToJson(userData);
-    }
-
-    private void LoadJsonToUserData(string json)
-    {
-        userData = JsonUtility.FromJson<UserData>(json);
     }
 
     // JavaScript에서 호출될 함수
     public void OnDataLoaded(string jsonData)
     {
-        LoadJsonToUserData(jsonData);
+        userData = UserData.FromJson(jsonData);
         Debug.Log("Data loaded: " + jsonData);
     }
 }
