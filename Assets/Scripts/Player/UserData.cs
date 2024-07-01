@@ -19,4 +19,16 @@ public class UserData : ScriptableObject
 
     public StageInfo[] stageInfos = new StageInfo[5]; // 현재 5개의 스테이지
     public AchievementInfo[] achievementInfos = new AchievementInfo[5]; // 현재 5개의 도전과제
+
+    // JSON으로 변환
+    public string ToJson()
+    {
+        return JsonUtility.ToJson(this);
+    }
+
+    // JSON으로부터 객체를 복원
+    public static UserData FromJson(string json)
+    {
+        return JsonUtility.FromJson<UserData>(json);
+    }
 }
