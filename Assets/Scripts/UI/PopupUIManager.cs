@@ -35,6 +35,7 @@ namespace UIManage
             // esc 키를 누르면 팝업 닫기
             if (Input.GetKeyDown(KeyCode.Escape))
             {
+                // 어떤 팝업창이 켜져있을 때
                 if (_popupLinkedList.Count > 0)
                 {                  
                     // 일시 정지 창이 켜져있을 때
@@ -66,6 +67,13 @@ namespace UIManage
                     // 일시 정지창 열기
                     OpenPopup("Pause");
                 }
+                /*
+                // 설정창 열기
+                else
+                {
+                    OpenPopup("Option");
+                }
+                */
             }
         }
 
