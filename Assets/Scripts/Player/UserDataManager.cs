@@ -25,9 +25,6 @@ public class UserDataManager : MonoBehaviour
     {
 #if UNITY_EDITOR
         // 에디터 모드에서는 로컬 데이터를 사용
-#else
-        // Firestore에서 데이터를 불러오기
-        LoadData("userData");
 #endif
     }
 
