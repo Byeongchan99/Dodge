@@ -10,6 +10,8 @@ public class StageInfoUI : MonoBehaviour, IUpdateUI
     public GameObject isGameClearImage;
     [SerializeField] private GameObject[] StarUnits; // 별 칸을 나타내는 GameObject 배열
 
+    public LeaderboardsManager leaderboardsManager;
+
     public void UpdateUIInfo(params object[] datas)
     {
         StageData stageData = null;
@@ -31,6 +33,7 @@ public class StageInfoUI : MonoBehaviour, IUpdateUI
         {
             stageNameText.text = stageData.stageName;
             stageInformationText.text = stageData.stageInformation;
+            SetLeaderboardID(stageData.leaderboardID);
         }
 
         // 임시 유저 데이터 사용
@@ -62,5 +65,10 @@ public class StageInfoUI : MonoBehaviour, IUpdateUI
                 StarUnits[i].SetActive(false);
             }
         }
+    }
+
+    public void SetLeaderboardID(string leaderboardID)
+    {
+        leaderboardsManager.SetLeaderboardID(leaderboardID);
     }
 }

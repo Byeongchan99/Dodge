@@ -7,12 +7,6 @@ public class UserDataManager : MonoBehaviour
 {
     public UserData userData;
 
-    [DllImport("__Internal")]
-    private static extern void SaveData(string key, string value);
-
-    [DllImport("__Internal")]
-    private static extern void LoadData(string key);
-
     private void Awake()
     {
         LoadUserData();
@@ -25,11 +19,6 @@ public class UserDataManager : MonoBehaviour
         UnityEditor.EditorUtility.SetDirty(userData);
         UnityEditor.AssetDatabase.SaveAssets();
 #endif
-        /*
-        // Firestore에 데이터를 저장
-        string json = userData.ToJson();
-        SaveData("userData", json);
-        */
     }
 
     public void LoadUserData()

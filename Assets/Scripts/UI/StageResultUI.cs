@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class StageResultUI : MonoBehaviour, IUpdateUI
@@ -9,6 +10,9 @@ public class StageResultUI : MonoBehaviour, IUpdateUI
     public Text stageNameText;
     public Text stageScore;
     [SerializeField] private GameObject[] StarUnits; // 별 칸을 나타내는 GameObject 배열
+
+    public InputField playerNameField;
+    public LeaderboardsManager leaderboardsManager;
 
     public void UpdateUIInfo(params object[] datas)
     {
@@ -56,5 +60,20 @@ public class StageResultUI : MonoBehaviour, IUpdateUI
                 StarUnits[i].SetActive(false);
             }
         }
+    }
+
+    public void RegisterPlayer()
+    {
+        string playerName;
+        if (string.IsNullOrEmpty(playerNameField.text))
+        {
+            playerName = "Anonymous";
+        }
+        else
+        {
+            playerName = playerNameField.text;
+        }
+
+        leaderboardsManager.AddScore(playerName, Mathf.FloorToInt(ScoreManager.Instance.GetCurrentScore()));
     }
 }
