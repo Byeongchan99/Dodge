@@ -705,7 +705,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC2A4\uD14C\uC774\uC9C0 \uC120\uD0DD"
+  m_Text: Stage Select
 --- !u!222 &96431191
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1107,7 +1107,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.21
-  m_Text: "\uD604\uC7AC \uC810\uC218: "
+  m_Text: 'Current Score: '
 --- !u!222 &163618857
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1186,7 +1186,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uCE90\uB9AD\uD130 \uD2B9\uC218 \uB2A5\uB825 \uC124\uBA85"
+  m_Text: Character Ability Description
 --- !u!222 &173661136
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1356,7 +1356,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -13.5, y: -5.4999995}
+  m_AnchoredPosition: {x: -13.5, y: -23.5}
   m_SizeDelta: {x: 15, y: 15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &208032572
@@ -1868,7 +1868,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uB4F1\uB85D\uD558\uAE30"
+  m_Text: Register Score
 --- !u!222 &256586964
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1947,7 +1947,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uB7AD\uD0B9 \uD655\uC778"
+  m_Text: View Rankings
 --- !u!222 &272349578
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2105,7 +2105,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC774\uC5B4\uD558\uAE30"
+  m_Text: Continue
 --- !u!222 &277335172
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2374,7 +2374,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC74C\uC18C\uAC70"
+  m_Text: Mute
 --- !u!222 &299279257
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2677,7 +2677,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uB7AD\uD0B9"
+  m_Text: Ranking
 --- !u!222 &344857002
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2756,7 +2756,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Enter Name...
+  m_Text: Enter Your Name...
 --- !u!222 &359611712
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2980,7 +2980,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC77C\uC2DC \uC815\uC9C0"
+  m_Text: Pause
 --- !u!222 &379263320
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3612,7 +3612,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uCE90\uB9AD\uD130 \uC120\uD0DD"
+  m_Text: Character Select
 --- !u!222 &499882733
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3691,7 +3691,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC2A4\uD14C\uC774\uC9C0 \uC774\uB984"
+  m_Text: Stage Name
 --- !u!222 &500830936
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5095,7 +5095,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -13.5, y: -25.4}
+  m_AnchoredPosition: {x: -13.5, y: -37.5}
   m_SizeDelta: {x: 15, y: 15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &692830879
@@ -5350,7 +5350,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC74C\uC18C\uAC70"
+  m_Text: Mute
 --- !u!222 &710923752
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6123,7 +6123,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC2A4\uD14C\uC774\uC9C0 \uC774\uB984"
+  m_Text: Stage Name
 --- !u!222 &758530728
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6281,7 +6281,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uB098\uAC00\uAE30"
+  m_Text: Exit
 --- !u!222 &776335143
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6360,7 +6360,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uB2E4\uC2DC\uD558\uAE30"
+  m_Text: Restart
 --- !u!222 &798885687
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6893,7 +6893,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uCE90\uB9AD\uD130 \uD0C0\uC785"
+  m_Text: Character Type
 --- !u!222 &874950506
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7178,7 +7178,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uD658\uACBD \uC124\uC815"
+  m_Text: Option
 --- !u!222 &927564526
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9022,7 +9022,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -13.5, y: 33.7}
+  m_AnchoredPosition: {x: -13.5, y: 23.5}
   m_SizeDelta: {x: 15, y: 15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1138996236
@@ -9777,7 +9777,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uCE90\uB9AD\uD130 \uC774\uB984"
+  m_Text: Character Name
 --- !u!222 &1295508136
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10004,14 +10004,17 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1.21
-  m_Text: "50\uC810 \uC774\uC0C1 \uD68D\uB4DD\n100\uC810 \uC774\uC0C1 \uD68D\uB4DD\n150\uC810
-    \uC774\uC0C1 \uD68D\uB4DD"
+    m_LineSpacing: 1.5
+  m_Text: 'Get 50 points
+
+    Get 100 points
+
+    Get 150 points'
 --- !u!222 &1316536860
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10532,7 +10535,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -13.5, y: 13.700001}
+  m_AnchoredPosition: {x: -13.5, y: 0}
   m_SizeDelta: {x: 15, y: 15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1449705368
@@ -10875,7 +10878,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uCE90\uB9AD\uD130 \uD2B9\uC218 \uB2A5\uB825"
+  m_Text: Character Ability
 --- !u!222 &1603792992
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11739,7 +11742,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC804\uD22C \uC885\uB8CC"
+  m_Text: Stage Result
 --- !u!222 &1673405156
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12057,7 +12060,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uB3C4\uC804\uD558\uAE30"
+  m_Text: Start
 --- !u!222 &1718008800
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12136,7 +12139,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uD658\uACBD \uC124\uC815"
+  m_Text: Option
 --- !u!222 &1729993452
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12215,7 +12218,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uD68D\uB4DD \uC810\uC218: "
+  m_Text: 'Score: '
 --- !u!222 &1730524278
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12430,7 +12433,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uD6A8\uACFC\uC74C"
+  m_Text: SFX
 --- !u!222 &1774722269
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12660,8 +12663,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 154.8, y: 28.3}
-  m_SizeDelta: {x: 250, y: 80}
+  m_AnchoredPosition: {x: 154.8, y: 32}
+  m_SizeDelta: {x: 250, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1821622717
 MonoBehaviour:
@@ -12690,14 +12693,19 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1.21
-  m_Text: "3\uC131 \uC870\uAC74\n50\uC810 \uC774\uC0C1 \uD68D\uB4DD\n100\uC810 \uC774\uC0C1
-    \uD68D\uB4DD\n150\uC810 \uC774\uC0C1 \uD68D\uB4DD"
+    m_LineSpacing: 1.5
+  m_Text: 'Challenges
+
+    Get 50 points
+
+    Get 100 points
+
+    Get 150 points'
 --- !u!222 &1821622718
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13095,7 +13103,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -13.5, y: 13.8}
+  m_AnchoredPosition: {x: -13.5, y: 10.5}
   m_SizeDelta: {x: 15, y: 15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1862301870
@@ -13314,7 +13322,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC2A4\uD14C\uC774\uC9C0 \uC774\uB984"
+  m_Text: Stage Name
 --- !u!222 &1891215218
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13590,7 +13598,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -13.5, y: -6.2}
+  m_AnchoredPosition: {x: -13.5, y: -13.5}
   m_SizeDelta: {x: 15, y: 15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1964752683
@@ -13979,7 +13987,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uBC30\uACBD \uC74C\uC545"
+  m_Text: BGM
 --- !u!222 &2035447844
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14202,7 +14210,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC2A4\uD14C\uC774\uC9C0 \uC815\uBCF4"
+  m_Text: Stage Information
 --- !u!222 &2064779886
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14382,7 +14390,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC2A4\uD14C\uC774\uC9C0 \uC774\uB984"
+  m_Text: Stage Name
 --- !u!222 &2071093709
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14819,7 +14827,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uCE90\uB9AD\uD130 \uCCB4\uB825"
+  m_Text: Character HP
 --- !u!222 &2104899999
 CanvasRenderer:
   m_ObjectHideFlags: 0
