@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageInfos:
   - isCleared: 1
-    score: 153
-  - isCleared: 0
+    score: 176
+  - isCleared: 1
     score: 124
-  - isCleared: 0
+  - isCleared: 1
     score: 0
-  - isCleared: 0
+  - isCleared: 1
     score: 0
-  - isCleared: 0
+  - isCleared: 1
     score: 0
   achievementInfos:
   - name: Achievement 1

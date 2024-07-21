@@ -55,7 +55,7 @@ public class GhostEffect : BaseEffect
         ghostSpriteRenderer.color = newColor;
 
         // Handle crown ghost
-        if (crown != null)
+        if (crown != null && crown.activeSelf)
         {
             GameObject crownGhost = new GameObject("CrownGhost");
             crownGhost.transform.SetParent(currentGhost.transform);
