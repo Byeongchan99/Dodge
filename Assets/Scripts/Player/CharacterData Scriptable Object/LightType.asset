@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d51f260a793737d41a0f1f4d09ca9277, type: 3}
   m_Name: LightType
   m_EditorClassIdentifier: 
-  characterName: "\uB77C\uC774\uD2B8"
+  characterName: Light
   characterType: Light
   characterTypeIndex: 0
   characterHP: 2
-  characterAbility: "\uC21C\uAC04\uC774\uB3D9"
-  characterAbilityDescription: "\uC9E7\uC740 \uAC70\uB9AC\uB97C \uC21C\uAC04\uC774\uB3D9\uD569\uB2C8\uB2E4."
+  characterAbility: Blink
+  characterAbilityDescription: Teleport a short distance.
   characterSprite: {fileID: 21300000, guid: 9efc2ef7b16605b4194673b2c803078b, type: 3}
   animatorController: {fileID: 22100000, guid: 2460a485317b12643b85a57431e0733d, type: 2}

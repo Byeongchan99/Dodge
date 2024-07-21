@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: BulletStage
   m_EditorClassIdentifier: 
   stageID: 0
-  stageName: "\uCD1D\uC54C \uD130\uB81B \uC2A4\uD14C\uC774\uC9C0"
+  stageName: Bullet Turret Stage
   statDataName: Bullet
-  stageInformation: "\uCD1D\uC54C \uD130\uB81B\uC774 \uB4F1\uC7A5\uD569\uB2C8\uB2E4"
+  stageInformation: A bullet turret appears.
   leaderboardID: DodgeLeaderboardBullet
   statData: {fileID: 11400000, guid: 3ee70a1c469ef8d418d4a0c46a017056, type: 2}
   mapPrefab: {fileID: 1887036623148970226, guid: 0812c117b67019e418a7cddbca4de30d, type: 3}
