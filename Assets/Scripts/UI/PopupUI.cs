@@ -4,6 +4,7 @@ using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using DG.Tweening;
 
 namespace UIManage
 {
@@ -23,12 +24,17 @@ namespace UIManage
         private Vector2 _originalPosition;
         // RectTransform 컴포넌트에 대한 참조
         private RectTransform _rectTransform;
+        private CanvasGroup _canvasGroup;
 
         /// <summary> 시작 시 UIView의 원래 위치 저장 </summary>
         void Awake()
         {
             _rectTransform = GetComponent<RectTransform>();
             _originalPosition = _rectTransform.anchoredPosition;
+            _canvasGroup = gameObject.AddComponent<CanvasGroup>();
+
+            _rectTransform.localScale = Vector3.zero; // 초기 상태는 스케일 0
+            _canvasGroup.alpha = 0f; // 초기 상태는 투명
         }
 
         public void Show()
@@ -36,13 +42,33 @@ namespace UIManage
             _rectTransform.anchoredPosition = Vector2.zero;
             isOpen = true;
             gameObject.SetActive(true);
+
+            Sequence sequence = DOTween.Sequence();
+            sequence.Append(_rectTransform.DOScale(Vector3.one, 0.2f).SetEase(Ease.OutBack))
+                    .Join(_canvasGroup.DOFade(1f, 0.5f).SetEase(Ease.OutQuad))
+                    .OnComplete(() =>
+                    {
+                        isOpen = true;
+                    });
         }
 
         public void Hide()
         {
+            /*
             _rectTransform.anchoredPosition = _originalPosition;
             isOpen = false;
             gameObject.SetActive(false);
+            */
+
+            Sequence sequence = DOTween.Sequence();
+            sequence.Append(_rectTransform.DOScale(Vector3.zero, 0.2f).SetEase(Ease.InBack))
+                    .Join(_canvasGroup.DOFade(0f, 0.5f).SetEase(Ease.InQuad))
+                    .OnComplete(() =>
+                    {
+                        _rectTransform.anchoredPosition = _originalPosition;
+                        isOpen = false;
+                        gameObject.SetActive(false);
+                    });
         }
 
         /// <summary> OnFocus 이벤트를 외부에서 트리거할 수 있는 메서드 </summary>

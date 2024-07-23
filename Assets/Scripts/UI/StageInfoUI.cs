@@ -7,6 +7,7 @@ public class StageInfoUI : MonoBehaviour, IUpdateUI
 {
     public Text stageNameText;
     public Text stageInformationText;
+    public Text highScore;
     public GameObject isGameClearImage;
     [SerializeField] private GameObject[] StarUnits; // 별 칸을 나타내는 GameObject 배열
 
@@ -39,6 +40,7 @@ public class StageInfoUI : MonoBehaviour, IUpdateUI
         // 임시 유저 데이터 사용
         if (userData != null)
         {
+            /*
             if (userData.stageInfos[stageData.stageID].isCleared)
             {
                 isGameClearImage.SetActive(true);
@@ -47,6 +49,8 @@ public class StageInfoUI : MonoBehaviour, IUpdateUI
             {
                 isGameClearImage.SetActive(false);
             }
+            */
+            highScore.text = "High Score: " + userData.stageInfos[stageData.stageID].score.ToString();
             OnStarChanged(userData.stageInfos[stageData.stageID].score);
         }
     }
