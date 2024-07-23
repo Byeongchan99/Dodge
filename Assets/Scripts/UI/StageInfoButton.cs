@@ -15,6 +15,7 @@ public class StageInfoButton : MonoBehaviour
     public TurretUpgradeHandler turretUpgradeHandler;
     public PopupUIManager popupUIManager;
     public StageManager stageManager;
+    public LeaderboardsManager leaderboardsManager;
 
     // 매개변수들
     public string statDataParameter;
@@ -28,6 +29,7 @@ public class StageInfoButton : MonoBehaviour
         turretUpgradeHandler = FindObjectOfType<TurretUpgradeHandler>();
         popupUIManager = FindObjectOfType<PopupUIManager>();
         stageManager = FindObjectOfType<StageManager>();
+        leaderboardsManager = FindObjectOfType<LeaderboardsManager>();
 
         // Button 컴포넌트를 가져와서 클릭 이벤트에 리스너 추가
         Button button = GetComponent<Button>();
@@ -64,6 +66,11 @@ public class StageInfoButton : MonoBehaviour
         if (stageManager != null)
         {
             stageManager.SetStageData(setStageDataParameter);
+        }
+
+        if (leaderboardsManager != null)
+        {
+            leaderboardsManager.GetTopScores(10);
         }
     }
 }

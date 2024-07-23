@@ -1589,19 +1589,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 233039677}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 505333100}
-        m_TargetAssemblyTypeName: LeaderboardsUIManager, Assembly-CSharp
-        m_MethodName: ClearLeaderboard
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &233039677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5435,6 +5423,7 @@ MonoBehaviour:
   turretUpgradeHandler: {fileID: 0}
   popupUIManager: {fileID: 0}
   stageManager: {fileID: 0}
+  leaderboardsManager: {fileID: 0}
   statDataParameter: Laser
   turretUpgradeParameter: 1
   setStageDataParameter: 1
@@ -5658,6 +5647,7 @@ MonoBehaviour:
   turretUpgradeHandler: {fileID: 0}
   popupUIManager: {fileID: 0}
   stageManager: {fileID: 0}
+  leaderboardsManager: {fileID: 0}
   statDataParameter: Bullet
   turretUpgradeParameter: 0
   setStageDataParameter: 0
@@ -5839,6 +5829,7 @@ MonoBehaviour:
   turretUpgradeHandler: {fileID: 0}
   popupUIManager: {fileID: 0}
   stageManager: {fileID: 0}
+  leaderboardsManager: {fileID: 0}
   statDataParameter: Rocket
   turretUpgradeParameter: 2
   setStageDataParameter: 2
@@ -6208,6 +6199,7 @@ MonoBehaviour:
   turretUpgradeHandler: {fileID: 0}
   popupUIManager: {fileID: 0}
   stageManager: {fileID: 0}
+  leaderboardsManager: {fileID: 0}
   statDataParameter: Mortar
   turretUpgradeParameter: 3
   setStageDataParameter: 3
@@ -12784,6 +12776,7 @@ MonoBehaviour:
   turretUpgradeHandler: {fileID: 0}
   popupUIManager: {fileID: 0}
   stageManager: {fileID: 0}
+  leaderboardsManager: {fileID: 0}
   statDataParameter: Init
   turretUpgradeParameter: 4
   setStageDataParameter: 4
@@ -12964,18 +12957,6 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 505333100}
-        m_TargetAssemblyTypeName: LeaderboardsUIManager, Assembly-CSharp
-        m_MethodName: GetTopScores
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 10
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -14459,7 +14440,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2067759337}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 505333100}
+        m_TargetAssemblyTypeName: LeaderboardsUIManager, Assembly-CSharp
+        m_MethodName: ClearLeaderboard
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2067759337
 MonoBehaviour:
   m_ObjectHideFlags: 0
