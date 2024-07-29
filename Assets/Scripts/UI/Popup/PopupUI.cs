@@ -40,12 +40,12 @@ namespace UIManage
         public void Show()
         {
             _rectTransform.anchoredPosition = Vector2.zero;
-            isOpen = true;
+
             gameObject.SetActive(true);
 
-            Sequence sequence = DOTween.Sequence();
-            sequence.Append(_rectTransform.DOScale(Vector3.one, 0.2f).SetEase(Ease.OutBack))
-                    .Join(_canvasGroup.DOFade(1f, 0.5f).SetEase(Ease.OutQuad))
+            Sequence sequence = DOTween.Sequence().SetUpdate(true);
+            sequence.Append(_rectTransform.DOScale(Vector3.one, 0.2f).SetEase(Ease.OutBack).SetUpdate(true))
+                    .Join(_canvasGroup.DOFade(1f, 0.5f).SetEase(Ease.OutQuad).SetUpdate(true))
                     .OnComplete(() =>
                     {
                         isOpen = true;
@@ -60,9 +60,9 @@ namespace UIManage
             gameObject.SetActive(false);
             */
 
-            Sequence sequence = DOTween.Sequence();
-            sequence.Append(_rectTransform.DOScale(Vector3.zero, 0.2f).SetEase(Ease.InBack))
-                    .Join(_canvasGroup.DOFade(0f, 0.5f).SetEase(Ease.InQuad))
+            Sequence sequence = DOTween.Sequence().SetUpdate(true);
+            sequence.Append(_rectTransform.DOScale(Vector3.zero, 0.2f).SetEase(Ease.InBack).SetUpdate(true))
+                    .Join(_canvasGroup.DOFade(0f, 0.5f).SetEase(Ease.InQuad).SetUpdate(true))
                     .OnComplete(() =>
                     {
                         _rectTransform.anchoredPosition = _originalPosition;
