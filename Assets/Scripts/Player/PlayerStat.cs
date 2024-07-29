@@ -189,7 +189,8 @@ public class PlayerStat : MonoBehaviour
         if (characterList[currentCharacterData.characterTypeIndex] != null)
         {
             spriteRenderer.sprite = currentCharacterData.characterSprite;
-            animator.runtimeAnimatorController = currentCharacterData.animatorController;  // 애니메이터 컨트롤러 설정
+            abilityCooldownUI.abilityIcon.sprite = currentCharacterData.abilityIconSprite; // 어빌리티 아이콘 설정
+            animator.runtimeAnimatorController = currentCharacterData.animatorController; // 애니메이터 컨트롤러 설정
 
             // 플레이어 타입에 따른 체력과 어빌리티 설정
             if (currentCharacterData.characterTypeIndex == 0)
