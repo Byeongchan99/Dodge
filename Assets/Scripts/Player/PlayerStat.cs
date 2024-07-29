@@ -44,11 +44,15 @@ public class PlayerStat : MonoBehaviour
 
     public IPlayerAbility playerAbility; // 플레이어 특수 능력
 
-    // 캐릭터 데이터 리스트
-    public List<CharacterData> characterList;
-    public CharacterData currentCharacterData;
-    public CharacterData selectedCharacterData;
+    // 캐릭터 선택
+    public List<CharacterData> characterList; // 캐릭터 데이터 리스트
+    public CharacterData currentCharacterData; // 현재 캐릭터 데이터
+    public CharacterData selectedCharacterData; // 선택한 캐릭터 데이터
 
+    // UI
+    public AbilityCooldownUI abilityCooldownUI; // 능력 쿨타임 UI
+
+    // 유저 데이터
     public UserDataManager userDataManager;
     public GameObject crown; // 왕관
     SpriteRenderer crownSpriteRenderer; // 왕관 스프라이트 렌더러
@@ -192,16 +196,19 @@ public class PlayerStat : MonoBehaviour
             {
                 playerAbility = blink;
                 _maxHealth = 2;
+                abilityCooldownUI.Init(blink.CooldownTime);
             }
             else if (currentCharacterData.characterTypeIndex == 1)
             {
                 playerAbility = emp;
                 _maxHealth = 3;
+                abilityCooldownUI.Init(emp.CooldownTime);
             }
             else if (currentCharacterData.characterTypeIndex == 2)
             {
                 playerAbility = defenseProtocol;
                 _maxHealth = 4;
+                abilityCooldownUI.Init(defenseProtocol.CooldownTime);
             }
         }
         currentHealth = _maxHealth;

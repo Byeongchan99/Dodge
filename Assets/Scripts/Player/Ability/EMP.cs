@@ -8,7 +8,11 @@ public class EMP : MonoBehaviour, IPlayerAbility
 
     [SerializeField] private float _slowDuration = 0.05f; // 슬로우 지속 시간
     [SerializeField] private float _EMPDuration = 0.5f; // EMP 지속 시간
-    [SerializeField] private float cooldownTime = 4f; // 쿨타임 5초
+    [SerializeField] private float _cooldownTime = 4f; // 쿨타임 5초
+    public float CooldownTime // 쿨타임 프로퍼티
+    {
+        get { return _cooldownTime; }
+    }
     private float _nextAbilityTime = 0f; // 다음 능력 사용 가능 시간
 
     private bool isEMP = false;
@@ -18,7 +22,7 @@ public class EMP : MonoBehaviour, IPlayerAbility
         if (!isEMP && Time.unscaledTime >= _nextAbilityTime)
         {
             StartCoroutine(EMPRoutine());
-            _nextAbilityTime = Time.unscaledTime + cooldownTime; // 다음 사용 가능 시간 업데이트
+            _nextAbilityTime = Time.unscaledTime + _cooldownTime + _EMPDuration; // 다음 사용 가능 시간 업데이트
         }
     }
 
@@ -64,6 +68,7 @@ public class EMP : MonoBehaviour, IPlayerAbility
         }
 
         isEMP = false;
+        PlayerStat.Instance.abilityCooldownUI.StartCooldown(); // 쿨타임 적용
 
         yield return null;
     }

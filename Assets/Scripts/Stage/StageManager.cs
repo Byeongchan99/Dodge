@@ -12,6 +12,7 @@ public class StageManager : MonoBehaviour, IHealthObserver
     [SerializeField] private FullscreenUIManager fullscreenUIManager;
     [SerializeField] private GameObject fullscreenUIContainer;
     [SerializeField] private HUDManager HUDManager;
+    [SerializeField] private GameObject HUDContainer;
     [SerializeField] private StageResultUI stageResultUI;
     // 스테이지 데이터
     [SerializeField] private List<StageData> stageDataList;
@@ -71,8 +72,9 @@ public class StageManager : MonoBehaviour, IHealthObserver
         itemSpawner.StartSpawn();
         turretUpgradeHandler.StartRandomUpgrades(10);
         // UI
-        HUDManager.EnableTimer();
-        HUDManager.EnableHealthBar();
+        HUDContainer.SetActive(true);
+        //HUDManager.EnableTimer();
+        //HUDManager.EnableHealthBar();
         fullscreenUIContainer.SetActive(false);
 
         // 타이머 시작
@@ -117,8 +119,9 @@ public class StageManager : MonoBehaviour, IHealthObserver
         itemSpawner.StopSpawn();
         turretUpgradeHandler.StopRandomUpgrades();
         // HUD 비활성화
-        HUDManager.DisableTimer();
-        HUDManager.DisableHealthBar();
+        HUDContainer.SetActive(false);
+        //HUDManager.DisableTimer();
+        //HUDManager.DisableHealthBar();
         // 스테이지 결과창 활성화
         stageResultUI.UpdateUIInfo(currentStageData, userDataManager.userData);
         fullscreenUIManager.OnPushFullscreenUI("Stage Result");

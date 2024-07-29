@@ -8,6 +8,7 @@ public class HUDManager : MonoBehaviour
     [SerializeField] Text timeText; // 임시 시간 표시
     [SerializeField] private GameObject timerUI; // 타이머 UI
     [SerializeField] private GameObject healthBar; // 체력바 UI
+    [SerializeField] private GameObject cooldownTimer; // 쿨타임 타이머 UI
 
     public void EnableTimer()
     {

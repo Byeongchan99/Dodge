@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class DefenseProtocol : MonoBehaviour, IPlayerAbility
 {
-    [SerializeField] private float _DefenseProtocolDuration = 2f; // 방어 프로토콜 지속 시간
-    [SerializeField] private float cooldownTime = 5f; // 쿨타임 5초
+    [SerializeField] private float _defenseProtocolDuration = 2f; // 방어 프로토콜 지속 시간
+    [SerializeField] private float _cooldownTime = 5f; // 쿨타임 5초                                              
+    public float CooldownTime // 쿨타임 프로퍼티
+    {
+        get { return _cooldownTime; }
+    }
     private float _nextAbilityTime = 0f; // 다음 능력 사용 가능 시간
 
     private bool isDefense = false;
@@ -15,7 +19,7 @@ public class DefenseProtocol : MonoBehaviour, IPlayerAbility
         if (!isDefense && Time.unscaledTime >= _nextAbilityTime)
         {
             StartCoroutine(DefenseProtocolRoutine());
-            _nextAbilityTime = Time.unscaledTime + cooldownTime; // 다음 사용 가능 시간 업데이트
+            _nextAbilityTime = Time.unscaledTime + _cooldownTime + _defenseProtocolDuration; // 다음 사용 가능 시간 업데이트
         }
     }
 
@@ -37,7 +41,7 @@ public class DefenseProtocol : MonoBehaviour, IPlayerAbility
         }
 
         // 무적 효과 활성화
-        PlayerStat.Instance.StartInvincibility(_DefenseProtocolDuration + 0.1f);
+        PlayerStat.Instance.StartInvincibility(_defenseProtocolDuration + 0.1f);
 
         // 플레이어의 스프라이트를 노란색으로 변경
         SpriteRenderer playerSprite = GetComponent<SpriteRenderer>();
@@ -46,7 +50,7 @@ public class DefenseProtocol : MonoBehaviour, IPlayerAbility
             playerSprite.color = Color.yellow;
         }
 
-        yield return new WaitForSecondsRealtime(_DefenseProtocolDuration);
+        yield return new WaitForSecondsRealtime(_defenseProtocolDuration);
 
         // 방어 프로토콜 비활성화
         // 플레이어의 스프라이트를 원래 색으로 변경
@@ -64,6 +68,7 @@ public class DefenseProtocol : MonoBehaviour, IPlayerAbility
         }
 
         isDefense = false;
+        PlayerStat.Instance.abilityCooldownUI.StartCooldown(); // 쿨타임 적용
 
         yield return null;
     }

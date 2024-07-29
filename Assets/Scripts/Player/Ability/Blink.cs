@@ -9,7 +9,12 @@ public class Blink : MonoBehaviour, IPlayerAbility
 
     [SerializeField] private float _blinkMoveSpeed = 5.0f; // 블링크 지속 시간 동안 이동 속도
     [SerializeField] private float _blinkDuration = 0.5f; // 점멸 지속 시간
-    [SerializeField] private float _cooldownTime = 3f; // 쿨타임 5초
+    [SerializeField] private float _cooldownTime = 3f; // 쿨타임
+    public float CooldownTime // 쿨타임 프로퍼티
+    {
+        get { return _cooldownTime; }
+    }
+
     private float _nextAbilityTime = 0f; // 다음 능력 사용 가능 시간
 
     private bool isBlinking = false;
@@ -21,7 +26,7 @@ public class Blink : MonoBehaviour, IPlayerAbility
             Debug.Log("블링크 실행");
             StartCoroutine(BlinkRoutine());
             Debug.Log("블링크 종료");
-            _nextAbilityTime = Time.unscaledTime + _cooldownTime; // 다음 사용 가능 시간 업데이트
+            _nextAbilityTime = Time.unscaledTime + _cooldownTime + _blinkDuration; // 다음 사용 가능 시간 업데이트
         }
     }
 
@@ -86,6 +91,9 @@ public class Blink : MonoBehaviour, IPlayerAbility
 
         // 점멸 상태 해제
         isBlinking = false;
+        PlayerStat.Instance.abilityCooldownUI.StartCooldown(); // 쿨타임 적용
         GameManager.Instance.isAbilitySlowMotion = false;
+        
+        yield return null;
     }
 }
