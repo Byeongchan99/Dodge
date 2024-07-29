@@ -8661,8 +8661,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -130, y: -45.5}
-  m_SizeDelta: {x: 250, y: 150}
+  m_AnchoredPosition: {x: -141.2, y: -45.5}
+  m_SizeDelta: {x: 225, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1064839081
 MonoBehaviour:
@@ -8712,7 +8712,7 @@ Animator:
   m_GameObject: {fileID: 1064839079}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: fe093647469bb0142af64c0dee624ec9, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -9844,7 +9844,7 @@ MonoBehaviour:
   stageNameText: {fileID: 758530727}
   stageInformationText: {fileID: 2064779885}
   highScore: {fileID: 687968879}
-  animator: {fileID: 0}
+  animatorController: {fileID: 0}
   isGameClearImage: {fileID: 85622041}
   StarUnits:
   - {fileID: 1862301868}

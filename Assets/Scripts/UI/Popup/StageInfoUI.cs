@@ -8,7 +8,7 @@ public class StageInfoUI : MonoBehaviour, IUpdateUI
     public Text stageNameText;
     public Text stageInformationText;
     public Text highScore;
-    public Animator animator; // 애니메이터 컴포넌트
+    public RuntimeAnimatorController animatorController; // 애니메이터 컴포넌트
     public GameObject isGameClearImage;
     [SerializeField] private GameObject[] StarUnits; // 별 칸을 나타내는 GameObject 배열
 
@@ -16,7 +16,7 @@ public class StageInfoUI : MonoBehaviour, IUpdateUI
 
     void Start()
     {
-        animator = GetComponent<Animator>();
+        animatorController = GetComponent<RuntimeAnimatorController>();
     }
 
     public void UpdateUIInfo(params object[] datas)
@@ -29,7 +29,7 @@ public class StageInfoUI : MonoBehaviour, IUpdateUI
             if (data is StageData)
             {
                 stageData = data as StageData;
-                animator.runtimeAnimatorController = stageData.turretAnimatorController;
+                animatorController = stageData.turretAnimatorController;
             }
             else if (data is UserData)
             {

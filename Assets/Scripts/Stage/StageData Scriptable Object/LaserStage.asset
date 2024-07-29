@@ -19,3 +19,4 @@ MonoBehaviour:
   leaderboardID: DodgeLeaderboardLaser
   statData: {fileID: 11400000, guid: bac880e9c08e26f4e94d44e310a9a1da, type: 2}
   mapPrefab: {fileID: 1887036623148970226, guid: 50a7550ccb0c25d45a6c1456b658d1b5, type: 3}
+  turretAnimatorController: {fileID: 9100000, guid: fe093647469bb0142af64c0dee624ec9, type: 2}
