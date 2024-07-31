@@ -8,16 +8,11 @@ public class StageInfoUI : MonoBehaviour, IUpdateUI
     public Text stageNameText;
     public Text stageInformationText;
     public Text highScore;
-    public RuntimeAnimatorController animatorController; // 애니메이터 컴포넌트
+    public Animator animator; // 애니메이터 컴포넌트
     public GameObject isGameClearImage;
     [SerializeField] private GameObject[] StarUnits; // 별 칸을 나타내는 GameObject 배열
 
     public LeaderboardsManager leaderboardsManager;
-
-    void Start()
-    {
-        animatorController = GetComponent<RuntimeAnimatorController>();
-    }
 
     public void UpdateUIInfo(params object[] datas)
     {
@@ -29,7 +24,7 @@ public class StageInfoUI : MonoBehaviour, IUpdateUI
             if (data is StageData)
             {
                 stageData = data as StageData;
-                animatorController = stageData.turretAnimatorController;
+                animator.runtimeAnimatorController = stageData.turretAnimatorController;
             }
             else if (data is UserData)
             {

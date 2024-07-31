@@ -15,8 +15,8 @@ MonoBehaviour:
   stageID: 3
   stageName: Mortar Turret Stage
   statDataName: Mortar
-  stageInformation: A mortar turret appears.
+  stageInformation: A mortar turret appears that fires shells in a parabolic arc.
   leaderboardID: DodgeLeaderboardMortar
   statData: {fileID: 11400000, guid: d4e7559e1073858499d0abdcb2a603b3, type: 2}
   mapPrefab: {fileID: 1887036623148970226, guid: aa0a98f708e70504f8f8bde402c45697, type: 3}
-  turretAnimatorController: {fileID: 9100000, guid: fe093647469bb0142af64c0dee624ec9, type: 2}
+  turretAnimatorController: {fileID: 9100000, guid: 46d2f06aa5409b74bb686379b0b41cd1, type: 2}

@@ -8712,7 +8712,7 @@ Animator:
   m_GameObject: {fileID: 1064839079}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dcfed414fd7fbab408818c7b0335c0ea, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -9844,7 +9844,7 @@ MonoBehaviour:
   stageNameText: {fileID: 758530727}
   stageInformationText: {fileID: 2064779885}
   highScore: {fileID: 687968879}
-  animatorController: {fileID: 0}
+  animator: {fileID: 1064839083}
   isGameClearImage: {fileID: 85622041}
   StarUnits:
   - {fileID: 1862301868}
