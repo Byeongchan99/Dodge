@@ -22,7 +22,7 @@ MonoBehaviour:
   - isCleared: 1
     score: 298
   - isCleared: 1
-    score: 0
+    score: 175
   achievementInfos:
   - name: Achievement 1
     isAchieved: 0

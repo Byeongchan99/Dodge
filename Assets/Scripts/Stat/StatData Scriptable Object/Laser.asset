@@ -93,7 +93,7 @@ MonoBehaviour:
     isMaxProjectileSpeed: 0
     projectileLifeTime: 1.5
     isMaxProjectileLifeTime: 0
-    projectileSize: {x: 1, y: 25, z: 1}
+    projectileSize: {x: 0.7, y: 25, z: 0.7}
     isMaxProjectileSize: 0
   - projectileName: Rocket
     projectileSpeed: 3
@@ -107,5 +107,5 @@ MonoBehaviour:
     isMaxProjectileSpeed: 0
     projectileLifeTime: -1
     isMaxProjectileLifeTime: 0
-    projectileSize: {x: 2.5, y: 1.5, z: 2.5}
+    projectileSize: {x: 2, y: 1.2, z: 2}
     isMaxProjectileSize: 0
