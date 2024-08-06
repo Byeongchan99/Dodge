@@ -222,6 +222,7 @@ public class PlayerStat : MonoBehaviour
         Debug.Log("플레이어 비활성화");
         RemoveAllEffects(); // 모든 아이템 효과 제거
         InitCoroutines(); // 모든 코루틴 초기화
+        transform.position = new Vector3(0, -0.8f, 0); // 위치 초기화
         player.SetActive(false);
     }
 
