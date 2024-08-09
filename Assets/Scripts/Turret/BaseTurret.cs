@@ -32,8 +32,8 @@ public abstract class BaseTurret : MonoBehaviour
     /// <summary> 발사할 투사체 프리팹 리스트 </summary>
     [SerializeField] protected GameObject[] projectilePrefabs;
 
-    /// <summary> 이펙트를 적용하기 위한 캔버스 그룹 </summary>
-    [SerializeField] private CanvasGroup canvasGroup;
+    // 코루틴 실행 여부를 체크하기 위한 플래그
+    private bool isDisabling = false;
 
     /****************************************************************************
                                    public Fields
@@ -51,8 +51,6 @@ public abstract class BaseTurret : MonoBehaviour
     protected virtual void OnEnable()
     {
         StartCoroutine(FadeIn(1f));
-        // 등장 시 흔들리는 효과
-        transform.DOShakePosition(enterShakeDuration, new Vector3(0, enterShakeStrength, 0), enterShakeVibrato);
         InitTurret(); // 초기화
     }
 
@@ -60,7 +58,11 @@ public abstract class BaseTurret : MonoBehaviour
     {
         if (currentLifeTime <= 0 && isLastProjectileShot)
         {
-            StartCoroutine(StartDisableTurret());
+            // 이미 코루틴이 실행 중인지 확인
+            if (!isDisabling)
+            {
+                StartCoroutine(StartDisableTurret());
+            }
             return;
         }
 
@@ -85,49 +87,44 @@ public abstract class BaseTurret : MonoBehaviour
     /// 마지막 발사 후 애니메이션 적용하기 위해 사용
     IEnumerator StartDisableTurret()
     {
+        Debug.Log("StartDisableTurret");
+        // 코루틴 실행 중 플래그 설정
+        isDisabling = true;
+        StartCoroutine(FadeOut(1.5f));
         yield return new WaitForSeconds(1.5f);
-        StartCoroutine(FadeOut(1f));
         DisableTurret();
     }
 
     /****************************************************************************
-                                Effect Methods
+                                 Effect Methods
     ****************************************************************************/
     IEnumerator FadeIn(float duration)
     {
-        float currentTime = 0;
-        while (currentTime < duration)
+        SpriteRenderer[] spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
+
+        foreach (var spriteRenderer in spriteRenderers)
         {
-            canvasGroup.alpha = Mathf.Lerp(0f, 1f, currentTime / duration);
-            currentTime += Time.deltaTime;
-            yield return null;
+            Color color = spriteRenderer.color;
+            color.a = 0f; // 초기 alpha를 0으로 설정
+            spriteRenderer.color = color;
+            spriteRenderer.DOFade(1f, duration).SetEase(Ease.InOutQuad);
         }
-        canvasGroup.alpha = 1f;
+
+        yield return new WaitForSeconds(duration);
     }
 
     IEnumerator FadeOut(float duration)
     {
-        float currentTime = 0;
-        while (currentTime < duration)
+        Debug.Log("FadeOut");
+        SpriteRenderer[] spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
+
+        foreach (var spriteRenderer in spriteRenderers)
         {
-            canvasGroup.alpha = Mathf.Lerp(1f, 0f, currentTime / duration);
-            currentTime += Time.deltaTime;
-            yield return null;
+            spriteRenderer.DOFade(0f, duration).SetEase(Ease.InOutQuad);
         }
-        canvasGroup.alpha = 0f;
 
-        // 사라질 때 위로 부드럽게 움직이는 효과, 애니메이션 완료 후 비활성화
-        transform.DOMoveY(transform.position.y + exitMoveY, exitMoveDuration).OnComplete(() => {
-            // 비활성화 로직을 이 위치로 이동
-            DisableTurret();
-        });
+        yield return new WaitForSeconds(duration);
     }
-
-    [SerializeField] private float enterShakeDuration = 0.3f;
-    [SerializeField] private float enterShakeStrength = 0.3f;
-    [SerializeField] private int enterShakeVibrato = 10;
-    [SerializeField] private float exitMoveDuration = 0.3f;
-    [SerializeField] private float exitMoveY = 1f;
 
     /****************************************************************************
                             abstract and virtual Methods
@@ -171,6 +168,8 @@ public abstract class BaseTurret : MonoBehaviour
     /// <summary> 터렛 비활성화 </summary>
     public virtual void DisableTurret()
     {
+        Debug.Log("DisableTurret");
+
         // 이름에서 (Clone)을 제거
         string poolName = gameObject.name.Replace("(Clone)", "");
 
