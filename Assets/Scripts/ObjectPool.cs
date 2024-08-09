@@ -37,7 +37,7 @@ public class ObjectPool<T> where T : Component
         else
         {
             T obj = pool.Dequeue();
-            obj.gameObject.SetActive(true);
+            //obj.gameObject.SetActive(true);
             return obj;
         }
     }

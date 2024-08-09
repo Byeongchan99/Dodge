@@ -33,11 +33,11 @@ public class BulletTurret : BaseTurret
                 _angle += 90;
             }
             // 1번부터 3번 스폰 포인트에서는 터렛 스프라이트를 반대로 설정
-            else if (spawnPointIndex >= 1 && spawnPointIndex <= 3)
+            else if (spawnPointIndex >= 1 && spawnPointIndex <= 5)
             {
                 _angle += 180;
             }
-            else if (spawnPointIndex == 4)
+            else if (spawnPointIndex == 6)
             {
                 _angle -= 90;
             }
@@ -69,6 +69,8 @@ public class BulletTurret : BaseTurret
 
         if (bullet != null)
         {
+            // 총알 활성화
+            bullet.gameObject.SetActive(true);
             // 총알 위치와 회전 설정
             bullet.transform.position = firePoint.position;
             bullet.transform.rotation = rotation;
@@ -76,8 +78,6 @@ public class BulletTurret : BaseTurret
             bullet.transform.localScale = bulletSize;
             // 방향 설정
             bullet.SetDirection(_direction);
-            // 총알 활성화
-            bullet.gameObject.SetActive(true);
         }
         else
         {

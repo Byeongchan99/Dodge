@@ -87,7 +87,6 @@ public abstract class BaseTurret : MonoBehaviour
     /// 마지막 발사 후 애니메이션 적용하기 위해 사용
     IEnumerator StartDisableTurret()
     {
-        Debug.Log("StartDisableTurret");
         // 코루틴 실행 중 플래그 설정
         isDisabling = true;
         StartCoroutine(FadeOut(1.5f));
@@ -102,11 +101,22 @@ public abstract class BaseTurret : MonoBehaviour
     {
         SpriteRenderer[] spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
 
+        // 초기 위치에서 살짝 위로 이동
+        Vector3 originalPosition = transform.localPosition;
+        transform.localPosition = new Vector3(originalPosition.x, originalPosition.y + 0.1f, originalPosition.z);
+
+        // 위치를 원래대로 되돌리면서 페이드 인
         foreach (var spriteRenderer in spriteRenderers)
         {
             Color color = spriteRenderer.color;
             color.a = 0f; // 초기 alpha를 0으로 설정
             spriteRenderer.color = color;
+        }
+
+        // 페이드 인과 함께 아래로 이동 (로컬 좌표로)
+        transform.DOLocalMoveY(originalPosition.y, duration).SetEase(Ease.InOutQuad);
+        foreach (var spriteRenderer in spriteRenderers)
+        {
             spriteRenderer.DOFade(1f, duration).SetEase(Ease.InOutQuad);
         }
 
@@ -115,9 +125,11 @@ public abstract class BaseTurret : MonoBehaviour
 
     IEnumerator FadeOut(float duration)
     {
-        Debug.Log("FadeOut");
         SpriteRenderer[] spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
 
+        // 페이드 아웃과 함께 위로 이동 (로컬 좌표로)
+        Vector3 originalPosition = transform.localPosition;
+        transform.DOLocalMoveY(originalPosition.y + 0.1f, duration).SetEase(Ease.InOutQuad);
         foreach (var spriteRenderer in spriteRenderers)
         {
             spriteRenderer.DOFade(0f, duration).SetEase(Ease.InOutQuad);

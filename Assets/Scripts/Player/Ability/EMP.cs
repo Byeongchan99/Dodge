@@ -46,6 +46,7 @@ public class EMP : MonoBehaviour, IPlayerAbility
         // EMP 활성화
         EMPEffect = EffectPoolManager.Instance.Get("EMPEffect");
         EMPEffect.transform.position = PlayerStat.Instance.currentPosition.position;
+        EMPEffect.gameObject.SetActive(true);
 
         // 시간을 느리게 한다
         GameManager.Instance.StartSlowEffect(_slowDuration); // 슬로우 모션 효과 적용

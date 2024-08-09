@@ -60,18 +60,18 @@ public class MortarTurret : BaseTurret
             // 최종 목표 위치 계산
             Vector3 finalTargetPosition = targetPosition.position + playerMovementVector + randomOffset;
 
+            bomb.gameObject.SetActive(true);
             // 총알 위치와 회전 설정
             bomb.transform.position = firePoint.position;
             bomb.SetDirection(finalTargetPosition - firePoint.position);
             // 이펙트 참조 설정
             bomb.SetBombEffect(bombEffect);
-            bomb.gameObject.SetActive(true);
 
+            bombEffect.gameObject.SetActive(true);
             // 위험 범위 이펙트 위치 설정
             bombEffect.transform.position = finalTargetPosition;
             // 위험 범위 이펙트 크기 설정
             bombEffect.transform.localScale = effectSize;
-            bombEffect.gameObject.SetActive(true);
         }
         else
         {
