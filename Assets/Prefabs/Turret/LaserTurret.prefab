@@ -74,6 +74,7 @@ GameObject:
   - component: {fileID: 6328584096164904083}
   - component: {fileID: 7134530570538730275}
   - component: {fileID: 3638243521627707545}
+  - component: {fileID: -6808133836674303407}
   m_Layer: 0
   m_Name: LaserTurret
   m_TagString: Turret
@@ -171,12 +172,30 @@ MonoBehaviour:
   targetPosition: {fileID: 0}
   projectilePrefabs:
   - {fileID: 7776144373081150357, guid: 82f61e953991c254689da71614772246, type: 3}
+  canvasGroup: {fileID: -6808133836674303407}
   spawner: {fileID: 0}
   turretIndex: 1
   spawnPointIndex: 0
+  enterShakeDuration: 0.5
+  enterShakeStrength: 1
+  enterShakeVibrato: 10
+  exitMoveDuration: 0.5
+  exitMoveY: 5
   rotatePoint: {fileID: 1356929597027367013}
   _direction: {x: 0, y: 0}
   isShooting: 0
+--- !u!225 &-6808133836674303407
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7142985893305235348}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &9203135417910183315
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using DG.Tweening; // DOTween 네임스페이스 추가
 using UnityEngine;
 
 public abstract class BaseTurret : MonoBehaviour
@@ -31,6 +32,9 @@ public abstract class BaseTurret : MonoBehaviour
     /// <summary> 발사할 투사체 프리팹 리스트 </summary>
     [SerializeField] protected GameObject[] projectilePrefabs;
 
+    /// <summary> 이펙트를 적용하기 위한 캔버스 그룹 </summary>
+    [SerializeField] private CanvasGroup canvasGroup;
+
     /****************************************************************************
                                    public Fields
     ****************************************************************************/
@@ -46,6 +50,9 @@ public abstract class BaseTurret : MonoBehaviour
     ****************************************************************************/
     protected virtual void OnEnable()
     {
+        StartCoroutine(FadeIn(1f));
+        // 등장 시 흔들리는 효과
+        transform.DOShakePosition(enterShakeDuration, new Vector3(0, enterShakeStrength, 0), enterShakeVibrato);
         InitTurret(); // 초기화
     }
 
@@ -79,8 +86,48 @@ public abstract class BaseTurret : MonoBehaviour
     IEnumerator StartDisableTurret()
     {
         yield return new WaitForSeconds(1.5f);
+        StartCoroutine(FadeOut(1f));
         DisableTurret();
     }
+
+    /****************************************************************************
+                                Effect Methods
+    ****************************************************************************/
+    IEnumerator FadeIn(float duration)
+    {
+        float currentTime = 0;
+        while (currentTime < duration)
+        {
+            canvasGroup.alpha = Mathf.Lerp(0f, 1f, currentTime / duration);
+            currentTime += Time.deltaTime;
+            yield return null;
+        }
+        canvasGroup.alpha = 1f;
+    }
+
+    IEnumerator FadeOut(float duration)
+    {
+        float currentTime = 0;
+        while (currentTime < duration)
+        {
+            canvasGroup.alpha = Mathf.Lerp(1f, 0f, currentTime / duration);
+            currentTime += Time.deltaTime;
+            yield return null;
+        }
+        canvasGroup.alpha = 0f;
+
+        // 사라질 때 위로 부드럽게 움직이는 효과, 애니메이션 완료 후 비활성화
+        transform.DOMoveY(transform.position.y + exitMoveY, exitMoveDuration).OnComplete(() => {
+            // 비활성화 로직을 이 위치로 이동
+            DisableTurret();
+        });
+    }
+
+    [SerializeField] private float enterShakeDuration = 0.3f;
+    [SerializeField] private float enterShakeStrength = 0.3f;
+    [SerializeField] private int enterShakeVibrato = 10;
+    [SerializeField] private float exitMoveDuration = 0.3f;
+    [SerializeField] private float exitMoveY = 1f;
 
     /****************************************************************************
                             abstract and virtual Methods

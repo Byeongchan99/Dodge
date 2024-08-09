@@ -127,6 +127,7 @@ GameObject:
   - component: {fileID: 6328584096164904083}
   - component: {fileID: 7134530570538730275}
   - component: {fileID: 65391403926780706}
+  - component: {fileID: -6638293274004709715}
   m_Layer: 0
   m_Name: MortarTurret
   m_TagString: Turret
@@ -225,6 +226,24 @@ MonoBehaviour:
   projectilePrefabs:
   - {fileID: 5015218198545573938, guid: e9df44c11f3ca4942896208e0abf683c, type: 3}
   - {fileID: 5015218198545573938, guid: b5834cf2eca4b664f82e750a02f9a897, type: 3}
+  canvasGroup: {fileID: -6638293274004709715}
   spawner: {fileID: 0}
   turretIndex: 3
   spawnPointIndex: 0
+  enterShakeDuration: 0.5
+  enterShakeStrength: 1
+  enterShakeVibrato: 10
+  exitMoveDuration: 0.5
+  exitMoveY: 5
+--- !u!225 &-6638293274004709715
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7142985893305235348}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

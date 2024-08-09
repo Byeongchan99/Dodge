@@ -74,6 +74,7 @@ GameObject:
   - component: {fileID: 6328584096164904083}
   - component: {fileID: 7134530570538730275}
   - component: {fileID: 2084368026381238632}
+  - component: {fileID: 1057225988787260962}
   m_Layer: 0
   m_Name: BulletTurret
   m_TagString: Turret
@@ -172,11 +173,29 @@ MonoBehaviour:
   projectilePrefabs:
   - {fileID: 2849789079709403121, guid: d841075615611104287c35b8cbec0b24, type: 3}
   - {fileID: 2165887944137837541, guid: 4244a559614907e4996fc011d0a93ede, type: 3}
+  canvasGroup: {fileID: 1057225988787260962}
   spawner: {fileID: 0}
   turretIndex: 0
   spawnPointIndex: 0
+  enterShakeDuration: 0.5
+  enterShakeStrength: 1
+  enterShakeVibrato: 10
+  exitMoveDuration: 0.5
+  exitMoveY: 5
   rotatePoint: {fileID: 1356929597027367013}
   _direction: {x: 0, y: 0}
+--- !u!225 &1057225988787260962
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7142985893305235348}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &9203135417910183315
 GameObject:
   m_ObjectHideFlags: 0
