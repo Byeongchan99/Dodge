@@ -38,11 +38,11 @@ public class LaserTurret : BaseTurret
                 _angle += 90;
             }
             // 1번부터 3번 스폰 포인트에서는 터렛 스프라이트를 반대로 설정
-            else if (spawnPointIndex >= 1 && spawnPointIndex <= 3)
+            else if (spawnPointIndex >= 1 && spawnPointIndex <= 5)
             {
                 _angle += 180;
             }
-            else if (spawnPointIndex == 4)
+            else if (spawnPointIndex == 6)
             {
                 _angle -= 90;
             }
