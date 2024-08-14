@@ -16,7 +16,6 @@ public class ObjectPool<T> where T : Component
         for (int i = 0; i < initialCount; i++)
         {
             T obj = CreateNewObject();
-            obj.gameObject.SetActive(false);
             pool.Enqueue(obj);
         }
     }
@@ -24,6 +23,7 @@ public class ObjectPool<T> where T : Component
     private T CreateNewObject()
     {
         T obj = Object.Instantiate(prefab, container);
+        obj.gameObject.SetActive(false);
         return obj;
     }
 

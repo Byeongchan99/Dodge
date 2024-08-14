@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
-using DG.Tweening; // DOTween 네임스페이스 추가
 using UnityEngine;
 
 public abstract class BaseTurret : MonoBehaviour
@@ -32,8 +31,9 @@ public abstract class BaseTurret : MonoBehaviour
     /// <summary> 발사할 투사체 프리팹 리스트 </summary>
     [SerializeField] protected GameObject[] projectilePrefabs;
 
-    /// <summary> 코루틴 실행 여부를 체크하기 위한 플래그 </summary>
-    private bool isDisabling = false;
+    /// <summary> 플래그 변수 </summary>
+    private bool isDisabling = false; // 코루틴 실행 여부를 체크하기 위한 플래그
+    private bool isInitialized = false; // 초기화 플래그
 
     /// <summary> Fade Effect 참조 </summary>
     private FadeEffect fadeEffect;
@@ -58,6 +58,13 @@ public abstract class BaseTurret : MonoBehaviour
 
     protected virtual void OnEnable()
     {
+        if (!isInitialized)
+        {
+            // 처음 실행될 때는 초기화만 수행
+            isInitialized = true;
+            return;
+        }
+
         fadeEffect.StartFadeIn(1f);
         InitTurret(); // 초기화
     }
