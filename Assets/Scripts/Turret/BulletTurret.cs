@@ -68,14 +68,14 @@ public class BulletTurret : BaseTurret
         Vector3 bulletSize = StatDataManager.Instance.currentStatData.projectileDatas[0].projectileSize;
 
         if (bullet != null)
-        {
-            // 총알 활성화
-            bullet.gameObject.SetActive(true);
+        { 
             // 총알 위치와 회전 설정
             bullet.transform.position = firePoint.position;
             bullet.transform.rotation = rotation;
             // 크기 설정
             bullet.transform.localScale = bulletSize;
+            // 총알 활성화
+            bullet.gameObject.SetActive(true);
             // 방향 설정
             bullet.SetDirection(_direction);
         }

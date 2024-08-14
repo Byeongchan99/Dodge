@@ -101,11 +101,12 @@ public class ItemSpawner : MonoBehaviour
         if (item != null)
         {
             // 아이템 활성화 및 위치 설정
-            item.gameObject.SetActive(true);
             item.transform.position = spawnPosition;
             item.transform.rotation = Quaternion.identity;
 
             _nextSpawnTime = ChooseCooldown(itemToSpawn); // 다음 소환까지의 시간 설정
+
+            item.gameObject.SetActive(true);
         }
         else
         {

@@ -21,8 +21,8 @@ public class BaseItem : MonoBehaviour
     private void OnEnable()
     {
         InitItem();
-        fadeEffect.StartFadeIn(0.5f);
-        Invoke("DestroyItem", itemRemainTime); // 10초 후 DestroyItem 메소드 호출
+        fadeEffect.StartFadeIn(0.5f, 0.1f);
+        StartCoroutine(ItemDisableAfterRemainTime(itemRemainTime)); // itemRemainTime 이후 아이템 비활성화
     }
 
     /// <summary> 아이템 초기화 </summary>
@@ -31,11 +31,24 @@ public class BaseItem : MonoBehaviour
         // 아이템 효과 초기화    
     }
 
-    /// <summary> 아이템 파괴 </summary>
-    protected void DestroyItem()
+    /// <summary> 아이템이 필드에 남아있는 시간 이후 아이템 비활성화 시작 </summary>
+    private IEnumerator ItemDisableAfterRemainTime(float delay)
     {
-        CancelInvoke("DestroyItem"); // 중복 호출 방지
-        fadeEffect.StartFadeOut(0.5f);
+        yield return new WaitForSeconds(delay);
+        StartCoroutine(StartDisableItem());
+    }
+
+    /// <summary> 아이템 비활성화 시작 </summary>
+    IEnumerator StartDisableItem()
+    {
+        fadeEffect.StartFadeOut(0.5f, 0.1f);
+        yield return new WaitForSeconds(1.5f);
+        DisableItem();
+    }
+
+    /// <summary> 아이템 비활성화 </summary>
+    protected void DisableItem()
+    {     
         ItemPoolManager.Instance.Return(this.GetType().Name, this);
     }
 
@@ -47,7 +60,7 @@ public class BaseItem : MonoBehaviour
             // 아이템 획득 처리
             Debug.Log("아이템 획득");
             PlayerStat.Instance.ApplyItemEffect(itemEffect);
-            DestroyItem();
+            StartCoroutine(StartDisableItem());
         }
     }
 }

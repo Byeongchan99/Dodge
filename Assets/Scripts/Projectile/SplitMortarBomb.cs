@@ -45,12 +45,13 @@ public class SplitMortarBomb : MortarBomb
 
             if (splitedMortarBomb != null)
             {
-                splitedMortarBomb.gameObject.SetActive(true); // 활성화
-                splitedMortarBomb.transform.position = transform.position; // 현재 위치 설정
-                splitedMortarBomb.SetDirection(directions[i]); // 분열 방향 설정
+                splitedMortarBomb.transform.position = transform.position; // 현재 위치 설정        
                 splitedMortarBomb.transform.localScale = mortarBombSize; // 크기 설정
                 splitedMortarBomb.setMortarBomb(flightDuration / 2, hoverHeight / 4); // 박격포탄 스탯 설정
                 splitedMortarBomb.SetBombEffect(splitedBombEffect); // 이펙트 참조 설정
+                
+                splitedMortarBomb.gameObject.SetActive(true); // 활성화
+                splitedMortarBomb.SetDirection(directions[i]); // 분열 방향 설정(박격포탄의 경우 Move() 메서드가 코루틴이라 활성화 후 실행)
             }
             else
             {
@@ -59,9 +60,9 @@ public class SplitMortarBomb : MortarBomb
            
             if (splitedBombEffect != null)
             {
-                splitedBombEffect.gameObject.SetActive(true); // 활성화
                 splitedBombEffect.transform.position = transform.position + directions[i]; // 위치 설정 (적당한 거리 조절)
                 splitedBombEffect.transform.localScale = effectSize; // 크기 설정
+                splitedBombEffect.gameObject.SetActive(true); // 활성화
             }
             else
             {

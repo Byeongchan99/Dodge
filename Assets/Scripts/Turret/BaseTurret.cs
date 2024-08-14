@@ -65,7 +65,7 @@ public abstract class BaseTurret : MonoBehaviour
             return;
         }
 
-        fadeEffect.StartFadeIn(1f);
+        fadeEffect.StartFadeIn(1f, 0.2f);
         InitTurret(); // 초기화
     }
 
@@ -104,7 +104,7 @@ public abstract class BaseTurret : MonoBehaviour
     {
         // 코루틴 실행 중 플래그 설정
         isDisabling = true;
-        fadeEffect.StartFadeOut(1.5f);
+        fadeEffect.StartFadeOut(1.5f, 0.2f);
         yield return new WaitForSeconds(1.5f);
         DisableTurret();
     }
@@ -128,6 +128,7 @@ public abstract class BaseTurret : MonoBehaviour
         //_attackSpeed = Mathf.Max(_attackSpeed, 0.5f);  // 공격 속도 보장
 
         // 변수 초기화
+        isDisabling = false;
         _timeSinceLastShot = 0f;
         isLastProjectileShot = false;
         targetPosition = PlayerStat.Instance.transform;

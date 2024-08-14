@@ -31,15 +31,12 @@ public class SplitBullet : Bullet
 
         if (bullet1 != null && bullet3 != null) // bullet1 != null && bullet2 != null && bullet3 != null
         {
-            bullet1.gameObject.SetActive(true);
-            //bullet2.gameObject.SetActive(true);
-            bullet3.gameObject.SetActive(true);
-
             // 총알 위치와 회전 설정
             bullet1.transform.position = transform.position;
             bullet1.transform.rotation = currentRotation * Quaternion.Euler(0, 0, 15);
             // 크기 변경
             bullet1.transform.localScale = bulletSize;
+            bullet1.gameObject.SetActive(true);
             // 방향 설정
             bullet1.SetDirection(Quaternion.Euler(0, 0, 15) * currentDirection);
 
@@ -47,12 +44,14 @@ public class SplitBullet : Bullet
             bullet2.transform.position = transform.position;
             bullet2.transform.rotation = currentRotation;
             bullet2.transform.localScale = bulletSize;
+            bullet2.gameObject.SetActive(true);
             bullet2.SetDirection(currentDirection); // 방향 설정
             */
 
             bullet3.transform.position = transform.position;
             bullet3.transform.rotation = currentRotation * Quaternion.Euler(0, 0, -15);
             bullet3.transform.localScale = bulletSize;
+            bullet3.gameObject.SetActive(true);
             bullet3.SetDirection(Quaternion.Euler(0, 0, -15) * currentDirection); // 방향 설정
         }
         else
