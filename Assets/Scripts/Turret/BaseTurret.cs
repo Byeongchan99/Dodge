@@ -32,8 +32,11 @@ public abstract class BaseTurret : MonoBehaviour
     /// <summary> 발사할 투사체 프리팹 리스트 </summary>
     [SerializeField] protected GameObject[] projectilePrefabs;
 
-    // 코루틴 실행 여부를 체크하기 위한 플래그
+    /// <summary> 코루틴 실행 여부를 체크하기 위한 플래그 </summary>
     private bool isDisabling = false;
+
+    /// <summary> Fade Effect 참조 </summary>
+    private FadeEffect fadeEffect;
 
     /****************************************************************************
                                    public Fields
@@ -48,9 +51,14 @@ public abstract class BaseTurret : MonoBehaviour
     /****************************************************************************
                                     Unity Callbacks
     ****************************************************************************/
+    void Awake()
+    {
+        fadeEffect = GetComponent<FadeEffect>();
+    }
+
     protected virtual void OnEnable()
     {
-        StartCoroutine(FadeIn(1f));
+        fadeEffect.StartFadeIn(1f);
         InitTurret(); // 초기화
     }
 
@@ -89,53 +97,9 @@ public abstract class BaseTurret : MonoBehaviour
     {
         // 코루틴 실행 중 플래그 설정
         isDisabling = true;
-        StartCoroutine(FadeOut(1.5f));
+        fadeEffect.StartFadeOut(1.5f);
         yield return new WaitForSeconds(1.5f);
         DisableTurret();
-    }
-
-    /****************************************************************************
-                                 Effect Methods
-    ****************************************************************************/
-    IEnumerator FadeIn(float duration)
-    {
-        SpriteRenderer[] spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
-
-        // 초기 위치에서 살짝 위로 이동
-        Vector3 originalPosition = transform.localPosition;
-        transform.localPosition = new Vector3(originalPosition.x, originalPosition.y + 0.1f, originalPosition.z);
-
-        // 위치를 원래대로 되돌리면서 페이드 인
-        foreach (var spriteRenderer in spriteRenderers)
-        {
-            Color color = spriteRenderer.color;
-            color.a = 0f; // 초기 alpha를 0으로 설정
-            spriteRenderer.color = color;
-        }
-
-        // 페이드 인과 함께 아래로 이동 (로컬 좌표로)
-        transform.DOLocalMoveY(originalPosition.y, duration).SetEase(Ease.InOutQuad);
-        foreach (var spriteRenderer in spriteRenderers)
-        {
-            spriteRenderer.DOFade(1f, duration).SetEase(Ease.InOutQuad);
-        }
-
-        yield return new WaitForSeconds(duration);
-    }
-
-    IEnumerator FadeOut(float duration)
-    {
-        SpriteRenderer[] spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
-
-        // 페이드 아웃과 함께 위로 이동 (로컬 좌표로)
-        Vector3 originalPosition = transform.localPosition;
-        transform.DOLocalMoveY(originalPosition.y + 0.1f, duration).SetEase(Ease.InOutQuad);
-        foreach (var spriteRenderer in spriteRenderers)
-        {
-            spriteRenderer.DOFade(0f, duration).SetEase(Ease.InOutQuad);
-        }
-
-        yield return new WaitForSeconds(duration);
     }
 
     /****************************************************************************
