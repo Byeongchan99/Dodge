@@ -50,10 +50,10 @@ public class FadeEffect : MonoBehaviour
     {
         // 페이드 아웃과 함께 위로 이동
         Vector3 originalPosition = transform.localPosition;
-        transform.DOLocalMoveY(originalPosition.y + distance, duration).SetEase(Ease.InOutQuad);
+        transform.DOLocalMoveY(originalPosition.y + distance, duration).SetEase(Ease.InOutQuad).SetUpdate(true);
         foreach (var spriteRenderer in spriteRenderers)
         {
-            spriteRenderer.DOFade(0f, duration).SetEase(Ease.InOutQuad);
+            spriteRenderer.DOFade(0f, duration).SetEase(Ease.InOutQuad).SetUpdate(true);
         }
 
         yield return new WaitForSeconds(duration);
