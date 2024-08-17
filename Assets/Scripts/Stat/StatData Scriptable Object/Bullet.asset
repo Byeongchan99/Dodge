@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemDatas:
   - name: MoveSpeedUpItem
-    spawnLevel: 0
+    spawnLevel: 1
     spawnChance: 0
     spawnCooldown: 20
     spawnCooldownPercent: 0
   - name: InvincibilityItem
-    spawnLevel: 0
+    spawnLevel: 1
     spawnChance: 0
     spawnCooldown: 20
     spawnCooldownPercent: 0
@@ -29,12 +29,12 @@ MonoBehaviour:
     spawnCooldown: 20
     spawnCooldownPercent: 0
   - name: EMPBombItem
-    spawnLevel: 0
+    spawnLevel: 1
     spawnChance: 0
     spawnCooldown: 20
     spawnCooldownPercent: 0
   - name: GetScoreItem
-    spawnLevel: 0
+    spawnLevel: 1
     spawnChance: 0
     spawnCooldown: 20
     spawnCooldownPercent: 0

@@ -10,6 +10,8 @@ public class MortarTurret : BaseTurret
     private float predictionFactor = 1f; // 예측 정도를 조절하는 변수
     private float randomFactor = 1f; // 랜덤 정도를 조절하는 변수
 
+    [SerializeField] private ParticleSystem fireParticle; // 파티클 시스템 참조 추가
+
     protected override void OnEnable()
     {
         playerMovement = PlayerStat.Instance.player.GetComponent<PlayerMovement>();
@@ -74,6 +76,16 @@ public class MortarTurret : BaseTurret
             // 위험 범위 이펙트 크기 설정
             bombEffect.transform.localScale = effectSize;
             bombEffect.gameObject.SetActive(true);
+
+            // 파티클 시스템 재생
+            if (fireParticle != null)
+            {
+                fireParticle.Play(); // 파티클 재생
+            }
+            else
+            {
+                Debug.LogWarning("Fire particle system is not set.");
+            }
         }
         else
         {
