@@ -49,10 +49,10 @@ public class BaseProjectile : MonoBehaviour
     }
 
     /// <summary> 생명 주기 관리 코루틴 </summary>
-    protected IEnumerator LifecycleCoroutine()
+    protected virtual IEnumerator LifecycleCoroutine()
     {
-        yield return new WaitForSeconds(_lifeTime);  // 지정된 시간(_lifetime) 동안 대기
-        DestroyProjectile();  // 시간이 지나면 발사체를 파괴
+        yield return new WaitForSeconds(_lifeTime);
+        DestroyProjectile();  // 지정된 시간(_lifetime)이 지나면 발사체를 파괴
     }
 
     /****************************************************************************
