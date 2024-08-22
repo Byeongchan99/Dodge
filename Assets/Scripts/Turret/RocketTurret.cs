@@ -9,6 +9,8 @@ public class RocketTurret : BaseTurret
     [SerializeField] Vector2 _direction;
     float _angle;
 
+    [SerializeField] private ParticleSystem fireParticle; // 파티클 시스템 참조 추가
+
     /// <summary> 발사 </summary>
     protected override void Shoot()
     {
@@ -74,6 +76,16 @@ public class RocketTurret : BaseTurret
             // 목표 설정
             rocket.target = targetPosition;
             rocket.gameObject.SetActive(true);
+
+            // 파티클 시스템 재생
+            if (fireParticle != null)
+            {
+                fireParticle.Play(); // 파티클 재생
+            }
+            else
+            {
+                Debug.LogWarning("Fire particle system is not set.");
+            }
         }
         else
         {
