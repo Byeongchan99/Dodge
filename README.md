@@ -58,14 +58,14 @@ https://github.com/Byeongchan99/Dodge
 
 [닷지 개발 일지 2 - 터렛 강화 이벤트 시스템 설계](https://www.notion.so/2-32edddacafff4031a4ac6f4eab259368?pvs=21) 
 
-1. **캐릭터 어빌리티**
+2. **캐릭터 어빌리티**
 
 [닷지 개발 일지 3 - 캐릭터 특수 능력 구현](https://www.notion.so/3-1173d4b5b7b14c79b0afc37a93105b15?pvs=21) 
 
-1. **아이템**
+3. **아이템**
 
 [닷지 개발 일지 4 - 아이템](https://www.notion.so/4-13b41ff392d74e5396ade33136bdab43?pvs=21) 
 
-1. **스테이지**
+4. **스테이지**
 
 [닷지 개발 일지 7 - 스테이지](https://www.notion.so/7-fe49de2f9b164b38b2920571111fff05?pvs=21)
