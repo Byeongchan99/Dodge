@@ -22,6 +22,7 @@ public class FadeEffect : MonoBehaviour
         StartCoroutine(FadeOut(duration, distance));
     }
 
+    // 위에서 아래로 distance만큼 이동하면서 duration동안 페이드 인
     private IEnumerator FadeIn(float duration, float distance)
     {
         // 초기 위치에서 살짝 위로 이동
@@ -46,6 +47,7 @@ public class FadeEffect : MonoBehaviour
         yield return new WaitForSeconds(duration);
     }
 
+    // 아래에서 위로 distance만큼 이동하면서 duration동안 페이드 아웃
     private IEnumerator FadeOut(float duration, float distance)
     {
         // 페이드 아웃과 함께 위로 이동

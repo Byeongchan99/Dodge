@@ -10,12 +10,15 @@ public class PlayerStat : MonoBehaviour
     ****************************************************************************/
     private List<IHealthObserver> observers = new List<IHealthObserver>(); // 체력 옵저버 리스트
 
+    // 플레이어 스탯
     [SerializeField] private int _maxHealth; // 플레이어 최대 체력
     [SerializeField] private float _initialMoveSpeed; // 플레이어 초기 이동 속도
 
+    // 무적 관련
     private Coroutine invincibilityRoutine = null; // 무적 상태 코루틴
     private float _remainingInvincibilityDuration = 0f; // 남은 무적 상태 지속 시간
 
+    // 어빌리티
     [SerializeField] private Blink blink; // 플레이어 점멸 능력
     [SerializeField] private EMP emp; // 플레이어 EMP 능력
     [SerializeField] private DefenseProtocol defenseProtocol; // 플레이어 방어 프로토콜 능력
@@ -32,7 +35,9 @@ public class PlayerStat : MonoBehaviour
     public SpriteRenderer spriteRenderer; // 플레이어 스프라이트 렌더러
     public Animator animator;
 
-    public int MaxHealth // 플레이어 최대 체력 프로퍼티
+    // 플레이어 스탯
+    // 플레이어 최대 체력 프로퍼티
+    public int MaxHealth
     {
         get { return _maxHealth; }
         private set { _maxHealth = value; }
@@ -94,6 +99,7 @@ public class PlayerStat : MonoBehaviour
         currentPosition = transform;
         isInvincibility = false;
 
+        // 모든 스테이지 클리어 시 왕관 활성화
         if (userDataManager.userData.stageInfos[4].isCleared)
         {
             crown.SetActive(true);
@@ -193,19 +199,19 @@ public class PlayerStat : MonoBehaviour
             animator.runtimeAnimatorController = currentCharacterData.animatorController; // 애니메이터 컨트롤러 설정
 
             // 플레이어 타입에 따른 체력과 어빌리티 설정
-            if (currentCharacterData.characterTypeIndex == 0)
+            if (currentCharacterData.characterTypeIndex == 0) // 라이트 타입
             {
                 playerAbility = blink;
                 _maxHealth = 2;
                 abilityCooldownUI.Init(blink.CooldownTime);
             }
-            else if (currentCharacterData.characterTypeIndex == 1)
+            else if (currentCharacterData.characterTypeIndex == 1) // 미디움 타입
             {
                 playerAbility = emp;
                 _maxHealth = 3;
                 abilityCooldownUI.Init(emp.CooldownTime);
             }
-            else if (currentCharacterData.characterTypeIndex == 2)
+            else if (currentCharacterData.characterTypeIndex == 2) // 헤비 타입
             {
                 playerAbility = defenseProtocol;
                 _maxHealth = 4;

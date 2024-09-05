@@ -14,14 +14,12 @@ public class Blink : MonoBehaviour, IPlayerAbility
     {
         get { return _cooldownTime; }
     }
-
     private float _nextAbilityTime = 0f; // 다음 능력 사용 가능 시간
-
-    private bool isBlinking = false;
+    private bool _isBlinking = false;
 
     public void Execute()
     {
-        if (!isBlinking && Time.unscaledTime >= _nextAbilityTime)
+        if (!_isBlinking && Time.unscaledTime >= _nextAbilityTime)
         {
             Debug.Log("블링크 실행");
             StartCoroutine(BlinkRoutine());
@@ -30,17 +28,17 @@ public class Blink : MonoBehaviour, IPlayerAbility
         }
     }
 
-    // 능력 유지 시간동안 분신 조종
+    // 능력 유지 시간동안 분신 조종하고 능력 종료 후 본체 위치를 분신 위치로 업데이트
     private IEnumerator BlinkRoutine()
     {
-        isBlinking = true;
+        _isBlinking = true;
 
         // 본체 비활성화
         // PlayerMovement 스크립트 비활성화
         PlayerMovement playerMovement = GetComponent<PlayerMovement>();
         if (playerMovement != null)
         {
-            playerMovement.rb.velocity = Vector2.zero;
+            playerMovement.ChangeVelocity(Vector2.zero); // 플레이어 멈추기
             playerMovement.enabled = false;
         }
 
@@ -90,7 +88,7 @@ public class Blink : MonoBehaviour, IPlayerAbility
         }
 
         // 점멸 상태 해제
-        isBlinking = false;
+        _isBlinking = false;
         PlayerStat.Instance.abilityCooldownUI.StartCooldown(); // 쿨타임 적용
         GameManager.Instance.isAbilitySlowMotion = false;
         

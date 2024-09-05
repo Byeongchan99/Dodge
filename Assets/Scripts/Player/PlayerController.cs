@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     void Update()
     {
+        // 스페이스바를 눌러 어빌리티 사용
         if (Input.GetKeyDown(KeyCode.Space))
         {
             UseAbility();

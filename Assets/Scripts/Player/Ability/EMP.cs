@@ -14,12 +14,11 @@ public class EMP : MonoBehaviour, IPlayerAbility
         get { return _cooldownTime; }
     }
     private float _nextAbilityTime = 0f; // 다음 능력 사용 가능 시간
-
-    private bool isEMP = false;
+    private bool _isEMP = false; // 현재 EMP 사용 중인지 여부
 
     public void Execute()
     {
-        if (!isEMP && Time.unscaledTime >= _nextAbilityTime)
+        if (!_isEMP && Time.unscaledTime >= _nextAbilityTime)
         {
             StartCoroutine(EMPRoutine());
             _nextAbilityTime = Time.unscaledTime + _cooldownTime + _EMPDuration; // 다음 사용 가능 시간 업데이트
@@ -28,14 +27,14 @@ public class EMP : MonoBehaviour, IPlayerAbility
 
     private IEnumerator EMPRoutine()
     {
-        isEMP = true;
+        _isEMP = true;
 
         // 움직임 멈춤
         // PlayerMovement 스크립트 비활성화
         PlayerMovement playerMovement = GetComponent<PlayerMovement>();
         if (playerMovement != null)
         {
-            playerMovement.rb.velocity = Vector2.zero;
+            playerMovement.ChangeVelocity(Vector2.zero); // 플레이어 멈추기
             playerMovement.enabled = false;
         }
         else
@@ -68,7 +67,7 @@ public class EMP : MonoBehaviour, IPlayerAbility
             playerMovement.enabled = true;
         }
 
-        isEMP = false;
+        _isEMP = false;
         PlayerStat.Instance.abilityCooldownUI.StartCooldown(); // 쿨타임 적용
 
         yield return null;
