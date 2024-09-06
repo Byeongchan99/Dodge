@@ -58,6 +58,7 @@ public class StageInfoUI : MonoBehaviour, IUpdateUI
         }
     }
 
+    // 점수에 따라 별 활성화
     public void OnStarChanged(float score)
     {
         // 별 활성화
@@ -74,6 +75,7 @@ public class StageInfoUI : MonoBehaviour, IUpdateUI
         }
     }
 
+    // 리더보드 ID 설정
     public void SetLeaderboardID(string leaderboardID)
     {
         leaderboardsManager.SetLeaderboardID(leaderboardID);

@@ -6,14 +6,15 @@ using UnityEngine.UI;
 
 public class StageResultUI : MonoBehaviour, IUpdateUI
 {
-    public Image characterImage;
-    public Text stageNameText;
-    public Text stageScore;
+    public Image characterImage; // 캐릭터 이미지
+    public Text stageNameText; // 스테이지 이름
+    public Text stageScore; // 스테이지 점수
     [SerializeField] private GameObject[] StarUnits; // 별 칸을 나타내는 GameObject 배열
 
-    public InputField playerNameField;
+    public InputField playerNameField; // 플레이어 이름 입력 필드
     public LeaderboardsManager leaderboardsManager;
 
+    // 스테이지 결과창 UI 업데이트
     public void UpdateUIInfo(params object[] datas)
     {
         StageData stageData = null;
@@ -46,6 +47,7 @@ public class StageResultUI : MonoBehaviour, IUpdateUI
         }
     }
 
+    // 점수에 따른 별 UI 업데이트
     public void OnStarChanged(float score)
     {
         // 별 활성화
@@ -62,6 +64,7 @@ public class StageResultUI : MonoBehaviour, IUpdateUI
         }
     }
 
+    // 리더보드에 플레이어 등록
     public void RegisterPlayer()
     {
         string playerName;

@@ -6,12 +6,10 @@ using UnityEngine.UI;
 
 public class NotificationManager : MonoBehaviour
 {
-    // Text noticeText;
-
     public GameObject notificationPrefab; // 공지 프리팹
     public Transform notificationParent;  // 공지 내용을 배치할 부모 객체
     private Queue<string> notificationQueue = new Queue<string>();
-    private bool isDisplayingNotification = false;
+    private bool _isDisplayingNotification = false;
 
     void OnEnable()
     {
@@ -314,7 +312,7 @@ public class NotificationManager : MonoBehaviour
         if (OnNotification == true)
         {
             notificationQueue.Enqueue(message);
-            if (!isDisplayingNotification)
+            if (!_isDisplayingNotification)
             {
                 StartCoroutine(DisplayNotification());
             }
@@ -326,7 +324,7 @@ public class NotificationManager : MonoBehaviour
     {
         while (notificationQueue.Count > 0)
         {
-            isDisplayingNotification = true;
+            _isDisplayingNotification = true;
             string message = notificationQueue.Dequeue();
             GameObject notification = Instantiate(notificationPrefab, notificationParent);
             notification.GetComponentInChildren<Text>().text = message;
@@ -343,7 +341,7 @@ public class NotificationManager : MonoBehaviour
 
             Destroy(notification);
         }
-        isDisplayingNotification = false;
+        _isDisplayingNotification = false;
     }
 
     /// <summary> 공지창 페이드 인 효과 </summary>

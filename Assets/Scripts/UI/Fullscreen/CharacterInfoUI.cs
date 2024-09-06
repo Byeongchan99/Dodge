@@ -5,13 +5,14 @@ using UnityEngine.UI;
 
 public class CharacterInfoUI : MonoBehaviour, IUpdateUI
 {
-    public Text characterNameText;
-    public Text characterTypeText;
-    public Text characterHPText;
-    public Text characterAbilityText;
-    public Text characterAbilityDescriptionText;
-    public Image characterImage;
+    public Text characterNameText; // 캐릭터 이름
+    public Text characterTypeText; // 캐릭터 타입
+    public Text characterHPText; // 캐릭터 체력
+    public Text characterAbilityText; // 캐릭터 어빌리티
+    public Text characterAbilityDescriptionText; // 캐릭터 어빌리티 설명
+    public Image characterImage; // 캐릭터 이미지
 
+    // 캐릭터 정보 UI 업데이트
     public void UpdateCharacterInfo()
     {
         UpdateUIInfo(PlayerStat.Instance.currentCharacterData);

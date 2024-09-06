@@ -10,14 +10,14 @@ public class TurretSpawner : MonoBehaviour
     /// <summary> 소환 위치 Transform 배열 </summary>
     [SerializeField] Transform[] spawnPositions;
     /// <summary> 각 위치의 사용 가능 여부를 나타내는 bool 배열 </summary>
-    [SerializeField] private bool[] isAvailableSpawnPosition;
+    [SerializeField] private bool[] _isAvailableSpawnPosition;
     /// <summary> 소환할 터렛 프리팹 리스트 </summary>
     [SerializeField] List<GameObject> turretPrefabs;
 
     private float _nextSpawnTime = 3f;
     private bool _isSpawning = false; // 현재 소환 중인지 여부를 나타내는 플래그
 
-    private Coroutine _spawnCoroutine; // 현재 실행 중인 소환 코루틴 인스턴스
+    private Coroutine spawnCoroutine; // 현재 실행 중인 소환 코루틴 인스턴스
 
     /****************************************************************************
                                    Unity Callbacks
@@ -36,10 +36,10 @@ public class TurretSpawner : MonoBehaviour
         _isSpawning = false;
         _nextSpawnTime = 3f;
         // 모든 소환 위치를 사용 가능 상태로 초기화
-        isAvailableSpawnPosition = new bool[spawnPositions.Length];
-        for (int i = 0; i < isAvailableSpawnPosition.Length; i++)
+        _isAvailableSpawnPosition = new bool[spawnPositions.Length];
+        for (int i = 0; i < _isAvailableSpawnPosition.Length; i++)
         {
-            isAvailableSpawnPosition[i] = true;
+            _isAvailableSpawnPosition[i] = true;
         }
     }
 
@@ -137,9 +137,9 @@ public class TurretSpawner : MonoBehaviour
         List<int> availableSpawnPositions = new List<int>();
 
         // 사용 가능한 위치 인덱스를 리스트에 추가
-        for (int i = 0; i < isAvailableSpawnPosition.Length; i++)
+        for (int i = 0; i < _isAvailableSpawnPosition.Length; i++)
         {
-            if (isAvailableSpawnPosition[i])
+            if (_isAvailableSpawnPosition[i])
             {
                 availableSpawnPositions.Add(i);
             }
@@ -151,7 +151,7 @@ public class TurretSpawner : MonoBehaviour
         // 사용 가능한 위치 중에서 랜덤하게 하나 선택
         int selectedIndex = availableSpawnPositions[Random.Range(0, availableSpawnPositions.Count)];
         // 선택된 위치를 사용 불가능 상태로 변경
-        isAvailableSpawnPosition[selectedIndex] = false;
+        _isAvailableSpawnPosition[selectedIndex] = false;
 
         return selectedIndex;
     }
@@ -170,27 +170,29 @@ public class TurretSpawner : MonoBehaviour
     /// 터렛이 비활성화될 때 호출하여 해당 위치를 다시 사용 가능 상태로 변경
     public void SetPositionAvailable(int positionIndex)
     {
-        if (positionIndex >= 0 && positionIndex < isAvailableSpawnPosition.Length)
+        if (positionIndex >= 0 && positionIndex < _isAvailableSpawnPosition.Length)
         {
-            isAvailableSpawnPosition[positionIndex] = true;
+            _isAvailableSpawnPosition[positionIndex] = true;
         }
     }
 
+    /// <summary> 소환 시작 </summary>
     public void StartSpawn()
     {
-        if (_spawnCoroutine == null)
+        if (spawnCoroutine == null)
         {
             Init();
-            _spawnCoroutine = StartCoroutine(SpawnTurretRoutine());
+            spawnCoroutine = StartCoroutine(SpawnTurretRoutine());
         }
     }
 
+    /// <summary> 소환 중지 </summary>
     public void StopSpawn()
     {
-        if (_spawnCoroutine != null)
+        if (spawnCoroutine != null)
         {
-            StopCoroutine(_spawnCoroutine);
-            _spawnCoroutine = null;
+            StopCoroutine(spawnCoroutine);
+            spawnCoroutine = null;
         }
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class MortarTurret : BaseTurret
 {
-    private PlayerMovement playerMovement;
+    private PlayerMovement playerMovement; // 플레이어 움직임 참조
     private float predictionFactor = 1f; // 예측 정도를 조절하는 변수
     private float randomFactor = 1f; // 랜덤 정도를 조절하는 변수
 

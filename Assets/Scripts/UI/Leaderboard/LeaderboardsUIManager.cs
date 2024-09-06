@@ -9,7 +9,7 @@ using Unity.Services.Leaderboards.Models;
 
 public class LeaderboardsUIManager : MonoBehaviour
 {
-    public InputField playerNameField;
+    public InputField playerNameField; // 플레이어 이름 입력 필드
     //public InputField scoreInputField;
     public Button addScoreButton;
 
@@ -64,11 +64,13 @@ public class LeaderboardsUIManager : MonoBehaviour
     }
     */
 
+    // limit 개수만큼의 리더보드 점수를 가져옴
     public void GetTopScores(int limit)
     {
         leaderboardsManager.GetTopScores(limit);
     }
 
+    // 리더보드 내용 초기화
     public void ClearLeaderboard()
     {
         // 기존 리더보드 제거
@@ -78,6 +80,7 @@ public class LeaderboardsUIManager : MonoBehaviour
         }
     }
 
+    // 리더보드 점수 표시
     public void DisplayScores(LeaderboardScoresPage scoresResponse)
     {
         foreach (var scoreEntry in scoresResponse.Results)

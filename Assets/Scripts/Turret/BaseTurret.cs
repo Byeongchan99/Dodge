@@ -71,6 +71,7 @@ public abstract class BaseTurret : MonoBehaviour
 
     void Update()
     {
+        // 터렛 지속 시간이 끝나면 비활성화
         if (_currentLifeTime <= 0 && _isLastProjectileShot)
         {
             // 이미 코루틴이 실행 중인지 확인
@@ -84,6 +85,7 @@ public abstract class BaseTurret : MonoBehaviour
         _timeSinceLastShot += Time.deltaTime;
         _currentLifeTime -= Time.deltaTime;
 
+        // 터렛 발사
         if (ShouldShoot())
         {
             Shoot();

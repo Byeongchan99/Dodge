@@ -12,7 +12,7 @@ public class SplitedMortarBomb : MortarBomb
 
     public void setMortarBomb(float duration, float height)
     {
-        flightDuration = duration;
-        hoverHeight = height;
+        _flightDuration = duration;
+        _hoverHeight = height;
     }
 }

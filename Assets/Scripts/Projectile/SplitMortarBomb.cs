@@ -22,13 +22,13 @@ public class SplitMortarBomb : MortarBomb
         Vector3 end = transform.position + (Vector3)moveDirection;
 
         // 애니메이션 커브를 이용해 움직임 구현
-        while (time < flightDuration)
+        while (time < _flightDuration)
         {
             time += Time.deltaTime;
-            float linearT = time / flightDuration;
+            float linearT = time / _flightDuration;
             float heightT = heightCurve.Evaluate(linearT); // 애니메이션 커브 값 리턴
 
-            float height = Mathf.Lerp(0.0f, hoverHeight, heightT);
+            float height = Mathf.Lerp(0.0f, _hoverHeight, heightT);
             transform.position = Vector2.Lerp(start, end, linearT) + new Vector2(0, height); // 위치 설정
 
             yield return null;
@@ -48,7 +48,7 @@ public class SplitMortarBomb : MortarBomb
             {
                 splitedMortarBomb.transform.position = transform.position; // 현재 위치 설정        
                 splitedMortarBomb.transform.localScale = mortarBombSize; // 크기 설정
-                splitedMortarBomb.setMortarBomb(flightDuration / 2, hoverHeight / 4); // 박격포탄 스탯 설정
+                splitedMortarBomb.setMortarBomb(_flightDuration / 2, _hoverHeight / 4); // 박격포탄 스탯 설정
                 splitedMortarBomb.SetBombEffect(splitedBombEffect); // 이펙트 참조 설정
                 
                 splitedMortarBomb.gameObject.SetActive(true); // 활성화

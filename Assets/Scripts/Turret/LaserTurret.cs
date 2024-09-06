@@ -7,9 +7,9 @@ using Unity.Mathematics;
 public class LaserTurret : BaseTurret
 {
     [SerializeField] Transform rotatePoint; // 회전시킬 자식 오브젝트
-    [SerializeField] Vector2 _direction;
-    quaternion rotation;
-    float _angle;
+    [SerializeField] Vector2 _direction; // 플레이어를 향한 방향 벡터
+    float _angle; // 플레이어를 향한 각도
+    quaternion _rotation;
     [SerializeField] bool isShooting = false;
 
     protected override bool ShouldShoot()
@@ -64,7 +64,7 @@ public class LaserTurret : BaseTurret
             yield break;
         }
 
-        rotation = Quaternion.LookRotation(Vector3.forward, _direction);
+        _rotation = Quaternion.LookRotation(Vector3.forward, _direction);
 
         // 이펙트 투사체 풀에서 위험 범위 이펙트 가져오기
         LaserAttackAreaEffect laserEffect = EffectPoolManager.Instance.Get("LaserAttackAreaEffect") as LaserAttackAreaEffect;
@@ -74,7 +74,7 @@ public class LaserTurret : BaseTurret
         {
             // 위치 설정
             laserEffect.transform.position = firePoint.position;
-            laserEffect.transform.rotation = rotation;
+            laserEffect.transform.rotation = _rotation;
             // 크기 설정
             laserEffect.transform.localScale = effectSize;
             // 위험 범위 활성화
@@ -98,7 +98,7 @@ public class LaserTurret : BaseTurret
         {
             // 레이저 위치와 회전 설정
             laser.transform.position = firePoint.position;
-            laser.transform.rotation = rotation;
+            laser.transform.rotation = _rotation;
             // 크기 설정
             laser.transform.localScale = laserSize;
             // 레이저 활성화

@@ -13,6 +13,7 @@ public class AbilityCooldownUI : MonoBehaviour
     private float _cooldownTimer; // 현재 쿨타임 타이머
     private bool _isCooldown; // 쿨타임 진행 여부
 
+    // 초기화
     public void Init(float cooldownTime)
     {
         ResetCooldown(cooldownTime);
@@ -40,6 +41,7 @@ public class AbilityCooldownUI : MonoBehaviour
         }
     }
 
+    // 쿨다운 시작
     public void StartCooldown()
     {
         if (!_isCooldown)
@@ -51,6 +53,7 @@ public class AbilityCooldownUI : MonoBehaviour
         }
     }
 
+    // 쿨다운 초기화
     public void ResetCooldown(float cooldownTime)
     {
         _isCooldown = false;

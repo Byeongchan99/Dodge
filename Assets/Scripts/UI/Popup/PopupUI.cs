@@ -23,29 +23,29 @@ namespace UIManage
         // UIView의 원래 위치를 저장할 필드
         private Vector2 _originalPosition;
         // RectTransform 컴포넌트에 대한 참조
-        private RectTransform _rectTransform;
-        private CanvasGroup _canvasGroup;
+        private RectTransform rectTransform;
+        private CanvasGroup canvasGroup;
 
         /// <summary> 시작 시 UIView의 원래 위치 저장 </summary>
         void Awake()
         {
-            _rectTransform = GetComponent<RectTransform>();
-            _originalPosition = _rectTransform.anchoredPosition;
-            _canvasGroup = gameObject.AddComponent<CanvasGroup>();
+            rectTransform = GetComponent<RectTransform>();
+            _originalPosition = rectTransform.anchoredPosition;
+            canvasGroup = gameObject.AddComponent<CanvasGroup>();
 
-            _rectTransform.localScale = Vector3.zero; // 초기 상태는 스케일 0
-            _canvasGroup.alpha = 0f; // 초기 상태는 투명
+            rectTransform.localScale = Vector3.zero; // 초기 상태는 스케일 0
+            canvasGroup.alpha = 0f; // 초기 상태는 투명
         }
 
         public void Show()
         {
-            _rectTransform.anchoredPosition = Vector2.zero;
+            rectTransform.anchoredPosition = Vector2.zero;
 
             gameObject.SetActive(true);
 
             Sequence sequence = DOTween.Sequence().SetUpdate(true);
-            sequence.Append(_rectTransform.DOScale(Vector3.one, 0.2f).SetEase(Ease.OutBack).SetUpdate(true))
-                    .Join(_canvasGroup.DOFade(1f, 0.5f).SetEase(Ease.OutQuad).SetUpdate(true))
+            sequence.Append(rectTransform.DOScale(Vector3.one, 0.2f).SetEase(Ease.OutBack).SetUpdate(true))
+                    .Join(canvasGroup.DOFade(1f, 0.5f).SetEase(Ease.OutQuad).SetUpdate(true))
                     .OnComplete(() =>
                     {
                         isOpen = true;
@@ -61,11 +61,11 @@ namespace UIManage
             */
 
             Sequence sequence = DOTween.Sequence().SetUpdate(true);
-            sequence.Append(_rectTransform.DOScale(Vector3.zero, 0.2f).SetEase(Ease.InBack).SetUpdate(true))
-                    .Join(_canvasGroup.DOFade(0f, 0.5f).SetEase(Ease.InQuad).SetUpdate(true))
+            sequence.Append(rectTransform.DOScale(Vector3.zero, 0.2f).SetEase(Ease.InBack).SetUpdate(true))
+                    .Join(canvasGroup.DOFade(0f, 0.5f).SetEase(Ease.InQuad).SetUpdate(true))
                     .OnComplete(() =>
                     {
-                        _rectTransform.anchoredPosition = _originalPosition;
+                        rectTransform.anchoredPosition = _originalPosition;
                         isOpen = false;
                         gameObject.SetActive(false);
                     });

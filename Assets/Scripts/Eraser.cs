@@ -21,7 +21,7 @@ public class Eraser : MonoBehaviour
             }
         }
 
-        // 모든 투사체 제거 (풀 반환)
+        // 모든 발사체 제거 (풀 반환)
         GameObject[] projectiles = GameObject.FindGameObjectsWithTag("Projectile");
         foreach (GameObject projectile in projectiles)
         {

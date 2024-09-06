@@ -4,14 +4,20 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance { get; private set; }
-
+    /****************************************************************************
+                                 protected Fields
+    ****************************************************************************/
     private bool _isPlayingStage; // 스테이지 플레이 중 여부
     private bool _isPaused; // 일시 정지 여부
     private Coroutine slowMotionRoutine = null;
     private float _remainingSlowDuration = 0f;  // 남은 슬로우 모션 효과 시간
     private float _originalFixedDeltaTime;
     [SerializeField] private float _slowDownFactor = 0.05f; // 시간을 느리게 하는 요소
+
+    /****************************************************************************
+                                   public Fields
+    ****************************************************************************/
+    public static GameManager Instance { get; private set; }
 
     public bool isAbilitySlowMotion; // 특수 능력으로 인한 슬로우 모션 여부
     public bool isItemSlowMotion; // 아이템으로 인한 슬로우 모션 여부
@@ -29,6 +35,9 @@ public class GameManager : MonoBehaviour
         set { _isPaused = value; }
     }
 
+    /****************************************************************************
+                                    Unity Callbacks
+    ****************************************************************************/
     void Awake()
     {
         if (Instance == null)
@@ -43,6 +52,9 @@ public class GameManager : MonoBehaviour
         }        
     }
 
+    /****************************************************************************
+                                    private Methods
+    ****************************************************************************/
     void Init()
     {
         // 게임 초기화
@@ -52,22 +64,7 @@ public class GameManager : MonoBehaviour
         slowMotionItemCount = 0;
     }
 
-    public void StartSlowEffect(float duration)
-    {
-        if (slowMotionRoutine != null && _remainingSlowDuration > duration)
-        {
-            Debug.Log("현재 슬로우 효과가 남아있는 시간이 더 길므로 새 요청 무시");
-            return;  // 현재 남아있는 슬로우 모션이 더 길면 새 요청 무시
-        }
-
-        if (slowMotionRoutine != null)
-        {
-            StopCoroutine(slowMotionRoutine);  // 이전 슬로우 모션 코루틴 중지
-        }
-
-        slowMotionRoutine = StartCoroutine(ApplySlowMotion(duration));
-    }
-
+    /// <summary> 슬로우 모션 적용 코루틴 </summary>
     private IEnumerator ApplySlowMotion(float duration)
     {
         Time.timeScale = _slowDownFactor;
@@ -85,5 +82,25 @@ public class GameManager : MonoBehaviour
 
         slowMotionRoutine = null;
         _remainingSlowDuration = 0f;  // 남은 시간 초기화
+    }
+
+    /****************************************************************************
+                                 public Methods
+    ****************************************************************************/
+    /// <summary> 슬로우 모션 효과 시작 </summary>
+    public void StartSlowEffect(float duration)
+    {
+        if (slowMotionRoutine != null && _remainingSlowDuration > duration)
+        {
+            Debug.Log("현재 슬로우 효과가 남아있는 시간이 더 길므로 새 요청 무시");
+            return;  // 현재 남아있는 슬로우 모션이 더 길면 새 요청 무시
+        }
+
+        if (slowMotionRoutine != null)
+        {
+            StopCoroutine(slowMotionRoutine);  // 이전 슬로우 모션 코루틴 중지
+        }
+
+        slowMotionRoutine = StartCoroutine(ApplySlowMotion(duration));
     }
 }

@@ -10,6 +10,9 @@ using UnityEngine;
 
 public class LeaderboardsManager : MonoBehaviour
 {
+    /****************************************************************************
+                                protected Fields
+    ****************************************************************************/
     string LeaderboardId = "DodgeLeaderboardBullet"; // 초기 리더보드 ID
     string VersionId { get; set; }
     int Offset { get; set; }
@@ -17,6 +20,9 @@ public class LeaderboardsManager : MonoBehaviour
     int RangeLimit { get; set; }
     List<string> FriendIds { get; set; }
 
+    /****************************************************************************
+                                    Unity Callbacks
+    ****************************************************************************/
     async void Awake()
     {
         // 유니티 서비스 초기화
@@ -25,7 +31,10 @@ public class LeaderboardsManager : MonoBehaviour
         await SignInAnonymously();
     }
 
-    // 익명 로그인 처리
+    /****************************************************************************
+                                 private Methods
+    ****************************************************************************/
+    /// <summary> 익명 로그인 처리 </summary>
     async Task SignInAnonymously()
     {
         // 로그인 성공 시 플레이어 ID 출력
@@ -42,14 +51,17 @@ public class LeaderboardsManager : MonoBehaviour
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
     }
 
-    // 리더보드에 점수 추가
+    /****************************************************************************
+                                 public Methods
+    ****************************************************************************/
+    /// <summary> 리더보드에 점수 추가 </summary>
     public async void AddScore(int score)
     {
         var scoreResponse = await LeaderboardsService.Instance.AddPlayerScoreAsync(LeaderboardId, score);
         Debug.Log(JsonConvert.SerializeObject(scoreResponse));
     }
 
-    // 리더보드의 모든 점수 조회
+    /// <summary> 리더보드의 모든 점수 조회 </summary>
     public async void GetScores()
     {
         var scoresResponse =
@@ -57,7 +69,7 @@ public class LeaderboardsManager : MonoBehaviour
         Debug.Log(JsonConvert.SerializeObject(scoresResponse));
     }
 
-    // 리더보드의 페이징된 점수 조회
+    /// <summary> 리더보드의 페이징된 점수 조회 </summary>
     public async void GetPaginatedScores()
     {
         Offset = 10; // 조회 시작 위치
@@ -68,7 +80,7 @@ public class LeaderboardsManager : MonoBehaviour
         Debug.Log(JsonConvert.SerializeObject(scoresResponse));
     }
 
-    // 현재 플레이어의 점수 조회
+    /// <summary> 현재 플레이어의 점수 조회 </summary>
     public async void GetPlayerScore()
     {
         var scoreResponse =
@@ -76,7 +88,7 @@ public class LeaderboardsManager : MonoBehaviour
         Debug.Log(JsonConvert.SerializeObject(scoreResponse));
     }
 
-    // 특정 범위 내의 플레이어 점수 조회
+    /// <summary> 특정 범위 내의 플레이어 점수 조회 </summary>
     public async void GetPlayerRange()
     {
         var scoresResponse =
@@ -84,7 +96,7 @@ public class LeaderboardsManager : MonoBehaviour
         Debug.Log(JsonConvert.SerializeObject(scoresResponse));
     }
 
-    // 특정 플레이어들의 점수 조회
+    /// <summary> 특정 플레이어들의 점수 조회 </summary>
     public async void GetScoresByPlayerIds()
     {
         var scoresResponse =
@@ -96,7 +108,7 @@ public class LeaderboardsManager : MonoBehaviour
     // this call will return the list of archived versions available to read from,
     // in reverse chronological order (so e.g. the first entry is the archived version
     // containing the most recent scores)
-    // 리더보드의 이전 버전 리스트를 조회
+    /// <summary> 리더보드의 이전 버전 리스트를 조회 </summary>
     public async void GetVersions()
     {
         var versionResponse =
@@ -107,7 +119,7 @@ public class LeaderboardsManager : MonoBehaviour
         Debug.Log(JsonConvert.SerializeObject(versionResponse));
     }
 
-    // 특정 리더보드 버전의 점수 조회
+    /// <summary> 특정 리더보드 버전의 점수 조회 </summary>
     public async void GetVersionScores()
     {
         var scoresResponse =
@@ -115,7 +127,7 @@ public class LeaderboardsManager : MonoBehaviour
         Debug.Log(JsonConvert.SerializeObject(scoresResponse));
     }
 
-    // 특정 리더보드에서 페이징된 점수 조회
+    /// <summary> 특정 리더보드에서 페이징된 점수 조회 </summary>
     public async void GetPaginatedVersionScores()
     {
         Offset = 10;
@@ -125,7 +137,7 @@ public class LeaderboardsManager : MonoBehaviour
         Debug.Log(JsonConvert.SerializeObject(scoresResponse));
     }
 
-    // 특정 리더보드 버전에서 현재 플레이어 점수 조회
+    /// <summary> 특정 리더보드 버전에서 현재 플레이어 점수 조회 </summary>
     public async void GetPlayerVersionScore()
     {
         var scoreResponse =
@@ -136,13 +148,13 @@ public class LeaderboardsManager : MonoBehaviour
     //----------------------------------------------------------------------------------------------
     public LeaderboardsUIManager leaderboardsUIManager;
 
-    // 리더보드 ID 설정
+    /// <summary> 리더보드 ID 설정 </summary>
     public void SetLeaderboardID(string leaderboardId)
     {
         LeaderboardId = leaderboardId;
     }
 
-    // 이름과 점수를 받아 리더보드에 추가
+    /// <summary> 이름과 점수를 받아 리더보드에 추가 </summary>
     public async void AddScore(string name, int score)
     {
         var metadata = new Dictionary<string, object>
@@ -166,7 +178,7 @@ public class LeaderboardsManager : MonoBehaviour
         }
     }
 
-    // 상위 limit 명의 점수 조회
+    /// <summary> 상위 limit 명의 점수 조회 </summary>
     public async void GetTopScores(int limit)
     {
         Limit = limit;

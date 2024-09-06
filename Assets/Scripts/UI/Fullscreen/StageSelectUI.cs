@@ -13,6 +13,7 @@ public class StageSelectUI : MonoBehaviour
         UpdateStageButtons();
     }
 
+    // 플레이어 데이터를 기반으로 스테이지 버튼 활성화 여부 업데이트
     public void UpdateStageButtons()
     {
         // 첫 번째 스테이지는 항상 활성화

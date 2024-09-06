@@ -19,6 +19,7 @@ public class HealthBar : MonoBehaviour, IHealthObserver
         OnHealthChanged(PlayerStat.Instance.MaxHealth);
     }
 
+    // 플레이어 체력이 변경될 때 호출되는 메서드
     public void OnHealthChanged(float health)
     {
         //Debug.Log("체력 칸 활성화");

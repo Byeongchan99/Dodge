@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class TurretPool : MonoBehaviour
 {
-    public GameObject bulletTurret;
-    public GameObject laserTurret;
-    public GameObject rocketTurret;
-    public GameObject mortarTurret;
+    public GameObject bulletTurret; // 총알 터렛
+    public GameObject laserTurret; // 레이저 터렛
+    public GameObject rocketTurret; // 로켓 터렛
+    public GameObject mortarTurret; // 박격포 터렛
     // 다른 타워 프리팹도 추가
 
     public Transform turretContainer;

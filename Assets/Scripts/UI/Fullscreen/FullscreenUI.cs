@@ -17,13 +17,13 @@ public class FullscreenUI : MonoBehaviour
     // 초기 상태 설정
     private VisibleState _state = VisibleState.Disappeared;
     // RectTransform 컴포넌트에 대한 참조
-    private RectTransform _rectTransform;
+    private RectTransform rectTransform;
 
     /// <summary> 시작 시 UIView의 원래 위치 저장 </summary>
     void Awake()
     {
-        _rectTransform = GetComponent<RectTransform>();
-        _originalPosition = _rectTransform.anchoredPosition;
+        rectTransform = GetComponent<RectTransform>();
+        _originalPosition = rectTransform.anchoredPosition;
     }
 
     /// <summary> UI 요소를 보여주는 메서드 </summary>
@@ -34,7 +34,7 @@ public class FullscreenUI : MonoBehaviour
         // 화면 중앙으로 이동
         //_rectTransform.DOAnchorPos(Vector2.zero, 0.5f).OnComplete(() => _state = VisibleState.Appeared);
 
-        _rectTransform.anchoredPosition = Vector2.zero;
+        rectTransform.anchoredPosition = Vector2.zero;
         _state = VisibleState.Appeared;
     }
 
@@ -49,7 +49,7 @@ public class FullscreenUI : MonoBehaviour
             _state = VisibleState.Disappeared;
         });
         */
-        _rectTransform.anchoredPosition = _originalPosition;
+        rectTransform.anchoredPosition = _originalPosition;
         _state = VisibleState.Disappeared;
         gameObject.SetActive(false);
     }

@@ -51,6 +51,7 @@ public class StageManager : MonoBehaviour, IHealthObserver
         currentStageData = stageDataList[stageID];
     }
 
+    // 플레이어 체력이 변경될 때 호출
     public void OnHealthChanged(float health)
     {
         if (health <= 0)

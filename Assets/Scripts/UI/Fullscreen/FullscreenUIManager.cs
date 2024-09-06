@@ -9,16 +9,16 @@ public class FullscreenUIManager : MonoBehaviour
                                      private Fields
     ****************************************************************************/
     /// <summary> UI 관리 스택 </summary>
-    private Stack<FullscreenUI> _fullscreenStack = new Stack<FullscreenUI>();
+    private Stack<FullscreenUI> fullscreenStack = new Stack<FullscreenUI>();
 
     /// <summary> UI 리스트 </summary>
-    [SerializeField] private List<FullscreenUI> _fullscreenList = new List<FullscreenUI>();
+    [SerializeField] private List<FullscreenUI> fullscreenList = new List<FullscreenUI>();
 
     /// <summary> Fullscreen UI 인스턴스들을 이름으로 관리하기 위한 딕셔너리 </summary>
-    private Dictionary<string, FullscreenUI> _fullscreenDictionary = new Dictionary<string, FullscreenUI>();
+    private Dictionary<string, FullscreenUI> fullscreenDictionary = new Dictionary<string, FullscreenUI>();
 
     /// <summary> 현재 FullscreenUI를 반환하는 프로퍼티 </summary>
-    private FullscreenUI _current => _fullscreenStack.Count > 0 ? _fullscreenStack.Peek() : null;
+    private FullscreenUI _current => fullscreenStack.Count > 0 ? fullscreenStack.Peek() : null;
 
     /****************************************************************************
                                      Unity Callbacks
@@ -35,7 +35,7 @@ public class FullscreenUIManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             // 메인 화면이 아니라면 뒤로가기
-            if (_fullscreenStack.Count > 1)
+            if (fullscreenStack.Count > 1)
                 Pop();
         }
     }
@@ -47,7 +47,7 @@ public class FullscreenUIManager : MonoBehaviour
     private void Init()
     {
         // 리스트의 FullscreenUI 인스턴스들을 딕셔너리에 등록 및 비활성화
-        foreach (var fullscreen in _fullscreenList)
+        foreach (var fullscreen in fullscreenList)
         {
             RegisterUI(fullscreen.gameObject.name, fullscreen);
             fullscreen.gameObject.SetActive(false);
@@ -60,22 +60,22 @@ public class FullscreenUIManager : MonoBehaviour
     /// <summary> FullscreenUI 인스턴스들을 딕셔너리에 등록하는 메서드 </summary>
     private void RegisterUI(string name, FullscreenUI fullscreen)
     {
-        if (!_fullscreenDictionary.ContainsKey(name))
+        if (!fullscreenDictionary.ContainsKey(name))
         {
-            _fullscreenDictionary.Add(name, fullscreen);
+            fullscreenDictionary.Add(name, fullscreen);
         }
     }
 
     /// <summary> UIName을 가진 FullscreenUI를 스택에 추가하고 반환 </summary>
     private FullscreenUI Push(string UIName)
     {
-        if (_fullscreenDictionary.TryGetValue(UIName, out FullscreenUI fullscreen))
+        if (fullscreenDictionary.TryGetValue(UIName, out FullscreenUI fullscreen))
         {
             if (_current != null)
             {
                 _current.Hide();
             }
-            _fullscreenStack.Push(fullscreen);
+            fullscreenStack.Push(fullscreen);
             fullscreen.Show();
             return fullscreen;
         }
@@ -89,9 +89,9 @@ public class FullscreenUIManager : MonoBehaviour
     /// <summary> 현재 FullscreenUI를 숨기고 이전 FullscreenUI를 반환 </summary>
     private void Pop()
     {
-        if (_fullscreenStack.Count > 0)
+        if (fullscreenStack.Count > 0)
         {
-            _fullscreenStack.Pop().Hide();
+            fullscreenStack.Pop().Hide();
         }
 
         if (_current != null)
@@ -103,7 +103,7 @@ public class FullscreenUIManager : MonoBehaviour
     /// <summary> 특정 이름의 FullscreenUI가 나올 때까지 Pop </summary>
     private void PopTo(string UIName)
     {
-        while (_fullscreenStack.Count > 0 && _current.gameObject.name != UIName)
+        while (fullscreenStack.Count > 0 && _current.gameObject.name != UIName)
         {
             Pop();
         }
@@ -112,7 +112,7 @@ public class FullscreenUIManager : MonoBehaviour
     /// <summary> 첫 번째 FullscreenUI가 나올 때까지 모두 Pop </summary>
     private void PopToRoot()
     {
-        while (_fullscreenStack.Count > 1) // Root만 남겨두기
+        while (fullscreenStack.Count > 1) // Root만 남겨두기
         {
             Pop();
         }
