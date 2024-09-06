@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class BaseItem : MonoBehaviour
 {
+    /****************************************************************************
+                                protected Fields
+    ****************************************************************************/
     /// <summary> 각 아이템 효과 </summary>
     protected ItemEffect itemEffect;
-
-    /// <summary> 아이템이 필드에 남아있는 시간 </summary>
-    [SerializeField] protected float itemRemainTime = 20f;
 
     /// <summary> Fade Effect 참조 </summary>
     private FadeEffect fadeEffect;
 
+    /// <summary> 아이템이 필드에 남아있는 시간 </summary>
+    [SerializeField] protected float _itemRemainTime = 20f;
+
+    /****************************************************************************
+                                    Unity Callbacks
+    ****************************************************************************/
     private void Awake()
     {
         fadeEffect = GetComponent<FadeEffect>();
@@ -22,9 +28,12 @@ public class BaseItem : MonoBehaviour
     {
         InitItem();
         fadeEffect.StartFadeIn(0.5f, 0.1f);
-        StartCoroutine(ItemDisableAfterRemainTime(itemRemainTime)); // itemRemainTime 이후 아이템 비활성화
+        StartCoroutine(ItemDisableAfterRemainTime(_itemRemainTime)); // itemRemainTime 이후 아이템 비활성화
     }
 
+    /****************************************************************************
+                                private Methods
+    ****************************************************************************/
     /// <summary> 아이템 초기화 </summary>
     protected virtual void InitItem()
     {

@@ -29,6 +29,7 @@ public class SplitBullet : Bullet
         Bullet bullet3 = ProjectilePoolManager.Instance.Get(_bulletPoolName) as Bullet;
         Vector3 bulletSize = StatDataManager.Instance.currentStatData.projectileDatas[0].projectileSize;
 
+        // 두 방향으로 분열
         if (bullet1 != null && bullet3 != null) // bullet1 != null && bullet2 != null && bullet3 != null
         {
             // 총알 위치와 회전 설정

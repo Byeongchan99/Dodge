@@ -32,7 +32,7 @@ public class BaseProjectile : MonoBehaviour
 
     protected void Update()
     {
-        CheckOutOfBounds();
+        CheckOutOfBounds(); // ¸ÊÀ» ¹þ¾î³µ´ÂÁö °Ë»ç
     }
 
     /****************************************************************************

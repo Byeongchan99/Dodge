@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class ItemPool : MonoBehaviour
 {
-    public GameObject moveSpeedUpItemPrefab;
-    public GameObject invincibilityItemPrefab;
-    public GameObject slowMotionItemPrefab;
-    public GameObject empBombItemPrefab;
-    public GameObject getScoreItemPrefab;
+    public GameObject moveSpeedUpItemPrefab; // 이동 속도 증가 아이템
+    public GameObject invincibilityItemPrefab; // 무적 아이템
+    public GameObject slowMotionItemPrefab; // 슬로우 모션 아이템
+    public GameObject empBombItemPrefab; // EMP 폭탄 아이템
+    public GameObject getScoreItemPrefab; // 점수 획득 아이템
     // 다른 아이템 프리팹도 추가
 
     public Transform itemContainer;

@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class CopyedStatData
 {
-    public List<StatData.TurretSpawnerData> turretSpawnerDatas;
-    public List<StatData.TurretData> turretDatas;
-    public List<StatData.ProjectileData> projectileDatas;
-    public List<StatData.ItemData> itemDatas;
+    public List<StatData.TurretSpawnerData> turretSpawnerDatas; // 터렛 스포너 데이터
+    public List<StatData.TurretData> turretDatas; // 터렛 데이터
+    public List<StatData.ProjectileData> projectileDatas; // 발사체 데이터
+    public List<StatData.ItemData> itemDatas; // 아이템 데이터
 
     /// <summary> 복사 생성자 </summary>
     public CopyedStatData(StatData data)

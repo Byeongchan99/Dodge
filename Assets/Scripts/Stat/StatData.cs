@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "StatData", menuName = "ScriptableObjects/StatData", order = 1)]
 public class StatData : ScriptableObject
 {
-    // 스포너 데이터
+    // 베이스 스포너 데이터
     [System.Serializable]
     public class BaseSpawnData
     {
@@ -25,12 +25,14 @@ public class StatData : ScriptableObject
         }
     }
 
+    // 아이템 스포너 데이터
     [System.Serializable]
     public class ItemData : BaseSpawnData
     {
         public ItemData(ItemData source) : base(source) { }
     }
 
+    // 터렛 스포너 데이터
     [System.Serializable]
     public class TurretSpawnerData : BaseSpawnData
     {

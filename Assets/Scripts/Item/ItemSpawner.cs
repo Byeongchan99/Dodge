@@ -15,7 +15,7 @@ public class ItemSpawner : MonoBehaviour
     private float _nextSpawnTime = 10f;
     private bool _isSpawning = false; // 현재 소환 중인지 여부를 나타내는 플래그
 
-    private Coroutine _spawnCoroutine; // 현재 실행 중인 소환 코루틴 인스턴스
+    private Coroutine spawnCoroutine; // 현재 실행 중인 소환 코루틴 인스턴스
 
     /****************************************************************************
                                    Unity Callbacks
@@ -37,7 +37,7 @@ public class ItemSpawner : MonoBehaviour
     void Init()
     {
         _isSpawning = false;
-        _nextSpawnTime = 10f;
+        _nextSpawnTime = 10f; // 초기 소환 시간 설정
     }
 
     /// <summary> 아이템 소환 코루틴 </summary>
@@ -149,21 +149,23 @@ public class ItemSpawner : MonoBehaviour
     /****************************************************************************
                                   public Methods
     ****************************************************************************/
+    // 아이템 스폰 시작
     public void StartSpawn()
     {
-        if (_spawnCoroutine == null)
+        if (spawnCoroutine == null)
         {
             Init();
-            _spawnCoroutine = StartCoroutine(SpawnItemRoutine());
+            spawnCoroutine = StartCoroutine(SpawnItemRoutine());
         }
     }
 
+    // 아이템 스폰 중지
     public void StopSpawn()
     {
-        if (_spawnCoroutine != null)
+        if (spawnCoroutine != null)
         {
-            StopCoroutine(_spawnCoroutine);
-            _spawnCoroutine = null;
+            StopCoroutine(spawnCoroutine);
+            spawnCoroutine = null;
         }
     }
 }

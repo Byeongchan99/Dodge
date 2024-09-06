@@ -14,7 +14,7 @@ public class LaserTurret : BaseTurret
 
     protected override bool ShouldShoot()
     {
-        return (_timeSinceLastShot >= _attackSpeed && currentProjectileCount > 0 && isShooting == false);
+        return (_timeSinceLastShot >= _attackSpeed && _currentProjectileCount > 0 && isShooting == false);
     }
 
     /// <summary> น฿ป็ </summary>

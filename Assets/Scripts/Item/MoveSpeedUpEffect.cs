@@ -18,7 +18,7 @@ public class MoveSpeedUpEffect : ItemEffect
     {
         // 이동 속도를 증가시킴
         Debug.Log("이동 속도 증가 아이템 효과 적용" + _moveSpeedIncrease);
-        PlayerStat.Instance.currentMoveSpeed *= _moveSpeedIncrease;
+        PlayerStat.Instance.currentMoveSpeed *= _moveSpeedIncrease; // 속도 증가
         ghostEffect.moveSpeedUpItemCount++;
         ghostEffect.isMakeGhost = true;  // 잔상 생성 시작
     }
@@ -27,7 +27,7 @@ public class MoveSpeedUpEffect : ItemEffect
     {
         // 이동 속도 감소
         Debug.Log("이동 속도 증가 아이템 효과 종료" + _moveSpeedIncrease);
-        PlayerStat.Instance.currentMoveSpeed /= _moveSpeedIncrease;
+        PlayerStat.Instance.currentMoveSpeed /= _moveSpeedIncrease; // 속도 감소
 
         if (ghostEffect.moveSpeedUpItemCount == 1)// 잔상 효과가 적용 중이라면
         {

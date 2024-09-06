@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class ItemEffect
 {
-    protected float _duration;
+    protected float _duration; // 효과 적용 시간
     protected GameObject target;
 
     public ItemEffect(float duration, GameObject target)

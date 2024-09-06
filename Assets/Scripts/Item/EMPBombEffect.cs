@@ -10,6 +10,7 @@ public class EMPBombEffect : ItemEffect
     public override void ApplyEffect()
     {
         Debug.Log("EMP 아이템 효과 적용");
+        // 플레이어 현재 위치에 EMP 효과 생성
         EMPEffect = EffectPoolManager.Instance.Get("EMPEffect");
         EMPEffect.transform.position = PlayerStat.Instance.currentPosition.position;
         EMPEffect.gameObject.SetActive(true);

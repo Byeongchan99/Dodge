@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InvincibilityEffect : ItemEffect
 {
-    private Coroutine _colorChangeCoroutine;  // 색상 변경 코루틴을 저장할 변수
+    private Coroutine colorChangeCoroutine;  // 색상 변경 코루틴을 저장할 변수
 
     public InvincibilityEffect(float duration, GameObject target) : base(duration, target) { }
 
@@ -13,33 +13,34 @@ public class InvincibilityEffect : ItemEffect
         // 무적 적용
         Debug.Log("무적 아이템 효과 적용");
         PlayerStat.Instance.StartInvincibility(_duration);  // 무적 상태 시작
-        _colorChangeCoroutine = target.GetComponent<MonoBehaviour>().StartCoroutine(ChangeColor());
+        colorChangeCoroutine = target.GetComponent<MonoBehaviour>().StartCoroutine(ChangeColor());
     }
 
     public override void RemoveEffect()
     {
         // 무적 해제
         Debug.Log("무적 아이템 효과 종료");
-        if (_colorChangeCoroutine != null)
+        if (colorChangeCoroutine != null)
         {
-            target.GetComponent<MonoBehaviour>().StopCoroutine(_colorChangeCoroutine);
+            target.GetComponent<MonoBehaviour>().StopCoroutine(colorChangeCoroutine);
         }
 
-        // 색상을 원래대로 복구
+        // 색상 원래대로 복구
         RestoreOriginalColors();
     }
 
     private void RestoreOriginalColors()
     {
         SpriteRenderer playerSpriteRenderer = target.GetComponent<SpriteRenderer>();
+        // 플레이어 색상 초기화
         if (playerSpriteRenderer != null)
         {
             playerSpriteRenderer.color = Color.white;
             //Debug.Log("플레이어 색상 복구됨");
         }
 
-        // 자식 오브젝트의 SpriteRenderer 복구
-        Transform childTransform = target.transform.Find("Crown");  // 자식 오브젝트의 이름이 "Crown"이라고 가정
+        // 왕관 오브젝트의 SpriteRenderer 복구
+        Transform childTransform = target.transform.Find("Crown");  // 왕관 오브젝트 찾기
         if (childTransform != null)
         {
             SpriteRenderer crownSpriteRenderer = childTransform.GetComponent<SpriteRenderer>();
@@ -51,6 +52,8 @@ public class InvincibilityEffect : ItemEffect
         }
     }
 
+    // 색상 변경 코루틴
+    // 0.1초 마다 색상을 변경하여 무지개 색으로 깜빡이는 효과 구현
     private IEnumerator ChangeColor()
     {
         Color[] colors = new Color[] { Color.red, Color.yellow, Color.green, Color.cyan, Color.blue, Color.magenta };
@@ -60,6 +63,7 @@ public class InvincibilityEffect : ItemEffect
 
         Transform childTransform = target.transform.Find("Crown");  // 자식 오브젝트 Crown의 SpriteRenderer 가져오기
         SpriteRenderer crownSpriteRenderer = null;
+
         if (childTransform != null)
         {
             crownSpriteRenderer = childTransform.GetComponent<SpriteRenderer>();

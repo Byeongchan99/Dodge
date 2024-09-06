@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class StageManager : MonoBehaviour, IHealthObserver
 {
+    /****************************************************************************
+                                protected Fields
+    ****************************************************************************/
     // 스포너 및 이벤트
     [SerializeField] private TurretSpawner turretSpawner;
     [SerializeField] private ItemSpawner itemSpawner;
@@ -20,13 +23,22 @@ public class StageManager : MonoBehaviour, IHealthObserver
     // 유저 데이터
     [SerializeField] private UserDataManager userDataManager;
 
+    /****************************************************************************
+                                    public Fields
+    ****************************************************************************/
     public Eraser eraser; // 게임 종료 후 초기화
 
+    /****************************************************************************
+                                    Unity Callbacks
+    ****************************************************************************/
     void Start()
     {
         PlayerStat.Instance.RegisterObserver(this);
     }
 
+    /****************************************************************************
+                                 public Methods
+    ****************************************************************************/
     // 현재 스테이지 데이터 반환
     public StageData GetCurrentStageData()
     {

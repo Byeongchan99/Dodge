@@ -13,7 +13,7 @@ public class SlowMotionEffect : ItemEffect
 
         if (!GameManager.Instance.isItemSlowMotion) // 아이템에 의한 슬로우 모션 효과가 적용 중이 아니라면
         {
-            PlayerStat.Instance.currentMoveSpeed *= 250; // 속도를 증가
+            PlayerStat.Instance.currentMoveSpeed *= 250; // 슬로우 효과에 맞게 속도 증가
             GameManager.Instance.isItemSlowMotion = true;
         }
         GameManager.Instance.slowMotionItemCount++;

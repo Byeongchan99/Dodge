@@ -6,6 +6,7 @@ public class SplitMortarBomb : MortarBomb
 {
     [SerializeField] string _mortarBombPoolName;
 
+    // 분열하는 4가지 방향
     Vector3[] directions = {
         new Vector3(1, 0, 0).normalized,
         new Vector3(-1, 0, 0).normalized,

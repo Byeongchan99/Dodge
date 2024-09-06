@@ -46,6 +46,7 @@ public class Rocket : BaseProjectile
         }
     }
 
+    /// <summary> _lifeTime 동안 유지 후 파괴 </summary>
     protected override IEnumerator LifecycleCoroutine()
     {
         yield return new WaitForSeconds(_lifeTime);

@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class ProjectilePool : MonoBehaviour
 {
-    public GameObject bulletPrefab;
-    public GameObject splitBulletPrefab;
-    public GameObject laserPrefab;
-    public GameObject rocketPrefab;
-    public GameObject mortarBombPrefab;
-    public GameObject splitMortarBomb;
-    public GameObject splitedMortarBomb;
+    public GameObject bulletPrefab; // 총알
+    public GameObject splitBulletPrefab; // 분열하는 총알
+    public GameObject laserPrefab; // 레이저
+    public GameObject rocketPrefab; // 로켓
+    public GameObject mortarBombPrefab; // 박격포탄
+    public GameObject splitMortarBomb; // 분열하는 박격포탄
+    public GameObject splitedMortarBomb; // 분열된 박격포탄
     // 다른 발사체 프리팹도 추가
 
     public Transform projectileContainer;
