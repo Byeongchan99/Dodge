@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemDatas:
   - name: MoveSpeedUpItem
-    spawnLevel: 1
+    spawnLevel: 0
     spawnChance: 0
     spawnCooldown: 20
     spawnCooldownPercent: 0
@@ -24,17 +24,17 @@ MonoBehaviour:
     spawnCooldown: 20
     spawnCooldownPercent: 0
   - name: SlowMotionItem
-    spawnLevel: 1
+    spawnLevel: 0
     spawnChance: 0
     spawnCooldown: 20
     spawnCooldownPercent: 0
   - name: EMPBombItem
-    spawnLevel: 1
+    spawnLevel: 0
     spawnChance: 0
     spawnCooldown: 20
     spawnCooldownPercent: 0
   - name: GetScoreItem
-    spawnLevel: 1
+    spawnLevel: 0
     spawnChance: 0
     spawnCooldown: 20
     spawnCooldownPercent: 0

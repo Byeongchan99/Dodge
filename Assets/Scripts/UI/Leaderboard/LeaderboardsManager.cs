@@ -80,6 +80,33 @@ public class LeaderboardsManager : MonoBehaviour
         Debug.Log(JsonConvert.SerializeObject(scoresResponse));
     }
 
+    /// <summary> player Id의 점수 받아오기  </summary>
+    public async Task<int> GetScoreByPlayerId(string playerId)
+    {
+        try
+        {
+            // 플레이어 ID로 점수 조회
+            var scoresResponse = await LeaderboardsService.Instance.GetScoresByPlayerIdsAsync(LeaderboardId, new List<string> { playerId });
+
+            if (scoresResponse.Results.Count > 0)
+            {
+                var scoreEntry = scoresResponse.Results[0]; // 첫 번째 결과 사용
+                int playerScore = (int)scoreEntry.Score; // 점수를 추출
+                return playerScore; // 점수를 반환
+            }
+            else
+            {
+                Debug.Log("해당 플레이어 ID에 대한 점수를 찾을 수 없습니다.");
+                return 0; // 점수가 없을 경우
+            }
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError($"플레이어 ID {playerId}에 대한 점수 조회 실패: {ex.Message}");
+            return 0; // 오류 발생 시
+        }
+    }
+
     /// <summary> 현재 플레이어의 점수 조회 </summary>
     public async void GetPlayerScore()
     {

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -53,18 +54,35 @@ public class StageInfoUI : MonoBehaviour, IUpdateUI
                 isGameClearImage.SetActive(false);
             }
             */
-            highScore.text = "High Score: " + userData.stageInfos[stageData.stageID].score.ToString();
-            OnStarChanged(userData.stageInfos[stageData.stageID].score);
+            // highScore.text = "High Score: " + userData.stageInfos[stageData.stageID].score.ToString();
+            // 비동기 작업을 별도의 void 메서드로 실행
+            GetAndDisplayPlayerScore(userData.playerID);
         }
     }
 
+    // 비동기 작업을 수행하고 결과를 처리하는 메서드
+    private async void GetAndDisplayPlayerScore(string playerID)
+    {
+        int playerScore = await GetScoreByPlayerIDAsync(playerID);
+
+        // UI 업데이트
+        highScore.text = "High Score: " + playerScore;
+        OnStarChanged(playerScore);
+    }
+
+    // 비동기적으로 점수를 가져오는 메서드
+    public async Task<int> GetScoreByPlayerIDAsync(string playerID)
+    {
+        return await leaderboardsManager.GetScoreByPlayerId(playerID);
+    }
+
     // 점수에 따라 별 활성화
-    public void OnStarChanged(float score)
+    public void OnStarChanged(int score)
     {
         // 별 활성화
         for (int i = 0; i < 3; i++)
         {
-            if (i < (score / 50) - 1)  
+            if (i < (score / 50))  
             {
                 StarUnits[i].SetActive(true);
             }

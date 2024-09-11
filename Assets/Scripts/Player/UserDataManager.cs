@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Runtime.InteropServices;
+using Unity.Services.Authentication;
 
 public class UserDataManager : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class UserDataManager : MonoBehaviour
 
     private void Awake()
     {
-        LoadUserData();
+
     }
 
     public void SaveUserData()
@@ -23,6 +24,8 @@ public class UserDataManager : MonoBehaviour
 
     public void LoadUserData()
     {
+        userData.playerID = AuthenticationService.Instance.PlayerId;
+
 #if UNITY_EDITOR
         // 에디터 모드에서는 로컬 데이터를 사용
 #endif
