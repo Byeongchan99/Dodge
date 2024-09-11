@@ -7596,7 +7596,7 @@ MonoBehaviour:
   - {fileID: 552694049}
   - {fileID: 2113980979}
   - {fileID: 1414551213}
-  isAvailableSpawnPosition: 
+  _isAvailableSpawnPosition: 
   turretPrefabs:
   - {fileID: 7142985893305235348, guid: 6598a472629392647ac7d0f0395deee6, type: 3}
   - {fileID: 7142985893305235348, guid: 331bf309adabbe74a8495645dca404e4, type: 3}
@@ -11005,7 +11005,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a4e5359e7aa34b49ac552328af30d3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fullscreenList:
+  fullscreenList:
   - {fileID: 1377155144}
   - {fileID: 986615797}
   - {fileID: 1053094067}
@@ -11545,7 +11545,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a924f46f1e28b14f89572a1ddd95680, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
 --- !u!114 &1609651032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11570,11 +11569,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1142c37c5e03bd84c845def1f46c0b7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ghost: {fileID: 2488347224407324659, guid: 4b4aa7587a3cd6747b3b969e720e84e8, type: 3}
-  crown: {fileID: 940402723}
-  ghostDelay: 0.1
   isMakeGhost: 0
   moveSpeedUpItemCount: 0
+  ghost: {fileID: 2488347224407324659, guid: 4b4aa7587a3cd6747b3b969e720e84e8, type: 3}
+  crown: {fileID: 940402723}
   ghostEffectContainer: {fileID: 393263291}
 --- !u!114 &1609651034
 MonoBehaviour:
@@ -12740,10 +12738,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e927ba1a19b6b846b2bed2a867afeb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _popupList:
+  popupList:
   - {fileID: 1246463737}
-  - {fileID: 505333099}
   - {fileID: 470626138}
+  - {fileID: 505333099}
   - {fileID: 1972008860}
 --- !u!1 &1774722266
 GameObject:

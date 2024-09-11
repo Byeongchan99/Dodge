@@ -22,7 +22,8 @@ public class Rocket : BaseProjectile
         _speed = StatDataManager.Instance.currentStatData.projectileDatas[2].projectileSpeed;
         _lifeTime = StatDataManager.Instance.currentStatData.projectileDatas[2].projectileLifeTime;
 
-        fadeEffect.StartFadeIn(0f, 0f);  // 로켓 생성 시 투명도 초기화
+        // 투명도 초기화
+        fadeEffect.resetSprite();
 
         // _lifeTime 동안 유지
         StartCoroutine(LifecycleCoroutine());

@@ -22,6 +22,17 @@ public class FadeEffect : MonoBehaviour
         StartCoroutine(FadeOut(duration, distance));
     }
 
+    // 스프라이트 초기화
+    public void resetSprite()
+    {
+        foreach (var spriteRenderer in spriteRenderers)
+        {
+            Color color = spriteRenderer.color;
+            color.a = 1f;
+            spriteRenderer.color = color;
+        }
+    }
+
     // 위에서 아래로 distance만큼 이동하면서 duration동안 페이드 인
     private IEnumerator FadeIn(float duration, float distance)
     {
