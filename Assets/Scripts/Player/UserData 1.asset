@@ -12,25 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8a42105706cd4e42b77034e8fef2f0b, type: 3}
   m_Name: UserData 1
   m_EditorClassIdentifier: 
+  playerID: Wp2d0g9EFgagf4yqIwb78UJ20pG0
   stageInfos:
   - isCleared: 1
-    score: 176
+    score: 181
   - isCleared: 1
-    score: 150
+    score: 0
   - isCleared: 1
-    score: 138
+    score: 11
   - isCleared: 1
-    score: 298
+    score: 0
   - isCleared: 1
-    score: 211
-  achievementInfos:
-  - name: Achievement 1
-    isAchieved: 0
-  - name: Achievement 2
-    isAchieved: 0
-  - name: Achievement 3
-    isAchieved: 0
-  - name: Achievement 4
-    isAchieved: 0
-  - name: Achievement 5
-    isAchieved: 0
+    score: 116

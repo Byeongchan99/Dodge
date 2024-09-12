@@ -51,6 +51,18 @@ public class StageManager : MonoBehaviour, IHealthObserver
         currentStageData = stageDataList[stageID];
     }
 
+    public List<string> returnLeaderboardID()
+    {
+        List<string> stageLeaderboardIDList = new List<string>(); // 스테이지 리더보드 ID 리스트
+
+        foreach (var stageData in stageDataList)
+        {
+            stageLeaderboardIDList.Add(stageData.leaderboardID);
+        }
+
+        return stageLeaderboardIDList;
+    }
+
     // 플레이어 체력이 변경될 때 호출
     public void OnHealthChanged(float health)
     {

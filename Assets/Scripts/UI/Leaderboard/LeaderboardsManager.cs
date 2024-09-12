@@ -7,6 +7,7 @@ using Unity.Services.Core;
 using Unity.Services.Leaderboards;
 using Unity.Services.Leaderboards.Models;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class LeaderboardsManager : MonoBehaviour
 {
@@ -42,6 +43,7 @@ public class LeaderboardsManager : MonoBehaviour
         {
             Debug.Log("Signed in as: " + AuthenticationService.Instance.PlayerId);
         };
+
         // 로그인 실패 시 에러 메시지 출력
         AuthenticationService.Instance.SignInFailed += s =>
         {
@@ -80,7 +82,8 @@ public class LeaderboardsManager : MonoBehaviour
         Debug.Log(JsonConvert.SerializeObject(scoresResponse));
     }
 
-    /// <summary> player Id의 점수 받아오기  </summary>
+    /*
+    /// <summary> 리더보드에서 지정된 player ID를 사용하여 해당 플레이어의 점수 조회 </summary>
     public async Task<int> GetScoreByPlayerId(string playerId)
     {
         try
@@ -103,6 +106,36 @@ public class LeaderboardsManager : MonoBehaviour
         catch (Exception ex)
         {
             Debug.LogError($"플레이어 ID {playerId}에 대한 점수 조회 실패: {ex.Message}");
+            return 0; // 오류 발생 시
+        }
+    }
+    */
+
+    /// <summary> leaderboardId의 리더보드에서 지정된 player ID를 사용하여 해당 플레이어의 점수 조회  </summary>
+    public async Task<int> GetScoreByPlayerId(string playerId, string leaderboardId = null)
+    {
+        try
+        {
+            // leaderboardId가 null이면 기본값 사용
+            string targetLeaderboardId = leaderboardId ?? LeaderboardId;
+
+            // 플레이어 ID로 점수 조회
+            var scoresResponse = await LeaderboardsService.Instance.GetScoresByPlayerIdsAsync(targetLeaderboardId, new List<string> { playerId });
+            if (scoresResponse.Results.Count > 0)
+            {
+                var scoreEntry = scoresResponse.Results[0]; // 첫 번째 결과 사용
+                int playerScore = (int)scoreEntry.Score; // 점수를 추출
+                return playerScore; // 점수를 반환
+            }
+            else
+            {
+                Debug.Log("해당 플레이어 ID에 대한 점수를 찾을 수 없습니다.");
+                return 0; // 점수가 없을 경우
+            }
+        }
+        catch (Exception ex) // 점수가 없거나 오류 발생 시
+        {
+            Debug.LogError($"플레이어 ID {playerId}의 {leaderboardId}에 대한 점수 조회 실패: {ex.Message}");
             return 0; // 오류 발생 시
         }
     }

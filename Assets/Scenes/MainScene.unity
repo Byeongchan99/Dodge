@@ -12049,6 +12049,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   userData: {fileID: 11400000, guid: 3d8036e16cfa7f045ab09a7203185075, type: 2}
+  stageDataManager: {fileID: 1020278220}
+  leaderboardsManager: {fileID: 561166135}
 --- !u!4 &1652479103
 Transform:
   m_ObjectHideFlags: 0

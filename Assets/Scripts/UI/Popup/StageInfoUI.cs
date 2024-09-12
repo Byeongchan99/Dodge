@@ -54,12 +54,14 @@ public class StageInfoUI : MonoBehaviour, IUpdateUI
                 isGameClearImage.SetActive(false);
             }
             */
-            // highScore.text = "High Score: " + userData.stageInfos[stageData.stageID].score.ToString();
+            highScore.text = "My High Score: " + userData.stageInfos[stageData.stageID].score.ToString();
+            OnStarChanged(userData.stageInfos[stageData.stageID].score);
             // 비동기 작업을 별도의 void 메서드로 실행
-            GetAndDisplayPlayerScore(userData.playerID);
+            //GetAndDisplayPlayerScore(userData.playerID);
         }
     }
 
+    /*
     // 비동기 작업을 수행하고 결과를 처리하는 메서드
     private async void GetAndDisplayPlayerScore(string playerID)
     {
@@ -75,6 +77,7 @@ public class StageInfoUI : MonoBehaviour, IUpdateUI
     {
         return await leaderboardsManager.GetScoreByPlayerId(playerID);
     }
+    */
 
     // 점수에 따라 별 활성화
     public void OnStarChanged(int score)

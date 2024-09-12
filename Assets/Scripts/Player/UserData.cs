@@ -8,16 +8,8 @@ public class UserData : ScriptableObject
     {
         public bool isCleared; // 클리어 여부
         public int score; // 획득 점수
-    }
-
-    [System.Serializable]
-    public class AchievementInfo
-    {
-        public string name; // 도전과제 이름
-        public bool isAchieved; // 클리어 여부
-    }
+    }  
 
     public string playerID; // 플레이어 ID
     public StageInfo[] stageInfos = new StageInfo[5]; // 현재 5개의 스테이지
-    public AchievementInfo[] achievementInfos = new AchievementInfo[5]; // 현재 5개의 도전과제
 }
