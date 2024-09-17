@@ -6,6 +6,7 @@ public class SlowMotionItem : BaseItem
 {
     protected override void InitItem()
     {
+        base.InitItem();
         itemEffect = new SlowMotionEffect(3f, PlayerStat.Instance.gameObject);
     }
 }

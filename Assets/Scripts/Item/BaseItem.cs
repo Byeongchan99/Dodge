@@ -7,6 +7,9 @@ public class BaseItem : MonoBehaviour
     /****************************************************************************
                                 protected Fields
     ****************************************************************************/
+    /// <summary> 아이템의 BoxCollider2D 참조 </summary>
+    private BoxCollider2D boxCollider2D;
+
     /// <summary> 각 아이템 효과 </summary>
     protected ItemEffect itemEffect;
 
@@ -22,6 +25,7 @@ public class BaseItem : MonoBehaviour
     private void Awake()
     {
         fadeEffect = GetComponent<FadeEffect>();
+        boxCollider2D = GetComponent<BoxCollider2D>();
     }
 
     private void OnEnable()
@@ -37,7 +41,8 @@ public class BaseItem : MonoBehaviour
     /// <summary> 아이템 초기화 </summary>
     protected virtual void InitItem()
     {
-        // 아이템 효과 초기화    
+        // 아이템 효과 초기화
+        boxCollider2D.enabled = true;
     }
 
     /// <summary> 아이템이 필드에 남아있는 시간 이후 아이템 비활성화 시작 </summary>
@@ -68,6 +73,7 @@ public class BaseItem : MonoBehaviour
         {
             // 아이템 획득 처리
             Debug.Log("아이템 획득");
+            boxCollider2D.enabled = false; // 아이템 중복 획득 처리 방지
             PlayerStat.Instance.ApplyItemEffect(itemEffect);
             StartCoroutine(StartDisableItem());
         }
