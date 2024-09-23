@@ -10,48 +10,118 @@ public class OptionUI : MonoBehaviour
     public Slider bgmSlider;
     public Slider sfxSlider;
 
-    void OnEnable()
+    public Text bgmVolumeText;
+    public Text sfxVolumeText;
+
+    public Button bgmMuteButton;
+    public Button sfxMuteButton;
+
+    private float previousBGMVolume;
+    private bool isBGMMuted = false;
+
+    private float previousSFXVolume;
+    private bool isSFXMuted = false;
+
+    void Awake()
     {
-        // 슬라이더 초기값 설정
+        // 슬라이더 초기값 설정 (기본값을 1로 설정하여 최대 볼륨)
         bgmSlider.value = PlayerPrefs.GetFloat("BGMVolume", 1f);
         sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume", 1f);
+
+        // 슬라이더 이벤트 등록 전에 기존 이벤트 제거
+        bgmSlider.onValueChanged.RemoveAllListeners();
+        sfxSlider.onValueChanged.RemoveAllListeners();
+
+        // 슬라이더 이벤트에 메서드 연결
+        bgmSlider.onValueChanged.AddListener(SetBGMVolume);
+        sfxSlider.onValueChanged.AddListener(SetSFXVolume);
 
         // 초기 볼륨 설정
         SetBGMVolume(bgmSlider.value);
         SetSFXVolume(sfxSlider.value);
 
-        // 슬라이더 이벤트에 메서드 연결
-        bgmSlider.onValueChanged.AddListener(SetBGMVolume);
-        sfxSlider.onValueChanged.AddListener(SetSFXVolume);
+        // Mute 버튼 이벤트 등록
+        bgmMuteButton.onClick.AddListener(ToggleBGMMute);
+        sfxMuteButton.onClick.AddListener(ToggleSFXMute);
+
+        // Mute 버튼 텍스트 초기화
+        UpdateBGMMuteButton();
+        UpdateSFXMuteButton();
     }
 
-    public void SetBGMVolume(float volume)
+    public void SetBGMVolume(float sliderValue)
     {
-        // Audio Mixer의 exposed parameter를 통해 볼륨 조절
-        audioMixer.SetFloat("BGMVolume", Mathf.Log10(volume) * 20);
-        // 볼륨 값 저장 (옵션)
-        PlayerPrefs.SetFloat("BGMVolume", volume);
-    }
-
-    public void SetSFXVolume(float volume)
-    {
-        audioMixer.SetFloat("SFXVolume", Mathf.Log10(volume) * 20);
-        PlayerPrefs.SetFloat("SFXVolume", volume);
-    }
-
-    private IEnumerator FadeBGM(float targetVolume, float duration)
-    {
-        float currentVolume;
-        audioMixer.GetFloat("BGMVolume", out currentVolume);
-        float startVolume = currentVolume;
-        float time = 0;
-
-        while (time < duration)
+        if (isBGMMuted)
         {
-            time += Time.deltaTime;
-            float newVolume = Mathf.Lerp(startVolume, targetVolume, time / duration);
-            audioMixer.SetFloat("BGMVolume", newVolume);
-            yield return null;
+            isBGMMuted = false;
+            UpdateBGMMuteButton();
         }
+
+        float mixerVolume = sliderValue * 100f - 80f;
+        audioMixer.SetFloat("BGMVolume", mixerVolume);
+        PlayerPrefs.SetFloat("BGMVolume", sliderValue);
+
+        int displayVolume = (int)(sliderValue * 100f);
+        bgmVolumeText.text = $"{displayVolume}";
+    }
+
+    public void SetSFXVolume(float sliderValue)
+    {
+        if (isSFXMuted)
+        {
+            isSFXMuted = false;
+            UpdateSFXMuteButton();
+        }
+
+        float mixerVolume = sliderValue * 100f - 80f;
+        audioMixer.SetFloat("SFXVolume", mixerVolume);
+        PlayerPrefs.SetFloat("SFXVolume", sliderValue);
+
+        int displayVolume = (int)(sliderValue * 100f);
+        sfxVolumeText.text = $"{displayVolume}";
+    }
+
+    public void ToggleBGMMute()
+    {
+        if (isBGMMuted)
+        {
+            bgmSlider.value = previousBGMVolume;
+            isBGMMuted = false;
+        }
+        else
+        {
+            previousBGMVolume = bgmSlider.value;
+            bgmSlider.value = 0f;
+            isBGMMuted = true;
+        }
+
+        UpdateBGMMuteButton();
+    }
+
+    public void ToggleSFXMute()
+    {
+        if (isSFXMuted)
+        {
+            sfxSlider.value = previousSFXVolume;
+            isSFXMuted = false;
+        }
+        else
+        {
+            previousSFXVolume = sfxSlider.value;
+            sfxSlider.value = 0f;
+            isSFXMuted = true;
+        }
+
+        UpdateSFXMuteButton();
+    }
+
+    private void UpdateBGMMuteButton()
+    {
+        bgmMuteButton.GetComponentInChildren<Text>().text = isBGMMuted ? "Unmute" : "Mute";
+    }
+
+    private void UpdateSFXMuteButton()
+    {
+        sfxMuteButton.GetComponentInChildren<Text>().text = isSFXMuted ? "Unmute" : "Mute";
     }
 }
