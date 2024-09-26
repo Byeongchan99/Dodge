@@ -44,8 +44,8 @@ namespace UIManage
             gameObject.SetActive(true);
 
             Sequence sequence = DOTween.Sequence().SetUpdate(true);
-            sequence.Append(rectTransform.DOScale(Vector3.one, 0.2f).SetEase(Ease.OutBack).SetUpdate(true))
-                    .Join(canvasGroup.DOFade(1f, 0.5f).SetEase(Ease.OutQuad).SetUpdate(true))
+            sequence.Append(rectTransform.DOScale(Vector3.one, 0.1f).SetEase(Ease.OutBack).SetUpdate(true))
+                    .Join(canvasGroup.DOFade(1f, 0.1f).SetEase(Ease.OutQuad).SetUpdate(true))
                     .OnComplete(() =>
                     {
                         isOpen = true;
@@ -61,8 +61,8 @@ namespace UIManage
             */
 
             Sequence sequence = DOTween.Sequence().SetUpdate(true);
-            sequence.Append(rectTransform.DOScale(Vector3.zero, 0.2f).SetEase(Ease.InBack).SetUpdate(true))
-                    .Join(canvasGroup.DOFade(0f, 0.5f).SetEase(Ease.InQuad).SetUpdate(true))
+            sequence.Append(rectTransform.DOScale(Vector3.zero, 0.1f).SetEase(Ease.InBack).SetUpdate(true))
+                    .Join(canvasGroup.DOFade(0f, 0.1f).SetEase(Ease.InQuad).SetUpdate(true))
                     .OnComplete(() =>
                     {
                         rectTransform.anchoredPosition = _originalPosition;
