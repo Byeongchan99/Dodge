@@ -57,12 +57,24 @@ public class OptionUI : MonoBehaviour
             UpdateBGMMuteButton();
         }
 
-        float mixerVolume = sliderValue * 100f - 80f;
+        float mixerVolume;
+
+        if (sliderValue <= 0.1f)
+        {
+            // 슬라이더 값 0 ~ 0.1 매핑 (-80dB ~ -20dB)
+            mixerVolume = (sliderValue / 0.1f) * 60f - 80f;
+        }
+        else
+        {
+            // 슬라이더 값 0.1 ~ 1.0 매핑 (-20dB ~ +20dB)
+            mixerVolume = ((sliderValue - 0.1f) / 0.9f) * 40f - 20f;
+        }
+
         audioMixer.SetFloat("BGMVolume", mixerVolume);
         PlayerPrefs.SetFloat("BGMVolume", sliderValue);
 
-        int displayVolume = (int)(sliderValue * 100f);
-        bgmVolumeText.text = $"{displayVolume}";
+        // 볼륨 텍스트 업데이트 (dB 값 표시)
+        bgmVolumeText.text = $"{(int)(sliderValue * 10)}";
     }
 
     public void SetSFXVolume(float sliderValue)
@@ -73,12 +85,24 @@ public class OptionUI : MonoBehaviour
             UpdateSFXMuteButton();
         }
 
-        float mixerVolume = sliderValue * 100f - 80f;
+        float mixerVolume;
+
+        if (sliderValue <= 0.1f)
+        {
+            // 슬라이더 값 0 ~ 0.1 매핑 (-80dB ~ -20dB)
+            mixerVolume = (sliderValue / 0.1f) * 60f - 80f;
+        }
+        else
+        {
+            // 슬라이더 값 0.1 ~ 1.0 매핑 (-20dB ~ +20dB)
+            mixerVolume = ((sliderValue - 0.1f) / 0.9f) * 40f - 20f;
+        }
+
         audioMixer.SetFloat("SFXVolume", mixerVolume);
         PlayerPrefs.SetFloat("SFXVolume", sliderValue);
 
-        int displayVolume = (int)(sliderValue * 100f);
-        sfxVolumeText.text = $"{displayVolume}";
+        // 볼륨 텍스트 업데이트 (dB 값 표시)
+        sfxVolumeText.text = $"{(int)(sliderValue * 10)}";
     }
 
     public void ToggleBGMMute()
