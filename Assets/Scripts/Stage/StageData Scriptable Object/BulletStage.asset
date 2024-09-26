@@ -20,3 +20,4 @@ MonoBehaviour:
   statData: {fileID: 11400000, guid: 3ee70a1c469ef8d418d4a0c46a017056, type: 2}
   mapPrefab: {fileID: 1887036623148970226, guid: 0812c117b67019e418a7cddbca4de30d, type: 3}
   turretAnimatorController: {fileID: 9100000, guid: dcfed414fd7fbab408818c7b0335c0ea, type: 2}
+  bgm: {fileID: 8300000, guid: a89adba6a2267834b951ec139cf96e95, type: 3}

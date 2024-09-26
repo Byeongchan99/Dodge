@@ -101,6 +101,8 @@ public class StageManager : MonoBehaviour, IHealthObserver
         //HUDManager.EnableTimer();
         //HUDManager.EnableHealthBar();
         fullscreenUIContainer.SetActive(false);
+        // 음악 재생
+        AudioManager.instance.PlayBGM(currentStageData.bgm);
 
         // 타이머 시작
         ScoreManager.Instance.StartTimer();
@@ -114,6 +116,7 @@ public class StageManager : MonoBehaviour, IHealthObserver
         turretSpawner.StopSpawn();
         itemSpawner.StopSpawn();
         turretUpgradeHandler.StopRandomUpgrades();
+        AudioManager.instance.StopBGM();
 
         // 스테이지 재시작
         StartStage();
@@ -148,6 +151,8 @@ public class StageManager : MonoBehaviour, IHealthObserver
         //HUDManager.DisableTimer();
         //HUDManager.DisableHealthBar();
         // 스테이지 결과창 활성화
+        AudioManager.instance.StopBGM();
+        AudioManager.instance.PlayMainBGM();
         stageResultUI.UpdateUIInfo(currentStageData, userDataManager.userData);
         fullscreenUIManager.OnPushFullscreenUI("Stage Result");
         fullscreenUIContainer.SetActive(true);
