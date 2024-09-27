@@ -38,6 +38,8 @@ public abstract class BaseTurret : MonoBehaviour
     /// <summary> Fade Effect 참조 </summary>
     private FadeEffect fadeEffect;
 
+    protected AudioSource audioSource;
+
     /****************************************************************************
                                    public Fields
     ****************************************************************************/
@@ -48,12 +50,15 @@ public abstract class BaseTurret : MonoBehaviour
     /// <summary> 소환 위치 인덱스 </summary>
     public int spawnPointIndex;
 
+    public AudioClip audioClip;
+
     /****************************************************************************
                                     Unity Callbacks
     ****************************************************************************/
     void Awake()
     {
         fadeEffect = GetComponent<FadeEffect>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     protected virtual void OnEnable()

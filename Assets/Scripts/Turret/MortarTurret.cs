@@ -86,6 +86,8 @@ public class MortarTurret : BaseTurret
             {
                 Debug.LogWarning("Fire particle system is not set.");
             }
+
+            audioSource.PlayOneShot(audioClip);
         }
         else
         {

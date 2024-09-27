@@ -5018,8 +5018,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.00075000525, y: -0.0026000142, z: 0}
-    m_Extent: {x: 0.50405, y: 0.5068, z: 0}
+    m_Center: {x: 0.0043500066, y: 0.00030001998, z: 0}
+    m_Extent: {x: 0.50435, y: 0.50450003, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -5100,8 +5100,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.00014999509, y: 0.0011999905, z: 0}
-    m_Extent: {x: 0.50495005, y: 0.50619996, z: 0}
+    m_Center: {x: 0.002550006, y: 0.0029999912, z: 0}
+    m_Extent: {x: 0.50585, y: 0.50600004, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -5230,6 +5230,7 @@ MonoBehaviour:
   spawner: {fileID: 0}
   turretIndex: 2
   spawnPointIndex: 0
+  audioClip: {fileID: 8300000, guid: ffb159a21c8a04135a5616979c828fab, type: 3}
   rotatePoint: {fileID: 1356929597027367013}
   _direction: {x: 0, y: 0}
   fireParticle: {fileID: 4675322533553321341}

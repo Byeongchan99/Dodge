@@ -5285,6 +5285,7 @@ MonoBehaviour:
   spawner: {fileID: 0}
   turretIndex: 3
   spawnPointIndex: 0
+  audioClip: {fileID: 8300000, guid: 7bef0064f8567430cac22499c6b93d4f, type: 3}
   fireParticle: {fileID: 3394319947798970313}
 --- !u!114 &-696072830291638782
 MonoBehaviour:
