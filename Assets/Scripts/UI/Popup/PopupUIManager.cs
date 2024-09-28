@@ -3,212 +3,209 @@ using System.Collections.Generic;
 using System.Xml.Linq;
 using UnityEngine;
 
-namespace UIManage
+public class PopupUIManager : MonoBehaviour
 {
-    public class PopupUIManager : MonoBehaviour
+    /****************************************************************************
+                                     private Fields
+    ****************************************************************************/
+    /// <summary> 실시간 팝업 관리 링크드 리스트 </summary>
+    private LinkedList<PopupUI> popupLinkedList;
+
+    /// <summary> UI 리스트 </summary>
+    [SerializeField] private List<PopupUI> popupList = new List<PopupUI>();
+
+    /// <summary> Popup UI 인스턴스들을 이름으로 관리하기 위한 딕셔너리 </summary>
+    private Dictionary<string, PopupUI> popupDictionary = new Dictionary<string, PopupUI>();
+
+    /****************************************************************************
+                                     Unity Callbacks
+    ****************************************************************************/
+    private void Awake()
     {
-        /****************************************************************************
-                                         private Fields
-        ****************************************************************************/
-        /// <summary> 실시간 팝업 관리 링크드 리스트 </summary>
-        private LinkedList<PopupUI> popupLinkedList;
+        // 링크드 리스트 생성
+        popupLinkedList = new LinkedList<PopupUI>();
+        // 초기화
+        Init();
+    }
 
-        /// <summary> UI 리스트 </summary>
-        [SerializeField] private List<PopupUI> popupList = new List<PopupUI>();
-
-        /// <summary> Popup UI 인스턴스들을 이름으로 관리하기 위한 딕셔너리 </summary>
-        private Dictionary<string, PopupUI> popupDictionary = new Dictionary<string, PopupUI>();
-
-        /****************************************************************************
-                                         Unity Callbacks
-        ****************************************************************************/
-        private void Awake()
+    private void Update()
+    {
+        // esc 키를 누르면 팝업 닫기
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            // 링크드 리스트 생성
-            popupLinkedList = new LinkedList<PopupUI>();
-            // 초기화
-            Init();
-        }
-
-        private void Update()
-        {
-            // esc 키를 누르면 팝업 닫기
-            if (Input.GetKeyDown(KeyCode.Escape))
+            // 어떤 팝업창이 켜져있을 때
+            if (popupLinkedList.Count > 0)
             {
-                // 어떤 팝업창이 켜져있을 때
-                if (popupLinkedList.Count > 0)
-                {                  
-                    // 일시 정지 창이 켜져있을 때
-                    if (popupLinkedList.First.Value.gameObject.name == "Pause" && GameManager.Instance.isPlayingStage) 
-                    {
-                        PopupUI pausePopup = GetPopup("Pause");
-                        if (pausePopup != null)
-                        {
-                            PauseUI pauseUI = pausePopup.gameObject.GetComponent<PauseUI>();
-                            pauseUI.ClosePauseUI();
-                        }
-                        // 일시 정지창 닫기
-                        ClosePopup(popupLinkedList.First.Value);
-                    }
-                    else
-                    {
-                        ClosePopup(popupLinkedList.First.Value);
-                    }
-                }
-                // 현재 스테이지 플레이 중일 때
-                else if (GameManager.Instance.isPlayingStage)
+                // 일시 정지 창이 켜져있을 때
+                if (popupLinkedList.First.Value.gameObject.name == "Pause" && GameManager.Instance.isPlayingStage)
                 {
                     PopupUI pausePopup = GetPopup("Pause");
                     if (pausePopup != null)
                     {
                         PauseUI pauseUI = pausePopup.gameObject.GetComponent<PauseUI>();
-                        pauseUI.OpenPauseUI();
+                        pauseUI.ClosePauseUI();
                     }
-                    // 일시 정지창 열기
-                    OpenPopup("Pause");
+                    // 일시 정지창 닫기
+                    ClosePopup(popupLinkedList.First.Value);
                 }
-                /*
-                // 설정창 열기
                 else
                 {
-                    OpenPopup("Option");
+                    ClosePopup(popupLinkedList.First.Value);
                 }
-                */
             }
-        }
-
-        /****************************************************************************
-                                         private Methods
-        ****************************************************************************/
-        /// <summary> 초기화 </summary>
-        private void Init()
-        {
-            // 리스트의 PopupUI 인스턴스들을 딕셔너리에 등록 및 비활성화
-            foreach (var popup in popupList)
+            // 현재 스테이지 플레이 중일 때
+            else if (GameManager.Instance.isPlayingStage)
             {
-                RegisterUI(popup.gameObject.name, popup);
-                popup.gameObject.SetActive(false);
-
-                // 헤더 Focus 이벤트 등록
-                popup.OnFocus += () =>
+                PopupUI pausePopup = GetPopup("Pause");
+                if (pausePopup != null)
                 {
-                    // 링크드 리스트에서 제거하고 새롭게 추가
-                    popupLinkedList.Remove(popup);
-                    popupLinkedList.AddFirst(popup);
-                    UpdatePopupUIOrder();
-                };
-
-                // 팝업 닫기 버튼 등록
-                popup.closeButton.onClick.AddListener(() => ClosePopup(popup));
+                    PauseUI pauseUI = pausePopup.gameObject.GetComponent<PauseUI>();
+                    pauseUI.OpenPauseUI();
+                }
+                // 일시 정지창 열기
+                OpenPopup("Pause");
             }
-        }
-
-        /// <summary> PopupUI 인스턴스들을 딕셔너리에 등록하는 메서드 </summary>
-        private void RegisterUI(string name, PopupUI popup)
-        {
-            if (!popupDictionary.ContainsKey(name))
-            {
-                popupDictionary.Add(name, popup);
-            }
-        }
-
-        /// <summary> 이름을 사용하여 팝업을 가져오는 메서드 </summary>
-        private PopupUI GetPopup(string UIName)
-        {
-            if (popupDictionary.TryGetValue(UIName, out PopupUI popup))
-            {
-                return popup;
-            }
-            else { return null; }
-        }
-
-        /// <summary> 팝업 열기 </summary>
-        private void OpenPopup(PopupUI popup)
-        {
-            // 링크드 리스트에 추가하고
-            popupLinkedList.AddFirst(popup);
-            // 활성화
-            popup.Show();
-            //popup.isOpen = true;
-            //popup.gameObject.SetActive(true);
-            // 순서 업데이트
-            UpdatePopupUIOrder();
-        }
-
-        /// <summary> 이름을 사용하여 팝업 열기 </summary>
-        public void OpenPopup(string UIName)
-        {
-            if (popupDictionary.TryGetValue(UIName, out PopupUI popup))
-            {
-                OpenPopup(popup);
-            }
+            /*
+            // 설정창 열기
             else
             {
-                Debug.LogWarning($"Popup with name {UIName} not found.");
+                OpenPopup("Option");
             }
+            */
         }
+    }
 
-        /// <summary> 팝업 닫기 </summary>
-        private void ClosePopup(PopupUI popup)
+    /****************************************************************************
+                                     private Methods
+    ****************************************************************************/
+    /// <summary> 초기화 </summary>
+    private void Init()
+    {
+        // 리스트의 PopupUI 인스턴스들을 딕셔너리에 등록 및 비활성화
+        foreach (var popup in popupList)
         {
-            // 링크드 리스트에서 제거하고
-            popupLinkedList.Remove(popup);
-            // 비활성화
-            popup.Hide();
-            //popup.isOpen = false;
-            //popup.gameObject.SetActive(false);
-            // 순서 업데이트
-            UpdatePopupUIOrder();
-        }
+            RegisterUI(popup.gameObject.name, popup);
+            popup.gameObject.SetActive(false);
 
-        /// <summary> 이름을 사용하여 팝업 닫기 </summary>
-        public void ClosePopup(string UIName)
-        {
-            if (popupDictionary.TryGetValue(UIName, out PopupUI popup))
+            // 헤더 Focus 이벤트 등록
+            popup.OnFocus += () =>
             {
-                ClosePopup(popup);
-            }
-            else
-            {
-                Debug.LogWarning($"Popup with name {UIName} not found.");
-            }
-        }
+                // 링크드 리스트에서 제거하고 새롭게 추가
+                popupLinkedList.Remove(popup);
+                popupLinkedList.AddFirst(popup);
+                UpdatePopupUIOrder();
+            };
 
-        /// <summary> 단축키에 따라 팝업 토글 </summary>
-        private void togglePopup(PopupUI popup)
-        {
-            if (popup.isOpen)
-            {
-                ClosePopup(popup);
-            }
-            else
-            {
-                OpenPopup(popup);
-            }
+            // 팝업 닫기 버튼 등록
+            popup.closeButton.onClick.AddListener(() => ClosePopup(popup));
         }
+    }
 
-        /// <summary> 팝업 UI들의 순서 업데이트 </summary>
-        private void UpdatePopupUIOrder()
+    /// <summary> PopupUI 인스턴스들을 딕셔너리에 등록하는 메서드 </summary>
+    private void RegisterUI(string name, PopupUI popup)
+    {
+        if (!popupDictionary.ContainsKey(name))
         {
-            foreach (var popup in popupLinkedList)
-            {
-                popup.transform.SetAsFirstSibling();
-            }
+            popupDictionary.Add(name, popup);
         }
+    }
 
-        /****************************************************************************
-                                 public Methods
-        ****************************************************************************/
-        /// <summary> 스테이지 정보 UI 열기 </summary>
-        public void OpenStageInformationPopup()
+    /// <summary> 이름을 사용하여 팝업을 가져오는 메서드 </summary>
+    private PopupUI GetPopup(string UIName)
+    {
+        if (popupDictionary.TryGetValue(UIName, out PopupUI popup))
         {
-            OpenPopup("Stage Information");
+            return popup;
         }
+        else { return null; }
+    }
 
-        /// <summary> 스테이지 정보 UI 닫기 </summary>
-        public void CloseStageInformationPopup()
+    /// <summary> 팝업 열기 </summary>
+    private void OpenPopup(PopupUI popup)
+    {
+        // 링크드 리스트에 추가하고
+        popupLinkedList.AddFirst(popup);
+        // 활성화
+        popup.Show();
+        //popup.isOpen = true;
+        //popup.gameObject.SetActive(true);
+        // 순서 업데이트
+        UpdatePopupUIOrder();
+    }
+
+    /// <summary> 이름을 사용하여 팝업 열기 </summary>
+    public void OpenPopup(string UIName)
+    {
+        if (popupDictionary.TryGetValue(UIName, out PopupUI popup))
         {
-            ClosePopup("Stage Information");
+            OpenPopup(popup);
         }
+        else
+        {
+            Debug.LogWarning($"Popup with name {UIName} not found.");
+        }
+    }
+
+    /// <summary> 팝업 닫기 </summary>
+    private void ClosePopup(PopupUI popup)
+    {
+        // 링크드 리스트에서 제거하고
+        popupLinkedList.Remove(popup);
+        // 비활성화
+        popup.Hide();
+        //popup.isOpen = false;
+        //popup.gameObject.SetActive(false);
+        // 순서 업데이트
+        UpdatePopupUIOrder();
+    }
+
+    /// <summary> 이름을 사용하여 팝업 닫기 </summary>
+    public void ClosePopup(string UIName)
+    {
+        if (popupDictionary.TryGetValue(UIName, out PopupUI popup))
+        {
+            ClosePopup(popup);
+        }
+        else
+        {
+            Debug.LogWarning($"Popup with name {UIName} not found.");
+        }
+    }
+
+    /// <summary> 단축키에 따라 팝업 토글 </summary>
+    private void togglePopup(PopupUI popup)
+    {
+        if (popup.isOpen)
+        {
+            ClosePopup(popup);
+        }
+        else
+        {
+            OpenPopup(popup);
+        }
+    }
+
+    /// <summary> 팝업 UI들의 순서 업데이트 </summary>
+    private void UpdatePopupUIOrder()
+    {
+        foreach (var popup in popupLinkedList)
+        {
+            popup.transform.SetAsFirstSibling();
+        }
+    }
+
+    /****************************************************************************
+                             public Methods
+    ****************************************************************************/
+    /// <summary> 스테이지 정보 UI 열기 </summary>
+    public void OpenStageInformationPopup()
+    {
+        OpenPopup("Stage Information");
+    }
+
+    /// <summary> 스테이지 정보 UI 닫기 </summary>
+    public void CloseStageInformationPopup()
+    {
+        ClosePopup("Stage Information");
     }
 }

@@ -1,12 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class OptionUI : MonoBehaviour
 {
-    public AudioMixer audioMixer;
     public Slider bgmSlider;
     public Slider sfxSlider;
 
@@ -16,29 +12,32 @@ public class OptionUI : MonoBehaviour
     public Button bgmMuteButton;
     public Button sfxMuteButton;
 
-    private float previousBGMVolume;
     private bool isBGMMuted = false;
-
-    private float previousSFXVolume;
     private bool isSFXMuted = false;
 
     void Awake()
     {
-        // 슬라이더 초기값 설정 (기본값을 1로 설정하여 최대 볼륨)
-        bgmSlider.value = PlayerPrefs.GetFloat("BGMVolume", 1f);
-        sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume", 1f);
+        Debug.Log("OptionUI Awake");
+
+        // 슬라이더 초기값 설정 (PlayerPrefs에서 불러오기)
+        bgmSlider.value = PlayerPrefs.GetFloat("BGMVolumeSlider", 1f);
+        sfxSlider.value = PlayerPrefs.GetFloat("SFXVolumeSlider", 1f);
+
+        // Mute 상태 초기화
+        isBGMMuted = (bgmSlider.value == 0f);
+        isSFXMuted = (sfxSlider.value == 0f);
 
         // 슬라이더 이벤트 등록 전에 기존 이벤트 제거
         bgmSlider.onValueChanged.RemoveAllListeners();
         sfxSlider.onValueChanged.RemoveAllListeners();
 
         // 슬라이더 이벤트에 메서드 연결
-        bgmSlider.onValueChanged.AddListener(SetBGMVolume);
-        sfxSlider.onValueChanged.AddListener(SetSFXVolume);
+        bgmSlider.onValueChanged.AddListener(OnBGMVolumeChanged);
+        sfxSlider.onValueChanged.AddListener(OnSFXVolumeChanged);
 
         // 초기 볼륨 설정
-        SetBGMVolume(bgmSlider.value);
-        SetSFXVolume(sfxSlider.value);
+        UpdateBGMVolumeUI(bgmSlider.value);
+        UpdateSFXVolumeUI(sfxSlider.value);
 
         // Mute 버튼 이벤트 등록
         bgmMuteButton.onClick.AddListener(ToggleBGMMute);
@@ -47,74 +46,56 @@ public class OptionUI : MonoBehaviour
         // Mute 버튼 텍스트 초기화
         UpdateBGMMuteButton();
         UpdateSFXMuteButton();
+
+        // AudioManager에 초기 볼륨 전달
+        AudioManager.instance.SetBGMVolume(bgmSlider.value);
+        AudioManager.instance.SetSFXVolume(sfxSlider.value);
     }
 
-    public void SetBGMVolume(float sliderValue)
+    private void OnBGMVolumeChanged(float sliderValue)
     {
-        if (isBGMMuted)
-        {
-            isBGMMuted = false;
-            UpdateBGMMuteButton();
-        }
-
-        float mixerVolume;
-
-        if (sliderValue <= 0.1f)
-        {
-            // 슬라이더 값 0 ~ 0.1 매핑 (-80dB ~ -20dB)
-            mixerVolume = (sliderValue / 0.1f) * 60f - 80f;
-        }
-        else
-        {
-            // 슬라이더 값 0.1 ~ 1.0 매핑 (-20dB ~ +20dB)
-            mixerVolume = ((sliderValue - 0.1f) / 0.9f) * 40f - 20f;
-        }
-
-        audioMixer.SetFloat("BGMVolume", mixerVolume);
-        PlayerPrefs.SetFloat("BGMVolume", sliderValue);
-
-        // 볼륨 텍스트 업데이트 (dB 값 표시)
-        bgmVolumeText.text = $"{(int)(sliderValue * 10)}";
+        UpdateBGMVolumeUI(sliderValue);
+        AudioManager.instance.SetBGMVolume(sliderValue);
+        PlayerPrefs.SetFloat("BGMVolumeSlider", sliderValue);
     }
 
-    public void SetSFXVolume(float sliderValue)
+    private void OnSFXVolumeChanged(float sliderValue)
     {
-        if (isSFXMuted)
-        {
-            isSFXMuted = false;
-            UpdateSFXMuteButton();
-        }
+        UpdateSFXVolumeUI(sliderValue);
+        AudioManager.instance.SetSFXVolume(sliderValue);
+        PlayerPrefs.SetFloat("SFXVolumeSlider", sliderValue);
+    }
 
-        float mixerVolume;
+    private void UpdateBGMVolumeUI(float sliderValue)
+    {
+        // Mute 상태 업데이트
+        isBGMMuted = (sliderValue == 0f);
+        UpdateBGMMuteButton();
 
-        if (sliderValue <= 0.1f)
-        {
-            // 슬라이더 값 0 ~ 0.1 매핑 (-80dB ~ -20dB)
-            mixerVolume = (sliderValue / 0.1f) * 60f - 80f;
-        }
-        else
-        {
-            // 슬라이더 값 0.1 ~ 1.0 매핑 (-20dB ~ +20dB)
-            mixerVolume = ((sliderValue - 0.1f) / 0.9f) * 40f - 20f;
-        }
+        // 볼륨 텍스트 업데이트
+        bgmVolumeText.text = $"{(int)(sliderValue * 100)}";
+    }
 
-        audioMixer.SetFloat("SFXVolume", mixerVolume);
-        PlayerPrefs.SetFloat("SFXVolume", sliderValue);
+    private void UpdateSFXVolumeUI(float sliderValue)
+    {
+        // Mute 상태 업데이트
+        isSFXMuted = (sliderValue == 0f);
+        UpdateSFXMuteButton();
 
-        // 볼륨 텍스트 업데이트 (dB 값 표시)
-        sfxVolumeText.text = $"{(int)(sliderValue * 10)}";
+        // 볼륨 텍스트 업데이트
+        sfxVolumeText.text = $"{(int)(sliderValue * 100)}";
     }
 
     public void ToggleBGMMute()
     {
         if (isBGMMuted)
         {
-            bgmSlider.value = previousBGMVolume;
+            bgmSlider.value = PlayerPrefs.GetFloat("PreviousBGMVolume", 0.5f);
             isBGMMuted = false;
         }
         else
         {
-            previousBGMVolume = bgmSlider.value;
+            PlayerPrefs.SetFloat("PreviousBGMVolume", bgmSlider.value);
             bgmSlider.value = 0f;
             isBGMMuted = true;
         }
@@ -126,12 +107,12 @@ public class OptionUI : MonoBehaviour
     {
         if (isSFXMuted)
         {
-            sfxSlider.value = previousSFXVolume;
+            sfxSlider.value = PlayerPrefs.GetFloat("PreviousSFXVolume", 0.5f);
             isSFXMuted = false;
         }
         else
         {
-            previousSFXVolume = sfxSlider.value;
+            PlayerPrefs.SetFloat("PreviousSFXVolume", sfxSlider.value);
             sfxSlider.value = 0f;
             isSFXMuted = true;
         }
