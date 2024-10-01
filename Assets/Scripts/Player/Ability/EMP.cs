@@ -5,6 +5,7 @@ using UnityEngine;
 public class EMP : MonoBehaviour, IPlayerAbility
 {
     private BaseEffect EMPEffect; // EMP 효과
+    public AudioClip EMP_Sound; // EMP 효과 사운드
 
     [SerializeField] private float _slowDuration = 0.05f; // 슬로우 지속 시간
     [SerializeField] private float _EMPDuration = 0.5f; // EMP 지속 시간
@@ -29,6 +30,8 @@ public class EMP : MonoBehaviour, IPlayerAbility
     {
         _isEMP = true;
 
+        // 사운드 재생
+        AudioManager.instance.sfxAudioSource.PlayOneShot(EMP_Sound);
         // 움직임 멈춤
         // PlayerMovement 스크립트 비활성화
         PlayerMovement playerMovement = GetComponent<PlayerMovement>();

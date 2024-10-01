@@ -5,7 +5,8 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
     public AudioMixer audioMixer;
-    [SerializeField] private AudioSource audioSource;
+    public AudioSource bgmAudioSource;
+    public AudioSource sfxAudioSource;
     [SerializeField] private AudioClip mainAudioClip;
 
     void Awake()
@@ -47,20 +48,20 @@ public class AudioManager : MonoBehaviour
             Debug.LogError("Failed to get BGMVolume parameter from AudioMixer.");
         }
 
-        audioSource.clip = mainAudioClip;
-        audioSource.Play();
+        bgmAudioSource.clip = mainAudioClip;
+        bgmAudioSource.Play();
     }
 
 
     public void PlayBGM(AudioClip clip)
     {
-        audioSource.clip = clip;
-        audioSource.Play();
+        bgmAudioSource.clip = clip;
+        bgmAudioSource.Play();
     }
 
     public void StopBGM()
     {
-        audioSource.Stop();
+        bgmAudioSource.Stop();
     }
 
     public void SetBGMVolume(float sliderValue)

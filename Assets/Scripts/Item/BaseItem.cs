@@ -19,7 +19,6 @@ public class BaseItem : MonoBehaviour
     /// <summary> 아이템이 필드에 남아있는 시간 </summary>
     [SerializeField] protected float _itemRemainTime = 20f;
 
-    protected AudioSource audioSource;
     [SerializeField] protected AudioClip enableAudioClip;
     [SerializeField] protected AudioClip disableAudioClip;
 
@@ -30,13 +29,12 @@ public class BaseItem : MonoBehaviour
     {
         fadeEffect = GetComponent<FadeEffect>();
         boxCollider2D = GetComponent<BoxCollider2D>();
-        audioSource = GetComponent<AudioSource>();
     }
 
     private void OnEnable()
     {
         InitItem();
-        audioSource.PlayOneShot(enableAudioClip);
+        AudioManager.instance.sfxAudioSource.PlayOneShot(enableAudioClip);
         fadeEffect.StartFadeIn(0.5f, 0.1f);
         StartCoroutine(ItemDisableAfterRemainTime(_itemRemainTime)); // itemRemainTime 이후 아이템 비활성화
     }
@@ -61,6 +59,7 @@ public class BaseItem : MonoBehaviour
     /// <summary> 아이템 비활성화 시작 </summary>
     IEnumerator StartDisableItem()
     {
+        AudioManager.instance.sfxAudioSource.PlayOneShot(disableAudioClip);
         fadeEffect.StartFadeOut(0.5f, 0.1f);
         yield return new WaitForSeconds(1.5f);
         DisableItem();
@@ -69,7 +68,6 @@ public class BaseItem : MonoBehaviour
     /// <summary> 아이템 비활성화 </summary>
     protected void DisableItem()
     {
-        audioSource.PlayOneShot(disableAudioClip);
         ItemPoolManager.Instance.Return(this.GetType().Name, this);
     }
 

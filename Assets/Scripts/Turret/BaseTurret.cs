@@ -38,8 +38,6 @@ public abstract class BaseTurret : MonoBehaviour
     /// <summary> Fade Effect ÂüÁ¶ </summary>
     private FadeEffect fadeEffect;
 
-    protected AudioSource audioSource;
-
     /****************************************************************************
                                    public Fields
     ****************************************************************************/
@@ -58,7 +56,6 @@ public abstract class BaseTurret : MonoBehaviour
     void Awake()
     {
         fadeEffect = GetComponent<FadeEffect>();
-        audioSource = GetComponent<AudioSource>();
     }
 
     protected virtual void OnEnable()

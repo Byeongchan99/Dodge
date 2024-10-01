@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DefenseProtocol : MonoBehaviour, IPlayerAbility
 {
+    public AudioClip defenseProtocolSound; // 방어 프로토콜 효과음
+
     [SerializeField] private float _defenseProtocolDuration = 2f; // 방어 프로토콜 지속 시간
     [SerializeField] private float _cooldownTime = 5f; // 쿨타임 5초                                              
     public float CooldownTime // 쿨타임 프로퍼티
@@ -25,6 +27,9 @@ public class DefenseProtocol : MonoBehaviour, IPlayerAbility
     private IEnumerator DefenseProtocolRoutine()
     {
         _isDefense = true;
+
+        // 사운드 재생
+        AudioManager.instance.sfxAudioSource.PlayOneShot(defenseProtocolSound);
 
         // 움직임 멈춤
         // PlayerMovement 스크립트 비활성화 및 Rigidbody2D 참조

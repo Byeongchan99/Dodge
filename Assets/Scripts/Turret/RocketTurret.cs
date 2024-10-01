@@ -87,7 +87,7 @@ public class RocketTurret : BaseTurret
                 Debug.LogWarning("Fire particle system is not set.");
             }
 
-            audioSource.PlayOneShot(audioClip);
+            AudioManager.instance.sfxAudioSource.PlayOneShot(audioClip);
         }
         else
         {

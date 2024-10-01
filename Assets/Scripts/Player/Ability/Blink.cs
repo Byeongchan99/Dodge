@@ -5,6 +5,7 @@ using UnityEngine;
 public class Blink : MonoBehaviour, IPlayerAbility
 {
     public GameObject playerClonePrefab; // 분신 프리팹
+    public AudioClip blinkSound; // 블링크 효과음
     private GameObject playerClone; // 게임에 생성된 분신 객체
 
     [SerializeField] private float _blinkMoveSpeed = 5.0f; // 블링크 지속 시간 동안 이동 속도
@@ -32,6 +33,9 @@ public class Blink : MonoBehaviour, IPlayerAbility
     private IEnumerator BlinkRoutine()
     {
         _isBlinking = true;
+
+        // 사운드 재생
+        AudioManager.instance.sfxAudioSource.PlayOneShot(blinkSound);
 
         // 본체 비활성화
         // PlayerMovement 스크립트 비활성화
