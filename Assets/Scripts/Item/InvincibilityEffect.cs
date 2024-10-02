@@ -6,12 +6,12 @@ public class InvincibilityEffect : ItemEffect
 {
     private Coroutine colorChangeCoroutine;  // 색상 변경 코루틴을 저장할 변수
 
-    public InvincibilityEffect(float duration, GameObject target) : base(duration, target) { }
-
     public override void ApplyEffect()
     {
         // 무적 적용
         Debug.Log("무적 아이템 효과 적용");
+        AudioManager.instance.sfxAudioSource.PlayOneShot(audioClip); // 아이템 효과음 재생
+
         PlayerStat.Instance.StartInvincibility(_duration);  // 무적 상태 시작
         colorChangeCoroutine = target.GetComponent<MonoBehaviour>().StartCoroutine(ChangeColor());
     }

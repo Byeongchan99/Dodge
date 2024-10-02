@@ -5,11 +5,12 @@ using UnityEngine;
 public class EMPBombEffect : ItemEffect
 {
     private BaseEffect EMPEffect;
-    public EMPBombEffect(float duration, GameObject target) : base(duration, target) { }
-
+    
     public override void ApplyEffect()
     {
         Debug.Log("EMP 아이템 효과 적용");
+        AudioManager.instance.sfxAudioSource.PlayOneShot(audioClip); // 아이템 효과음 재생
+
         // 플레이어 현재 위치에 EMP 효과 생성
         EMPEffect = EffectPoolManager.Instance.Get("EMPEffect");
         EMPEffect.transform.position = PlayerStat.Instance.currentPosition.position;

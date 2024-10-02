@@ -16,6 +16,9 @@ public class BaseItem : MonoBehaviour
     /// <summary> Fade Effect 참조 </summary>
     private FadeEffect fadeEffect;
 
+    /// <summary> 아이템 효과음 </summary>
+    public AudioClip itemEffectAudioClip;
+
     /// <summary> 아이템이 필드에 남아있는 시간 </summary>
     [SerializeField] protected float _itemRemainTime = 20f;
 
@@ -29,6 +32,7 @@ public class BaseItem : MonoBehaviour
     {
         fadeEffect = GetComponent<FadeEffect>();
         boxCollider2D = GetComponent<BoxCollider2D>();
+        itemEffect = GetComponent<ItemEffect>();
     }
 
     private void OnEnable()

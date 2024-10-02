@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 431481545860101457}
   - component: {fileID: 7746402405031972485}
   - component: {fileID: 2940278808127359782}
+  - component: {fileID: -4632068952641636936}
   - component: {fileID: 677041840497030071}
   m_Layer: 0
   m_Name: InvincibilityItem
@@ -111,9 +112,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc1c61ba944cd434cbb0ff1de01a5409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemEffectAudioClip: {fileID: 0}
   _itemRemainTime: 20
   enableAudioClip: {fileID: 8300000, guid: 2c5292ba5cf254919a6b9e2b18e04f49, type: 3}
   disableAudioClip: {fileID: 8300000, guid: 7bd6b897eb5ca4b7d88a205c4a51640c, type: 3}
+--- !u!114 &-4632068952641636936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051273515248385614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38475d53bfd15d04297ec721f779f20c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 5
+  target: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: 2667a0a008b044e218b63df62e2be749, type: 3}
 --- !u!61 &677041840497030071
 BoxCollider2D:
   m_ObjectHideFlags: 0

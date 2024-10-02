@@ -7,9 +7,8 @@ public class MoveSpeedUpEffect : ItemEffect
     private float _moveSpeedIncrease;
     private GhostEffect ghostEffect;  // 잔상 효과
 
-    public MoveSpeedUpEffect(float duration, GameObject target, float moveSpeedIncrease) : base(duration, target)
+    private void Awake()
     {
-        this._moveSpeedIncrease = moveSpeedIncrease;
         // Target 오브젝트에서 GhostEffect 컴포넌트를 가져옴
         this.ghostEffect = target.GetComponent<GhostEffect>();
     }
@@ -18,6 +17,8 @@ public class MoveSpeedUpEffect : ItemEffect
     {
         // 이동 속도를 증가시킴
         Debug.Log("이동 속도 증가 아이템 효과 적용" + _moveSpeedIncrease);
+        AudioManager.instance.sfxAudioSource.PlayOneShot(audioClip); // 아이템 효과음 재생
+
         PlayerStat.Instance.currentMoveSpeed *= _moveSpeedIncrease; // 속도 증가
         ghostEffect.moveSpeedUpItemCount++;
         ghostEffect.isMakeGhost = true;  // 잔상 생성 시작

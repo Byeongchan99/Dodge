@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1996275191113248638}
   - component: {fileID: 8825686493837094418}
   - component: {fileID: -6887621887101918588}
+  - component: {fileID: 7160654886477884166}
   - component: {fileID: 7879701628962734376}
   m_Layer: 0
   m_Name: GetScoreItem
@@ -111,9 +112,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c0983ef62d1c4c42b6d64b8c79b4b0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemEffectAudioClip: {fileID: 0}
   _itemRemainTime: 20
   enableAudioClip: {fileID: 8300000, guid: 2c5292ba5cf254919a6b9e2b18e04f49, type: 3}
   disableAudioClip: {fileID: 8300000, guid: 7bd6b897eb5ca4b7d88a205c4a51640c, type: 3}
+--- !u!114 &7160654886477884166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8538647137338726605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 049c7daf2adcb654b994552f2810f555, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 5
+  target: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: 0c008ee3ee72a4362a35be25fa5de043, type: 3}
 --- !u!61 &7879701628962734376
 BoxCollider2D:
   m_ObjectHideFlags: 0

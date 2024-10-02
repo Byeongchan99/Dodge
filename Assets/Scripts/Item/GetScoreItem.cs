@@ -7,6 +7,5 @@ public class GetScoreItem : BaseItem
     protected override void InitItem()
     {
         base.InitItem();
-        itemEffect = new GetScoreEffect(0f, PlayerStat.Instance.gameObject);
     }
 }

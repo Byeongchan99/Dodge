@@ -2,15 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ItemEffect
+public abstract class ItemEffect : MonoBehaviour
 {
-    protected float _duration; // 효과 적용 시간
-    protected GameObject target;
+    [SerializeField] protected float _duration; // 효과 적용 시간
+    [SerializeField] protected GameObject target;
 
-    public ItemEffect(float duration, GameObject target)
+    public AudioClip audioClip; // 아이템 효과음
+
+    protected void Awake()
     {
-        this._duration = duration;
-        this.target = target;
+        target = PlayerStat.Instance.gameObject;
     }
 
     public float GetDuration()

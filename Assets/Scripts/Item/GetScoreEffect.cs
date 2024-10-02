@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class GetScoreEffect : ItemEffect
 {
-    public GetScoreEffect(float duration, GameObject target) : base(duration, target) { }
-
     public override void ApplyEffect()
     {
         Debug.Log("점수 획득 아이템 효과 적용");
+        AudioManager.instance.sfxAudioSource.PlayOneShot(audioClip); // 아이템 효과음 재생
+
         ScoreManager.Instance.AddScore(10f); // 점수 획득
     }
 
