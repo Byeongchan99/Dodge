@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8a42105706cd4e42b77034e8fef2f0b, type: 3}
   m_Name: UserData 1
   m_EditorClassIdentifier: 
-  playerID: YSLVCc1jxFUOXsH54JjHUT0UUEWs
+  playerID: Wp2d0g9EFgagf4yqIwb78UJ20pG0
   stageInfos:
   - isCleared: 1
-    score: 125
+    score: 181
   - isCleared: 1
-    score: 154
+    score: 98
   - isCleared: 1
-    score: 143
+    score: 67
   - isCleared: 1
-    score: 302
+    score: 0
   - isCleared: 1
-    score: 183
+    score: 116
