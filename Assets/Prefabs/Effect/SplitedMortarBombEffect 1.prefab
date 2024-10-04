@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 869dde02006e11b4c93dfaec3ab3e679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AudioClip: {fileID: 8300000, guid: cabfae866cab347928b74b7d0ca6bfa9, type: 3}
 --- !u!60 &701291764532958565
 PolygonCollider2D:
   m_ObjectHideFlags: 0

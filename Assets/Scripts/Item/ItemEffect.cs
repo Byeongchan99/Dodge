@@ -9,7 +9,7 @@ public abstract class ItemEffect : MonoBehaviour
 
     public AudioClip audioClip; // 아이템 효과음
 
-    protected void Awake()
+    protected virtual void Awake()
     {
         target = PlayerStat.Instance.gameObject;
     }

@@ -7,8 +7,9 @@ public class MoveSpeedUpEffect : ItemEffect
     private float _moveSpeedIncrease;
     private GhostEffect ghostEffect;  // 잔상 효과
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         // Target 오브젝트에서 GhostEffect 컴포넌트를 가져옴
         this.ghostEffect = target.GetComponent<GhostEffect>();
     }
