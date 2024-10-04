@@ -6,7 +6,7 @@ public class MortarBombEffect : BaseEffect
 {
     PolygonCollider2D effectCollider;
     protected float _delayTime;
-    public AudioClip AudioClip; // 폭발음
+    //public AudioClip AudioClip; // 폭발음
 
     private void Awake()
     {
@@ -27,7 +27,7 @@ public class MortarBombEffect : BaseEffect
     {
         yield return new WaitForSeconds(_delayTime);  // 포탄이 터질 때까지 대기
         effectCollider.enabled = true;
-        AudioManager.instance.sfxAudioSource.PlayOneShot(AudioClip);
+        //AudioManager.instance.sfxAudioSource.PlayOneShot(AudioClip);
         yield return new WaitForSeconds(0.1f); // 콜라이더 활성화 후 0.1초 대기
         effectCollider.enabled = false;
         DestroyEffect();

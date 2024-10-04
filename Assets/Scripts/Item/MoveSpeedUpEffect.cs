@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MoveSpeedUpEffect : ItemEffect
 {
-    private float _moveSpeedIncrease;
+    [SerializeField] private float _moveSpeedIncrease;
     private GhostEffect ghostEffect;  // ÀÜ»ó È¿°ú
 
     protected override void Awake()
