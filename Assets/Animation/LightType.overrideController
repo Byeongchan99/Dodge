@@ -9,5 +9,7 @@ AnimatorOverrideController:
   m_Name: LightType
   m_Controller: {fileID: 9100000, guid: 08d3084e416682a40b8a358e29e46681, type: 2}
   m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: c02c0cde29b6327438ac259dff9872dd, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: cd8480bd3f4337443993f73315dcfa81, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: 3afe013d78c8e0c49a4c1e6e8d7495aa, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: 92f576d88a68fe046ac18efc9b399569, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 651b0607705c655458272edcf786d593, type: 2}

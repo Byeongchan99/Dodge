@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     Rigidbody2D rb;
+    Animator animator;
     SpriteRenderer spriteRenderer;
 
     private Vector2 _inputVec;
@@ -19,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -47,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
     {
         // velocity를 이용한 이동
         rb.velocity = InputVec.normalized * PlayerStat.Instance.currentMoveSpeed * Time.fixedDeltaTime;
+        animator.SetFloat("Speed", rb.velocity.magnitude);
     }
 
     // 플레이어 속도 변경
