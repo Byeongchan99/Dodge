@@ -194,9 +194,24 @@ public class PlayerStat : MonoBehaviour
         Debug.Log("캐릭터 변경: " + currentCharacterData.characterType);
         if (characterList[currentCharacterData.characterTypeIndex] != null)
         {
+            // 스프라이트 변경
             spriteRenderer.sprite = currentCharacterData.characterSprite;
             abilityCooldownUI.abilityIcon.sprite = currentCharacterData.abilityIconSprite; // 어빌리티 아이콘 설정
             animator.runtimeAnimatorController = currentCharacterData.animatorController; // 애니메이터 컨트롤러 설정
+
+            // 콜라이더 변경
+            CapsuleCollider2D collider = GetComponent<CapsuleCollider2D>();
+            if (collider != null)
+            {
+                collider.size = currentCharacterData.colliderSize;
+                collider.offset = currentCharacterData.colliderOffset;
+            }
+
+            // 왕관 위치 변경
+            if (crown != null)
+            {
+                crown.transform.localPosition = currentCharacterData.crownPosition;
+            }
 
             // 플레이어 타입에 따른 체력과 어빌리티 설정
             if (currentCharacterData.characterTypeIndex == 0) // 라이트 타입
