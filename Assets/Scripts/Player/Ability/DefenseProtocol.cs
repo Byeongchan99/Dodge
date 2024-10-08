@@ -7,13 +7,23 @@ public class DefenseProtocol : MonoBehaviour, IPlayerAbility
     public AudioClip defenseProtocolSound; // 방어 프로토콜 효과음
 
     [SerializeField] private float _defenseProtocolDuration = 2f; // 방어 프로토콜 지속 시간
-    [SerializeField] private float _cooldownTime = 5f; // 쿨타임 5초                                              
+    [SerializeField] private float _cooldownTime = 5f; // 쿨타임 5초                                               
     public float CooldownTime // 쿨타임 프로퍼티
     {
         get { return _cooldownTime; }
     }
     private float _nextAbilityTime = 0f; // 다음 능력 사용 가능 시간
     private bool _isDefense = false;
+
+    PlayerMovement playerMovement;
+    Animator animator;
+
+
+    private void Awake()
+    {
+        playerMovement = GetComponent<PlayerMovement>();
+        animator = GetComponent<Animator>();
+    }
 
     public void Execute()
     {
@@ -32,9 +42,6 @@ public class DefenseProtocol : MonoBehaviour, IPlayerAbility
         AudioManager.instance.sfxAudioSource.PlayOneShot(defenseProtocolSound);
 
         // 움직임 멈춤
-        // PlayerMovement 스크립트 비활성화 및 Rigidbody2D 참조
-        PlayerMovement playerMovement = GetComponent<PlayerMovement>();
-        
         if (playerMovement != null)
         {
             playerMovement.ChangeVelocity(Vector2.zero); // 플레이어 멈추기
@@ -46,21 +53,14 @@ public class DefenseProtocol : MonoBehaviour, IPlayerAbility
         // 무적 효과 활성화
         PlayerStat.Instance.StartInvincibility(_defenseProtocolDuration + 0.1f);
 
-        // 플레이어의 스프라이트를 노란색으로 변경
-        SpriteRenderer playerSprite = GetComponent<SpriteRenderer>();
-        if (playerSprite != null)
-        {
-            playerSprite.color = Color.yellow;
-        }
+        // 방어 프로토콜 애니메이션 실행
+        animator.SetBool("IsAbility", true);
 
         yield return new WaitForSecondsRealtime(_defenseProtocolDuration);
 
         // 방어 프로토콜 비활성화
-        // 플레이어의 스프라이트를 원래 색으로 변경
-        if (playerSprite != null)
-        {
-            playerSprite.color = Color.white; // 원래 색상으로 되돌림
-        }
+        // 방어 프로토콜 애니메이션 중지
+        animator.SetBool("IsAbility", false);
 
         // 움직임 재개
         // PlayerMovement 스크립트 활성화

@@ -61,6 +61,7 @@ public class PlayerMovement : MonoBehaviour
     // 플레이어 위치 고정
     public void FreezePosition()
     {
+        rb.velocity = Vector2.zero;
         rb.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
     }
 
