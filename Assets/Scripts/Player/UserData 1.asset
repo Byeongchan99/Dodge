@@ -17,10 +17,10 @@ MonoBehaviour:
   - isCleared: 1
     score: 181
   - isCleared: 1
+    score: 0
+  - isCleared: 1
+    score: 132
+  - isCleared: 1
     score: 10
-  - isCleared: 1
-    score: 67
-  - isCleared: 1
-    score: 8
   - isCleared: 1
     score: 116

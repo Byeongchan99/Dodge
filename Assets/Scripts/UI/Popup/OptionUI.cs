@@ -12,6 +12,11 @@ public class OptionUI : MonoBehaviour
     public Button bgmMuteButton;
     public Button sfxMuteButton;
 
+    public Sprite bgmMuteSprite;
+    public Sprite bgmUnmuteSprite;
+    public Sprite sfxMuteSprite;
+    public Sprite sfxUnmuteSprite;
+
     private bool isBGMMuted = false;
     private bool isSFXMuted = false;
 
@@ -122,11 +127,25 @@ public class OptionUI : MonoBehaviour
 
     private void UpdateBGMMuteButton()
     {
-        bgmMuteButton.GetComponentInChildren<Text>().text = isBGMMuted ? "Unmute" : "Mute";
+        if (isBGMMuted)
+        {
+            bgmMuteButton.image.sprite = bgmMuteSprite;
+        }
+        else
+        {
+            bgmMuteButton.image.sprite = bgmUnmuteSprite;
+        }
     }
 
     private void UpdateSFXMuteButton()
     {
-        sfxMuteButton.GetComponentInChildren<Text>().text = isSFXMuted ? "Unmute" : "Mute";
+        if (isSFXMuted)
+        {
+            sfxMuteButton.image.sprite = sfxMuteSprite;
+        }
+        else
+        {
+            sfxMuteButton.image.sprite = sfxUnmuteSprite;
+        }
     }
 }
