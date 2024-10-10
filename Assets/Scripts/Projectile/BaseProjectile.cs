@@ -67,7 +67,7 @@ public class BaseProjectile : MonoBehaviour
     /// <summary> 충돌 검사 </summary>
     protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
-        // 플레이어와 충돌했을 때
+        // 플레이어의 서있는 영역과 충돌했을 때
         if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("플레이어와 충돌");
@@ -77,6 +77,13 @@ public class BaseProjectile : MonoBehaviour
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
+        // 플레이어와 충돌했을 때
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("플레이어와 충돌");
+            DestroyProjectile();
+        }
+
         // EMP와 충돌했을 때
         if (collision.gameObject.CompareTag("EMP"))
         {

@@ -6,7 +6,7 @@ public class Eraser : MonoBehaviour
 {
     public void EraseAll()
     {
-        // 모든 터렛 제거 (풀 반환)
+        // 모든 터렛 제거(풀 반환)
         GameObject[] turrets = GameObject.FindGameObjectsWithTag("Turret");
         foreach (GameObject turret in turrets)
         {
@@ -21,22 +21,25 @@ public class Eraser : MonoBehaviour
             }
         }
 
-        // 모든 발사체 제거 (풀 반환)
-        GameObject[] projectiles = GameObject.FindGameObjectsWithTag("Projectile");
+        // 모든 발사체 제거(풀 반환) - 발사체의 경우 레이어로 검색(박격포탄의 경우 태그가 없음)
+        GameObject[] projectiles = FindObjectsOfType<GameObject>();
         foreach (GameObject projectile in projectiles)
         {
-            BaseProjectile baseProjectile = projectile.GetComponent<BaseProjectile>();
-            if (baseProjectile != null)
+            if (projectile.layer == LayerMask.NameToLayer("Projectile"))
             {
-                baseProjectile.DestroyProjectile(); // 투사체 비활성화 및 풀 반환 로직
-            }
-            else
-            {
-                Destroy(projectile);
+                BaseProjectile baseProjectile = projectile.GetComponent<BaseProjectile>();
+                if (baseProjectile != null)
+                {
+                    baseProjectile.DestroyProjectile(); // 투사체 비활성화 및 풀 반환 로직
+                }
+                else
+                {
+                    Destroy(projectile);
+                }
             }
         }
 
-        // 모든 아이템 제거 (풀 반환)
+        // 모든 아이템 제거(풀 반환)
         GameObject[] items = GameObject.FindGameObjectsWithTag("Item");
         foreach (GameObject item in items)
         {
@@ -67,7 +70,7 @@ public class Eraser : MonoBehaviour
         }
         */
 
-        // 모든 위험 범위 이펙트 제거 (풀 반환)
+        // 모든 위험 범위 이펙트 제거(풀 반환)
         GameObject[] effects = GameObject.FindGameObjectsWithTag("Effect");
         foreach (GameObject effect in effects)
         {

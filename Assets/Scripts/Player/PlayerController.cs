@@ -26,8 +26,15 @@ public class PlayerController : MonoBehaviour
         {
             // 아이템 획득 처리
         }
+
+        // 투사체 충돌 감지
+        if (collision.gameObject.CompareTag("Projectile"))
+        {
+            PlayerStat.Instance.TakeDamage();
+        }
     }
 
+    /*
     void OnCollisionEnter2D(Collision2D collision)
     {
         // 투사체 충돌 감지
@@ -36,4 +43,5 @@ public class PlayerController : MonoBehaviour
             PlayerStat.Instance.TakeDamage();
         }
     }
+    */
 }

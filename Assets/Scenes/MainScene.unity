@@ -15304,7 +15304,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1632497226}
   - component: {fileID: 1632497227}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: StandArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15358,7 +15358,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.000054493546, y: 0.24800032}
+  m_Offset: {x: -0.000054493546, y: 0.2839756}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -15369,7 +15369,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.37368098, y: 0.25194967}
+  m_Size: {x: 0.37368098, y: 0.17999911}
   m_EdgeRadius: 0
 --- !u!1 &1639219371
 GameObject:
