@@ -19,6 +19,7 @@ public class Rocket : BaseProjectile
     /// <summary> 로켓 스탯 가져오기 </summary>
     protected override void OnEnable()
     {
+        isDestroyed = false;
         _speed = StatDataManager.Instance.currentStatData.projectileDatas[2].projectileSpeed;
         _lifeTime = StatDataManager.Instance.currentStatData.projectileDatas[2].projectileLifeTime;
 
@@ -56,6 +57,7 @@ public class Rocket : BaseProjectile
 
     IEnumerator StartDestroyProjectile(float delay)
     {
+        Debug.Log("LifeTime Over - test");
         fadeEffect.StartFadeOut(0.2f, 0f);
         yield return new WaitForSeconds(delay);
         DestroyProjectile();

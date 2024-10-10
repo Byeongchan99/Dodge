@@ -12,6 +12,7 @@ public class BaseProjectile : MonoBehaviour
     [SerializeField] protected float _speed;
     [SerializeField] protected float _lifeTime;
     protected Vector2 moveDirection;
+    protected bool isDestroyed = false;
 
     /****************************************************************************
                                    Unity Callbacks
@@ -24,6 +25,7 @@ public class BaseProjectile : MonoBehaviour
 
     protected virtual void OnEnable()
     {
+        isDestroyed = false;
         // 투사체 스탯 가져오고 _lifeTime 동안 유지
         // _speed = StatDataManager.Instance.currentStatData.projectileDatas[0].projectileSpeed;
         // _lifeTime = StatDataManager.Instance.currentStatData.projectileDatas[0].projectileLifeTime;
@@ -44,6 +46,7 @@ public class BaseProjectile : MonoBehaviour
         // 원점으로부터 20 이상 떨어지면 삭제
         if (transform.position.magnitude > 30.0f)
         {
+            Debug.Log("맵 범위 벗어남");
             DestroyProjectile();
         }
     }
@@ -70,24 +73,26 @@ public class BaseProjectile : MonoBehaviour
         // 플레이어의 서있는 영역과 충돌했을 때
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("플레이어와 충돌");
+            Debug.Log("플레이어와 충돌 - test");
             DestroyProjectile();
         }
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
+        if (isDestroyed) return;  // 이미 파괴된 상태면 무시
+
         // 플레이어와 충돌했을 때
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("플레이어와 충돌");
+            Debug.Log("플레이어와 충돌 - test");
             DestroyProjectile();
         }
 
         // EMP와 충돌했을 때
         if (collision.gameObject.CompareTag("EMP"))
         {
-            Debug.Log("EMP와 충돌");
+            Debug.Log("EMP와 충돌 - test");
             DestroyProjectile();
         }
     }
@@ -106,7 +111,9 @@ public class BaseProjectile : MonoBehaviour
     /// <summary> 발사체 파괴 </summary>
     public void DestroyProjectile()
     {
-        //Debug.Log("투사체 풀에 반환");
+        if (isDestroyed) return;  // 이미 파괴된 상태면 무시
+        isDestroyed = true;
+        Debug.Log("투사체 풀에 반환 - test");
         ProjectilePoolManager.Instance.Return(this.GetType().Name, this);
         StopAllCoroutines();
     }
