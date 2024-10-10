@@ -7,6 +7,8 @@ public class Blink : MonoBehaviour, IPlayerAbility
     public GameObject playerClonePrefab; // 분신 프리팹
     public AudioClip blinkSound; // 블링크 효과음
     private GameObject playerClone; // 게임에 생성된 분신 객체
+    private PlayerMovement playerMovement; // 플레이어 이동 스크립트
+    private SpriteRenderer cloneSpriteRenderer; // 분신의 스프라이트 렌더러
 
     [SerializeField] private float _blinkMoveSpeed = 5.0f; // 블링크 지속 시간 동안 이동 속도
     [SerializeField] private float _blinkDuration = 0.5f; // 점멸 지속 시간
@@ -17,6 +19,11 @@ public class Blink : MonoBehaviour, IPlayerAbility
     }
     private float _nextAbilityTime = 0f; // 다음 능력 사용 가능 시간
     private bool _isBlinking = false;
+
+    private void Awake()
+    {
+        playerMovement = GetComponent<PlayerMovement>();
+    }
 
     public void Execute()
     {
@@ -39,7 +46,6 @@ public class Blink : MonoBehaviour, IPlayerAbility
 
         // 본체 비활성화
         // PlayerMovement 스크립트 비활성화
-        PlayerMovement playerMovement = GetComponent<PlayerMovement>();
         if (playerMovement != null)
         {
             playerMovement.ChangeVelocity(Vector2.zero); // 플레이어 멈추기
@@ -69,6 +75,17 @@ public class Blink : MonoBehaviour, IPlayerAbility
             float horizontal = Input.GetAxisRaw("Horizontal") * _blinkMoveSpeed * Time.unscaledDeltaTime;
             float vertical = Input.GetAxisRaw("Vertical") * _blinkMoveSpeed * Time.unscaledDeltaTime;
             Vector3 moveDirection = new Vector3(horizontal, vertical, 0);
+
+            if (cloneSpriteRenderer == null)
+            {
+                cloneSpriteRenderer = playerClone.GetComponent<SpriteRenderer>();
+            }
+
+            if (moveDirection.x != 0)
+            {
+                cloneSpriteRenderer.flipX = moveDirection.x < 0;
+            }
+
             nextPosition += moveDirection;
 
             // 분신 위치 업데이트

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a98aabc5772a91446aad630487e64b5e
+guid: b4cbe01766cf0e740a0f83abc43df2e6
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 128
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -136,7 +136,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: AbilitySkillIcon_0
+      name: ItemAbilityIcon 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -150,14 +150,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 754e8df7f9acce44987d155d8e1f4e47
-      internalID: -23929631
+      spriteID: f891369e29c13694e832c24498f48fa3
+      internalID: -101428482
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_1
+      name: ItemAbilityIcon 1_1
       rect:
         serializedVersion: 2
         x: 320
@@ -171,14 +171,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 134db19efc940a943a76c06f1efae713
-      internalID: -555391884
+      spriteID: 9ea04a688de98914bb29435d1c5ca000
+      internalID: 1015309611
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_2
+      name: ItemAbilityIcon 1_2
       rect:
         serializedVersion: 2
         x: 640
@@ -192,14 +192,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 67fa0b35e5042ee459fc89507de3ff2a
-      internalID: -2017092506
+      spriteID: 3f0fdd5c024e8ad4e930441bba3dd903
+      internalID: 327912634
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_3
+      name: ItemAbilityIcon 1_3
       rect:
         serializedVersion: 2
         x: 960
@@ -213,14 +213,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9eadf69eab2b39047a046d7d0a4d9b43
-      internalID: -1711139436
+      spriteID: 9640bda6c5b00ac489c610c9bb632bfc
+      internalID: -40801742
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_4
+      name: ItemAbilityIcon 1_4
       rect:
         serializedVersion: 2
         x: 1280
@@ -234,14 +234,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c5ed9ae506f53804cbe11c9439f70547
-      internalID: 1971246067
+      spriteID: 871c99586f26443469f1aee2430b1989
+      internalID: 31743924
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_5
+      name: ItemAbilityIcon 1_5
       rect:
         serializedVersion: 2
         x: 1600
@@ -255,14 +255,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 632c9619fe124174f9a08e967c5dee5b
-      internalID: -531845155
+      spriteID: d231dbe2787fb2c4393c78006a6576dc
+      internalID: 1334806023
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_6
+      name: ItemAbilityIcon 1_6
       rect:
         serializedVersion: 2
         x: 1920
@@ -276,14 +276,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b0d8bdebff6e14943915f4a53a28710a
-      internalID: -1052984476
+      spriteID: 9639f8d7cad68cd43b47031f63d0b1c7
+      internalID: -1738073048
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_7
+      name: ItemAbilityIcon 1_7
       rect:
         serializedVersion: 2
         x: 2240
@@ -297,14 +297,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a261c78848666ba4786f6cb3f59a0dc1
-      internalID: 702222346
+      spriteID: d9224180ce1761043af007ffa21aedc2
+      internalID: -272686816
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_8
+      name: ItemAbilityIcon 1_8
       rect:
         serializedVersion: 2
         x: 2560
@@ -318,14 +318,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 687d10e52fe80654789417bce2996660
-      internalID: 2107074209
+      spriteID: 1b430bffc3a217842be1a7847bb6ae17
+      internalID: -1185164988
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_9
+      name: ItemAbilityIcon 1_9
       rect:
         serializedVersion: 2
         x: 2880
@@ -339,14 +339,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 87112e5097c16ba4b93f320dc6785962
-      internalID: 214981650
+      spriteID: b7241626d62cce9449ad4c8a4888ec4f
+      internalID: 280002978
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_10
+      name: ItemAbilityIcon 1_10
       rect:
         serializedVersion: 2
         x: 3200
@@ -360,14 +360,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2db6c4b6690ab2b42b90eca05228d574
-      internalID: -596480893
+      spriteID: c5d97a163cc54404496f585d29fb0b71
+      internalID: 57936729
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_11
+      name: ItemAbilityIcon 1_11
       rect:
         serializedVersion: 2
         x: 0
@@ -381,14 +381,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3d4c98a7e544e79448b4c301f3e77172
-      internalID: -1116553822
+      spriteID: 655bcc73a9e898346ad6e725892d3d28
+      internalID: -1740852302
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_12
+      name: ItemAbilityIcon 1_12
       rect:
         serializedVersion: 2
         x: 320
@@ -402,14 +402,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 223674471c698a749808102da99a598c
-      internalID: 1664583460
+      spriteID: 2453329130710e64a96d331984b3a4c8
+      internalID: -2065491493
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_13
+      name: ItemAbilityIcon 1_13
       rect:
         serializedVersion: 2
         x: 640
@@ -423,14 +423,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 394cf283b0b168f4ea321719280895c1
-      internalID: 1585931384
+      spriteID: 8669d45a5c39f8948bd2a97a826b8c86
+      internalID: 2048962421
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_14
+      name: ItemAbilityIcon 1_14
       rect:
         serializedVersion: 2
         x: 960
@@ -444,14 +444,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 74e6917c08a476d44a3c218e7e81ae07
-      internalID: -434962728
+      spriteID: 475814749b3f102489fb8380887753c6
+      internalID: 1214237221
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_15
+      name: ItemAbilityIcon 1_15
       rect:
         serializedVersion: 2
         x: 1280
@@ -465,14 +465,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 68fd246454e7bfd4bbc57b22158129af
-      internalID: -1833190411
+      spriteID: 49ec5c29ddb2de248b2d8b85bf851eb9
+      internalID: -1317816862
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_16
+      name: ItemAbilityIcon 1_16
       rect:
         serializedVersion: 2
         x: 1600
@@ -486,14 +486,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 087124a9ba5610a49b0469f9abc4578a
-      internalID: 885537956
+      spriteID: d35282fba652e87439cf9a2519d7e2fd
+      internalID: 176347877
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_17
+      name: ItemAbilityIcon 1_17
       rect:
         serializedVersion: 2
         x: 1920
@@ -507,14 +507,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 548771e22362f2b4fb37887bd5b16cc2
-      internalID: 585953493
+      spriteID: cb641bd96e3cb0848bfbd83d1dd5e4db
+      internalID: 1962029763
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_18
+      name: ItemAbilityIcon 1_18
       rect:
         serializedVersion: 2
         x: 2240
@@ -528,14 +528,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f6db537082375ca4fae1a334e1478e30
-      internalID: -1228545730
+      spriteID: fced4b96a5508524dadc0281521a1e80
+      internalID: 1536751789
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_19
+      name: ItemAbilityIcon 1_19
       rect:
         serializedVersion: 2
         x: 2560
@@ -549,14 +549,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e9a422bd9417b694f912ece577797a9d
-      internalID: -1443965157
+      spriteID: 2f1f900be97ed26498d3204a9e44ce81
+      internalID: -537029248
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_20
+      name: ItemAbilityIcon 1_20
       rect:
         serializedVersion: 2
         x: 2880
@@ -570,14 +570,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba03f7e0b54d9944d82fc8a9c5719542
-      internalID: -2063839351
+      spriteID: 6aa67bbcfcd054048a759001b4997ceb
+      internalID: -1772591478
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_21
+      name: ItemAbilityIcon 1_21
       rect:
         serializedVersion: 2
         x: 3200
@@ -591,14 +591,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fe7fcafb4454a4741a737aab85c591d5
-      internalID: -1143816310
+      spriteID: 94ccd8b6a9bf81d4ca850ff85936a65f
+      internalID: -129289834
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_22
+      name: ItemAbilityIcon 1_22
       rect:
         serializedVersion: 2
         x: 0
@@ -612,14 +612,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c7b52ed772e008f4f8447073e5cf1fb1
-      internalID: 1434033854
+      spriteID: ee8a1096491278a4db5a6ef8fbc6ce78
+      internalID: 486882500
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_23
+      name: ItemAbilityIcon 1_23
       rect:
         serializedVersion: 2
         x: 320
@@ -633,14 +633,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 59e4153f8434a0847a8192c212025f25
-      internalID: 932102939
+      spriteID: 4e626f028e56f424cb40fb735884aea1
+      internalID: 1860528821
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_24
+      name: ItemAbilityIcon 1_24
       rect:
         serializedVersion: 2
         x: 640
@@ -654,14 +654,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8abaf193ee6560a45880660955654af5
-      internalID: 1762394746
+      spriteID: 0c5688c0b0f75da43968eb512adf22e7
+      internalID: -940152306
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_25
+      name: ItemAbilityIcon 1_25
       rect:
         serializedVersion: 2
         x: 960
@@ -675,14 +675,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3fdb34e6bb457fc45895bccb0cfe0756
-      internalID: 568545509
+      spriteID: b4dfed44972ed2d488fb68c45ca4c8e1
+      internalID: 373195387
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_26
+      name: ItemAbilityIcon 1_26
       rect:
         serializedVersion: 2
         x: 1280
@@ -696,14 +696,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f472e02c1c88c634ca0f7933f712d223
-      internalID: 481861889
+      spriteID: be92b3cc2343df34ea434c931a614c45
+      internalID: -576991862
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_27
+      name: ItemAbilityIcon 1_27
       rect:
         serializedVersion: 2
         x: 1600
@@ -717,14 +717,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e65710153353f9247a3e572cfb3bb131
-      internalID: 1304172849
+      spriteID: 1d192a55fc122754cab897a381c67563
+      internalID: -872279210
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_28
+      name: ItemAbilityIcon 1_28
       rect:
         serializedVersion: 2
         x: 1920
@@ -738,14 +738,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e3df8cf194d51574d96318dc33aa2acd
-      internalID: -561213803
+      spriteID: 3ea0b32626a08c94fa3b236451b32724
+      internalID: -826754141
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_29
+      name: ItemAbilityIcon 1_29
       rect:
         serializedVersion: 2
         x: 2240
@@ -759,14 +759,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1cb82acba64bd9744a84442fc4570c83
-      internalID: -439501153
+      spriteID: 373c4b2bd8ec2694db05400e9ea8527f
+      internalID: 1356206730
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_30
+      name: ItemAbilityIcon 1_30
       rect:
         serializedVersion: 2
         x: 2560
@@ -780,14 +780,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 463fb4e6c909f1849a4432d1993dffc7
-      internalID: 228466516
+      spriteID: 4426e253c2cc1514ea7f6f9e02e3e1ac
+      internalID: 407800318
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_31
+      name: ItemAbilityIcon 1_31
       rect:
         serializedVersion: 2
         x: 2880
@@ -801,14 +801,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6e7540cc797e3d3409108655d71e2460
-      internalID: 950241676
+      spriteID: 35f447dcd265e3543952e52f0e513ccf
+      internalID: -1601101011
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_32
+      name: ItemAbilityIcon 1_32
       rect:
         serializedVersion: 2
         x: 3200
@@ -822,14 +822,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 75b1ec1c4b98c7d4bb7df038339b31b7
-      internalID: -58104069
+      spriteID: 14522daa01737a54cbed6ae8cd4cc33f
+      internalID: 1723443485
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_33
+      name: ItemAbilityIcon 1_33
       rect:
         serializedVersion: 2
         x: 0
@@ -843,14 +843,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 15c1c8dcc4243314695308ea51e84e74
-      internalID: 1541925786
+      spriteID: 882e838b90e34b94b9891332bfb43523
+      internalID: -1380182267
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_34
+      name: ItemAbilityIcon 1_34
       rect:
         serializedVersion: 2
         x: 320
@@ -864,14 +864,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7e96819d90aa10e48aeb8a4a27f19756
-      internalID: -1273583672
+      spriteID: 4d156f3a0c7ad7745bfb4652420e33f1
+      internalID: -130647255
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_35
+      name: ItemAbilityIcon 1_35
       rect:
         serializedVersion: 2
         x: 640
@@ -885,14 +885,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1d82a441a1be92e47b13f1b9d96ea6f3
-      internalID: -314593823
+      spriteID: 99f1f310287ff7e4d87d51c1c4a69e62
+      internalID: 1161855058
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_36
+      name: ItemAbilityIcon 1_36
       rect:
         serializedVersion: 2
         x: 960
@@ -906,14 +906,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e3eb03691dc480f489ee79133891bb99
-      internalID: -1109696652
+      spriteID: b7fcf83be92e2c54a800652a36d30f6b
+      internalID: 1381501336
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_37
+      name: ItemAbilityIcon 1_37
       rect:
         serializedVersion: 2
         x: 1280
@@ -927,14 +927,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c3d35bfc69b0c5040944b8a5316ea86c
-      internalID: -664868023
+      spriteID: 2240ab1e61c9dec4a81e21932bb391a6
+      internalID: 2080189708
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_38
+      name: ItemAbilityIcon 1_38
       rect:
         serializedVersion: 2
         x: 1600
@@ -948,14 +948,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2d3077f746bb1e744a4b745b0e17ad38
-      internalID: -750110134
+      spriteID: 0443adc9a974fe44ab976cbd02483a2a
+      internalID: 1599666088
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_39
+      name: ItemAbilityIcon 1_39
       rect:
         serializedVersion: 2
         x: 1920
@@ -969,14 +969,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a29cdf1780da1ee41a8a5316df1e7f58
-      internalID: -1889660198
+      spriteID: 26125278190a5514a9059326ff37d44b
+      internalID: 2143975822
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_40
+      name: ItemAbilityIcon 1_40
       rect:
         serializedVersion: 2
         x: 2240
@@ -990,14 +990,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8fd69670b057ddb43b85b3dbe18621d4
-      internalID: -1742529430
+      spriteID: 5d11d21a5145e05428719cfb9ac14ae0
+      internalID: -1000966953
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_41
+      name: ItemAbilityIcon 1_41
       rect:
         serializedVersion: 2
         x: 2560
@@ -1011,14 +1011,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 49e404e86fa164f4caf2c390e00ca210
-      internalID: -2102753248
+      spriteID: f0baf7381d51d9d47b5639944f8b880f
+      internalID: -1242981811
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_42
+      name: ItemAbilityIcon 1_42
       rect:
         serializedVersion: 2
         x: 2880
@@ -1032,14 +1032,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1c0104a8bbaba404f94177afd483f12b
-      internalID: 237640352
+      spriteID: b7c74f7f5f4fe5e429a44d3ca87cf7c3
+      internalID: -1628790374
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_43
+      name: ItemAbilityIcon 1_43
       rect:
         serializedVersion: 2
         x: 3200
@@ -1053,14 +1053,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ddf31aabdb0c84c49abb4d8f80d6b245
-      internalID: -1886085519
+      spriteID: af612fee4db6f0f42aba3ef56cc5cd17
+      internalID: 249132250
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_44
+      name: ItemAbilityIcon 1_44
       rect:
         serializedVersion: 2
         x: 0
@@ -1074,14 +1074,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 43e697989d6fa8c49b9f5b13db7b11c0
-      internalID: -996840611
+      spriteID: 2812995f189489a419501e81f949c0de
+      internalID: -699143831
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_45
+      name: ItemAbilityIcon 1_45
       rect:
         serializedVersion: 2
         x: 320
@@ -1095,14 +1095,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: be3739a1a01e8364d8441cc35ebd2d9d
-      internalID: -1104087591
+      spriteID: f0f48d0ac9ed32e4ca600012370847fb
+      internalID: -1318972544
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_46
+      name: ItemAbilityIcon 1_46
       rect:
         serializedVersion: 2
         x: 640
@@ -1116,14 +1116,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 133818c82cd276c4cb04539b4b52ac75
-      internalID: 949706487
+      spriteID: e99b1f4c16708364385b04f491949e88
+      internalID: -1351117119
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_47
+      name: ItemAbilityIcon 1_47
       rect:
         serializedVersion: 2
         x: 960
@@ -1137,14 +1137,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0114289f98c506f49969744bc7cc2576
-      internalID: 590338704
+      spriteID: f453ae35ab0242a4fbc01a406478f825
+      internalID: -114014636
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_48
+      name: ItemAbilityIcon 1_48
       rect:
         serializedVersion: 2
         x: 1280
@@ -1158,14 +1158,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: afa2eaf68b921ef4a8ac628d7e502493
-      internalID: -115934065
+      spriteID: 3dcc1902dc64b864babe59090355a887
+      internalID: -1347093259
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_49
+      name: ItemAbilityIcon 1_49
       rect:
         serializedVersion: 2
         x: 1600
@@ -1179,14 +1179,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3c8f7b826be408b4ba5df2238ec980e7
-      internalID: 1621009366
+      spriteID: 836b86639e2f14b45bfc706c2fc27560
+      internalID: -1597800102
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_50
+      name: ItemAbilityIcon 1_50
       rect:
         serializedVersion: 2
         x: 1920
@@ -1200,14 +1200,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d62605b5ace496c48a55c3e2450b67c8
-      internalID: 572132183
+      spriteID: 0ac23ae8b87187d44b879dd0a6871dc2
+      internalID: -188121035
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_51
+      name: ItemAbilityIcon 1_51
       rect:
         serializedVersion: 2
         x: 2240
@@ -1221,14 +1221,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 478f66ab37ad70d4ea08f96c26105d5e
-      internalID: -314972125
+      spriteID: b50623eb3af226546961dae1a1847485
+      internalID: -983015608
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_52
+      name: ItemAbilityIcon 1_52
       rect:
         serializedVersion: 2
         x: 2560
@@ -1242,14 +1242,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 80613a5537062eb4aa0f50dfc98d72cf
-      internalID: 2063158509
+      spriteID: e78d4291480d38643af0da4207a0724b
+      internalID: 1022271733
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_53
+      name: ItemAbilityIcon 1_53
       rect:
         serializedVersion: 2
         x: 2880
@@ -1263,14 +1263,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 270bb20bdc7b4ff45a05aa8f0f3b7d8a
-      internalID: 381376406
+      spriteID: 093e64fc6698076458e19cefe1268037
+      internalID: 1533591905
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_54
+      name: ItemAbilityIcon 1_54
       rect:
         serializedVersion: 2
         x: 3200
@@ -1284,20 +1284,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 09331a214d2f6404493e3382e6d79a0c
-      internalID: -1215609394
+      spriteID: a13752b3721495444b2a54466b5928c3
+      internalID: 351617847
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_55
+      name: ItemAbilityIcon 1_55
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 160
-        height: 160
+        x: 5
+        y: 5
+        width: 150
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1305,20 +1305,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0efa8c072d66b4f40a4c90a293790788
-      internalID: -461522789
+      spriteID: c65e1bac4a59e644aa996135aa837fe2
+      internalID: -2000994944
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_56
+      name: ItemAbilityIcon 1_56
       rect:
         serializedVersion: 2
-        x: 160
-        y: 0
-        width: 160
-        height: 160
+        x: 245
+        y: 5
+        width: 150
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1326,20 +1326,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3bed90db42560034ba683d5cc4d0dbe7
-      internalID: 1751415616
+      spriteID: 82506464a5e5a134aa17c52ca0fb2034
+      internalID: -1451278198
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbilitySkillIcon_57
+      name: ItemAbilityIcon 1_57
       rect:
         serializedVersion: 2
-        x: 320
-        y: 0
-        width: 160
-        height: 160
+        x: 485
+        y: 5
+        width: 150
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1347,8 +1347,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 786daf09e22d4f34cba9a67581cb0f0a
-      internalID: 1669791217
+      spriteID: cc3f3ae91b0611b41967760eec87c006
+      internalID: 1919512054
       vertices: []
       indices: 
       edges: []
@@ -1364,64 +1364,64 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      AbilitySkillIcon_0: -23929631
-      AbilitySkillIcon_1: -555391884
-      AbilitySkillIcon_10: -596480893
-      AbilitySkillIcon_11: -1116553822
-      AbilitySkillIcon_12: 1664583460
-      AbilitySkillIcon_13: 1585931384
-      AbilitySkillIcon_14: -434962728
-      AbilitySkillIcon_15: -1833190411
-      AbilitySkillIcon_16: 885537956
-      AbilitySkillIcon_17: 585953493
-      AbilitySkillIcon_18: -1228545730
-      AbilitySkillIcon_19: -1443965157
-      AbilitySkillIcon_2: -2017092506
-      AbilitySkillIcon_20: -2063839351
-      AbilitySkillIcon_21: -1143816310
-      AbilitySkillIcon_22: 1434033854
-      AbilitySkillIcon_23: 932102939
-      AbilitySkillIcon_24: 1762394746
-      AbilitySkillIcon_25: 568545509
-      AbilitySkillIcon_26: 481861889
-      AbilitySkillIcon_27: 1304172849
-      AbilitySkillIcon_28: -561213803
-      AbilitySkillIcon_29: -439501153
-      AbilitySkillIcon_3: -1711139436
-      AbilitySkillIcon_30: 228466516
-      AbilitySkillIcon_31: 950241676
-      AbilitySkillIcon_32: -58104069
-      AbilitySkillIcon_33: 1541925786
-      AbilitySkillIcon_34: -1273583672
-      AbilitySkillIcon_35: -314593823
-      AbilitySkillIcon_36: -1109696652
-      AbilitySkillIcon_37: -664868023
-      AbilitySkillIcon_38: -750110134
-      AbilitySkillIcon_39: -1889660198
-      AbilitySkillIcon_4: 1971246067
-      AbilitySkillIcon_40: -1742529430
-      AbilitySkillIcon_41: -2102753248
-      AbilitySkillIcon_42: 237640352
-      AbilitySkillIcon_43: -1886085519
-      AbilitySkillIcon_44: -996840611
-      AbilitySkillIcon_45: -1104087591
-      AbilitySkillIcon_46: 949706487
-      AbilitySkillIcon_47: 590338704
-      AbilitySkillIcon_48: -115934065
-      AbilitySkillIcon_49: 1621009366
-      AbilitySkillIcon_5: -531845155
-      AbilitySkillIcon_50: 572132183
-      AbilitySkillIcon_51: -314972125
-      AbilitySkillIcon_52: 2063158509
-      AbilitySkillIcon_53: 381376406
-      AbilitySkillIcon_54: -1215609394
-      AbilitySkillIcon_55: -461522789
-      AbilitySkillIcon_56: 1751415616
-      AbilitySkillIcon_57: 1669791217
-      AbilitySkillIcon_6: -1052984476
-      AbilitySkillIcon_7: 702222346
-      AbilitySkillIcon_8: 2107074209
-      AbilitySkillIcon_9: 214981650
+      ItemAbilityIcon 1_0: -101428482
+      ItemAbilityIcon 1_1: 1015309611
+      ItemAbilityIcon 1_10: 57936729
+      ItemAbilityIcon 1_11: -1740852302
+      ItemAbilityIcon 1_12: -2065491493
+      ItemAbilityIcon 1_13: 2048962421
+      ItemAbilityIcon 1_14: 1214237221
+      ItemAbilityIcon 1_15: -1317816862
+      ItemAbilityIcon 1_16: 176347877
+      ItemAbilityIcon 1_17: 1962029763
+      ItemAbilityIcon 1_18: 1536751789
+      ItemAbilityIcon 1_19: -537029248
+      ItemAbilityIcon 1_2: 327912634
+      ItemAbilityIcon 1_20: -1772591478
+      ItemAbilityIcon 1_21: -129289834
+      ItemAbilityIcon 1_22: 486882500
+      ItemAbilityIcon 1_23: 1860528821
+      ItemAbilityIcon 1_24: -940152306
+      ItemAbilityIcon 1_25: 373195387
+      ItemAbilityIcon 1_26: -576991862
+      ItemAbilityIcon 1_27: -872279210
+      ItemAbilityIcon 1_28: -826754141
+      ItemAbilityIcon 1_29: 1356206730
+      ItemAbilityIcon 1_3: -40801742
+      ItemAbilityIcon 1_30: 407800318
+      ItemAbilityIcon 1_31: -1601101011
+      ItemAbilityIcon 1_32: 1723443485
+      ItemAbilityIcon 1_33: -1380182267
+      ItemAbilityIcon 1_34: -130647255
+      ItemAbilityIcon 1_35: 1161855058
+      ItemAbilityIcon 1_36: 1381501336
+      ItemAbilityIcon 1_37: 2080189708
+      ItemAbilityIcon 1_38: 1599666088
+      ItemAbilityIcon 1_39: 2143975822
+      ItemAbilityIcon 1_4: 31743924
+      ItemAbilityIcon 1_40: -1000966953
+      ItemAbilityIcon 1_41: -1242981811
+      ItemAbilityIcon 1_42: -1628790374
+      ItemAbilityIcon 1_43: 249132250
+      ItemAbilityIcon 1_44: -699143831
+      ItemAbilityIcon 1_45: -1318972544
+      ItemAbilityIcon 1_46: -1351117119
+      ItemAbilityIcon 1_47: -114014636
+      ItemAbilityIcon 1_48: -1347093259
+      ItemAbilityIcon 1_49: -1597800102
+      ItemAbilityIcon 1_5: 1334806023
+      ItemAbilityIcon 1_50: -188121035
+      ItemAbilityIcon 1_51: -983015608
+      ItemAbilityIcon 1_52: 1022271733
+      ItemAbilityIcon 1_53: 1533591905
+      ItemAbilityIcon 1_54: 351617847
+      ItemAbilityIcon 1_55: -2000994944
+      ItemAbilityIcon 1_56: -1451278198
+      ItemAbilityIcon 1_57: 1919512054
+      ItemAbilityIcon 1_6: -1738073048
+      ItemAbilityIcon 1_7: -272686816
+      ItemAbilityIcon 1_8: -1185164988
+      ItemAbilityIcon 1_9: 280002978
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

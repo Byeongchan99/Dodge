@@ -70,7 +70,7 @@ public class BaseItem : MonoBehaviour
     }
 
     /// <summary> 아이템 비활성화 </summary>
-    protected void DisableItem()
+    public void DisableItem()
     {
         ItemPoolManager.Instance.Return(this.GetType().Name, this);
     }

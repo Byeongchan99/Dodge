@@ -36,6 +36,21 @@ public class Eraser : MonoBehaviour
             }
         }
 
+        // 모든 아이템 제거 (풀 반환)
+        GameObject[] items = GameObject.FindGameObjectsWithTag("Item");
+        foreach (GameObject item in items)
+        {
+            BaseItem baseItem = item.GetComponent<BaseItem>();
+            if (baseItem != null)
+            {
+                baseItem.DisableItem(); // 아이템 비활성화 및 풀 반환 로직
+            }
+            else
+            {
+                Destroy(item);
+            }
+        }
+
         /*
         // 플레이어 비활성화
         GameObject player = GameObject.FindGameObjectWithTag("Player");
