@@ -21,6 +21,9 @@ MonoBehaviour:
   characterSprite: {fileID: -146964760, guid: 68ae77ed66585e843ac1cabc2c00ac73, type: 3}
   abilityIconSprite: {fileID: -2000994944, guid: b4cbe01766cf0e740a0f83abc43df2e6, type: 3}
   animatorController: {fileID: 22100000, guid: 2460a485317b12643b85a57431e0733d, type: 2}
-  colliderSize: {x: 0.8742176, y: 0.5514384}
   colliderOffset: {x: 0.0000001902893, y: 0.09626241}
+  colliderSize: {x: 0.8742176, y: 0.5514384}
+  colliderDirection: 1
+  standAreaColliderOffset: {x: 0.0004296899, y: -0.5589345}
+  standAreaColliderSize: {x: 0.3748153, y: 0.3745595}
   crownPosition: {x: -0.036, y: 0.689, z: 0}

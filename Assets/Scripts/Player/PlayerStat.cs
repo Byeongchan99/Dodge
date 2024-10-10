@@ -13,6 +13,8 @@ public class PlayerStat : MonoBehaviour
     // 플레이어 스탯
     [SerializeField] private int _maxHealth; // 플레이어 최대 체력
     [SerializeField] private float _initialMoveSpeed; // 플레이어 초기 이동 속도
+    [SerializeField] private CapsuleCollider2D _playerCollider; // 플레이어 콜라이더
+    [SerializeField] private BoxCollider2D _standAreaCollider; // 플레이어 서있는 영역 콜라이더
 
     // 무적 관련
     private Coroutine invincibilityRoutine = null; // 무적 상태 코루틴
@@ -94,6 +96,7 @@ public class PlayerStat : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         crownSpriteRenderer = crown.GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        _playerCollider = GetComponent<CapsuleCollider2D>();
 
         currentMoveSpeed = _initialMoveSpeed;
         currentPosition = transform;
@@ -200,11 +203,18 @@ public class PlayerStat : MonoBehaviour
             animator.runtimeAnimatorController = currentCharacterData.animatorController; // 애니메이터 컨트롤러 설정
 
             // 콜라이더 변경
-            CapsuleCollider2D collider = GetComponent<CapsuleCollider2D>();
-            if (collider != null)
+            if (_playerCollider != null)
             {
-                collider.size = currentCharacterData.colliderSize;
-                collider.offset = currentCharacterData.colliderOffset;
+                _playerCollider.size = currentCharacterData.colliderSize;
+                _playerCollider.offset = currentCharacterData.colliderOffset;
+                _playerCollider.direction = currentCharacterData.colliderDirection;
+            }
+
+            // 서있는 영역 콜라이더 변경
+            if (_standAreaCollider != null)
+            {
+                _standAreaCollider.size = currentCharacterData.standAreaColliderSize;
+                _standAreaCollider.offset = currentCharacterData.standAreaColliderOffset;
             }
 
             // 왕관 위치 변경
