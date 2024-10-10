@@ -58,7 +58,6 @@ public class Eraser : MonoBehaviour
         {
             player.SetActive(false);
         }
-        */
 
         // 맵 제거
         GameObject map = GameObject.FindGameObjectWithTag("Map");
@@ -66,6 +65,7 @@ public class Eraser : MonoBehaviour
         {
             Destroy(map);
         }
+        */
 
         // 모든 위험 범위 이펙트 제거 (풀 반환)
         GameObject[] effects = GameObject.FindGameObjectsWithTag("Effect");

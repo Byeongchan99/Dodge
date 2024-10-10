@@ -22,6 +22,8 @@ public class StageManager : MonoBehaviour, IHealthObserver
     [SerializeField] private StageData currentStageData; // 현재 스테이지 데이터
     // 유저 데이터
     [SerializeField] private UserDataManager userDataManager;
+    // 타일맵
+    [SerializeField] private GameObject[] tilemaps;
 
     /****************************************************************************
                                     public Fields
@@ -78,14 +80,15 @@ public class StageManager : MonoBehaviour, IHealthObserver
     {
         // 모든 오브젝트 초기화
         eraser.EraseAll();
-        // 맵 프리팹 인스턴스화
-        if (currentStageData != null && currentStageData.mapPrefab != null)
+        // 타일맵 활성화
+        if (currentStageData != null)
         {
-            Instantiate(currentStageData.mapPrefab);
+            tilemaps[currentStageData.stageID].SetActive(true);
+            tilemaps[5].SetActive(true);
         }
         else
         {
-            Debug.LogError("Stage data or map prefab is not set.");
+            Debug.LogError("Stage data or tilemap is not set.");
             return;
         }
 
@@ -140,6 +143,17 @@ public class StageManager : MonoBehaviour, IHealthObserver
 
         // 모든 오브젝트 초기화
         eraser.EraseAll();
+        // 맵 비활성화
+        if (currentStageData != null)
+        {
+            tilemaps[currentStageData.stageID].SetActive(false);
+            tilemaps[5].SetActive(true);
+        }
+        else
+        {
+            Debug.LogError("Stage data or tilemap is not set.");
+            return;
+        }
         // 스테이지 종료
         GameManager.Instance.isPlayingStage = false;
         PlayerStat.Instance.DisablePlayer();
