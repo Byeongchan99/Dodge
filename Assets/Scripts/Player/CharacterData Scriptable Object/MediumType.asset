@@ -26,4 +26,4 @@ MonoBehaviour:
   colliderDirection: 0
   standAreaColliderOffset: {x: -0.0003356487, y: -0.025}
   standAreaColliderSize: {x: 0.3727228, y: 0.250541}
-  crownPosition: {x: -0.036, y: 1.252, z: 0}
+  crownPosition: {x: -0.036, y: 1.05, z: 0}
