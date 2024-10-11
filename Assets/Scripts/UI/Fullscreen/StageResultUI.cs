@@ -42,7 +42,7 @@ public class StageResultUI : MonoBehaviour, IUpdateUI
 
         if (userData != null)
         {
-            stageScore.text = "È¹µæ Á¡¼ö: " + ScoreManager.Instance.GetCurrentScore();
+            stageScore.text = "Score: " + ScoreManager.Instance.GetCurrentScore();
             OnStarChanged(userData.stageInfos[stageData.stageID].score);
         }
     }

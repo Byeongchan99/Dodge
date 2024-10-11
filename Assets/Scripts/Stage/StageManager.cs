@@ -13,10 +13,14 @@ public class StageManager : MonoBehaviour, IHealthObserver
     [SerializeField] private TurretUpgradeHandler turretUpgradeHandler;
     // UI
     [SerializeField] private FullscreenUIManager fullscreenUIManager;
+    [SerializeField] private PopupUIManager popupUIManager;
     [SerializeField] private GameObject fullscreenUIContainer;
     [SerializeField] private HUDManager HUDManager;
     [SerializeField] private GameObject HUDContainer;
     [SerializeField] private StageResultUI stageResultUI;
+    [SerializeField] private NotificationManager notificationManager;
+    // 스탯 데이터
+    [SerializeField] private StatDataManager statDataManager;
     // 스테이지 데이터
     [SerializeField] private List<StageData> stageDataList;
     [SerializeField] private StageData currentStageData; // 현재 스테이지 데이터
@@ -93,6 +97,7 @@ public class StageManager : MonoBehaviour, IHealthObserver
         }
 
         // 스테이지 시작
+        Time.timeScale = 1f;
         GameManager.Instance.isPlayingStage = true;
         PlayerStat.Instance.SetCharacter();
         PlayerStat.Instance.player.SetActive(true);
@@ -115,11 +120,18 @@ public class StageManager : MonoBehaviour, IHealthObserver
     public void RestartStage()
     {
         // 스테이지 종료
+        eraser.EraseAll();
+        statDataManager.SetOriginalStatData(currentStageData.statDataName); // 스탯 초기화
         PlayerStat.Instance.DisablePlayer();
         turretSpawner.StopSpawn();
         itemSpawner.StopSpawn();
         turretUpgradeHandler.StopRandomUpgrades();
         AudioManager.instance.StopBGM();
+
+        // UI
+        popupUIManager.ClosePausePopup(); // 일시정지 창 닫기
+        HUDContainer.SetActive(false);
+        notificationManager.ClearNotifications();
 
         // 스테이지 재시작
         StartStage();
@@ -161,6 +173,7 @@ public class StageManager : MonoBehaviour, IHealthObserver
         itemSpawner.StopSpawn();
         turretUpgradeHandler.StopRandomUpgrades();
         // HUD 비활성화
+        notificationManager.ClearNotifications();
         HUDContainer.SetActive(false);
         //HUDManager.DisableTimer();
         //HUDManager.DisableHealthBar();

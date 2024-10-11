@@ -6,10 +6,18 @@ using UnityEngine.UI;
 
 public class NotificationManager : MonoBehaviour
 {
-    public GameObject notificationPrefab; // 공지 프리팹
+    public GameObject notificationObject; // 공지 오브젝트
     public Transform notificationParent;  // 공지 내용을 배치할 부모 객체
+    private CanvasGroup canvasGroup; // 공지 오브젝트의 캔버스 그룹
+    private Text notificationText; // 공지 메시지
     private Queue<string> notificationQueue = new Queue<string>();
     private bool _isDisplayingNotification = false;
+
+    private void Awake()
+    {
+        canvasGroup = GetComponentInChildren<CanvasGroup>();
+        notificationText = GetComponentInChildren<Text>();
+    }
 
     void OnEnable()
     {
@@ -32,7 +40,7 @@ public class NotificationManager : MonoBehaviour
         {
             // 총알 터렛
             case TurretUpgradeInfo.TurretType.Bullet:
-                turretName = "Bullet Turret";
+                turretName = "Bullet Turret:";
                 // Bullet Turret의 업그레이드 처리
                 switch (enhancement.enhancementType)
                 {
@@ -48,7 +56,7 @@ public class NotificationManager : MonoBehaviour
                             }
                             else
                             {
-                                enhancementTypeName = "Split Bullet Activation";
+                                enhancementTypeName = "Split bullet activation";
                             }
                         }
                         else
@@ -61,38 +69,38 @@ public class NotificationManager : MonoBehaviour
                             }
                             else
                             {
-                                enhancementTypeName = "Split Bullet Deactivation";
+                                enhancementTypeName = "Split bullet deactivation";
                             }
                         }
                         break;
                     case TurretUpgradeInfo.EnhancementType.CountChange:
-                        // 개수 변경
-                        enhancementTypeName = "총알 개수 변경";
+                        // 총알 개수 변경
+                        enhancementTypeName = "Increase bullet count";
                         break;
                     case TurretUpgradeInfo.EnhancementType.SpeedChange:
                         // 속도 변경
                         if (StatDataManager.Instance.currentStatData.projectileDatas[0].isMaxProjectileSpeed)
                         {
-                            enhancementTypeName = "총알 속도 최대치";
+                            enhancementTypeName = "Bullet speed is maximum";
                             Debug.Log("총알 속도 최대치");
                             OnNotification = false;
                         }
                         else
                         {
-                            enhancementTypeName = "총알 속도 변경";
+                            enhancementTypeName = "Increase bullet speed";
                         }
                         break;
                     case TurretUpgradeInfo.EnhancementType.SizeChange:
                         // 크기 변경
                         if (StatDataManager.Instance.currentStatData.projectileDatas[0].isMaxProjectileSize)
                         {
-                            enhancementTypeName = "총알 크기 최대치";
+                            enhancementTypeName = "Bullet size is maximum";
                             Debug.Log("총알 크기 최대치");
                             OnNotification = false;
                         }
                         else
                         {
-                            enhancementTypeName = "총알 크기 변경";
+                            enhancementTypeName = "Increase bullet size";
                         }
                         break;
                     case TurretUpgradeInfo.EnhancementType.Init:
@@ -103,131 +111,125 @@ public class NotificationManager : MonoBehaviour
 
             // 레이저 터렛
             case TurretUpgradeInfo.TurretType.Laser:
-                turretName = "레이저 터렛";
+                turretName = "Laser Turret:";
                 // Laser Turret의 업그레이드 처리
                 switch (enhancement.enhancementType)
                 {
                     case TurretUpgradeInfo.EnhancementType.LifeTimeChange:
-                        // 지속 시간
+                        // 지속 시간 변경
                         if (StatDataManager.Instance.currentStatData.projectileDatas[1].isMaxProjectileLifeTime)
                         {
-                            enhancementTypeName = "레이저 지속 시간 최대치";
+                            enhancementTypeName = "Laser duration is maximum";
                             Debug.Log("레이저 지속 시간 최대치");
                             OnNotification = false;
                         }
                         else
                         {
-                            enhancementTypeName = "레이저 지속 시간 변경";
+                            enhancementTypeName = "Increase laser duration";
                         }
                         break;
                     case TurretUpgradeInfo.EnhancementType.CountChange:
                         // 개수 변경
                         if (StatDataManager.Instance.currentStatData.turretDatas[1].isMaxProjectileCount)
                         {
-                            enhancementTypeName = "레이저 개수 최대치";
-                            Debug.Log("레이저 최대치");
+                            enhancementTypeName = "Laser count is maximum";
+                            Debug.Log("레이저 개수 최대치");
                             OnNotification = false;
                         }
                         else
                         {
-                            enhancementTypeName = "레이저 개수 변경";
+                            enhancementTypeName = "Increase laser count";
                         }
                         break;
                     case TurretUpgradeInfo.EnhancementType.SpeedChange:
                         // 속도 변경
                         if (StatDataManager.Instance.currentStatData.projectileDatas[1].isMaxProjectileSpeed)
                         {
-                            enhancementTypeName = "레이저 발사 속도 최대치";
+                            enhancementTypeName = "Laser fire speed is maximum";
                             Debug.Log("레이저 발사 속도 최대치");
                             OnNotification = false;
                         }
                         else
                         {
-                            enhancementTypeName = "레이저 발사 속도 변경";
+                            enhancementTypeName = "Increase laser fire speed";
                         }
                         break;
                     case TurretUpgradeInfo.EnhancementType.SizeChange:
                         // 크기 변경
                         if (StatDataManager.Instance.currentStatData.projectileDatas[1].isMaxProjectileSize)
                         {
-                            enhancementTypeName = "레이저 크기 최대치";
+                            enhancementTypeName = "Laser size is maximum";
                             Debug.Log("레이저 크기 최대치");
                             OnNotification = false;
                         }
                         else
                         {
-                            enhancementTypeName = "레이저 크기 변경";
+                            enhancementTypeName = "Increase laser size";
                         }
                         break;
                     case TurretUpgradeInfo.EnhancementType.Init:
                         // 초기화
-
-
                         break;
-                        // 기타 필요한 경우 추가
                 }
                 break;
 
             // 로켓 터렛
             case TurretUpgradeInfo.TurretType.Rocket:
-                turretName = "로켓 터렛";
+                turretName = "Rocket Turret:";
                 // Rocket Turret의 업그레이드 처리
                 switch (enhancement.enhancementType)
                 {
                     case TurretUpgradeInfo.EnhancementType.LifeTimeChange:
                         if (StatDataManager.Instance.currentStatData.projectileDatas[2].isMaxProjectileLifeTime)
                         {
-                            enhancementTypeName = "로켓 지속 시간 최대치";
+                            enhancementTypeName = "Rocket lifetime is maximum";
                             Debug.Log("로켓 지속 시간 최대치");
                             OnNotification = false;
                         }
                         else
                         {
-                            enhancementTypeName = "로켓 지속 시간 변경";
+                            enhancementTypeName = "Increase rocket lifetime";
                         }
                         break;
                     case TurretUpgradeInfo.EnhancementType.CountChange:
-                        // 개수 증가
-                        enhancementTypeName = "로켓 개수 변경";
+                        // 개수 변경
+                        enhancementTypeName = "Increase rocket count";
                         break;
                     case TurretUpgradeInfo.EnhancementType.SpeedChange:
-                        // 속도 증가
+                        // Change speed
                         if (StatDataManager.Instance.currentStatData.projectileDatas[2].isMaxProjectileSpeed)
                         {
-                            enhancementTypeName = "로켓 속도 최대치";
+                            enhancementTypeName = "Rocket speed is maximum";
                             Debug.Log("로켓 속도 최대치");
                             OnNotification = false;
                         }
                         else
                         {
-                            enhancementTypeName = "로켓 속도 변경";
+                            enhancementTypeName = "Increase rocket speed";
                         }
                         break;
                     case TurretUpgradeInfo.EnhancementType.SizeChange:
-                        // 크기 변경
+                        // Change size
                         if (StatDataManager.Instance.currentStatData.projectileDatas[2].isMaxProjectileSize)
                         {
-                            enhancementTypeName = "로켓 크기 최대치";
+                            enhancementTypeName = "Rocket size is maximum";
                             Debug.Log("로켓 크기 최대치");
                             OnNotification = false;
                         }
                         else
                         {
-                            enhancementTypeName = "로켓 크기 변경";
+                            enhancementTypeName = "Increase rocket size";
                         }
                         break;
                     case TurretUpgradeInfo.EnhancementType.Init:
                         // 초기화
-
-
                         break;
-                        // 기타 필요한 경우 추가
                 }
                 break;
 
             // 박격포 터렛
             case TurretUpgradeInfo.TurretType.Mortar:
-                turretName = "박격포 터렛";
+                turretName = "Mortar Turret:";
                 // Mortar Turret의 업그레이드 처리
                 switch (enhancement.enhancementType)
                 {
@@ -243,7 +245,7 @@ public class NotificationManager : MonoBehaviour
                             }
                             else
                             {
-                                enhancementTypeName = "분열 박격포탄 활성화";
+                                enhancementTypeName = "Split mortar bomb activation";
                             }
                         }
                         else
@@ -256,49 +258,45 @@ public class NotificationManager : MonoBehaviour
                             }
                             else
                             {
-                                enhancementTypeName = "분열 박격포탄 비활성화";
+                                enhancementTypeName = "Split mortar bomb deactivation";
                             }
                         }
                         break;
                     case TurretUpgradeInfo.EnhancementType.CountChange:
-                        // 개수 증가
-                        enhancementTypeName = "박격포탄 개수 변경";
+                        // Change count
+                        enhancementTypeName = "Increase mortar bomb count";
                         break;
                     case TurretUpgradeInfo.EnhancementType.SpeedChange:
-                        // 속도 증가
+                        // Change speed
                         if (StatDataManager.Instance.currentStatData.projectileDatas[3].isMaxProjectileSpeed)
                         {
-                            enhancementTypeName = "박격포탄 속도 최대치";
+                            enhancementTypeName = "Mortar bomb speed is maximum";
                             Debug.Log("박격포탄 속도 최대치");
                             OnNotification = false;
                         }
                         else
                         {
-                            enhancementTypeName = "박격포탄 속도 변경";
+                            enhancementTypeName = "Increase mortar bomb speed";
                         }
                         break;
                     case TurretUpgradeInfo.EnhancementType.SizeChange:
-                        // 크기 변경
+                        // Change size
                         if (StatDataManager.Instance.currentStatData.projectileDatas[3].isMaxProjectileSize)
                         {
-                            enhancementTypeName = "폭발 범위 최대치";
+                            enhancementTypeName = "Explosion range is maximum";
                             Debug.Log("폭발 범위 최대치");
                             OnNotification = false;
                         }
                         else
                         {
-                            enhancementTypeName = "폭발 범위 변경";
+                            enhancementTypeName = "Increase explosion range";
                         }
                         break;
                     case TurretUpgradeInfo.EnhancementType.Init:
                         // 초기화
-
-
                         break;
-                        // 기타 필요한 경우 추가
                 }
                 break;
-                // 기타 터렛 유형에 대한 처리
         }
 
         AddNotification(turretName + " " + enhancementTypeName, OnNotification);
@@ -326,26 +324,25 @@ public class NotificationManager : MonoBehaviour
         {
             _isDisplayingNotification = true;
             string message = notificationQueue.Dequeue();
-            GameObject notification = Instantiate(notificationPrefab, notificationParent);
-            notification.GetComponentInChildren<Text>().text = message;
-            CanvasGroup canvasGroup = notification.GetComponent<CanvasGroup>();
-
+            notificationObject.SetActive(true);
+            notificationText.text = message;
+            
             // 페이드 인
-            yield return StartCoroutine(FadeIn(canvasGroup));
+            yield return StartCoroutine(FadeIn());
 
             // 일정 시간 대기
             yield return new WaitForSeconds(3f);
 
             // 페이드 아웃
-            yield return StartCoroutine(FadeOut(canvasGroup));
+            yield return StartCoroutine(FadeOut());
 
-            Destroy(notification);
+            notificationObject.SetActive(false);
         }
         _isDisplayingNotification = false;
     }
 
     /// <summary> 공지창 페이드 인 효과 </summary>
-    private IEnumerator FadeIn(CanvasGroup canvasGroup)
+    private IEnumerator FadeIn()
     {
         float duration = 0.5f;
         for (float t = 0; t < duration; t += Time.deltaTime)
@@ -357,7 +354,7 @@ public class NotificationManager : MonoBehaviour
     }
 
     /// <summary> 공지창 페이드 아웃 효과 </summary>
-    private IEnumerator FadeOut(CanvasGroup canvasGroup)
+    private IEnumerator FadeOut()
     {
         float duration = 0.5f;
         for (float t = 0; t < duration; t += Time.deltaTime)
@@ -366,5 +363,15 @@ public class NotificationManager : MonoBehaviour
             yield return null;
         }
         canvasGroup.alpha = 0;
+    }
+
+    /// <summary> 공지창 초기화 </summary>
+    public void ClearNotifications()
+    {
+        notificationQueue.Clear();
+        canvasGroup.alpha = 0;
+        _isDisplayingNotification = false;
+        notificationText.text = string.Empty;
+        notificationObject.SetActive(false);
     }
 }

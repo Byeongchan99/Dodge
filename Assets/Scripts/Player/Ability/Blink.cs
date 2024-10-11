@@ -9,6 +9,7 @@ public class Blink : MonoBehaviour, IPlayerAbility
     private GameObject playerClone; // 게임에 생성된 분신 객체
     private PlayerMovement playerMovement; // 플레이어 이동 스크립트
     private SpriteRenderer cloneSpriteRenderer; // 분신의 스프라이트 렌더러
+    [SerializeField] private LayerMask wallLayerMask; // 벽 레이어 마스크
 
     [SerializeField] private float _blinkMoveSpeed = 5.0f; // 블링크 지속 시간 동안 이동 속도
     [SerializeField] private float _blinkDuration = 0.5f; // 점멸 지속 시간
@@ -63,9 +64,10 @@ public class Blink : MonoBehaviour, IPlayerAbility
         GameManager.Instance.StartSlowEffect(_blinkDuration);
         GameManager.Instance.isAbilitySlowMotion = true;
 
-        // 위치 설정
+        // 분신 시작 위치 설정
         Vector3 startPosition = PlayerStat.Instance.currentPosition.position;
         Vector3 nextPosition = startPosition;
+        playerClone.transform.position = startPosition;
 
         float elapsedTime = 0f;
         // 특수 능력 지속 시간동안 분신 조종
@@ -86,6 +88,7 @@ public class Blink : MonoBehaviour, IPlayerAbility
                 cloneSpriteRenderer.flipX = moveDirection.x < 0;
             }
 
+            /*
             nextPosition += moveDirection;
 
             // 분신 위치 업데이트
@@ -93,9 +96,28 @@ public class Blink : MonoBehaviour, IPlayerAbility
 
             elapsedTime += Time.unscaledDeltaTime;
             yield return null;
+            */
+            // 잠재적인 새로운 위치 계산
+            Vector3 potentialPosition = nextPosition + moveDirection;
+
+            // 잠재적인 위치에서의 충돌 검사
+            if (!IsCollidingWithWall(nextPosition, moveDirection))
+            {
+                // 충돌이 없으면 위치 업데이트
+                nextPosition = potentialPosition;
+                playerClone.transform.position = nextPosition;
+            }
+            else
+            {
+                // 충돌이 있으면 해당 방향으로의 이동 중지
+                moveDirection = Vector3.zero;
+            }
+
+            elapsedTime += Time.unscaledDeltaTime;
+            yield return null;
         }
 
-        // 특수 능력 종료 후 본체 위치를 분신 위치로 업데이트
+        // 특수 능력 종료 후 본체 위치를 분신 위치로 업데이트 + 분신 위치도 업데이트
         PlayerStat.Instance.currentPosition.position = playerClone.transform.position;
 
         // 분신 비활성화
@@ -114,5 +136,13 @@ public class Blink : MonoBehaviour, IPlayerAbility
         GameManager.Instance.isAbilitySlowMotion = false;
         
         yield return null;
+    }
+
+    // 벽과의 충돌을 확인하는 메서드
+    private bool IsCollidingWithWall(Vector3 currentPosition, Vector3 direction)
+    {
+        float distance = 0.1f;
+        RaycastHit2D hit = Physics2D.Raycast(currentPosition, direction, distance, wallLayerMask);
+        return hit.collider != null;
     }
 }

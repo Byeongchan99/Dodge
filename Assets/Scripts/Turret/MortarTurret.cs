@@ -8,7 +8,7 @@ public class MortarTurret : BaseTurret
 {
     private PlayerMovement playerMovement; // 플레이어 움직임 참조
     private float predictionFactor = 1f; // 예측 정도를 조절하는 변수
-    private float randomFactor = 1f; // 랜덤 정도를 조절하는 변수
+    private float randomFactor = 0.5f; // 랜덤 정도를 조절하는 변수
 
     [SerializeField] private ParticleSystem fireParticle; // 파티클 시스템 참조 추가
 
@@ -57,7 +57,7 @@ public class MortarTurret : BaseTurret
         {
             // 플레이어의 진행 벡터와 랜덤 벡터 계산
             Vector3 playerMovementVector = playerMovement.InputVec * predictionFactor;
-            Vector3 randomOffset = new Vector3(Random.Range(-randomFactor, randomFactor), 0, Random.Range(-randomFactor, randomFactor));
+            Vector3 randomOffset = new Vector3(Random.Range(-randomFactor, randomFactor), Random.Range(-randomFactor, randomFactor), 0);
 
             // 최종 목표 위치 계산
             Vector3 finalTargetPosition = targetPosition.position + playerMovementVector + randomOffset;

@@ -19,22 +19,22 @@ MonoBehaviour:
     spawnCooldown: 20
     spawnCooldownPercent: 0
   - name: InvincibilityItem
-    spawnLevel: 1
+    spawnLevel: 0
     spawnChance: 0
     spawnCooldown: 20
     spawnCooldownPercent: 0
   - name: SlowMotionItem
-    spawnLevel: 1
+    spawnLevel: 0
     spawnChance: 0
     spawnCooldown: 20
     spawnCooldownPercent: 0
   - name: EMPBombItem
-    spawnLevel: 1
+    spawnLevel: 0
     spawnChance: 0
     spawnCooldown: 20
     spawnCooldownPercent: 0
   - name: GetScoreItem
-    spawnLevel: 1
+    spawnLevel: 0
     spawnChance: 0
     spawnCooldown: 20
     spawnCooldownPercent: 0
@@ -66,7 +66,7 @@ MonoBehaviour:
     projectileIndex: 0
     turretLifeTime: 6
   - turretName: LaserTurret
-    projectileCount: 1
+    projectileCount: 2
     isMaxProjectileCount: 0
     projectileIndex: 0
     turretLifeTime: 6
@@ -91,7 +91,7 @@ MonoBehaviour:
   - projectileName: Laser
     projectileSpeed: 1
     isMaxProjectileSpeed: 0
-    projectileLifeTime: 1.5
+    projectileLifeTime: 0.5
     isMaxProjectileLifeTime: 0
     projectileSize: {x: 0.7, y: 25, z: 0.7}
     isMaxProjectileSize: 0

@@ -17,6 +17,8 @@ public class PopupUIManager : MonoBehaviour
     /// <summary> Popup UI 인스턴스들을 이름으로 관리하기 위한 딕셔너리 </summary>
     private Dictionary<string, PopupUI> popupDictionary = new Dictionary<string, PopupUI>();
 
+    [SerializeField] PauseUI pauseUI; // 일시 정지창
+
     /****************************************************************************
                                      Unity Callbacks
     ****************************************************************************/
@@ -37,16 +39,9 @@ public class PopupUIManager : MonoBehaviour
             if (popupLinkedList.Count > 0)
             {
                 // 일시 정지 창이 켜져있을 때
-                if (popupLinkedList.First.Value.gameObject.name == "Pause" && GameManager.Instance.isPlayingStage)
+                if (popupLinkedList.First.Value.gameObject.name == "Pause" && GameManager.Instance.isPaused)
                 {
-                    PopupUI pausePopup = GetPopup("Pause");
-                    if (pausePopup != null)
-                    {
-                        PauseUI pauseUI = pausePopup.gameObject.GetComponent<PauseUI>();
-                        pauseUI.ClosePauseUI();
-                    }
-                    // 일시 정지창 닫기
-                    ClosePopup(popupLinkedList.First.Value);
+                    ClosePausePopup();
                 }
                 else
                 {
@@ -58,8 +53,7 @@ public class PopupUIManager : MonoBehaviour
             {
                 PopupUI pausePopup = GetPopup("Pause");
                 if (pausePopup != null)
-                {
-                    PauseUI pauseUI = pausePopup.gameObject.GetComponent<PauseUI>();
+                {                 
                     pauseUI.OpenPauseUI();
                 }
                 // 일시 정지창 열기
@@ -207,5 +201,17 @@ public class PopupUIManager : MonoBehaviour
     public void CloseStageInformationPopup()
     {
         ClosePopup("Stage Information");
+    }
+
+    public void ClosePausePopup()
+    {
+        PopupUI pausePopup = GetPopup("Pause");
+        if (pausePopup != null)
+        {
+            pauseUI.ClosePauseUI();
+        }
+        // 일시 정지창 닫기
+        Debug.Log("일시 정지창 닫기");
+        ClosePopup(popupLinkedList.First.Value);
     }
 }

@@ -156,7 +156,7 @@ public abstract class BaseTurret : MonoBehaviour
     /// <summary> 터렛 비활성화 </summary>
     public virtual void DisableTurret()
     {
-        Debug.Log("DisableTurret");
+        //Debug.Log("DisableTurret");
 
         // 이름에서 (Clone)을 제거
         string poolName = gameObject.name.Replace("(Clone)", "");

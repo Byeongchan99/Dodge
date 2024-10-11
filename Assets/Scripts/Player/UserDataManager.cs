@@ -37,7 +37,7 @@ public class UserDataManager : MonoBehaviour
         int playerScore = await GetScoreByPlayerIDAsync(playerID, leaderboardID);
         userData.stageInfos[index].score = playerScore;
 
-        if (playerScore > 150)
+        if (playerScore >= 100)
         {
             userData.stageInfos[index].isCleared = true;
         }

@@ -47,4 +47,9 @@ public class ObjectPool<T> where T : Component
         obj.gameObject.SetActive(false);
         pool.Enqueue(obj);
     }
+
+    public Queue<T> GetPoolQueue()
+    {
+        return pool;
+    }
 }

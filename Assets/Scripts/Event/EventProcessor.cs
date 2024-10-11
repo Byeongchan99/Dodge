@@ -110,10 +110,10 @@ public class EventProcessor : MonoBehaviour
                         Debug.Log("레이저 개수 변경 " + enhancement.value);
                         // 범위 설정
                         int newProjectileCount = StatDataManager.Instance.currentStatData.turretDatas[1].projectileCount + (int)enhancement.value;
-                        // projectileCount를 최소 1개, 최대 3개 사이로 제한
-                        int clampedProjectileCount = Mathf.Clamp(newProjectileCount, 1, 3);
+                        // projectileCount를 최소 1개, 최대 4개 사이로 제한
+                        int clampedProjectileCount = Mathf.Clamp(newProjectileCount, 1, 4);
                         StatDataManager.Instance.currentStatData.turretDatas[1].projectileCount = clampedProjectileCount;
-                        if (StatDataManager.Instance.currentStatData.turretDatas[1].projectileCount >= 3)
+                        if (StatDataManager.Instance.currentStatData.turretDatas[1].projectileCount >= 4)
                             StatDataManager.Instance.currentStatData.turretDatas[1].isMaxProjectileCount = true;
                         // 터렛의 유지 시간 조정
                         newTurretLifeTime = (StatDataManager.Instance.currentStatData.projectileDatas[1].projectileLifeTime + 1.5f) * (StatDataManager.Instance.currentStatData.turretDatas[1].projectileCount + 1);

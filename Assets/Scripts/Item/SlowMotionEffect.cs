@@ -27,6 +27,7 @@ public class SlowMotionEffect : ItemEffect
         if (GameManager.Instance.isItemSlowMotion && GameManager.Instance.slowMotionItemCount == 1)
         {
             PlayerStat.Instance.currentMoveSpeed /= 250;  // 원래 속도로 복구
+            GameManager.Instance.StopSlowEffect();  // 슬로우 모션 효과 종료
             GameManager.Instance.isItemSlowMotion = false;
         }
         GameManager.Instance.slowMotionItemCount--;

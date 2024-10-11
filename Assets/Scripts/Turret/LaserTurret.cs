@@ -50,7 +50,7 @@ public class LaserTurret : BaseTurret
             // Z축 회전
             Vector3 rotation = new Vector3(0, 0, _angle);
             // 회전 애니메이션이 완료된 후 ShootProjectile 메서드 호출
-            rotatePoint.DOLocalRotate(rotation, 0.5f).SetEase(Ease.OutSine).OnComplete(() => StartCoroutine(shootLaser()));
+            rotatePoint.DOLocalRotate(rotation, 0.5f).SetEase(Ease.OutSine).SetUpdate(true).OnComplete(() => StartCoroutine(shootLaser()));
             _timeSinceLastShot = 0f;
         }
     }

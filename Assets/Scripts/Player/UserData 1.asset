@@ -15,12 +15,12 @@ MonoBehaviour:
   playerID: Wp2d0g9EFgagf4yqIwb78UJ20pG0
   stageInfos:
   - isCleared: 1
-    score: 181
+    score: 10
   - isCleared: 1
     score: 0
   - isCleared: 1
-    score: 67
+    score: 0
   - isCleared: 1
-    score: 10
-  - isCleared: 1
-    score: 116
+    score: 0
+  - isCleared: 0
+    score: 0

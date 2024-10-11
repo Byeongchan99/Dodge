@@ -73,8 +73,11 @@ public class GameManager : MonoBehaviour
         _remainingSlowDuration = duration;  // 슬로우 모션 지속 시간 업데이트
         while (_remainingSlowDuration > 0)
         {
+            if (!_isPaused) // 일시 정지 상태가 아닐 때
+            {
+                _remainingSlowDuration -= Time.unscaledDeltaTime;  // 실제 시간 감소로 업데이트
+            }
             yield return null;
-            _remainingSlowDuration -= Time.unscaledDeltaTime;  // 실제 시간 감소로 업데이트
         }
 
         Time.timeScale = 1.0f;
@@ -102,6 +105,19 @@ public class GameManager : MonoBehaviour
         }
 
         slowMotionRoutine = StartCoroutine(ApplySlowMotion(duration));
+    }
+
+    /// <summary> 슬로우 모션 효과 중지 </summary>
+    public void StopSlowEffect()
+    {
+        if (slowMotionRoutine != null)
+        {
+            StopCoroutine(slowMotionRoutine);
+            Time.timeScale = 1.0f;
+            Time.fixedDeltaTime = _originalFixedDeltaTime;  // 원래대로 복구
+            slowMotionRoutine = null;
+            _remainingSlowDuration = 0f;  // 남은 시간 초기화
+        }
     }
 
     // 게임을 종료하는 메서드
