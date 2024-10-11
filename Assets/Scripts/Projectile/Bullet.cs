@@ -7,6 +7,7 @@ public class Bullet : BaseProjectile
     /// <summary> ÃÑ¾Ë ½ºÅÈ °¡Á®¿À±â </summary>
     protected override void OnEnable()
     {
+        base.OnEnable();
         _speed = StatDataManager.Instance.currentStatData.projectileDatas[0].projectileSpeed;
     }
 

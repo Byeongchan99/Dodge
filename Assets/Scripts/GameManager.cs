@@ -103,4 +103,16 @@ public class GameManager : MonoBehaviour
 
         slowMotionRoutine = StartCoroutine(ApplySlowMotion(duration));
     }
+
+    // 게임을 종료하는 메서드
+    public void ExitGame()
+    {
+#if UNITY_EDITOR
+        // 유니티 에디터 상에서는 에디터를 종료
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        // 빌드된 애플리케이션에서는 애플리케이션을 종료
+        Application.Quit();
+#endif
+    }
 }

@@ -32,7 +32,7 @@ public class NotificationManager : MonoBehaviour
         {
             // 총알 터렛
             case TurretUpgradeInfo.TurretType.Bullet:
-                turretName = "총알 터렛";
+                turretName = "Bullet Turret";
                 // Bullet Turret의 업그레이드 처리
                 switch (enhancement.enhancementType)
                 {
@@ -48,7 +48,7 @@ public class NotificationManager : MonoBehaviour
                             }
                             else
                             {
-                                enhancementTypeName = "분열 총알 활성화";
+                                enhancementTypeName = "Split Bullet Activation";
                             }
                         }
                         else
@@ -61,7 +61,7 @@ public class NotificationManager : MonoBehaviour
                             }
                             else
                             {
-                                enhancementTypeName = "분열 총알 비활성화";
+                                enhancementTypeName = "Split Bullet Deactivation";
                             }
                         }
                         break;

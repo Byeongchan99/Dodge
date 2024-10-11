@@ -96,7 +96,7 @@ public class EventProcessor : MonoBehaviour
                         Debug.Log("레이저 지속 시간 변경 " + enhancement.value);
                         // 범위 설정
                         float newProjectileLifeTime = StatDataManager.Instance.currentStatData.projectileDatas[1].projectileLifeTime + enhancement.value;
-                        // projectileLifeTime을 최소 0.5초, 최대 5초 사이로 제한
+                        // projectileLifeTime을 최소 0.5초, 최대 3초 사이로 제한
                         float clampedProjectileLifeTime = Mathf.Clamp(newProjectileLifeTime, 0.5f, 3f);
                         StatDataManager.Instance.currentStatData.projectileDatas[1].projectileLifeTime = clampedProjectileLifeTime;
                         if (StatDataManager.Instance.currentStatData.projectileDatas[1].projectileLifeTime >= 3f)

@@ -103,7 +103,7 @@ public class LaserTurret : BaseTurret
             laser.transform.localScale = laserSize;
             // 레이저 활성화
             laser.gameObject.SetActive(true);
-            //audioSource.PlayOneShot(audioClip);
+            AudioManager.instance.sfxAudioSource.PlayOneShot(audioClip);
         }
         else
         {

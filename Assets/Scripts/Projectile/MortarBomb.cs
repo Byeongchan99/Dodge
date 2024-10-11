@@ -14,6 +14,7 @@ public class MortarBomb : BaseProjectile
     /// <summary> ¹Ú°ÝÆ÷Åº ½ºÅÈ °¡Á®¿À±â </summary>
     protected override void OnEnable()
     {
+        base.OnEnable();
         _speed = StatDataManager.Instance.currentStatData.projectileDatas[3].projectileSpeed;
         _flightDuration = _speed;
     }

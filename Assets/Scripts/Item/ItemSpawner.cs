@@ -135,8 +135,17 @@ public class ItemSpawner : MonoBehaviour
     /// <summary> 소환 위치 선택 </summary>
     Vector2 ChooseSpawnPosition()
     {
-        // 소환 범위 내에서 랜덤으로 소환 위치 선택
-        return new Vector2(Random.Range(-spawnPositionRange.x, spawnPositionRange.x), Random.Range(-spawnPositionRange.y - 0.8f, spawnPositionRange.y - 0.8f));
+        Vector2 spawnPosition;
+        float minDistanceFromPlayer = 2.0f; // 플레이어와의 최소 거리 설정
+
+        do
+        {
+            // 소환 범위 내에서 랜덤으로 소환 위치 선택
+            spawnPosition = new Vector2(Random.Range(-spawnPositionRange.x, spawnPositionRange.x), Random.Range(-spawnPositionRange.y - 0.8f, spawnPositionRange.y - 0.8f));
+        }
+        while (Vector2.Distance(spawnPosition, PlayerStat.Instance.currentPosition.position) < minDistanceFromPlayer);
+
+        return spawnPosition;
     }
 
     /// <summary> 소환한 아이템의 쿨타임 반환 </summary>

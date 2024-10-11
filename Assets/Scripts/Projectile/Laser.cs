@@ -7,6 +7,7 @@ public class Laser : BaseProjectile
     /// <summary> 레이저 스탯 가져오기 </summary>
     protected override void OnEnable()
     {
+        base.OnEnable();
         _speed = StatDataManager.Instance.currentStatData.projectileDatas[1].projectileSpeed;
         _lifeTime = StatDataManager.Instance.currentStatData.projectileDatas[1].projectileLifeTime;
         

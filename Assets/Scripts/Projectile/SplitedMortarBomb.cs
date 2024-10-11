@@ -7,7 +7,7 @@ public class SplitedMortarBomb : MortarBomb
     /// <summary> ¹Ú°ÝÆ÷Åº ½ºÅÈ ¼³Á¤ </summary>
     protected override void OnEnable()
     {
-        
+        isDestroyed = false;
     }
 
     public void setMortarBomb(float duration, float height)

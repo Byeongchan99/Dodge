@@ -258,7 +258,7 @@ MonoBehaviour:
   spawner: {fileID: 0}
   turretIndex: 1
   spawnPointIndex: 0
-  audioClip: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: 380a61624a607f042ab5e96218f37633, type: 3}
   rotatePoint: {fileID: 1356929597027367013}
   _direction: {x: 0, y: 0}
   isShooting: 0
