@@ -143,7 +143,7 @@ public class StageManager : MonoBehaviour, IHealthObserver
         // 유저 데이터 갱신
         if (userDataManager.userData != null && currentStageData.stageID >= 0 && currentStageData.stageID < userDataManager.userData.stageInfos.Length)
         {
-            if (ScoreManager.Instance.GetCurrentScore() > 150f)
+            if (ScoreManager.Instance.GetCurrentScore() > 100f)
                 userDataManager.userData.stageInfos[currentStageData.stageID].isCleared = true;
 
             // 점수 갱신

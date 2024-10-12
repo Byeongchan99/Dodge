@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerID: Wp2d0g9EFgagf4yqIwb78UJ20pG0
   stageInfos:
-  - isCleared: 0
-    score: 0
-  - isCleared: 0
-    score: 0
+  - isCleared: 1
+    score: 112
+  - isCleared: 1
+    score: 213
   - isCleared: 0
     score: 0
   - isCleared: 0
