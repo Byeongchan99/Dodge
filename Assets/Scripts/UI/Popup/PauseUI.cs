@@ -65,7 +65,7 @@ public class PauseUI : MonoBehaviour, IUpdateUI
         if (stageData != null)
         {
             stageNameText.text = stageData.stageName;
-            currentScoreText.text = "현재 점수: " + ScoreManager.Instance.GetCurrentScore();
+            currentScoreText.text = "Current Score: " + ScoreManager.Instance.GetCurrentScore();
         }
     }
 
