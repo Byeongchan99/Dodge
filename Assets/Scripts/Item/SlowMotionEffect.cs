@@ -22,7 +22,6 @@ public class SlowMotionEffect : ItemEffect
     public override void RemoveEffect()
     {
         Debug.Log("슬로 모션 아이템 효과 종료");
-
         // 아이템에 의한 슬로우 모션 효과가 적용 중일 때
         if (GameManager.Instance.isItemSlowMotion && GameManager.Instance.slowMotionItemCount == 1)
         {

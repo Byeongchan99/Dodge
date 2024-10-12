@@ -176,7 +176,15 @@ public class PlayerStat : MonoBehaviour
     /// <summary> 아이템 효과 적용 타이머 </summary>
     private IEnumerator RemoveItemEffectEffectAfterDuration(ItemEffect effect)
     {
-        yield return new WaitForSeconds(effect.GetDuration());
+        float duration = effect.GetDuration();
+        while (duration > 0)
+        {
+            yield return null;
+            if (!GameManager.Instance.isPaused) // 일시 정지 상태가 아닐 때
+            {
+                duration -= Time.unscaledDeltaTime;  // 실제 시간 감소로 업데이트
+            }
+        }
         effect.RemoveEffect();
         activeItems.Remove(effect);
     }

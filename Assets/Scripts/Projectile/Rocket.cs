@@ -58,7 +58,7 @@ public class Rocket : BaseProjectile
     IEnumerator StartDestroyProjectile(float delay)
     {
         Debug.Log("LifeTime Over - test");
-        fadeEffect.StartFadeOut(0.2f, 0f);
+        //fadeEffect.StartFadeOut(0.2f, 0f);
         yield return new WaitForSeconds(delay);
         DestroyProjectile();
     }

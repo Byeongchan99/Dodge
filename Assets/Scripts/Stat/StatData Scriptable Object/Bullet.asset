@@ -19,22 +19,22 @@ MonoBehaviour:
     spawnCooldown: 20
     spawnCooldownPercent: 0
   - name: InvincibilityItem
-    spawnLevel: 0
+    spawnLevel: 1
     spawnChance: 0
     spawnCooldown: 20
     spawnCooldownPercent: 0
   - name: SlowMotionItem
-    spawnLevel: 0
+    spawnLevel: 1
     spawnChance: 0
     spawnCooldown: 20
     spawnCooldownPercent: 0
   - name: EMPBombItem
-    spawnLevel: 0
+    spawnLevel: 1
     spawnChance: 0
     spawnCooldown: 20
     spawnCooldownPercent: 0
   - name: GetScoreItem
-    spawnLevel: 0
+    spawnLevel: 1
     spawnChance: 0
     spawnCooldown: 20
     spawnCooldownPercent: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
   - projectileName: Rocket
     projectileSpeed: 3
     isMaxProjectileSpeed: 0
-    projectileLifeTime: 10
+    projectileLifeTime: 5
     isMaxProjectileLifeTime: 0
     projectileSize: {x: 0.2, y: 0.2, z: 0.2}
     isMaxProjectileSize: 0

@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     private bool _isPlayingStage; // 스테이지 플레이 중 여부
     private bool _isPaused; // 일시 정지 여부
     private Coroutine slowMotionRoutine = null;
-    private float _remainingSlowDuration = 0f;  // 남은 슬로우 모션 효과 시간
+    [SerializeField] private float _remainingSlowDuration = 0f;  // 남은 슬로우 모션 효과 시간
     private float _originalFixedDeltaTime;
     [SerializeField] private float _slowDownFactor = 0.05f; // 시간을 느리게 하는 요소
 
@@ -73,18 +73,22 @@ public class GameManager : MonoBehaviour
         _remainingSlowDuration = duration;  // 슬로우 모션 지속 시간 업데이트
         while (_remainingSlowDuration > 0)
         {
+            yield return null;
             if (!_isPaused) // 일시 정지 상태가 아닐 때
             {
                 _remainingSlowDuration -= Time.unscaledDeltaTime;  // 실제 시간 감소로 업데이트
             }
-            yield return null;
         }
+    
+        StopSlowEffect();  // 슬로우 모션 효과 종료
 
+        /*
         Time.timeScale = 1.0f;
         Time.fixedDeltaTime = _originalFixedDeltaTime;  // 원래대로 복구
 
         slowMotionRoutine = null;
         _remainingSlowDuration = 0f;  // 남은 시간 초기화
+        */
     }
 
     /****************************************************************************
@@ -110,6 +114,7 @@ public class GameManager : MonoBehaviour
     /// <summary> 슬로우 모션 효과 중지 </summary>
     public void StopSlowEffect()
     {
+        Debug.Log("슬로우 모션 효과 종료");
         if (slowMotionRoutine != null)
         {
             StopCoroutine(slowMotionRoutine);

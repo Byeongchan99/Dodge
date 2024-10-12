@@ -328,7 +328,7 @@ public class RocketTurretLifeTimeIncrease : ITurretUpgradeEvent
         {
             turretType = TurretUpgradeInfo.TurretType.Rocket,
             enhancementType = TurretUpgradeInfo.EnhancementType.LifeTimeChange,
-            value = 0.5f,
+            value = 1f,
         };
 
         EventManager.TriggerEnhancementEvent("TurretUpgrade", rocketTurretLifeTimeIncrease);
@@ -345,7 +345,7 @@ public class RocketTurretLifeTimeDecrease : ITurretUpgradeEvent
         {
             turretType = TurretUpgradeInfo.TurretType.Rocket,
             enhancementType = TurretUpgradeInfo.EnhancementType.LifeTimeChange,
-            value = -0.5f,
+            value = -1f,
         };
 
         EventManager.TriggerEnhancementEvent("TurretUpgrade", rocketTurretLifeTimeDecrease);
