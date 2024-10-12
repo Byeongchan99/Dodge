@@ -140,6 +140,8 @@ public class StageManager : MonoBehaviour, IHealthObserver
     // 스테이지 종료
     public void ExitStage()
     {
+        // 타이머 중지
+        ScoreManager.Instance.PauseTimer();
         // 유저 데이터 갱신
         if (userDataManager.userData != null && currentStageData.stageID >= 0 && currentStageData.stageID < userDataManager.userData.stageInfos.Length)
         {

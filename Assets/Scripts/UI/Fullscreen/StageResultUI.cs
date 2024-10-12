@@ -43,12 +43,12 @@ public class StageResultUI : MonoBehaviour, IUpdateUI
         if (userData != null)
         {
             stageScore.text = "Score: " + Mathf.FloorToInt(ScoreManager.Instance.GetCurrentScore());
-            OnStarChanged(userData.stageInfos[stageData.stageID].score);
+            OnStarChanged(Mathf.FloorToInt(userData.stageInfos[stageData.stageID].score));
         }
     }
 
     // 점수에 따른 별 UI 업데이트
-    public void OnStarChanged(float score)
+    public void OnStarChanged(int score)
     {
         // 별 활성화
         for (int i = 0; i < 3; i++)
