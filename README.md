@@ -54,18 +54,50 @@ https://github.com/Byeongchan99/Dodge
 
 1. **터렛 시스템**
 
+<br/>
+
+![터렛스테이지](https://github.com/user-attachments/assets/02551053-9fee-4bc5-a521-bb873f332aaa)
+
+<br/>
+
 [닷지 개발 일지 1 - 터렛 시스템 설계](https://www.notion.so/1-9559e4cc3149425d836e6b5dc56a7dcf?pvs=21) 
 
 [닷지 개발 일지 2 - 터렛 강화 이벤트 시스템 설계](https://www.notion.so/2-32edddacafff4031a4ac6f4eab259368?pvs=21) 
 
+<br/>
+
 2. **캐릭터 어빌리티**
+
+<br/>
+
+![BlinkAbility-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/ff5e47f2-20e4-4fa9-92e1-57ba39e362fd)
+
+<br/>
 
 [닷지 개발 일지 3 - 캐릭터 특수 능력 구현](https://www.notion.so/3-1173d4b5b7b14c79b0afc37a93105b15?pvs=21) 
 
+<br/>
+
 3. **아이템**
+
+<br/>
+
+![moveSpeedUpItem](https://github.com/user-attachments/assets/db19135e-d81b-4da2-81a4-5ea5881b24d0)
+
+<br/>
 
 [닷지 개발 일지 4 - 아이템](https://www.notion.so/4-13b41ff392d74e5396ade33136bdab43?pvs=21) 
 
-4. **스테이지**
+<br/>
 
-[닷지 개발 일지 7 - 스테이지](https://www.notion.so/7-fe49de2f9b164b38b2920571111fff05?pvs=21)
+4. **UI**
+
+<br/>
+
+![UI움직이기](https://github.com/user-attachments/assets/97d0aad8-d4c6-4453-85d9-9e312c855082)
+
+<br/>
+
+[닷지 개발 일지 6 - UI](https://www.notion.so/6-UI-6c359be9609b48c39339ddb64b211e20)
+
+<br/>
