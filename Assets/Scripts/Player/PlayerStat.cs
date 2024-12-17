@@ -316,7 +316,7 @@ public class PlayerStat : MonoBehaviour
         StartCoroutine(RemoveItemEffectEffectAfterDuration(effect));
     }
 
-    /// <summary> 아이템 효과 제거 </summary>
+    /// <summary> 모든 아이템 효과 제거 </summary>
     public void RemoveAllEffects()
     {
         foreach (ItemEffect effect in activeItems)
