@@ -28,6 +28,8 @@ https://github.com/Byeongchan99/Dodge
 
 ### 플레이 영상
 
+[닷지 플레이 영상](https://youtu.be/Nb-ofi6hx1c?si=WBb4MgnMejv43cnM)
+
 <br/>
 
 # 게임 구조
