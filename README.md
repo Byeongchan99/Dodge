@@ -22,10 +22,6 @@ WebGL로 빌드되어 현재 아래 사이트에서 지금까지 개발된 부�
 
 [닷지](https://harrrypoter.itch.io/dodge)
 
-### GitHub Repository
-
-https://github.com/Byeongchan99/Dodge
-
 ### 플레이 영상
 
 [닷지 플레이 영상](https://youtu.be/Nb-ofi6hx1c?si=WBb4MgnMejv43cnM)
